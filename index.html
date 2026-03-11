@@ -519,6 +519,7 @@ body.dark-mode .news-card{background:var(--stone)}
    ══════════════════════════════════════════════════ */
 
 /* ── Index: hero ── */
+#page-journal{background:var(--ink)}
 .journal-hero{background:var(--ink);padding:68px 48px 52px;position:relative;overflow:hidden;border-bottom:1px solid rgba(0,107,63,.2)}
 .journal-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(0,107,63,.13) 0%,transparent 60%),repeating-linear-gradient(-45deg,transparent,transparent 47px,rgba(0,107,63,.025) 47px,rgba(0,107,63,.025) 48px)}
 .jh-inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
@@ -549,7 +550,7 @@ body.dark-mode .news-card{background:var(--stone)}
 .jf-visual-label{position:absolute;bottom:16px;left:16px;font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,166,81,.4);z-index:2}
 
 /* ── Index: post list + sidebar ── */
-.journal-body{display:grid;grid-template-columns:1fr 268px;gap:44px;padding:44px 48px;max-width:1140px;margin:0 auto;width:100%}
+.journal-body{display:grid;grid-template-columns:1fr 268px;gap:44px;padding:44px 48px;max-width:1140px;margin:0 auto;width:100%;background:var(--ink)}
 .jb-list-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .jb-list-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
 
@@ -569,11 +570,11 @@ body.dark-mode .news-card{background:var(--stone)}
 
 /* Category filter */
 .jb-filter{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
-.jb-filter-btn{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(0,107,63,.25);background:transparent;color:rgba(255,255,255,.3);cursor:pointer;border-radius:1px;transition:all .18s}
+.jb-filter-btn{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(0,107,63,.25);background:rgba(0,107,63,.08);color:rgba(255,255,255,.55);cursor:pointer;border-radius:1px;transition:all .18s}
 .jb-filter-btn.active,.jb-filter-btn:hover{background:rgba(0,107,63,.2);color:var(--gm);border-color:rgba(0,166,81,.4)}
 
 /* Sidebar widgets */
-.jb-sidebar{}
+.jb-sidebar{background:var(--ink)}
 .jsw{background:#0d1910;border:1px solid rgba(0,107,63,.18);border-top:2px solid var(--g);padding:18px;margin-bottom:18px}
 .jsw-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-bottom:14px}
 .jsw-cat{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);cursor:pointer;transition:padding-left .15s}
@@ -641,7 +642,8 @@ body.dark-mode .news-card{background:var(--stone)}
   .jf-card{grid-template-columns:1fr}
   .jf-visual{display:none}
   .journal-featured{padding:28px 20px}
-  .journal-hero{padding:48px 20px 36px}
+  #page-journal{background:var(--ink)}
+.journal-hero{padding:48px 20px 36px}
   .jpost-hero,.jpost-article{padding-left:20px;padding-right:20px}
 }
 @media(max-width:600px){
@@ -1812,7 +1814,7 @@ var JOURNAL_POSTS = [
     container.innerHTML = filtered.map(function(post, i) {
       var idx = JOURNAL_POSTS.indexOf(post);
       return (
-        '<div class="jpost-row sr-item" style="transition-delay:' + (i * 0.07) + 's" onclick="openPost(' + idx + ')">' +
+        '<div class="jpost-row" onclick="openPost(' + idx + ')">'  +
           '<div class="jpr-date">' +
             '<div class="jpr-day">'   + post.day   + '</div>' +
             '<div class="jpr-month">' + post.month + '</div>' +
