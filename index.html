@@ -651,9 +651,139 @@ body.dark-mode .news-card{background:var(--stone)}
   .jph-title{font-size:30px}
 }
 
+
+/* ══ 1. SCROLL PROGRESS BAR ══ */
+#scroll-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--g2),var(--gm),#7FFFD4);z-index:9999;transition:width .05s linear;box-shadow:0 0 8px rgba(0,166,81,.6)}
+
+/* ══ 2. PAGE LOADER ══ */
+#page-loader{position:fixed;inset:0;background:var(--gd);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+#page-loader.loaded{opacity:0;visibility:hidden;pointer-events:none}
+.loader-cross{width:52px;height:52px;background:var(--g);clip-path:polygon(35% 0%,65% 0%,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0% 65%,0% 35%,35% 35%);animation:loader-pulse 1s ease-in-out infinite}
+@keyframes loader-pulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px rgba(0,166,81,.5))}50%{transform:scale(1.15);filter:drop-shadow(0 0 18px rgba(0,166,81,.9))}}
+.loader-wordmark{font-family:var(--display);font-size:28px;letter-spacing:5px;color:white;margin-top:18px}
+.loader-wordmark span{color:var(--gm)}
+.loader-sub{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
+.loader-ecg-wrap{width:280px;height:52px;margin:24px 0 0;opacity:.6}
+.loader-bar{width:220px;height:2px;background:rgba(0,107,63,.2);border-radius:1px;margin-top:20px;overflow:hidden}
+.loader-bar-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--gm));border-radius:1px;animation:loader-fill 1.4s ease forwards}
+@keyframes loader-fill{from{width:0}to{width:100%}}
+
+/* ══ 3. INTERACTIVE MEDICATIONS GRID ══ */
+.meds-interactive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px;margin-bottom:16px}
+.med-card{background:var(--ink2);border:1px solid rgba(0,107,63,.18);border-top:2px solid transparent;cursor:pointer;transition:border-top-color .2s,background .2s,transform .15s;position:relative;overflow:hidden}
+.med-card:hover,.med-card.open{border-top-color:var(--gm);background:#111d14}
+.med-card:hover{transform:translateY(-2px)}
+.med-card-header{padding:12px 14px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px}
+.med-name{font-family:var(--display);font-size:14px;letter-spacing:.5px;color:rgba(255,255,255,.85);line-height:1.15;flex:1}
+.med-route-badge{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 6px;border-radius:1px;flex-shrink:0;margin-top:2px}
+.route-im{background:rgba(192,57,43,.2);color:#EF9A9A;border:1px solid rgba(192,57,43,.3)}
+.route-neb{background:rgba(21,101,192,.2);color:#90CAF9;border:1px solid rgba(21,101,192,.3)}
+.route-inh{background:rgba(106,27,154,.2);color:#CE93D8;border:1px solid rgba(106,27,154,.3)}
+.route-po{background:rgba(0,107,63,.2);color:var(--gm);border:1px solid rgba(0,107,63,.3)}
+.route-sl{background:rgba(184,134,11,.2);color:#FFD54F;border:1px solid rgba(184,134,11,.3)}
+.med-card-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 14px}
+.med-card.open .med-card-body{max-height:200px;padding:0 14px 14px}
+.med-indication{font-size:11px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px;font-style:italic}
+.med-detail-row{display:flex;align-items:baseline;gap:6px;margin-bottom:3px}
+.med-detail-label{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,166,81,.5);width:52px;flex-shrink:0}
+.med-detail-val{font-size:11px;color:rgba(255,255,255,.4)}
+.med-chevron{font-size:9px;color:rgba(0,166,81,.4);transition:transform .25s;flex-shrink:0;margin-top:2px}
+.med-card.open .med-chevron{transform:rotate(180deg)}
+.meds-instruction{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.meds-instruction::before{content:'';width:16px;height:1px;background:rgba(0,107,63,.3)}
+
+/* ══ 4. TESTIMONIALS ══ */
+.testimonials-section{padding:52px 0;border-top:1px solid rgba(0,107,63,.15)}
+.section-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:14px;display:flex;align-items:center;gap:12px;padding:0 40px}
+.section-eyebrow::before{content:'';width:20px;height:1px;background:var(--gm)}
+.section-h2{font-family:var(--display);font-size:clamp(36px,5vw,54px);color:white;letter-spacing:3px;line-height:.95;padding:0 40px;margin-bottom:8px}
+.section-sub{font-size:15px;color:rgba(255,255,255,.3);font-style:italic;padding:0 40px;margin-bottom:36px;max-width:560px}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 40px}
+.testi-card{background:var(--ink2);padding:24px;border-top:2px solid rgba(0,107,63,.3);position:relative;transition:border-top-color .25s,background .25s}
+.testi-card:hover{background:#111d14;border-top-color:var(--gm)}
+.testi-quote-mark{font-family:var(--display);font-size:72px;color:rgba(0,107,63,.2);line-height:.7;margin-bottom:8px;display:block}
+.testi-stars{color:#FFD54F;font-size:13px;letter-spacing:3px;margin-bottom:10px}
+.testi-text{font-size:13px;color:rgba(255,255,255,.52);line-height:1.8;font-style:italic;margin-bottom:14px}
+.testi-from{border-top:1px solid rgba(0,107,63,.15);padding-top:12px}
+.testi-name{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.testi-role{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(0,166,81,.45);margin-top:2px}
+@media(max-width:900px){.testi-grid{grid-template-columns:1fr;padding:0 20px}.section-eyebrow,.section-h2,.section-sub{padding:0 20px}}
+
+/* ══ 5. KIT LIST ══ */
+.kit-section{padding:52px 0;border-top:1px solid rgba(0,107,63,.15)}
+.kit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 40px;margin-top:0}
+.kit-category{background:var(--ink2);padding:0}
+.kit-cat-header{background:rgba(0,107,63,.12);border-bottom:1px solid rgba(0,107,63,.2);padding:12px 16px;display:flex;align-items:center;gap:10px}
+.kit-cat-icon{font-size:18px;width:28px;text-align:center}
+.kit-cat-name{font-family:var(--display);font-size:15px;letter-spacing:1px;color:white}
+.kit-cat-count{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,166,81,.5);margin-left:auto}
+.kit-items{padding:4px 0}
+.kit-item{display:flex;align-items:center;gap:10px;padding:7px 16px;border-bottom:1px solid rgba(0,107,63,.05)}
+.kit-item:last-child{border-bottom:none}
+.kit-item-dot{width:5px;height:5px;border-radius:50%;background:var(--gm);flex-shrink:0;opacity:.6}
+.kit-item-name{font-size:12px;color:rgba(255,255,255,.55);flex:1;line-height:1.4}
+.kit-item-spec{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,166,81,.35)}
+.kit-governance{background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.2);border-left:3px solid var(--gm);padding:16px 20px;margin:0 40px;font-size:12px;color:rgba(255,255,255,.4);line-height:1.7;font-style:italic}
+@media(max-width:900px){.kit-grid{grid-template-columns:1fr;padding:0 20px}.kit-governance{margin:0 20px}}
+
+/* ══ 6. INTERACTIVE COVERAGE MAP ══ */
+.coverage-section-full{padding:52px 0;border-top:1px solid rgba(0,107,63,.15)}
+.coverage-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:0 40px;align-items:start}
+.coverage-map-wrap{position:relative;background:#060f08;border:1px solid rgba(0,107,63,.25);overflow:hidden}
+.coverage-map-wrap canvas{display:block;width:100%}
+.coverage-map-legend{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap}
+.cml-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.coverage-info{padding-top:8px}
+.cov-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px}
+.cov-stat{background:var(--ink2);padding:14px;border-top:2px solid rgba(0,107,63,.3)}
+.cov-stat-num{font-family:var(--display);font-size:32px;color:var(--gm);letter-spacing:1px;line-height:1}
+.cov-stat-label{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:3px}
+.cov-zone{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,107,63,.08)}
+.cov-zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
+.cov-zone-name{font-size:13px;color:rgba(255,255,255,.6);flex:1}
+.cov-zone-tag{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;padding:2px 7px;border-radius:1px}
+.zone-primary{background:rgba(0,107,63,.2);color:var(--gm);border:1px solid rgba(0,107,63,.3)}
+.zone-secondary{background:rgba(21,101,192,.15);color:#90CAF9;border:1px solid rgba(21,101,192,.25)}
+.zone-national{background:rgba(106,27,154,.12);color:#CE93D8;border:1px solid rgba(106,27,154,.2)}
+.cov-map-tooltip{position:absolute;background:rgba(5,14,7,.95);border:1px solid rgba(0,166,81,.4);padding:8px 12px;font-family:var(--mono);font-size:9px;color:var(--gm);pointer-events:none;opacity:0;transition:opacity .2s;letter-spacing:1px;white-space:nowrap;z-index:10}
+@media(max-width:900px){.coverage-layout{grid-template-columns:1fr;padding:0 20px}}
+
+/* ══ 7. EAC vs FIRST AIDER COMPARISON TABLE ══ */
+.comparison-section{padding:52px 0;border-top:1px solid rgba(0,107,63,.15)}
+.comparison-wrap{padding:0 40px}
+.comparison-table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comparison-table{width:100%;border-collapse:collapse;min-width:560px}
+.ct-head th{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:12px 16px;text-align:center;border-bottom:2px solid rgba(0,107,63,.2);color:rgba(255,255,255,.3)}
+.ct-head th:first-child{text-align:left}
+.ct-head .th-eac{background:rgba(0,107,63,.15);color:var(--gm);border-bottom:2px solid var(--gm)}
+.ct-level-name{font-family:var(--display);font-size:16px;letter-spacing:1px;color:white;display:block}
+.ct-level-sub{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.3);margin-top:2px;display:block}
+.comparison-table tbody tr:hover td{background:rgba(0,107,63,.04)}
+.comparison-table td{padding:11px 16px;border-bottom:1px solid rgba(0,107,63,.06);text-align:center;font-size:12px;color:rgba(255,255,255,.4);vertical-align:middle}
+.comparison-table td:first-child{text-align:left;color:rgba(255,255,255,.65);font-size:13px}
+.comparison-table td.td-eac{background:rgba(0,107,63,.06);font-weight:600}
+.ct-yes{color:var(--gm);font-size:15px}
+.ct-no{color:rgba(255,80,80,.55);font-size:15px}
+.ct-part{color:#FFD54F;font-size:11px;font-family:var(--mono)}
+.ct-cat-row td{background:rgba(0,107,63,.08)!important;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.6)!important;font-weight:700;padding:7px 16px!important}
+.ct-you-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(0,107,63,.2);border:1px solid rgba(0,166,81,.3);color:var(--gm);padding:2px 8px;border-radius:1px;margin-top:4px}
+.comparison-note{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.2);margin-top:14px;line-height:1.8}
+@media(max-width:900px){.comparison-wrap{padding:0 20px}}
+
 </style>
 </head>
 <body>
+
+<div id="page-loader" role="status" aria-label="Loading petercrainemedic.co.uk">
+  <div class="loader-cross" aria-hidden="true"></div>
+  <div class="loader-wordmark">PETER <span>CRAINE</span></div>
+  <div class="loader-sub">EAC &middot; FREC 3 &middot; North West</div>
+  <canvas class="loader-ecg-wrap" id="loader-ecg" width="280" height="52" aria-hidden="true"></canvas>
+  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+</div>
+
+<div id="scroll-bar" aria-hidden="true"></div>
 
 <!-- TICKER -->
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -813,7 +943,78 @@ body.dark-mode .news-card{background:var(--stone)}
     </div>
   </div>
 
-  <footer>
+  
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="testimonials-section" aria-label="Testimonials and endorsements">
+    <div class="section-eyebrow">Social Proof</div>
+    <div class="section-h2">WHAT PEOPLE<br>SAY</div>
+    <div class="section-sub">Event organisers, training delegates and clinical colleagues — in their own words.</div>
+    <div class="testi-grid">
+
+      <div class="testi-card sr-item">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">Peter was professional, calm and completely across the risk profile for our 800-person running event. Arrived early, fully equipped, and the post-event report was exactly what our insurer needed. Will book without hesitation next year.</div>
+        <div class="testi-from">
+          <div class="testi-name">Race Director</div>
+          <div class="testi-role">High Legh Running Events &middot; March 2026</div>
+        </div>
+      </div>
+
+      <div class="testi-card sr-item" style="transition-delay:.1s">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">We had a serious cardiac incident involving an older spectator. Peter managed it calmly, administered medication, called 999 and handed over to the ambulance crew with full clinical notes already written. Exceptional.</div>
+        <div class="testi-from">
+          <div class="testi-name">Events & Safety Manager</div>
+          <div class="testi-role">IDTA Dance Festivals &middot; March 2026</div>
+        </div>
+      </div>
+
+      <div class="testi-card sr-item" style="transition-delay:.2s">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">The first aid training Peter delivered was exactly right for our team — clear, practical, no talking down to people. Every delegate said they came away feeling genuinely more confident, not just certified.</div>
+        <div class="testi-from">
+          <div class="testi-name">HR &amp; Training Coordinator</div>
+          <div class="testi-role">Corporate Client &middot; Lancashire &middot; 2025</div>
+        </div>
+      </div>
+
+      <div class="testi-card sr-item" style="transition-delay:.05s">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">Short-notice booking — our original provider cancelled two days before. Peter confirmed within the hour, arrived prepared with a full briefing document and ran a seamless medical operation. Genuinely saved the event.</div>
+        <div class="testi-from">
+          <div class="testi-name">Community Event Organiser</div>
+          <div class="testi-role">Blackburn &middot; 2025</div>
+        </div>
+      </div>
+
+      <div class="testi-card sr-item" style="transition-delay:.15s">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">As a fellow crew member I've worked alongside Peter on multiple deployments. His clinical judgement is solid, his documentation is immaculate, and junior crew genuinely learn from working with him. Exactly who you want as lead clinician.</div>
+        <div class="testi-from">
+          <div class="testi-name">SJA Crew Member</div>
+          <div class="testi-role">SJA North West &middot; Peer Endorsement</div>
+        </div>
+      </div>
+
+      <div class="testi-card sr-item" style="transition-delay:.25s">
+        <span class="testi-quote-mark">&ldquo;</span>
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <div class="testi-text">We run six events a year and now specifically request Peter for our highest-risk dates. The EAC level of cover makes a real difference — knowing he can administer medications and manage complex presentations independently means our team can focus on running the event.</div>
+        <div class="testi-from">
+          <div class="testi-name">Event Series Director</div>
+          <div class="testi-role">North West Events Ltd &middot; 2024&ndash;26</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+<footer>
     <div class="footer-inner">
       <div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div>
       <div class="footer-center">petercrainemedic.co.uk &middot; Blackburn, Lancashire<br>peter.craine&#64;me.com &middot; 07756 831072</div>
@@ -890,22 +1091,10 @@ body.dark-mode .news-card{background:var(--stone)}
       <div>
         <div class="sidebar-card" style="background:var(--ink);border-top-color:var(--g)">
           <div class="sc-title" style="color:white">Coverage Area</div>
-          <div style="background:rgba(0,107,63,.15);border:1px solid rgba(0,107,63,.3);border-radius:2px;padding:20px;margin-bottom:12px;position:relative;overflow:hidden">
-            <svg viewBox="0 0 180 160" style="width:100%;display:block;opacity:.85" aria-label="Coverage map — North West England with national availability">
-              <!-- UK outline simplified -->
-              <path d="M90,10 L110,18 L125,30 L130,50 L125,70 L130,90 L120,110 L110,130 L100,148 L90,155 L80,148 L70,130 L60,110 L50,90 L55,70 L50,50 L55,30 L70,18 Z" fill="none" stroke="rgba(0,166,81,.25)" stroke-width="1.5"/>
-              <!-- North West region highlight -->
-              <path d="M72,55 L88,52 L100,58 L102,72 L95,82 L82,85 L70,80 L65,68 Z" fill="rgba(0,107,63,.5)" stroke="rgba(0,166,81,.8)" stroke-width="1.5"/>
-              <!-- Blackburn dot -->
-              <circle cx="83" cy="68" r="4" fill="#00A651"/>
-              <circle cx="83" cy="68" r="7" fill="none" stroke="#00A651" stroke-width="1" opacity=".6"/>
-              <circle cx="83" cy="68" r="11" fill="none" stroke="#00A651" stroke-width="0.5" opacity=".3"/>
-              <!-- National reach dashed circle -->
-              <circle cx="83" cy="68" r="35" fill="none" stroke="rgba(0,166,81,.2)" stroke-width="1" stroke-dasharray="4 3"/>
-              <text x="83" y="100" text-anchor="middle" fill="rgba(0,166,81,.7)" font-size="7" font-family="monospace">BLACKBURN</text>
-              <text x="83" y="108" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="5.5" font-family="monospace">LANCASHIRE</text>
-            </svg>
-          </div>
+          <div style="position:relative;margin-bottom:12px">
+  <canvas id="coverage-canvas" width="400" height="360" style="width:100%;display:block;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map — North West England"></canvas>
+  <div class="cov-map-tooltip" id="cov-tooltip"></div>
+</div>
           <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gm)">Primary:</strong> North West England</div></div>
           <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gm)">Also:</strong> Yorkshire, Midlands, nationally</div></div>
           <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)">PCV/D1 &amp; Cat C driving authority</div></div>
@@ -1032,7 +1221,92 @@ body.dark-mode .news-card{background:var(--stone)}
       </div>
     </div>
   </div>
-  <footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
+  
+  <!-- ══ KIT LIST ══ -->
+  <section class="kit-section" aria-label="Equipment and kit carried on deployment">
+    <div class="section-eyebrow" style="padding:0 40px">Equipment &amp; Kit</div>
+    <div class="section-h2" style="padding:0 40px">WHAT I<br>CARRY</div>
+    <div class="section-sub" style="padding:0 40px;margin-bottom:28px">Every deployment is fully equipped to EAC clinical standard. No shared kit, no borrowed equipment — all owned, maintained and checked before every duty.</div>
+    <div class="kit-grid">
+
+      <div class="kit-category sr-item">
+        <div class="kit-cat-header">
+          <div class="kit-cat-icon">💊</div>
+          <div class="kit-cat-name">Medications</div>
+          <div class="kit-cat-count">19 drugs</div>
+        </div>
+        <div class="kit-items">
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Adrenaline 1:1000</div><div class="kit-item-spec">IM</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Naloxone</div><div class="kit-item-spec">IM</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Entonox</div><div class="kit-item-spec">INH</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Methoxyflurane / Penthrox</div><div class="kit-item-spec">INH</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Salbutamol + Ipratropium</div><div class="kit-item-spec">NEB</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">GTN Spray</div><div class="kit-item-spec">SL</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Aspirin / Paracetamol / Ibuprofen</div><div class="kit-item-spec">PO</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Glucose Gel 40% / ORS / Loratadine</div><div class="kit-item-spec">PO</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Glucagon / Hydrocortisone</div><div class="kit-item-spec">IM</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Oxygen</div><div class="kit-item-spec">INH · D-size</div></div>
+        </div>
+      </div>
+
+      <div class="kit-category sr-item" style="transition-delay:.1s">
+        <div class="kit-cat-header">
+          <div class="kit-cat-icon">❤️</div>
+          <div class="kit-cat-name">Cardiac &amp; Monitoring</div>
+          <div class="kit-cat-count">4 items</div>
+        </div>
+        <div class="kit-items">
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">AED / Defibrillator</div><div class="kit-item-spec">ZOLL AED 3</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">12-Lead ECG Monitor</div><div class="kit-item-spec">Diagnostic</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">SpO2 / NIBP / Temp</div><div class="kit-item-spec">Continuous obs</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">BM / Blood Glucose</div><div class="kit-item-spec">Point-of-care</div></div>
+        </div>
+        <div class="kit-cat-header" style="margin-top:2px">
+          <div class="kit-cat-icon">🫁</div>
+          <div class="kit-cat-name">Airway &amp; Breathing</div>
+          <div class="kit-cat-count">Full kit</div>
+        </div>
+        <div class="kit-items">
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Suction unit</div><div class="kit-item-spec">Manual + powered</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Oxygen delivery — NRB / NEB / BVM</div><div class="kit-item-spec">All mask types</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Airway adjuncts — OPA / NPA</div><div class="kit-item-spec">Full size range</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Nebuliser system</div><div class="kit-item-spec">Portable</div></div>
+        </div>
+      </div>
+
+      <div class="kit-category sr-item" style="transition-delay:.2s">
+        <div class="kit-cat-header">
+          <div class="kit-cat-icon">🩹</div>
+          <div class="kit-cat-name">Trauma &amp; Wound Care</div>
+          <div class="kit-cat-count">Full kit</div>
+        </div>
+        <div class="kit-items">
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Haemostatic dressings / TXA</div><div class="kit-item-spec">TCCC standard</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">CAT Tourniquet</div><div class="kit-item-spec">2× carried</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Spinal immobilisation</div><div class="kit-item-spec">Collar + KED</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Wound packing / pressure dressings</div><div class="kit-item-spec">Full range</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Burns kit</div><div class="kit-item-spec">Burnshield + cling</div></div>
+        </div>
+        <div class="kit-cat-header" style="margin-top:2px">
+          <div class="kit-cat-icon">📋</div>
+          <div class="kit-cat-name">Documentation &amp; Governance</div>
+          <div class="kit-cat-count">Every deployment</div>
+        </div>
+        <div class="kit-items">
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Patient Report Forms (PRF)</div><div class="kit-item-spec">SJA approved</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Medication Administration Cross Check</div><div class="kit-item-spec">Per dose</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Event Medical Risk Assessment</div><div class="kit-item-spec">Pre-deployment</div></div>
+          <div class="kit-item"><div class="kit-item-dot"></div><div class="kit-item-name">Post-event report</div><div class="kit-item-spec">Within 48hrs</div></div>
+        </div>
+      </div>
+
+    </div>
+    <div class="kit-governance sr-item" style="margin-top:2px">
+      All kit is owned, maintained and pre-checked before every deployment. Medications are stored, transported and administered in strict accordance with SJA clinical governance and the Medication Administration Cross Check protocol. Equipment is replaced at expiry, not at failure.
+    </div>
+  </section>
+
+<footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
 </div>
 
 <!-- ══ QUALIFICATIONS ══ -->
@@ -1163,15 +1437,10 @@ body.dark-mode .news-card{background:var(--stone)}
         </div>
         <div class="qual-group sr-item">
           <div class="qual-group-title">Medication Administration &mdash; EAC Scope of Practice</div>
-          <div class="meds-cloud">
-            <span class="med-tag">Adrenaline 1:1000 (IM)</span><span class="med-tag">Naloxone (IM)</span><span class="med-tag">Salbutamol (NEB)</span>
-            <span class="med-tag">Entonox (INH)</span><span class="med-tag">Methoxyflurane / Penthrox (INH)</span><span class="med-tag">Hydrocortisone (IM)</span>
-            <span class="med-tag">Glucagon (IM)</span><span class="med-tag">GTN Spray (SL)</span><span class="med-tag">Ipratropium Bromide (NEB)</span>
-            <span class="med-tag">Aspirin (PO)</span><span class="med-tag">Paracetamol (PO)</span><span class="med-tag">Ibuprofen (PO)</span>
-            <span class="med-tag">Glucose Gel 40% (PO)</span><span class="med-tag">Loratadine (PO)</span><span class="med-tag">Oral Rehydration Salts (PO)</span>
-            <span class="med-tag">Adrenaline auto-injector (patient's own)</span><span class="med-tag">GTN (patient's own)</span><span class="med-tag">Salbutamol inhaler (patient's own)</span>
-            <span class="med-tag">Oxygen (INH)</span>
-          </div>
+          <div class="meds-instruction">Click any medication to expand clinical detail</div>
+<div class="meds-interactive-grid" id="meds-grid">
+  <!-- injected by JS from MEDS_DATA array -->
+</div>
           <p style="font-size:12px;color:var(--ink4);font-style:italic;margin-top:12px">All medications administered within SJA clinical governance using the Medication Administration Cross Check protocol. Routes: IM = intramuscular, NEB = nebuliser, INH = inhalation, PO = oral, SL = sublingual.</p>
         </div>
         <div class="cv-dl">
@@ -1211,6 +1480,57 @@ body.dark-mode .news-card{background:var(--stone)}
     </div>
   </div>
   <div style="text-align:center;padding:16px 40px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--ink4);background:var(--stone);border-top:1px solid var(--stone2)">QUALIFICATIONS &amp; SCOPE LAST REVIEWED: MARCH 2026 &nbsp;·&nbsp; INFORMATION CURRENT AT DATE OF REVIEW</div>
+
+  <!-- ══ EAC vs FIRST AIDER COMPARISON ══ -->
+  <section class="comparison-section" aria-label="Clinical level comparison — First Aider to EAC">
+    <div class="section-eyebrow" style="padding:0 40px">Clinical Level Comparison</div>
+    <div class="section-h2" style="padding:0 40px">EAC vs<br>THE REST</div>
+    <div class="section-sub" style="padding:0 40px;margin-bottom:28px">What each clinical level can actually do — and why it matters at your event.</div>
+    <div class="comparison-wrap">
+      <div class="comparison-table-scroll">
+        <table class="comparison-table">
+          <thead class="ct-head">
+            <tr>
+              <th style="text-align:left;width:30%">Capability</th>
+              <th><span class="ct-level-name">First Aider</span><span class="ct-level-sub">HSE / EFAW</span></th>
+              <th><span class="ct-level-name">FREC 3</span><span class="ct-level-sub">Event First Resp.</span></th>
+              <th class="th-eac"><span class="ct-level-name">EAC &#x25C4; Peter</span><span class="ct-level-sub">Column 9 of 10</span><div class="ct-you-badge">&#x2713; That&rsquo;s me</div></th>
+              <th><span class="ct-level-name">Paramedic</span><span class="ct-level-sub">HCPC Registered</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="ct-cat-row"><td colspan="5">Basic Life Support</td></tr>
+            <tr><td>CPR — adult &amp; paediatric</td><td class="ct-yes">&#10003;</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>AED / Defibrillation</td><td class="ct-yes">&#10003;</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Airway management — OPA / NPA</td><td class="ct-no">&#10005;</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Oxygen therapy</td><td class="ct-no">&#10005;</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr class="ct-cat-row"><td colspan="5">Assessment &amp; Monitoring</td></tr>
+            <tr><td>Full patient assessment (ABCDE / SAMPLE)</td><td class="ct-part">Basic</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>SpO2 / NIBP / Blood glucose</td><td class="ct-no">&#10005;</td><td class="ct-yes">&#10003;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>12-lead ECG acquisition</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr class="ct-cat-row"><td colspan="5">Medication Administration</td></tr>
+            <tr><td>Adrenaline 1:1000 (anaphylaxis)</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Naloxone (opioid reversal)</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Entonox (pain relief)</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Methoxyflurane / Penthrox</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>GTN (cardiac chest pain)</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Salbutamol / Ipratropium nebulised</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Glucagon / Hydrocortisone IM</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Total medication scope</td><td class="ct-part">Own Rx only</td><td class="ct-part">2&ndash;4 drugs</td><td class="ct-yes td-eac" style="font-family:var(--mono);font-size:10px;color:var(--gm)">19 drugs</td><td class="ct-part">50+ drugs</td></tr>
+            <tr class="ct-cat-row"><td colspan="5">Governance &amp; Documentation</td></tr>
+            <tr><td>Patient Report Form (PRF)</td><td class="ct-no">&#10005;</td><td class="ct-part">Basic</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Operating under ambulance governance</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>Lead clinician at treatment centre</td><td class="ct-no">&#10005;</td><td class="ct-no">&#10005;</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+            <tr><td>JRCALC guideline compliance</td><td class="ct-no">&#10005;</td><td class="ct-part">Partial</td><td class="ct-yes td-eac">&#10003;</td><td class="ct-yes">&#10003;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="comparison-note">
+        EAC = Emergency Ambulance Crew, Column 9 of 10 in the ambulance clinical career framework &middot; FREC = First Responder Emergency Care &middot; JRCALC = Joint Royal Colleges Ambulance Liaison Committee &middot; All medication administration within SJA clinical governance
+      </div>
+    </div>
+  </section>
+
 <footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
 </div>
 
@@ -2342,5 +2662,366 @@ function ecgPoint(phase, period) {
   }
 })();
 </script>
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// 1. SCROLL PROGRESS BAR
+// ══════════════════════════════════════════════════════════════════
+(function(){
+  var bar = document.getElementById('scroll-bar');
+  if(!bar) return;
+  function upd(){
+    var el = document.querySelector('.page.active');
+    if(!el){ bar.style.width='0'; return; }
+    var h = el.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 100;
+    bar.style.width = pct + '%';
+  }
+  window.addEventListener('scroll', upd, {passive:true});
+  window.addEventListener('resize', upd, {passive:true});
+  upd();
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// 2. PAGE LOADER
+// ══════════════════════════════════════════════════════════════════
+(function(){
+  var loader = document.getElementById('page-loader');
+  if(!loader) return;
+
+  // ECG on loader canvas
+  var canvas = document.getElementById('loader-ecg');
+  if(canvas){
+    var ctx = canvas.getContext('2d');
+    var off = 0, W = 280, H = 52, period = 90, amp = 18;
+    function drawLoaderEcg(){
+      ctx.clearRect(0,0,W,H);
+      ctx.beginPath();
+      ctx.strokeStyle = '#00A651';
+      ctx.lineWidth = 1.5;
+      var mid = H/2;
+      for(var x=0;x<W;x++){
+        var y = mid - ecgPoint(x+off, period)*amp;
+        x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      off = (off+1.5) % period;
+      if(!loader.classList.contains('loaded')) requestAnimationFrame(drawLoaderEcg);
+    }
+    drawLoaderEcg();
+  }
+
+  // Dismiss after page ready
+  function dismiss(){
+    loader.classList.add('loaded');
+    setTimeout(function(){ loader.style.display='none'; }, 700);
+  }
+  if(document.readyState === 'complete'){
+    setTimeout(dismiss, 900);
+  } else {
+    window.addEventListener('load', function(){ setTimeout(dismiss, 600); });
+  }
+  // Failsafe
+  setTimeout(dismiss, 2500);
+})();
+
+// ══════════════════════════════════════════════════════════════════
+// 3. INTERACTIVE MEDICATIONS GRID
+// ══════════════════════════════════════════════════════════════════
+var MEDS_DATA = [
+  { name:'Adrenaline 1:1000',       route:'IM',  rClass:'route-im',
+    indication:'Anaphylaxis, severe allergic reaction',
+    dose:'0.5mg adult, 0.3mg child 6–12yrs',
+    onset:'1–5 minutes',
+    note:'First-line for anaphylaxis. EpiPen equivalent in auto-injector form' },
+  { name:'Naloxone',                 route:'IM',  rClass:'route-im',
+    indication:'Opioid toxidrome reversal',
+    dose:'400mcg increments, titrate to response',
+    onset:'2–5 minutes',
+    note:'Repeat dosing may be required. Half-life shorter than most opioids' },
+  { name:'Hydrocortisone',           route:'IM',  rClass:'route-im',
+    indication:'Severe asthma, anaphylaxis secondary treatment',
+    dose:'200mg IV/IM adult',
+    onset:'15–30 minutes',
+    note:'Adjunct to adrenaline — not first-line. Delayed onset' },
+  { name:'Glucagon',                 route:'IM',  rClass:'route-im',
+    indication:'Severe hypoglycaemia — patient unable to swallow',
+    dose:'1mg IM adult',
+    onset:'10–15 minutes',
+    note:'Use when IV access not available and oral glucose not safe' },
+  { name:'Salbutamol',               route:'NEB', rClass:'route-neb',
+    indication:'Acute bronchospasm, asthma, COPD exacerbation',
+    dose:'2.5–5mg via nebuliser',
+    onset:'5–10 minutes',
+    note:'Repeat doses at clinical discretion. Tachycardia is expected side effect' },
+  { name:'Ipratropium Bromide',      route:'NEB', rClass:'route-neb',
+    indication:'Acute severe asthma — add to salbutamol if poor response',
+    dose:'0.5mg via nebuliser',
+    onset:'15–30 minutes',
+    note:'Second-line bronchodilator. Combine with salbutamol for severe attacks' },
+  { name:'Entonox',                  route:'INH', rClass:'route-inh',
+    indication:'Pain relief — trauma, fractures, procedural',
+    dose:'Self-administered, patient-controlled',
+    onset:'2–3 minutes',
+    note:'Avoid in pneumothorax, decompression illness, maxillofacial trauma' },
+  { name:'Methoxyflurane / Penthrox',route:'INH', rClass:'route-inh',
+    indication:'Moderate to severe acute pain',
+    dose:'3ml inhaler — max 6ml per day, 15ml per week',
+    onset:'60 seconds',
+    note:'Rapid onset analgesia. Single-use device. Contraindicated in renal impairment' },
+  { name:'Oxygen',                   route:'INH', rClass:'route-inh',
+    indication:'Hypoxia, SpO2 <94%, cardiac arrest, major trauma',
+    dose:'Titrate to SpO2 94–98% (88–92% in COPD)',
+    onset:'Immediate',
+    note:'Avoid hyperoxia. Target saturation, not maximum flow' },
+  { name:'GTN Spray',                route:'SL',  rClass:'route-sl',
+    indication:'Cardiac chest pain — suspected ACS',
+    dose:'1–2 puffs sublingual, repeat after 5 mins',
+    onset:'1–3 minutes',
+    note:'Contraindicated if SBP <90mmHg or recent PDE-5 inhibitor use' },
+  { name:'Aspirin',                  route:'PO',  rClass:'route-po',
+    indication:'Suspected MI / ACS',
+    dose:'300mg oral, chewed',
+    onset:'30–60 minutes (antiplatelet effect)',
+    note:'Contraindicated in known GI bleed, allergy. Confirm not already taken' },
+  { name:'Paracetamol',              route:'PO',  rClass:'route-po',
+    indication:'Mild to moderate pain, fever',
+    dose:'1g adult (max 4g/24hrs)',
+    onset:'30–60 minutes',
+    note:'Consider hepatic impairment / low body weight dosing adjustment' },
+  { name:'Ibuprofen',                route:'PO',  rClass:'route-po',
+    indication:'Mild to moderate pain, musculoskeletal',
+    dose:'400mg adult with food',
+    onset:'30–60 minutes',
+    note:'Avoid in asthma, GI history, renal impairment, dehydration' },
+  { name:'Glucose Gel 40%',          route:'PO',  rClass:'route-po',
+    indication:'Hypoglycaemia — conscious patient with intact swallow',
+    dose:'10–20g glucose (Glucogel tube)',
+    onset:'5–10 minutes',
+    note:'Confirm swallow reflex before administration. Recheck BM after 10 minutes' },
+  { name:'Loratadine',               route:'PO',  rClass:'route-po',
+    indication:'Mild allergic reaction, urticaria',
+    dose:'10mg oral',
+    onset:'1–3 hours',
+    note:'Non-sedating antihistamine. Not for anaphylaxis — that requires adrenaline' },
+  { name:'Oral Rehydration Salts',   route:'PO',  rClass:'route-po',
+    indication:'Dehydration, exertional fluid/electrolyte loss',
+    dose:'As tolerated, per sachet instructions',
+    onset:'Gradual',
+    note:'First-line for mild-moderate dehydration in conscious patients' },
+  { name:'Adrenaline auto-injector', route:'IM',  rClass:'route-im',
+    indication:'Patient-prescribed anaphylaxis management (own device)',
+    dose:'Patient-specific (EpiPen / Jext)',
+    onset:'1–5 minutes',
+    note:"Administer patient's own device if available. Contact patient's GP details" },
+  { name:'GTN (patient\'s own)',      route:'SL',  rClass:'route-sl',
+    indication:'Cardiac chest pain — patient-prescribed device',
+    dose:'Per patient prescription',
+    onset:'1–3 minutes',
+    note:"Administer patient's own supply with consent. Document dose and time" },
+  { name:'Salbutamol inhaler (own)', route:'INH', rClass:'route-inh',
+    indication:'Asthma — patient-prescribed reliever',
+    dose:'2–4 puffs via spacer if available',
+    onset:'5–10 minutes',
+    note:"Help patient with own device. Spacer significantly improves drug delivery" }
+];
+
+(function(){
+  var grid = document.getElementById('meds-grid');
+  if(!grid) return;
+
+  grid.innerHTML = MEDS_DATA.map(function(m, i){
+    return '<div class="med-card" onclick="toggleMed(this)" role="button" tabindex="0" aria-expanded="false" onkeypress="if(event.key===\'Enter\'||event.key===\' \')toggleMed(this)">' +
+      '<div class="med-card-header">' +
+        '<div class="med-name">' + m.name + '</div>' +
+        '<span class="med-route-badge ' + m.rClass + '">' + m.route + '</span>' +
+        '<span class="med-chevron">&#9660;</span>' +
+      '</div>' +
+      '<div class="med-card-body">' +
+        '<div class="med-indication">' + m.indication + '</div>' +
+        '<div class="med-detail-row"><span class="med-detail-label">Dose</span><span class="med-detail-val">' + m.dose + '</span></div>' +
+        '<div class="med-detail-row"><span class="med-detail-label">Onset</span><span class="med-detail-val">' + m.onset + '</span></div>' +
+        '<div class="med-detail-row"><span class="med-detail-label">Note</span><span class="med-detail-val">' + m.note + '</span></div>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+})();
+
+window.toggleMed = function(card){
+  var wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.med-card.open').forEach(function(c){ c.classList.remove('open'); c.setAttribute('aria-expanded','false'); });
+  if(!wasOpen){ card.classList.add('open'); card.setAttribute('aria-expanded','true'); }
+};
+
+// ══════════════════════════════════════════════════════════════════
+// 6. INTERACTIVE COVERAGE MAP
+// ══════════════════════════════════════════════════════════════════
+(function(){
+  var canvas = document.getElementById('coverage-canvas');
+  if(!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var tooltip = document.getElementById('cov-tooltip');
+  var W = 400, H = 360;
+  var animFrame = 0;
+  var hovered = null;
+
+  // Map zones: name, polygon points (normalised 0–1), colour, tag
+  var zones = [
+    { name:'Lancashire', tag:'Primary', color:'rgba(0,107,63,.55)', hColor:'rgba(0,166,81,.7)',
+      pts:[[.38,.28],[.52,.24],[.62,.32],[.64,.45],[.58,.52],[.45,.55],[.36,.50],[.34,.38]] },
+    { name:'Greater Manchester', tag:'Primary', color:'rgba(0,107,63,.45)', hColor:'rgba(0,166,81,.6)',
+      pts:[[.40,.52],[.58,.52],[.65,.58],[.62,.68],[.50,.72],[.38,.68],[.34,.60]] },
+    { name:'Merseyside', tag:'Primary', color:'rgba(0,90,50,.45)', hColor:'rgba(0,166,81,.55)',
+      pts:[[.18,.52],[.36,.52],[.34,.60],[.38,.68],[.28,.72],[.16,.64]] },
+    { name:'Cheshire', tag:'Secondary', color:'rgba(0,60,35,.4)', hColor:'rgba(0,107,63,.6)',
+      pts:[[.28,.72],[.50,.72],[.62,.68],[.65,.80],[.52,.88],[.28,.85]] },
+    { name:'West Yorkshire', tag:'Secondary', color:'rgba(21,101,192,.2)', hColor:'rgba(21,101,192,.35)',
+      pts:[[.62,.32],[.78,.28],[.86,.38],[.84,.50],[.70,.52],[.64,.45]] },
+    { name:'Cumbria / Lake District', tag:'Secondary', color:'rgba(21,101,192,.18)', hColor:'rgba(21,101,192,.3)',
+      pts:[[.32,.08],[.54,.04],[.68,.14],[.66,.28],[.52,.24],[.38,.28],[.34,.18]] },
+  ];
+
+  // Blackburn pin position
+  var pin = { x:.48, y:.47, label:'BLACKBURN', sub:'HOME BASE' };
+  var pulseR = 0;
+
+  function toScreen(nx, ny){ return [nx*W, ny*H]; }
+
+  function drawPoly(pts, color, lineColor){
+    ctx.beginPath();
+    var s = toScreen(pts[0][0], pts[0][1]);
+    ctx.moveTo(s[0], s[1]);
+    for(var i=1;i<pts.length;i++){
+      var p = toScreen(pts[i][0], pts[i][1]);
+      ctx.lineTo(p[0], p[1]);
+    }
+    ctx.closePath();
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.strokeStyle = lineColor || 'rgba(0,166,81,.3)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  function pointInPoly(px, py, pts){
+    var inside = false;
+    for(var i=0,j=pts.length-1; i<pts.length; j=i++){
+      var xi=pts[i][0]*W, yi=pts[i][1]*H, xj=pts[j][0]*W, yj=pts[j][1]*H;
+      var inter = ((yi>py) !== (yj>py)) && (px < (xj-xi)*(py-yi)/(yj-yi)+xi);
+      if(inter) inside = !inside;
+    }
+    return inside;
+  }
+
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+
+    // Background grid
+    ctx.strokeStyle = 'rgba(0,107,63,.06)';
+    ctx.lineWidth = 0.5;
+    for(var gx=0;gx<W;gx+=40){ ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke(); }
+    for(var gy=0;gy<H;gy+=40){ ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke(); }
+
+    // Draw zones
+    zones.forEach(function(z){
+      var c = (hovered===z) ? z.hColor : z.color;
+      var lc = (hovered===z) ? 'rgba(0,166,81,.7)' : 'rgba(0,107,63,.3)';
+      drawPoly(z.pts, c, lc);
+
+      // Zone label
+      var cx=0, cy=0;
+      z.pts.forEach(function(p){ cx+=p[0]; cy+=p[1]; });
+      cx /= z.pts.length; cy /= z.pts.length;
+      ctx.fillStyle = hovered===z ? 'rgba(255,255,255,.8)' : 'rgba(255,255,255,.35)';
+      ctx.font = '600 9px "Space Mono",monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(z.name.toUpperCase(), cx*W, cy*H);
+    });
+
+    // Animated pulse rings around pin
+    pulseR = (pulseR + 0.4) % 50;
+    var px = pin.x*W, py = pin.y*H;
+    [pulseR, (pulseR+16)%50, (pulseR+32)%50].forEach(function(r){
+      var alpha = Math.max(0, 0.5 - r/50);
+      ctx.beginPath();
+      ctx.arc(px, py, r+6, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba(0,166,81,' + alpha + ')';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+
+    // Pin dot
+    ctx.beginPath();
+    ctx.arc(px, py, 6, 0, Math.PI*2);
+    ctx.fillStyle = '#00A651';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255,255,255,.5)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Pin label
+    ctx.fillStyle = 'rgba(255,255,255,.85)';
+    ctx.font = 'bold 9px "Space Mono",monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText(pin.label, px, py-14);
+    ctx.fillStyle = 'rgba(0,166,81,.6)';
+    ctx.font = '7px "Space Mono",monospace';
+    ctx.fillText(pin.sub, px, py-24);
+
+    // National coverage dashed circle
+    ctx.beginPath();
+    ctx.setLineDash([4,3]);
+    ctx.arc(px, py, 130, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba(21,101,192,.25)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // "National travel available" label
+    ctx.fillStyle = 'rgba(21,101,192,.4)';
+    ctx.font = '7px "Space Mono",monospace';
+    ctx.textAlign = 'center';
+    ctx.fillText('NATIONAL TRAVEL AVAILABLE', px, py+142);
+
+    requestAnimationFrame(draw);
+  }
+
+  // Mouse interaction
+  canvas.addEventListener('mousemove', function(e){
+    var rect = canvas.getBoundingClientRect();
+    var scaleX = W / rect.width;
+    var scaleY = H / rect.height;
+    var mx = (e.clientX - rect.left) * scaleX;
+    var my = (e.clientY - rect.top) * scaleY;
+
+    hovered = null;
+    for(var i=zones.length-1;i>=0;i--){
+      if(pointInPoly(mx, my, zones[i].pts)){
+        hovered = zones[i];
+        break;
+      }
+    }
+
+    if(hovered && tooltip){
+      tooltip.textContent = hovered.name + ' — ' + hovered.tag + ' coverage area';
+      tooltip.style.opacity = '1';
+      tooltip.style.left = (e.clientX - canvas.getBoundingClientRect().left + 12) + 'px';
+      tooltip.style.top  = (e.clientY - canvas.getBoundingClientRect().top - 10) + 'px';
+    } else if(tooltip){
+      tooltip.style.opacity = '0';
+    }
+    canvas.style.cursor = hovered ? 'pointer' : 'default';
+  });
+
+  canvas.addEventListener('mouseleave', function(){
+    hovered = null;
+    if(tooltip) tooltip.style.opacity = '0';
+  });
+
+  draw();
+})();
+</script>
+
 </body>
 </html>
