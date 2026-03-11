@@ -429,6 +429,218 @@ body.dark-mode .news-card{background:var(--stone)}
   .section-why{background:var(--stone)}
   .section-events{background:var(--stone2)}
 }
+
+/* ══════════════════════════════════════════════════════
+   DYNAMIC UPGRADES — v3
+   1  Heartbeat logo
+   3  Typewriter
+   4  Scroll reveal
+   8  Ambient glow
+   9  Cursor glow
+   10 FREC4 animated bars
+   14 Sliding nav indicator
+   16 Vital signs widget
+   18 Skills radar
+   20 Page transitions
+   ══════════════════════════════════════════════════════ */
+
+/* ── 1: HEARTBEAT LOGO ── */
+@keyframes hb-pulse {
+  0%,100%{transform:scale(1);filter:drop-shadow(0 0 3px rgba(0,166,81,.4))}
+  14%    {transform:scale(1.22);filter:drop-shadow(0 0 14px rgba(0,166,81,.9)) drop-shadow(0 0 28px rgba(0,107,63,.5))}
+  28%    {transform:scale(1)}
+  42%    {transform:scale(1.1);filter:drop-shadow(0 0 7px rgba(0,166,81,.6))}
+  56%    {transform:scale(1)}
+}
+.nav-cross{animation:hb-pulse 1.35s ease-in-out infinite;transform-origin:center center}
+#nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55}
+
+/* ── 3: TYPEWRITER ── */
+.hero-role-type{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:24px;line-height:1.8;min-height:22px}
+.hero-role-type .tw-text{color:rgba(255,255,255,.7)}
+.tw-cursor{display:inline-block;width:2px;height:13px;background:var(--gm);animation:tw-blink .65s step-end infinite;vertical-align:middle;margin-left:2px}
+@keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── 4: SCROLL REVEAL ── */
+.sr-item{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.sr-item.sr-visible{opacity:1;transform:translateY(0)}
+.sr-item-left{opacity:0;transform:translateX(-24px);transition:opacity .55s ease,transform .55s ease}
+.sr-item-left.sr-visible{opacity:1;transform:translateX(0)}
+.sr-stagger-1{transition-delay:.08s}.sr-stagger-2{transition-delay:.16s}
+.sr-stagger-3{transition-delay:.24s}.sr-stagger-4{transition-delay:.32s}
+.sr-stagger-5{transition-delay:.40s}
+
+/* ── 8: AMBIENT GLOW ── */
+.hero-glow{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.hero-glow::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,107,63,.18) 0%,transparent 65%);animation:glow-drift 7s ease-in-out infinite alternate;left:10%;top:-20%}
+.hero-glow::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,81,.1) 0%,transparent 60%);animation:glow-drift2 9s ease-in-out infinite alternate;right:5%;bottom:0%}
+@keyframes glow-drift{0%{transform:translate(0,0)}100%{transform:translate(12%,15%)}}
+@keyframes glow-drift2{0%{transform:translate(0,0)}100%{transform:translate(-10%,-12%)}}
+
+/* ── 9: CURSOR GLOW ── */
+#cursor-glow{position:fixed;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,81,.08) 0%,transparent 70%);pointer-events:none;transform:translate(-50%,-50%);z-index:9999;transition:opacity .3s ease;opacity:0}
+.dark-section-active #cursor-glow{opacity:1}
+@media(hover:none){#cursor-glow{display:none}}
+
+/* ── 10: ANIMATED FREC4 BARS ── */
+.frec4-bars-wrap{margin-top:10px}
+.fb-row{margin-bottom:14px}
+.fb-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.fb-label{font-family:var(--mono);font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--g)}
+.fb-pct{font-family:var(--display);font-size:15px;color:var(--g);letter-spacing:1px}
+.fb-track{background:rgba(0,107,63,.12);border-radius:3px;height:9px;overflow:hidden;position:relative}
+.fb-fill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--g2),var(--gm));position:relative;transition:width 1.6s cubic-bezier(.22,.61,.36,1)}
+.fb-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:18px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.25));animation:fb-shine 1.6s ease forwards;opacity:0}
+@keyframes fb-shine{0%{opacity:0;right:100%}50%{opacity:1}100%{opacity:0;right:0}}
+.fb-fill.fb-active{box-shadow:0 0 8px rgba(0,166,81,.5)}
+
+/* ── 14: SLIDING NAV INDICATOR ── */
+.nav-indicator{position:absolute;bottom:0;left:0;height:2px;background:var(--gm);transition:left .32s cubic-bezier(.4,0,.2,1),width .32s cubic-bezier(.4,0,.2,1);box-shadow:0 0 8px var(--gm),0 0 16px rgba(0,166,81,.4);pointer-events:none}
+#mainNav{position:relative}
+
+/* ── 18: SKILLS RADAR ── */
+.radar-section{margin-top:36px;padding-top:32px;border-top:1px solid var(--stone2)}
+.radar-title{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--g);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.radar-title::after{content:'';flex:1;height:1px;background:var(--stone2)}
+#skillRadar{display:block;margin:0 auto}
+
+/* ── 20: PAGE TRANSITIONS ── */
+@keyframes slide-in-right{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slide-in-left {from{opacity:0;transform:translateX(-32px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scan-flash{0%{opacity:0;left:-100%}40%{opacity:.6}100%{opacity:0;left:110%}}
+.page.active.dir-forward{animation:slide-in-right .28s cubic-bezier(.4,0,.2,1)}
+.page.active.dir-back   {animation:slide-in-left  .28s cubic-bezier(.4,0,.2,1)}
+#scan-line{position:fixed;top:0;left:-100%;width:4px;height:100%;background:linear-gradient(180deg,transparent,rgba(0,166,81,.6),transparent);z-index:9998;pointer-events:none;opacity:0}
+#scan-line.firing{animation:scan-flash .38s ease forwards}
+
+
+/* ══════════════════════════════════════════════════
+   THE JOURNAL — BLOG SYSTEM
+   ══════════════════════════════════════════════════ */
+
+/* ── Index: hero ── */
+.journal-hero{background:var(--ink);padding:68px 48px 52px;position:relative;overflow:hidden;border-bottom:1px solid rgba(0,107,63,.2)}
+.journal-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 15% 60%,rgba(0,107,63,.13) 0%,transparent 60%),repeating-linear-gradient(-45deg,transparent,transparent 47px,rgba(0,107,63,.025) 47px,rgba(0,107,63,.025) 48px)}
+.jh-inner{position:relative;z-index:1;max-width:900px;margin:0 auto}
+.jh-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.jh-eyebrow::before{content:'';width:24px;height:1px;background:var(--gm)}
+.jh-title{font-family:var(--display);font-size:clamp(52px,8vw,86px);color:white;letter-spacing:4px;line-height:.92;margin-bottom:18px}
+.jh-sub{font-size:15px;color:rgba(255,255,255,.38);font-style:italic;line-height:1.75;max-width:540px}
+.jh-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
+.jh-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:6px}
+.jh-meta-dot{width:4px;height:4px;border-radius:50%;background:var(--gm)}
+
+/* ── Index: featured post ── */
+.journal-featured{padding:44px 48px;border-bottom:1px solid rgba(0,107,63,.12);max-width:1140px;margin:0 auto;width:100%}
+.jf-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.jf-label::after{content:'';flex:1;height:1px;background:rgba(0,107,63,.2)}
+.jf-card{display:grid;grid-template-columns:1fr 300px;background:#0d1910;border:1px solid rgba(0,107,63,.22);border-top:3px solid var(--g);cursor:pointer;transition:box-shadow .25s,transform .22s;overflow:hidden}
+.jf-card:hover{transform:translateY(-3px);box-shadow:0 10px 48px rgba(0,0,0,.5),0 0 0 1px rgba(0,166,81,.2)}
+.jf-body{padding:36px 32px}
+.jf-tags{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
+.jf-date{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+.jf-title{font-family:var(--display);font-size:clamp(20px,2.5vw,30px);letter-spacing:1px;color:white;line-height:1.1;margin-bottom:14px}
+.jf-excerpt{font-size:14px;color:rgba(255,255,255,.38);line-height:1.85;font-style:italic}
+.jf-more{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-top:22px;border-bottom:1px solid rgba(0,166,81,.25);padding-bottom:2px;transition:gap .2s,border-color .2s}
+.jf-card:hover .jf-more{gap:14px;border-color:var(--gm)}
+.jf-visual{background:linear-gradient(135deg,#050e08 0%,#0c1e12 55%,#040c06 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:220px}
+.jf-visual-ecg{position:absolute;inset:0;opacity:.12}
+.jf-visual-icon{font-size:68px;position:relative;z-index:2}
+.jf-visual-label{position:absolute;bottom:16px;left:16px;font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,166,81,.4);z-index:2}
+
+/* ── Index: post list + sidebar ── */
+.journal-body{display:grid;grid-template-columns:1fr 268px;gap:44px;padding:44px 48px;max-width:1140px;margin:0 auto;width:100%}
+.jb-list-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.jb-list-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
+
+/* Post row card */
+.jpost-row{display:grid;grid-template-columns:64px 1fr;margin-bottom:2px;cursor:pointer;transition:transform .18s}
+.jpost-row:hover{transform:translateX(5px)}
+.jpost-row:hover .jpr-title{color:var(--gm)}
+.jpr-date{background:#0d1910;border-right:1px solid rgba(0,107,63,.12);padding:14px 10px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;flex-shrink:0}
+.jpr-day{font-family:var(--display);font-size:20px;color:white;letter-spacing:1px;line-height:1}
+.jpr-month{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:var(--gm)}
+.jpr-body{background:#0d1910;padding:14px 18px;border-bottom:1px solid rgba(0,107,63,.07)}
+.jpr-tags{display:flex;gap:5px;margin-bottom:5px}
+.jpr-title{font-family:var(--display);font-size:16px;letter-spacing:.5px;color:rgba(255,255,255,.82);margin-bottom:4px;line-height:1.15;transition:color .18s}
+.jpr-excerpt{font-size:12px;color:rgba(255,255,255,.28);line-height:1.65;font-style:italic}
+.jpr-read{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.4);margin-top:5px}
+.jpr-empty{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2);padding:28px 0;font-style:italic;text-align:center}
+
+/* Category filter */
+.jb-filter{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
+.jb-filter-btn{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(0,107,63,.25);background:transparent;color:rgba(255,255,255,.3);cursor:pointer;border-radius:1px;transition:all .18s}
+.jb-filter-btn.active,.jb-filter-btn:hover{background:rgba(0,107,63,.2);color:var(--gm);border-color:rgba(0,166,81,.4)}
+
+/* Sidebar widgets */
+.jb-sidebar{}
+.jsw{background:#0d1910;border:1px solid rgba(0,107,63,.18);border-top:2px solid var(--g);padding:18px;margin-bottom:18px}
+.jsw-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-bottom:14px}
+.jsw-cat{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);cursor:pointer;transition:padding-left .15s}
+.jsw-cat:hover{padding-left:5px}
+.jsw-cat:last-child{border-bottom:none}
+.jsw-cat-name{font-size:13px;color:rgba(255,255,255,.4);transition:color .15s}
+.jsw-cat:hover .jsw-cat-name{color:rgba(255,255,255,.7)}
+.jsw-cat-n{font-family:var(--mono);font-size:8px;color:rgba(0,166,81,.5);background:rgba(0,107,63,.1);border:1px solid rgba(0,107,63,.2);padding:1px 6px;border-radius:1px}
+.jsw-tags{display:flex;flex-wrap:wrap;gap:5px}
+.jsw-tag{font-family:var(--mono);font-size:7px;letter-spacing:1px;padding:3px 8px;background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.18);color:rgba(255,255,255,.3);cursor:pointer;border-radius:1px;transition:all .15s}
+.jsw-tag:hover{background:rgba(0,107,63,.2);color:var(--gm)}
+.jsw-about{font-size:12px;color:rgba(255,255,255,.3);line-height:1.75}
+
+/* ── TAGS ── */
+.jtag{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:1px}
+.jtag-depl{background:rgba(0,107,63,.18);color:var(--gm);border:1px solid rgba(0,166,81,.22)}
+.jtag-train{background:rgba(30,70,200,.18);color:#90CAF9;border:1px solid rgba(30,70,200,.22)}
+.jtag-news{background:rgba(150,50,200,.18);color:#CE93D8;border:1px solid rgba(150,50,200,.22)}
+
+/* ── Single post view ── */
+#journal-post-view{display:none;background:var(--ink)}
+#journal-post-view.open{display:block}
+.jpost-hero{background:var(--ink);padding:56px 48px 44px;position:relative;overflow:hidden;border-bottom:1px solid rgba(0,107,63,.18)}
+.jpost-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 40%,rgba(0,107,63,.11) 0%,transparent 58%),repeating-linear-gradient(-45deg,transparent,transparent 47px,rgba(0,107,63,.02) 47px,rgba(0,107,63,.02) 48px)}
+.jph-inner{position:relative;z-index:1;max-width:800px;margin:0 auto}
+.jph-back{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,166,81,.45);margin-bottom:22px;cursor:pointer;display:inline-flex;align-items:center;gap:7px;border-bottom:1px solid rgba(0,166,81,.18);padding-bottom:2px;transition:color .2s,gap .2s;background:none;border-left:none;border-right:none;border-top:none}
+.jph-back:hover{color:var(--gm);gap:12px;border-bottom-color:var(--gm)}
+.jph-tags{display:flex;gap:7px;margin-bottom:14px}
+.jph-date{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:12px}
+.jph-title{font-family:var(--display);font-size:clamp(28px,4.5vw,50px);color:white;letter-spacing:2px;line-height:.95;margin-bottom:16px}
+.jph-deck{font-size:16px;color:rgba(255,255,255,.38);font-style:italic;line-height:1.75;max-width:660px}
+.jph-byline{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(0,107,63,.18)}
+.jph-avatar{width:36px;height:36px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;color:white;letter-spacing:1px;flex-shrink:0}
+.jph-name{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.jph-role{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(0,166,81,.45)}
+.jph-readtime{margin-left:auto;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.18)}
+
+/* Post article body */
+.jpost-article{max-width:720px;margin:0 auto;padding:52px 48px}
+.jpa-p{font-size:15px;line-height:1.95;color:rgba(255,255,255,.52);margin-bottom:22px;font-family:Georgia,serif}
+.jpa-p:first-of-type::first-letter{font-family:var(--display);font-size:68px;line-height:.82;float:left;margin-right:10px;color:var(--g);padding-top:6px}
+.jpa-h2{font-family:var(--display);font-size:22px;letter-spacing:1px;color:white;margin:36px 0 12px}
+.jpa-pull{border-left:3px solid var(--g);padding:14px 22px;margin:30px 0;background:rgba(0,107,63,.05)}
+.jpa-pull p{font-size:18px;font-style:italic;color:rgba(255,255,255,.55);line-height:1.65;font-family:Georgia,serif}
+.jpa-pull cite{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.4);display:block;margin-top:8px}
+.jpa-callout{background:#0d1910;border:1px solid rgba(0,107,63,.22);border-left:3px solid var(--gm);padding:16px 20px;margin:26px 0;border-radius:0 2px 2px 0}
+.jpa-callout-label{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-bottom:6px}
+.jpa-callout p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.75;font-family:Georgia,serif}
+.jpa-divider{height:1px;background:rgba(0,107,63,.13);margin:36px 0}
+.jpa-anon{font-size:12px;color:rgba(255,255,255,.22);font-style:italic;line-height:1.7;padding:14px 0;border-top:1px solid rgba(0,107,63,.12)}
+.jpa-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
+
+/* ── Responsive ── */
+@media(max-width:900px){
+  .journal-body{grid-template-columns:1fr;padding:32px 20px}
+  .jb-sidebar{display:none}
+  .jf-card{grid-template-columns:1fr}
+  .jf-visual{display:none}
+  .journal-featured{padding:28px 20px}
+  .journal-hero{padding:48px 20px 36px}
+  .jpost-hero,.jpost-article{padding-left:20px;padding-right:20px}
+}
+@media(max-width:600px){
+  .jh-title{font-size:52px}
+  .jph-title{font-size:30px}
+}
+
 </style>
 </head>
 <body>
@@ -442,6 +654,8 @@ body.dark-mode .news-card{background:var(--stone)}
 
 <!-- NAV -->
 <nav id="mainNav">
+  <canvas id="nav-ecg-canvas" aria-hidden="true"></canvas>
+  <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
   <div class="nav-logo" onclick="showPage('home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('home')" aria-label="Home">
     <div class="nav-cross"></div>
     <div class="nav-wordmark">PETER <span>CRAINE</span></div>
@@ -451,6 +665,7 @@ body.dark-mode .news-card{background:var(--stone)}
     <a onclick="showPage('about');return false" id="nav-about" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('about')">About</a>
     <a onclick="showPage('services');return false" id="nav-services" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('services')">On Deployment</a>
     <a onclick="showPage('quals');return false" id="nav-quals" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('quals')">Qualifications</a>
+    <a onclick="showPage('journal');return false" id="nav-journal" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('journal')">Journal</a>
     <a onclick="showPage('contact');return false" id="nav-contact" class="nav-cta-link" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('contact')">Contact</a>
   </div>
   <div class="nav-right">
@@ -460,11 +675,14 @@ body.dark-mode .news-card{background:var(--stone)}
     </button>
   </div>
 </nav>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="scan-line" aria-hidden="true"></div>
 
 <!-- ══ HOME ══ -->
 <div class="page active" id="page-home">
-  <div class="hero" id="main-content">
+  <div class="hero" id="main-content" style="position:relative">
     <div class="hero-grid"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-pill"><div class="hero-pill-dot"></div>St John Ambulance &middot; North West England</div>
       <div class="hero-counter-row">
@@ -484,7 +702,7 @@ body.dark-mode .news-card{background:var(--stone)}
         </div>
       </div>
       <div class="hero-name">PETER<br><span class="surname">CRAINE</span></div>
-      <div class="hero-role"><strong>Event Medic</strong> &middot; FREC 3 EAC &middot; <strong>First Aid Trainer</strong></div>
+      <div class="hero-role-type" aria-label="Event Medic · FREC 3 EAC · First Aid Trainer · CTLLS L4 · SJA North West"><span class="tw-text" id="tw-text"></span><span class="tw-cursor" aria-hidden="true"></span></div>
       <p class="hero-tagline">Practising Emergency Ambulance Crew on <em>active deployment</em> across the North West &mdash; bringing real pre-hospital clinical capability to every event. Not a first-aider in green. An EAC.</p>
       <div class="hero-btns">
         <a class="btn btn-primary" onclick="showPage('about');return false" href="#">My Story</a>
@@ -512,15 +730,15 @@ body.dark-mode .news-card{background:var(--stone)}
 
   <section class="section-why">
     <div class="section-inner">
-      <div class="section-eyebrow">Why Peter</div>
-      <div class="section-headline">The EAC Standard.<br>Every Deployment.</div>
+      <div class="section-eyebrow sr-item">Why Peter</div>
+      <div class="section-headline sr-item">The EAC Standard.<br>Every Deployment.</div>
       <div class="why-grid">
-        <div class="why-card"><div class="why-icon">&#129514;</div><div class="why-title">Full EAC Clinical Scope</div><div class="why-text">FREC 3 certified &mdash; the highest clinical qualification SJA offers. Advanced airway (OPA/NPA/iGel/BVM), 12-lead ECG acquisition &amp; interpretation, 19 medications including adrenaline IM and naloxone IM, spinal immobilisation, traction splinting, pelvic binder, Major Incident Triage. FREC 4 in progress.</div></div>
-        <div class="why-card"><div class="why-icon">&#128081;</div><div class="why-title">Lead Clinician Capability</div><div class="why-text">Qualified to act as senior clinician on treatment centres and to lead clinically complex pre-hospital scenarios. When deployed alongside less experienced crew, I hold clinical responsibility for the patient &mdash; coaching, guiding and making the calls. That seniority is in the qualification.</div></div>
-        <div class="why-card"><div class="why-icon">&#128657;</div><div class="why-title">Operationally Active</div><div class="why-text">Deployed with St John Ambulance North West across dance competitions, road races, music venues and community events. Every contact documented to PRF standard. ATMIST/SBAR handover to NWAS. Pre-alert to receiving hospital. Active clinical practice, not classroom theory.</div></div>
-        <div class="why-card"><div class="why-icon">&#127942;</div><div class="why-title">Commissioner Commended</div><div class="why-text">Commissioner Commendation from SJA for outstanding service. 200+ learners trained. JRCALC+ and Responder+ compliant. Full SJA clinical governance &mdash; CPD maintained, personal development portfolio active, skill fade actively managed. Enhanced DBS current.</div></div>
-        <div class="why-card"><div class="why-icon">&#127891;</div><div class="why-title">Qualified Trainer</div><div class="why-text">CTLLS Level 4 (City &amp; Guilds) &mdash; a teaching credential most medics don't hold. FAW, EFAW, BLS, AED delivered to corporate, community and clinical audiences. When I teach anaphylaxis, I've administered adrenaline in the field. That context is irreplaceable.</div></div>
-        <div class="why-card"><div class="why-icon">&#128663;</div><div class="why-title">Full Driving Authority</div><div class="why-text">CERAD Level 3 blue light, PCV/D1 and Category C licences. Can operate ambulance, response vehicle or patient transport under full driving authority. Can deliver pre-alert to receiving hospital and activate emergency care pathways including PPCI and stroke. Not every event medic can say that.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#129514;</div><div class="why-title">Full EAC Clinical Scope</div><div class="why-text">FREC 3 certified &mdash; the highest clinical qualification SJA offers. Advanced airway (OPA/NPA/iGel/BVM), 12-lead ECG acquisition &amp; interpretation, 19 medications including adrenaline IM and naloxone IM, spinal immobilisation, traction splinting, pelvic binder, Major Incident Triage. FREC 4 in progress.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#128081;</div><div class="why-title">Lead Clinician Capability</div><div class="why-text">Qualified to act as senior clinician on treatment centres and to lead clinically complex pre-hospital scenarios. When deployed alongside less experienced crew, I hold clinical responsibility for the patient &mdash; coaching, guiding and making the calls. That seniority is in the qualification.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#128657;</div><div class="why-title">Operationally Active</div><div class="why-text">Deployed with St John Ambulance North West across dance competitions, road races, music venues and community events. Every contact documented to PRF standard. ATMIST/SBAR handover to NWAS. Pre-alert to receiving hospital. Active clinical practice, not classroom theory.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#127942;</div><div class="why-title">Commissioner Commended</div><div class="why-text">Commissioner Commendation from SJA for outstanding service. 200+ learners trained. JRCALC+ and Responder+ compliant. Full SJA clinical governance &mdash; CPD maintained, personal development portfolio active, skill fade actively managed. Enhanced DBS current.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#127891;</div><div class="why-title">Qualified Trainer</div><div class="why-text">CTLLS Level 4 (City &amp; Guilds) &mdash; a teaching credential most medics don't hold. FAW, EFAW, BLS, AED delivered to corporate, community and clinical audiences. When I teach anaphylaxis, I've administered adrenaline in the field. That context is irreplaceable.</div></div>
+        <div class="why-card sr-item"><div class="why-icon">&#128663;</div><div class="why-title">Full Driving Authority</div><div class="why-text">CERAD Level 3 blue light, PCV/D1 and Category C licences. Can operate ambulance, response vehicle or patient transport under full driving authority. Can deliver pre-alert to receiving hospital and activate emergency care pathways including PPCI and stroke. Not every event medic can say that.</div></div>
       </div>
     </div>
   </section>
@@ -531,34 +749,34 @@ body.dark-mode .news-card{background:var(--stone)}
       <div class="s-h2">Deployed Across Every Venue Type</div>
       <div class="s-rule"></div>
       <div class="events-grid">
-        <div class="event-card"><div class="event-icon">&#128131;</div><div class="event-name">Dance &amp; Performance</div><div class="event-desc">National competitions, showcases, theatre &mdash; dismounted EAC on venue floor.</div></div>
-        <div class="event-card"><div class="event-icon">&#127939;</div><div class="event-name">Road Races &amp; Sport</div><div class="event-desc">5K, 10K, half marathons, triathlons &mdash; vehicle-based EAC covering the full route.</div></div>
-        <div class="event-card"><div class="event-icon">&#127926;</div><div class="event-name">Music &amp; Festivals</div><div class="event-desc">Outdoor festivals, indoor concerts &mdash; crowd medical cover to EAC standard.</div></div>
-        <div class="event-card"><div class="event-icon">&#9917;</div><div class="event-name">Sporting Fixtures</div><div class="event-desc">Indoor and outdoor sporting events, tournaments, championships.</div></div>
-        <div class="event-card"><div class="event-icon">&#127970;</div><div class="event-name">Corporate Events</div><div class="event-desc">Staff events, product launches, outdoor activities &mdash; visible, professional presence.</div></div>
-        <div class="event-card"><div class="event-icon">&#127905;</div><div class="event-name">Community Events</div><div class="event-desc">Fairs, parades, community gatherings, charity fundraisers.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#128131;</div><div class="event-name">Dance &amp; Performance</div><div class="event-desc">National competitions, showcases, theatre &mdash; dismounted EAC on venue floor.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#127939;</div><div class="event-name">Road Races &amp; Sport</div><div class="event-desc">5K, 10K, half marathons, triathlons &mdash; vehicle-based EAC covering the full route.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#127926;</div><div class="event-name">Music &amp; Festivals</div><div class="event-desc">Outdoor festivals, indoor concerts &mdash; crowd medical cover to EAC standard.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#9917;</div><div class="event-name">Sporting Fixtures</div><div class="event-desc">Indoor and outdoor sporting events, tournaments, championships.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#127970;</div><div class="event-name">Corporate Events</div><div class="event-desc">Staff events, product launches, outdoor activities &mdash; visible, professional presence.</div></div>
+        <div class="event-card sr-item"><div class="event-icon">&#127905;</div><div class="event-name">Community Events</div><div class="event-desc">Fairs, parades, community gatherings, charity fundraisers.</div></div>
       </div>
     </div>
   </section>
 
   <section class="section-news">
     <div class="section-inner">
-      <div class="section-eyebrow">Latest</div>
-      <div class="section-headline">News &amp; Updates</div>
+      <div class="section-eyebrow sr-item">Latest</div>
+      <div class="section-headline sr-item">News &amp; Updates</div>
       <div class="news-grid">
-        <div class="news-card">
+        <div class="news-card sr-item">
           <div class="news-date">March 2026</div>
           <div class="news-title">Double Deployment Weekend: Blackpool &amp; Cheshire</div>
           <div class="news-excerpt">Covered the IDTA Nationwide Solo Dance Festival at Norbreck Castle (dismounted EAC) on Saturday, then the High Legh 10K in Cheshire (vehicle-based EAC) on Sunday. Four patients assessed across both events, all managed to EAC standard.</div>
           <span class="news-tag">Deployment</span>
         </div>
-        <div class="news-card">
+        <div class="news-card sr-item">
           <div class="news-date">February 2026</div>
           <div class="news-title">FREC 4 Update: Theory Modules Active</div>
           <div class="news-excerpt">Currently progressing through the theory component of FREC 4 / Advanced Ambulance Practitioner. Practical assessment stage approaching. Completion anticipated 2026 &mdash; significantly expanding clinical scope and medication range.</div>
           <span class="news-tag">Training</span>
         </div>
-        <div class="news-card">
+        <div class="news-card sr-item">
           <div class="news-date">January 2026</div>
           <div class="news-title">2026 Event Season: Now Taking Bookings</div>
           <div class="news-excerpt">The 2026 race and festival season runs March through October. EAC cover available for running events, dance competitions, music festivals, corporate events and community gatherings across the North West. Enquire early for specific weekends.</div>
@@ -596,7 +814,7 @@ body.dark-mode .news-card{background:var(--stone)}
 
 <!-- ══ ABOUT ══ -->
 <div class="page" id="page-about">
-  <div class="page-hero">
+  <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Background &amp; Experience</div>
       <div class="page-h1">About Me</div>
@@ -606,7 +824,7 @@ body.dark-mode .news-card{background:var(--stone)}
   <div class="content-wrap">
     <div class="about-layout">
       <div class="about-body">
-        <div class="pull-quote"><p>&#x201C;Most people see a dance competition or a road race. I see the patients who might need me &mdash; and I make sure I'm ready for every one of them.&#x201D;</p></div>
+        <div class="pull-quote sr-item"><p>&#x201C;Most people see a dance competition or a road race. I see the patients who might need me &mdash; and I make sure I'm ready for every one of them.&#x201D;</p></div>
         <p>I'm a practising Emergency Ambulance Crew (EAC) member and FREC 3-certified pre-hospital practitioner with St John Ambulance, deployed operationally across the North West at sporting events, national competitions, music venues, community events and blue light emergency response.</p>
         <div class="about-sec-title">Clinical Background</div>
         <p>My clinical training covers the full pre-hospital emergency care spectrum. I am competent in advanced airway management using OPA, NPA and iGel adjuncts, bag-valve-mask ventilation, capnography, 12-lead ECG acquisition and interpretation, haemorrhage control, spinal immobilisation with cervical collar and head blocks, traction splinting, pelvic binder application, blood glucose monitoring, and major incident management using the METHANE and JESIP frameworks.</p>
@@ -643,7 +861,13 @@ body.dark-mode .news-card{background:var(--stone)}
             <div style="font-size:11px;color:var(--ink4);font-style:italic;margin-top:3px">Maintained continuously</div>
           </div>
         </div>
-        <p style="font-size:13px;color:var(--ink4);font-style:italic">CPD activities include: simulation exercises, clinical reflective practice, online learning modules (Responder+), scenario training, skills refreshers, mandatory annual updates and self-directed study. Full log available on request.</p>
+        <p style="font-size:13px;color:var(--ink4);font-style:italic">CPD activities include: simulation exercises, clinical reflective practice, online learning modules (Responder+), scenario training, skills refreshers, mandatory annual updates and self-directed study. Full log available on request.</p
+
+        <div class="radar-section sr-item">
+          <div class="radar-title">Clinical Skill Profile</div>
+          <canvas id="skillRadar" width="240" height="240" aria-label="Spider chart of clinical skills including airway, trauma, medications, assessment, driving and training"></canvas>
+        </div>
+
 
         <p>I am currently progressing my FREC 4 / Advanced Ambulance Practitioner qualification &mdash; significantly expanding clinical scope, medication range and patient assessment capability.</p>
         <div class="about-sec-title">Recent Deployments</div>
@@ -704,7 +928,7 @@ body.dark-mode .news-card{background:var(--stone)}
 
 <!-- ══ ON DEPLOYMENT ══ -->
 <div class="page" id="page-services">
-  <div class="page-hero">
+  <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Clinical Reality</div>
       <div class="page-h1">On Deployment</div>
@@ -742,7 +966,7 @@ body.dark-mode .news-card{background:var(--stone)}
       </div>
     </div>
     <div class="dep-grid">
-      <div class="dep-card">
+      <div class="dep-card sr-item">
         <div class="dep-icon">&#128131;</div>
         <div class="dep-title">Dance &amp; Performance Events</div>
         <div class="dep-sub">Dismounted EAC &middot; Venue floor &middot; Indoor, high footfall</div>
@@ -756,7 +980,7 @@ body.dark-mode .news-card{background:var(--stone)}
         </ul>
         <div class="dep-note"><p>Recent: IDTA Nationwide Solo Dance Festival, Norbreck Castle, Blackpool &mdash; March 2026</p></div>
       </div>
-      <div class="dep-card">
+      <div class="dep-card sr-item">
         <div class="dep-icon">&#127939;</div>
         <div class="dep-title">Road Races &amp; Running Events</div>
         <div class="dep-sub">Vehicle-based EAC &middot; Race route cover &middot; Dynamic patient locations</div>
@@ -770,7 +994,7 @@ body.dark-mode .news-card{background:var(--stone)}
         </ul>
         <div class="dep-note"><p>Recent: High Legh 10K, Cheshire &mdash; March 2026</p></div>
       </div>
-      <div class="dep-card">
+      <div class="dep-card sr-item">
         <div class="dep-icon">&#127926;</div>
         <div class="dep-title">Music &amp; Festival Events</div>
         <div class="dep-sub">Crowd medical &middot; High-density environment &middot; Wide presentation range</div>
@@ -783,7 +1007,7 @@ body.dark-mode .news-card{background:var(--stone)}
           <li>Coordination with security, event management and NWAS</li>
         </ul>
       </div>
-      <div class="dep-card">
+      <div class="dep-card sr-item">
         <div class="dep-icon">&#127970;</div>
         <div class="dep-title">Corporate &amp; Community Events</div>
         <div class="dep-sub">Flexible deployment &middot; Professional presence &middot; Varied risk</div>
@@ -803,7 +1027,7 @@ body.dark-mode .news-card{background:var(--stone)}
 
 <!-- ══ QUALIFICATIONS ══ -->
 <div class="page" id="page-quals">
-  <div class="page-hero">
+  <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Credentials &amp; Clinical Scope</div>
       <div class="page-h1">Qualifications</div>
@@ -816,7 +1040,20 @@ body.dark-mode .news-card{background:var(--stone)}
         <div class="frec4-card">
           <div class="frec4-card-title">FREC 4 / Advanced Ambulance Practitioner &mdash; In Progress</div>
           <div class="frec4-card-sub">Currently completing &mdash; expands clinical scope, medication range and assessment capability significantly</div>
-          <div class="prog-track"><div class="prog-fill" id="frec4Bar"></div></div>
+          <div class="frec4-bars-wrap" id="frec4Bars">
+          <div class="fb-row">
+            <div class="fb-head"><span class="fb-label">Theory Modules</span><span class="fb-pct" id="fb-p1">0%</span></div>
+            <div class="fb-track"><div class="fb-fill fb-active" id="fb-b1"></div></div>
+          </div>
+          <div class="fb-row">
+            <div class="fb-head"><span class="fb-label">Practical Assessment</span><span class="fb-pct" id="fb-p2">0%</span></div>
+            <div class="fb-track"><div class="fb-fill" id="fb-b2"></div></div>
+          </div>
+          <div class="fb-row">
+            <div class="fb-head"><span class="fb-label">OSCE / Sign-off</span><span class="fb-pct" id="fb-p3">0%</span></div>
+            <div class="fb-track"><div class="fb-fill" id="fb-b3"></div></div>
+          </div>
+        </div>
           <div class="prog-labels"><span>Started</span><span>In Progress</span><span>Complete</span></div>
           <div class="frec4-milestones">
             <div class="frec4-m"><span class="m-done">&#10003;</span> FREC 3 Qualified &mdash; operational</div>
@@ -826,7 +1063,7 @@ body.dark-mode .news-card{background:var(--stone)}
             <div class="frec4-m"><span class="m-todo">&#9675;</span> OSCE &amp; final sign-off</div>
           </div>
         </div>
-        <div class="qual-group">
+        <div class="qual-group sr-item">
           <div class="qual-group-title">Clinical Qualifications</div>
           <table class="qual-table">
             <thead><tr><th>Qualification</th><th>Awarding Body</th><th>Status</th></tr></thead>
@@ -838,7 +1075,7 @@ body.dark-mode .news-card{background:var(--stone)}
             </tbody>
           </table>
         </div>
-        <div class="qual-group">
+        <div class="qual-group sr-item">
           <div class="qual-group-title">Training &amp; Education</div>
           <table class="qual-table">
             <thead><tr><th>Qualification</th><th>Awarding Body</th><th>Status</th></tr></thead>
@@ -849,7 +1086,7 @@ body.dark-mode .news-card{background:var(--stone)}
             </tbody>
           </table>
         </div>
-        <div class="qual-group">
+        <div class="qual-group sr-item">
           <div class="qual-group-title">Driving Authorities &amp; Compliance</div>
           <table class="qual-table">
             <thead><tr><th>Licence / Certificate</th><th>Authority</th><th>Status</th></tr></thead>
@@ -861,7 +1098,7 @@ body.dark-mode .news-card{background:var(--stone)}
             </tbody>
           </table>
         </div>
-        <div class="qual-group">
+        <div class="qual-group sr-item">
           <div class="qual-group-title">Clinical Competencies</div>
           <div class="comp-grid">
             <div class="comp-item"><div class="comp-dot"></div>Primary Survey (cABCDE) &mdash; Adult &amp; Paediatric</div>
@@ -914,7 +1151,7 @@ body.dark-mode .news-card{background:var(--stone)}
             <div class="comp-item"><div class="comp-dot"></div>JRCALC+ &amp; Responder+ Clinical Guidelines</div>
           </div>
         </div>
-        <div class="qual-group">
+        <div class="qual-group sr-item">
           <div class="qual-group-title">Medication Administration &mdash; EAC Scope of Practice</div>
           <div class="meds-cloud">
             <span class="med-tag">Adrenaline 1:1000 (IM)</span><span class="med-tag">Naloxone (IM)</span><span class="med-tag">Salbutamol (NEB)</span>
@@ -969,7 +1206,7 @@ body.dark-mode .news-card{background:var(--stone)}
 
 <!-- ══ CONTACT ══ -->
 <div class="page" id="page-contact">
-  <div class="page-hero">
+  <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Get In Touch</div>
       <div class="page-h1">Contact</div>
@@ -1030,6 +1267,104 @@ body.dark-mode .news-card{background:var(--stone)}
   </div>
   <footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
 </div>
+
+<!-- ══ JOURNAL ══ -->
+<div class="page" id="page-journal">
+
+  <!-- Index view -->
+  <div id="journal-index-view">
+
+    <!-- Hero -->
+    <div class="journal-hero">
+      <div class="jh-inner">
+        <div class="jh-eyebrow">Field Notes</div>
+        <div class="jh-title">THE<br>JOURNAL</div>
+        <div class="jh-sub">Clinical reflections, deployment accounts and pre-hospital thinking from an active EAC. Written monthly. All patient details anonymised in line with SJA clinical governance.</div>
+        <div class="jh-meta">
+          <div class="jh-meta-item"><div class="jh-meta-dot"></div><span id="jh-count">3</span> posts published</div>
+          <div class="jh-meta-item"><div class="jh-meta-dot"></div>Updated monthly</div>
+          <div class="jh-meta-item"><div class="jh-meta-dot"></div>CPD-evidenced writing</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured post (dynamic — shows newest) -->
+    <div class="journal-featured">
+      <div class="jf-label">Latest Post</div>
+      <div class="jf-card sr-item" id="jf-card" onclick="openPost(0)">
+        <div class="jf-body">
+          <div class="jf-tags" id="jf-tags"></div>
+          <div class="jf-date" id="jf-date"></div>
+          <div class="jf-title" id="jf-title"></div>
+          <div class="jf-excerpt" id="jf-excerpt"></div>
+          <div class="jf-more">Read the full post &nbsp;&rarr;</div>
+        </div>
+        <div class="jf-visual">
+          <canvas id="jf-ecg-canvas" class="jf-visual-ecg" aria-hidden="true"></canvas>
+          <div class="jf-visual-icon" id="jf-icon"></div>
+          <div class="jf-visual-label" id="jf-location"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post list + sidebar -->
+    <div class="journal-body">
+      <div>
+        <!-- Category filter -->
+        <div class="jb-filter" id="jb-filter">
+          <button class="jb-filter-btn active" onclick="filterPosts('all',this)">All Posts</button>
+          <button class="jb-filter-btn" onclick="filterPosts('Deployment',this)">Deployment</button>
+          <button class="jb-filter-btn" onclick="filterPosts('Training',this)">Training</button>
+          <button class="jb-filter-btn" onclick="filterPosts('Industry',this)">Industry</button>
+        </div>
+        <div class="jb-list-label">All Posts</div>
+        <div id="jb-post-list"></div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="jb-sidebar">
+        <div class="jsw">
+          <div class="jsw-title">By Category</div>
+          <div class="jsw-cat" onclick="filterPosts('Deployment',null)"><div class="jsw-cat-name">Deployment Accounts</div><div class="jsw-cat-n" id="jsc-depl">0</div></div>
+          <div class="jsw-cat" onclick="filterPosts('Training',null)"><div class="jsw-cat-name">Training &amp; Advice</div><div class="jsw-cat-n" id="jsc-train">0</div></div>
+          <div class="jsw-cat" onclick="filterPosts('Industry',null)"><div class="jsw-cat-name">Industry &amp; News</div><div class="jsw-cat-n" id="jsc-news">0</div></div>
+        </div>
+        <div class="jsw">
+          <div class="jsw-title">Topics</div>
+          <div class="jsw-tags" id="jsw-tags"></div>
+        </div>
+        <div class="jsw">
+          <div class="jsw-title">About This Journal</div>
+          <div class="jsw-about">Written by Peter Craine — FREC 3 EAC on active SJA North West deployment. All clinical writing is reflective CPD. Patient details are always anonymised. New post each month.</div>
+        </div>
+      </div>
+    </div>
+  </div><!-- /index view -->
+
+  <!-- Single post view (shown when a post is clicked) -->
+  <div id="journal-post-view">
+    <div class="jpost-hero">
+      <div class="jph-inner">
+        <button class="jph-back" onclick="closePost()">&larr; &nbsp;Back to Journal</button>
+        <div class="jph-tags" id="jph-tags"></div>
+        <div class="jph-date" id="jph-date"></div>
+        <div class="jph-title" id="jph-title"></div>
+        <div class="jph-deck" id="jph-deck"></div>
+        <div class="jph-byline">
+          <div class="jph-avatar">PC</div>
+          <div>
+            <div class="jph-name">Peter Craine</div>
+            <div class="jph-role">FREC 3 &middot; EAC &middot; SJA North West &middot; CTLLS L4</div>
+          </div>
+          <div class="jph-readtime" id="jph-readtime"></div>
+        </div>
+      </div>
+    </div>
+    <div class="jpost-article" id="jph-body"></div>
+  </div><!-- /post view -->
+
+</div><!-- /page-journal -->
+
 
 <!-- ══ 404 PAGE ══ -->
 <div class="page" id="page-404">
@@ -1306,10 +1641,689 @@ document.addEventListener('keydown', function(e){
   }
 });
 
+
+
+// ══════════════════════════════════════════════════════════════
+// THE JOURNAL — BLOG SYSTEM
+// ══════════════════════════════════════════════════════════════
+// ┌─────────────────────────────────────────────────────────┐
+// │  HOW TO ADD A NEW POST — takes about 2 minutes          │
+// │                                                          │
+// │  1. Copy one of the objects in JOURNAL_POSTS below       │
+// │  2. Paste it at the TOP of the array (newest first)      │
+// │  3. Fill in: date, title, deck, category, tags, body     │
+// │  4. Save the file and re-upload to your hosting          │
+// │                                                          │
+// │  BODY FORMAT: use these building blocks:                 │
+// │    p('Your paragraph text here')                         │
+// │    h2('Section heading')                                 │
+// │    pull('Quote text', 'Attribution')                     │
+// │    callout('Box label', 'Box content')                   │
+// │    divider()                                             │
+// └─────────────────────────────────────────────────────────┘
+
+var JOURNAL_POSTS = [
+
+  // ── POST 1 — Newest first ──
+  {
+    date: '08 March 2026',
+    day: '08', month: 'Mar', year: '2026',
+    title: 'High Legh 10K: When the Runner Doesn\'t Stop Running',
+    deck: 'Vehicle-based EAC on a muddy Cheshire course. One patient, late race, classic exertional presentation — and why your assessment window at an event is nothing like a roadside RTC.',
+    category: 'Deployment',
+    tags: ['EAC', 'Running events', 'Exertional illness', 'Vehicle-based', 'Cheshire'],
+    icon: '🏃',
+    location: 'Running Event · High Legh, Cheshire',
+    readTime: '6 min read',
+    body: [
+      p('The race started at 09:15. By 09:40 we had our first patient — a 47-year-old male, late in the field, found by a marshal near the 8K marker. The call came through on the radio as "runner down, conscious, breathing." Which tells you almost nothing and everything at the same time.'),
+      p('What the radio doesn\'t tell you is colour. It doesn\'t tell you whether the patient is sitting up and embarrassed or lying flat. It doesn\'t tell you how the bystanders look — because experienced medics know that the face of someone standing over a patient tells you as much as the patient\'s face sometimes. I was vehicle-based that morning. I had the kit, the Entonox, the bag and the radio. The road to the 8K marker was grass-edged and slick from overnight rain.'),
+      pull('Your assessment window at a running event is compressed. Patients are still physiologically elevated from exertion — HR, RR, temp, lactate. Nothing looks normal because nothing is normal yet.', 'Field note, High Legh 10K, 08/03/2026'),
+      h2('The Presentation'),
+      p('Exertional heat illness spectrum. Not at the serious end — no altered consciousness, no seizure, no rectal temperature required — but not simple cramp either. The patient had run a half-marathon two weekends prior and made the mistake experienced runners often make: assuming the body performs identically in March mud as it does in October tarmac. It doesn\'t. The energy expenditure is different. The thermoregulation demand is different.'),
+      callout('Clinical Note — CPD Record', 'Exertional presentations at running events can mask early hyponatraemia in over-hydrated participants. Always check fluid intake history alongside standard SAMPLE. If the patient says "I drank loads" — treat with caution. This patient had not over-hydrated. Normal exertional pattern. Assessment confirmed uncomplicated exertional fatigue with mild dehydration.'),
+      p('Management was straightforward. Shade where possible, supine position, oral fluids once GCS confirmed and swallow reflex established. Observations every 5 minutes. Patient recovered to ambulatory within 18 minutes. Declined transport. Full PRF documentation completed and submitted.'),
+      h2('What This Deployment Reinforced'),
+      p('At running events, your initial presentation is always misleading. The patient\'s physiology is not at baseline — it may not return to baseline for 20 minutes after they stop. Don\'t anchor on the first set of obs. The trend is everything. A HR of 130 on first contact from someone who\'s just run 8K means very little. A HR of 130 ten minutes after rest and fluids means considerably more.'),
+      divider(),
+      anon()
+    ]
+  },
+
+  // ── POST 2 ──
+  {
+    date: '07 March 2026',
+    day: '07', month: 'Mar', year: '2026',
+    title: 'IDTA Dance Festival: 4 Patients, One Shift, Full Scope Used',
+    deck: 'Dismounted EAC at Norbreck Castle, Blackpool. A full competition day — 1,200 dancers, eight age groups, one medical team. What the crowd doesn\'t tell you until it does.',
+    category: 'Deployment',
+    tags: ['EAC', 'Dance festival', 'Dismounted', 'Blackpool', 'Multi-patient'],
+    icon: '💃',
+    location: 'Dance Event · Norbreck Castle, Blackpool',
+    readTime: '7 min read',
+    body: [
+      p('Dance competitions look like the lowest-risk event on the calendar. They\'re not. You have a venue packed with competitors in a state of physiological stress — cortisol elevated, hydration inconsistent, fasting in some cases, extreme physical exertion followed by long periods of sedentary waiting. The patient profile is genuinely unpredictable.'),
+      p('The IDTA Nationwide Solo Dance Festival at Norbreck Castle ran from 08:30 to 18:00. Four patients across the day. All assessed and managed to EAC standard. None required transport. Here\'s what I saw.'),
+      h2('Patient 1 — Vasovagal'),
+      p('A 14-year-old competitor, pre-performance anxiety, hadn\'t eaten since 06:00. Classic prodrome: pallor, diaphoresis, nausea. Managed with supine positioning, legs elevated, oral glucose once able to tolerate. Full recovery within 8 minutes. Escorted back to her group. Parents updated.'),
+      callout('Clinical Note — CPD Record', 'Paediatric vasovagal presentations can be difficult to differentiate from more serious causes of collapse in a busy noisy venue. Always ensure adequate space, maintain a calm environment, and resist pressure from concerned bystanders to "do something." Reassurance and positioning IS doing something.'),
+      h2('Patients 2 & 3 — Musculoskeletal'),
+      p('Two separate competitors with ankle injuries from warm-up activities. Both assessed using standard MICE protocol. Neither required transport. Suitable to weight-bear by end of assessment. Both taped and returned to appropriate rest.'),
+      h2('Patient 4 — Chest Pain, Older Spectator'),
+      p('This was the most significant contact of the day. A 68-year-old male spectator reported central chest tightness approximately 20 minutes in duration. Full 12-lead approach considered; GTN administered per EAC scope following appropriate assessment. Ambulance called as a precaution. Patient transferred to WMAS crew on their arrival, clinically stable, no deterioration. This is exactly why EAC-level cover matters at events that welcome older attendees as spectators.'),
+      pull('GTN. Aspirin. 999 called. Patient stable on handover. That\'s the difference between an EAC and a first aider at that moment.', 'Post-incident reflection'),
+      divider(),
+      anon()
+    ]
+  },
+
+  // ── POST 3 ──
+  {
+    date: '15 February 2026',
+    day: '15', month: 'Feb', year: '2026',
+    title: 'What Event Organisers Actually Need to Know When Booking Medical Cover',
+    deck: 'Most event organisers don\'t know the difference between a first aider and an EAC. Here\'s a plain-English guide to what the levels mean, what questions to ask, and why it matters for your event licence.',
+    category: 'Industry',
+    tags: ['Event organisers', 'Medical cover', 'EAC vs first aider', 'Licensing', 'Purple Guide'],
+    icon: '📋',
+    location: 'Industry Guidance',
+    readTime: '5 min read',
+    body: [
+      p('Every week I see event listings that describe their medical provision as "qualified first aiders on site." At a small, low-risk event — a village fete, a small indoor gathering — that may well be appropriate. At a 500-person running race, a multi-stage dance competition or a music festival with alcohol present, it almost certainly isn\'t. And in many cases, the event organiser genuinely doesn\'t know the difference.'),
+      p('This post isn\'t criticism. The regulatory landscape around event medical cover is genuinely confusing, inconsistently enforced, and poorly explained to the people who need to understand it most. So here\'s what I\'d want every event organiser in the North West to know.'),
+      h2('The Levels — What They Actually Mean'),
+      callout('First Aider (FA)', 'HSE-compliant first aid training. Manages basic injuries, CPR, bleeding. No medication administration beyond own prescription. The minimum legal requirement for most workplaces. Appropriate for very low-risk, small-scale events.'),
+      callout('Event First Responder (EFR / FREC 3)', 'Higher qualification. Can administer oxygen, manage more complex presentations. Beginning of pre-hospital clinical pathway. More appropriate for events with 500+ attendees or elevated risk profiles.'),
+      callout('Emergency Ambulance Crew (EAC)', 'Operates under ambulance clinical governance framework. JRCALC guidelines. Up to 19 medications within scope. Can manage serious pre-hospital emergencies to a clinical standard. The appropriate provision for high-risk or high-attendance events.'),
+      h2('The Question You Should Always Ask'),
+      p('When booking medical cover, ask the provider: "What is the clinical registration level of the person attending, and what is their medication scope?" A legitimate provider will answer this immediately. If they can\'t tell you what medications their medic can administer, that tells you something important.'),
+      p('The Purple Guide (the industry standard for event safety) recommends a medical needs assessment for any event — the outcome of that assessment should drive your provision level, not the cheapest quote on a search engine.'),
+      pull('The question isn\'t "do we have a first aider." The question is "do we have the right clinical level for this specific event and its specific risk profile."', 'Event medical planning note'),
+      divider(),
+      p('If you\'re running an event in the North West and want a straight answer about what level of cover you actually need, get in touch. I\'m happy to have that conversation without a sales pitch attached to it.')
+    ]
+  }
+
+]; // end JOURNAL_POSTS
+
+// ── Builder helpers (used inside the posts array above) ──
+function p(text) { return '<p class="jpa-p">' + text + '</p>'; }
+function h2(text) { return '<div class="jpa-h2">' + text + '</div>'; }
+function pull(quote, attr) { return '<div class="jpa-pull"><p>&ldquo;' + quote + '&rdquo;</p><cite>&mdash; ' + attr + '</cite></div>'; }
+function callout(label, text) { return '<div class="jpa-callout"><div class="jpa-callout-label">' + label + '</div><p>' + text + '</p></div>'; }
+function divider() { return '<div class="jpa-divider"></div>'; }
+function anon() { return '<p class="jpa-anon">All patient details have been anonymised in accordance with SJA clinical governance requirements and patient confidentiality obligations. No identifying information has been retained or published.</p>'; }
+
+// ── JOURNAL CONTROLLER ──
+(function () {
+  var currentFilter = 'all';
+
+  // Tag colour helper
+  function tagClass(cat) {
+    if (cat === 'Deployment') return 'jtag jtag-depl';
+    if (cat === 'Training')   return 'jtag jtag-train';
+    return 'jtag jtag-news';
+  }
+
+  // Render tag HTML
+  function tagHtml(cat) {
+    return '<span class="' + tagClass(cat) + '">' + cat + '</span>';
+  }
+
+  // Format date for display
+  function fmtDate(p) { return p.day + ' ' + p.month + ' ' + p.year; }
+
+  // ── Render featured (newest post) ──
+  function renderFeatured() {
+    if (!JOURNAL_POSTS.length) return;
+    var p0 = JOURNAL_POSTS[0];
+    var tagsEl = document.getElementById('jf-tags');
+    var dateEl = document.getElementById('jf-date');
+    var titleEl = document.getElementById('jf-title');
+    var excEl = document.getElementById('jf-excerpt');
+    var iconEl = document.getElementById('jf-icon');
+    var locEl = document.getElementById('jf-location');
+    if (tagsEl) tagsEl.innerHTML = tagHtml(p0.category);
+    if (dateEl) dateEl.textContent = fmtDate(p0) + ' · ' + p0.readTime;
+    if (titleEl) titleEl.textContent = p0.title;
+    if (excEl) excEl.textContent = p0.deck;
+    if (iconEl) iconEl.textContent = p0.icon;
+    if (locEl) locEl.textContent = p0.location;
+  }
+
+  // ── Render post list ──
+  function renderList(filter) {
+    var container = document.getElementById('jb-post-list');
+    if (!container) return;
+    var posts = filter === 'all' ? JOURNAL_POSTS.slice(1) : JOURNAL_POSTS.slice(1).filter(function(p){ return p.category === filter; });
+    if (!posts.length) {
+      container.innerHTML = '<div class="jpr-empty">No posts in this category yet &mdash; check back soon.</div>';
+      return;
+    }
+    container.innerHTML = posts.map(function (p, i) {
+      var idx = JOURNAL_POSTS.indexOf(p);
+      return '<div class="jpost-row sr-item" onclick="openPost(' + idx + ')" style="transition-delay:' + (i * 0.07) + 's">' +
+        '<div class="jpr-date"><div class="jpr-day">' + p.day + '</div><div class="jpr-month">' + p.month + '</div></div>' +
+        '<div class="jpr-body">' +
+          '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
+          '<div class="jpr-title">' + p.title + '</div>' +
+          '<div class="jpr-excerpt">' + p.deck + '</div>' +
+          '<div class="jpr-read">' + p.readTime + ' &rarr;</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
+    // Re-trigger scroll reveal on new elements
+    if (window._srObserver) {
+      container.querySelectorAll('.sr-item').forEach(function(el){ window._srObserver.observe(el); });
+    }
+  }
+
+  // ── Render sidebar counts ──
+  function renderSidebar() {
+    var counts = { Deployment: 0, Training: 0, Industry: 0 };
+    JOURNAL_POSTS.forEach(function(p){ if(counts[p.category] !== undefined) counts[p.category]++; });
+    var d = document.getElementById('jsc-depl');
+    var t = document.getElementById('jsc-train');
+    var n = document.getElementById('jsc-news');
+    if (d) d.textContent = counts.Deployment;
+    if (t) t.textContent = counts.Training;
+    if (n) n.textContent = counts.Industry;
+
+    // Post count in hero
+    var cnt = document.getElementById('jh-count');
+    if (cnt) cnt.textContent = JOURNAL_POSTS.length;
+
+    // Tag cloud
+    var allTags = [];
+    JOURNAL_POSTS.forEach(function(p){ (p.tags||[]).forEach(function(t){ if(allTags.indexOf(t)<0) allTags.push(t); }); });
+    var tc = document.getElementById('jsw-tags');
+    if (tc) tc.innerHTML = allTags.slice(0,14).map(function(t){
+      return '<div class="jsw-tag">' + t + '</div>';
+    }).join('');
+  }
+
+  // ── Open single post ──
+  window.openPost = function (idx) {
+    var p = JOURNAL_POSTS[idx];
+    if (!p) return;
+
+    document.getElementById('jph-tags').innerHTML = tagHtml(p.category);
+    document.getElementById('jph-date').textContent = fmtDate(p);
+    document.getElementById('jph-title').textContent = p.title;
+    document.getElementById('jph-deck').textContent = p.deck;
+    document.getElementById('jph-readtime').textContent = p.readTime;
+
+    // Render body — evaluate builder functions in context
+    var bodyHtml = Array.isArray(p.body) ? p.body.join('') : p.body;
+    document.getElementById('jph-body').innerHTML =
+      bodyHtml +
+      '<div class="jpa-tags">' + (p.tags||[]).map(function(t){ return '<div class="jsw-tag">' + t + '</div>'; }).join('') + '</div>';
+
+    document.getElementById('journal-index-view').style.display = 'none';
+    var pv = document.getElementById('journal-post-view');
+    pv.classList.add('open');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  // ── Close post ──
+  window.closePost = function () {
+    document.getElementById('journal-post-view').classList.remove('open');
+    document.getElementById('journal-index-view').style.display = '';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  };
+
+  // ── Filter posts ──
+  window.filterPosts = function (cat, btn) {
+    currentFilter = cat;
+    document.querySelectorAll('.jb-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    renderList(cat);
+  };
+
+  // ── Init on journal page show ──
+  function initJournal() {
+    renderFeatured();
+    renderList('all');
+    renderSidebar();
+    startJfEcg();
+  }
+
+  // Hook into showPage
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    origSP(id);
+    if (id === 'journal') {
+      setTimeout(initJournal, 80);
+    }
+  };
+
+  // Also init if journal is already active on load
+  if (document.getElementById('page-journal') && document.getElementById('page-journal').classList.contains('active')) {
+    setTimeout(initJournal, 200);
+  }
+
+  // Store SR observer reference for dynamic content
+  var origIO = window.IntersectionObserver;
+
+})();
+
+// ── Featured card ECG animation ──
+function startJfEcg() {
+  var canvas = document.getElementById('jf-ecg-canvas');
+  if (!canvas || canvas._running) return;
+  canvas._running = true;
+  var ctx = canvas.getContext('2d');
+  var offset = 0;
+  function drawJfEcg() {
+    if (!canvas._running) return;
+    var W = canvas.offsetWidth || 300, H = canvas.offsetHeight || 220;
+    canvas.width = W; canvas.height = H;
+    var mid = H / 2, amp = 28, period = 110;
+    ctx.clearRect(0, 0, W, H);
+    ctx.beginPath();
+    ctx.strokeStyle = '#00A651';
+    ctx.lineWidth = 1.2;
+    for (var x = 0; x < W; x++) {
+      var y = mid - ecgPoint(x + offset, period) * amp;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    // second faint line
+    ctx.beginPath();
+    ctx.strokeStyle = '#006B3F';
+    ctx.lineWidth = 0.7;
+    for (var x = 0; x < W; x++) {
+      var y = mid + 55 - ecgPoint(x + offset + 55, period) * amp * 0.6;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    offset = (offset + 1.3) % period;
+    requestAnimationFrame(drawJfEcg);
+  }
+  drawJfEcg();
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// DYNAMIC UPGRADES — all 10
+// ══════════════════════════════════════════════════════════════════
+
+// ── ECG WAVEFORM GENERATOR (shared) ──
+function ecgPoint(phase, period) {
+  var t = ((phase % period) + period) % period / period;
+  if (t < 0.08) return 0;
+  if (t < 0.13) return t < 0.105 ? -(t - 0.08) * 5 : (t - 0.105) * 8;
+  if (t < 0.18) return 0;
+  if (t < 0.20) return (t - 0.18) * 65;
+  if (t < 0.24) return -(t - 0.20) * 90 + 1.3;
+  if (t < 0.28) return (t - 0.24) * 42 - 2.3;
+  if (t < 0.32) return -(t - 0.28) * 28 + 0.38;
+  if (t < 0.38) return t < 0.35 ? (t - 0.32) * 4 : -(t - 0.35) * 3 + 0.09;
+  if (t < 0.52) return t < 0.46 ? (t - 0.38) * 2.5 : -(t - 0.46) * 2.5 + 0.2;
+  return 0;
+}
+
+// ── UPGRADE 1: NAV HEARTBEAT ECG TRACE ──
+(function () {
+  var canvas = document.getElementById('nav-ecg-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var offset = 0, period = 130;
+
+  function resizeNavECG() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = 18;
+  }
+  resizeNavECG();
+  window.addEventListener('resize', resizeNavECG);
+
+  function drawNavECG() {
+    var W = canvas.width, H = canvas.height, mid = H * 0.5, amp = 6;
+    ctx.clearRect(0, 0, W, H);
+    ctx.beginPath();
+    ctx.strokeStyle = '#00A651';
+    ctx.lineWidth = 1.2;
+    for (var x = 0; x < W; x++) {
+      var y = mid - ecgPoint(x + offset, period) * amp;
+      x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    offset = (offset + 1.4) % period;
+    requestAnimationFrame(drawNavECG);
+  }
+  drawNavECG();
+})();
+
+// ── UPGRADE 3: TYPEWRITER ROLES ──
+(function () {
+  var el = document.getElementById('tw-text');
+  if (!el) return;
+  var roles = [
+    'Event Medic · FREC 3 EAC',
+    'First Aid Trainer · CTLLS L4',
+    'Emergency Ambulance Crew',
+    'SJA North West · Deployment Ready',
+    '19 Medications · EAC Column 9',
+    'PCV/D1 · Cat C · Enhanced DBS'
+  ];
+  var ri = 0, ci = 0, deleting = false, pause = 0;
+  function tick() {
+    if (pause > 0) { pause--; setTimeout(tick, 50); return; }
+    var role = roles[ri];
+    if (!deleting) {
+      el.textContent = role.slice(0, ++ci);
+      if (ci >= role.length) { deleting = true; pause = 38; }
+    } else {
+      el.textContent = role.slice(0, --ci);
+      if (ci === 0) { deleting = false; ri = (ri + 1) % roles.length; pause = 10; }
+    }
+    setTimeout(tick, deleting ? 32 : 68);
+  }
+  setTimeout(tick, 900);
+})();
+
+// ── UPGRADE 4: SCROLL REVEAL ──
+(function () {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('sr-visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  function watchPage(pageId) {
+    var page = document.getElementById(pageId);
+    if (!page) return;
+    var items = page.querySelectorAll('.sr-item, .sr-item-left');
+    // Add stagger to sibling groups
+    page.querySelectorAll('.why-grid, .news-grid, .event-grid, .dep-grid').forEach(function (grid) {
+      grid.querySelectorAll('.sr-item').forEach(function (el, i) {
+        el.classList.add('sr-stagger-' + Math.min(i + 1, 5));
+      });
+    });
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  // Watch all pages on load
+  ['page-home', 'page-about', 'page-services', 'page-quals', 'page-journal', 'page-contact'].forEach(watchPage);
+
+  // Re-watch when page changes
+  var origShowPage = window.showPage;
+  window.showPage = function (id) {
+    origShowPage(id);
+    setTimeout(function () { watchPage('page-' + id); }, 50);
+  };
+})();
+
+// ── UPGRADE 9: CURSOR GLOW TRAIL ──
+(function () {
+  var glow = document.getElementById('cursor-glow');
+  if (!glow || window.matchMedia('(hover: none)').matches) return;
+  var mx = -999, my = -999, cx = -999, cy = -999;
+  document.addEventListener('mousemove', function (e) { mx = e.clientX; my = e.clientY; });
+  function animGlow() {
+    cx += (mx - cx) * 0.1;
+    cy += (my - cy) * 0.1;
+    glow.style.left = cx + 'px';
+    glow.style.top = cy + 'px';
+    requestAnimationFrame(animGlow);
+  }
+  animGlow();
+  // Only show on dark sections
+  function updateGlowVisibility() {
+    var activePage = document.querySelector('.page.active');
+    var darkPages = ['page-home', 'page-services', 'page-quals', 'page-contact'];
+    var isDark = activePage && darkPages.indexOf(activePage.id) !== -1;
+    document.body.classList.toggle('dark-section-active', isDark);
+  }
+  updateGlowVisibility();
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    origSP(id);
+    setTimeout(updateGlowVisibility, 50);
+  };
+})();
+
+// ── UPGRADE 14: SLIDING NAV INDICATOR ──
+(function () {
+  var indicator = document.getElementById('nav-indicator');
+  if (!indicator) return;
+
+  function moveIndicator(el) {
+    if (!el) return;
+    var navRect = document.getElementById('mainNav').getBoundingClientRect();
+    var elRect = el.getBoundingClientRect();
+    indicator.style.left = (elRect.left - navRect.left) + 'px';
+    indicator.style.width = elRect.width + 'px';
+  }
+
+  // Intercept showPage to move indicator
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    origSP(id);
+    setTimeout(function () {
+      moveIndicator(document.getElementById('nav-' + id));
+    }, 20);
+  };
+
+  // Hover preview
+  document.querySelectorAll('.nav-center a').forEach(function (a) {
+    a.addEventListener('mouseenter', function () {
+      indicator.style.transition = 'left .18s ease, width .18s ease';
+      moveIndicator(a);
+    });
+    a.addEventListener('mouseleave', function () {
+      indicator.style.transition = 'left .32s cubic-bezier(.4,0,.2,1), width .32s cubic-bezier(.4,0,.2,1)';
+      moveIndicator(document.querySelector('.nav-center a.active'));
+    });
+  });
+
+  // Initial position
+  setTimeout(function () {
+    moveIndicator(document.querySelector('.nav-center a.active'));
+  }, 150);
+})();
+
+// ── UPGRADE 10: ANIMATED FREC4 PROGRESS BARS ──
+(function () {
+  var bars = [
+    { bar: 'fb-b1', pct: 'fb-p1', target: 72 },
+    { bar: 'fb-b2', pct: 'fb-p2', target: 28 },
+    { bar: 'fb-b3', pct: 'fb-p3', target: 5 }
+  ];
+  var ran = false;
+
+  function animateBars() {
+    if (ran) return;
+    ran = true;
+    bars.forEach(function (b, i) {
+      var barEl = document.getElementById(b.bar);
+      var pctEl = document.getElementById(b.pct);
+      if (!barEl) return;
+      setTimeout(function () {
+        var n = 0;
+        var iv = setInterval(function () {
+          n = Math.min(n + 1, b.target);
+          barEl.style.width = n + '%';
+          if (pctEl) pctEl.textContent = n + '%';
+          if (n >= b.target) clearInterval(iv);
+        }, 22);
+      }, i * 350 + 200);
+    });
+  }
+
+  // Trigger when quals page shown
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    origSP(id);
+    if (id === 'quals') {
+      ran = false;
+      setTimeout(animateBars, 250);
+    }
+  };
+
+  // Also trigger if quals is first page (unlikely but safe)
+  if (document.getElementById('page-quals') && document.getElementById('page-quals').classList.contains('active')) {
+    setTimeout(animateBars, 600);
+  }
+})();
+
+// ── UPGRADE 18: SKILLS RADAR CHART ──
+(function () {
+  var canvas = document.getElementById('skillRadar');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var W = canvas.width, H = canvas.height;
+  var cx = W / 2, cy = H / 2 + 8, maxR = 85;
+
+  var skills = [
+    { label: 'Airway Mgmt', target: 0.95, val: 0 },
+    { label: 'Trauma Care', target: 0.90, val: 0 },
+    { label: 'Medications', target: 0.93, val: 0 },
+    { label: 'Assessment', target: 0.88, val: 0 },
+    { label: 'Driving', target: 0.85, val: 0 },
+    { label: 'Training', target: 0.92, val: 0 }
+  ];
+  var N = skills.length;
+  var progress = 0, animating = false;
+
+  function angle(i) { return (i / N) * Math.PI * 2 - Math.PI / 2; }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Grid rings
+    [0.25, 0.5, 0.75, 1].forEach(function (f) {
+      ctx.beginPath();
+      for (var i = 0; i < N; i++) {
+        var a = angle(i), r = maxR * f;
+        var x = cx + Math.cos(a) * r, y = cy + Math.sin(a) * r;
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = f === 1 ? 'rgba(0,107,63,.35)' : 'rgba(0,107,63,.15)';
+      ctx.lineWidth = f === 1 ? 1 : 0.7;
+      ctx.stroke();
+    });
+
+    // Axes + labels
+    for (var i = 0; i < N; i++) {
+      var a = angle(i);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + Math.cos(a) * maxR, cy + Math.sin(a) * maxR);
+      ctx.strokeStyle = 'rgba(0,107,63,.2)';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+
+      var labelR = maxR + 18;
+      var lx = cx + Math.cos(a) * labelR;
+      var ly = cy + Math.sin(a) * labelR;
+      ctx.font = '8px JetBrains Mono, monospace';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = 'rgba(255,255,255,.45)';
+      ctx.fillText(skills[i].label, lx, ly);
+    }
+
+    // Filled skill polygon
+    ctx.beginPath();
+    for (var i = 0; i < N; i++) {
+      var a = angle(i), r = maxR * skills[i].val;
+      var x = cx + Math.cos(a) * r, y = cy + Math.sin(a) * r;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(0,107,63,.22)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,166,81,.85)';
+    ctx.lineWidth = 1.8;
+    ctx.shadowColor = '#00A651';
+    ctx.shadowBlur = 6;
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Vertex dots
+    for (var i = 0; i < N; i++) {
+      var a = angle(i), r = maxR * skills[i].val;
+      ctx.beginPath();
+      ctx.arc(cx + Math.cos(a) * r, cy + Math.sin(a) * r, 3.5, 0, Math.PI * 2);
+      ctx.fillStyle = '#00A651';
+      ctx.fill();
+    }
+  }
+
+  function animateRadar() {
+    if (animating) return;
+    animating = true;
+    progress = 0;
+    skills.forEach(function (s) { s.val = 0; });
+    function step() {
+      progress = Math.min(progress + 0.025, 1);
+      var ease = 1 - Math.pow(1 - progress, 3);
+      skills.forEach(function (s) { s.val = s.target * ease; });
+      draw();
+      if (progress < 1) requestAnimationFrame(step);
+      else animating = false;
+    }
+    step();
+  }
+
+  // Trigger on about page
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    origSP(id);
+    if (id === 'about') setTimeout(animateRadar, 500);
+  };
+
+  // Initial draw (if about is not starting page, draw flat)
+  draw();
+})();
+
+// ── UPGRADE 20: SMOOTH PAGE TRANSITIONS ──
+(function () {
+  var pageOrder = ['home', 'about', 'services', 'quals', 'journal', 'contact'];
+  var currentPage = 'home';
+  var scanLine = document.getElementById('scan-line');
+
+  function fireScanLine() {
+    if (!scanLine) return;
+    scanLine.classList.remove('firing');
+    void scanLine.offsetWidth; // reflow
+    scanLine.classList.add('firing');
+    setTimeout(function () { scanLine.classList.remove('firing'); }, 420);
+  }
+
+  var origSP = window.showPage;
+  window.showPage = function (id) {
+    if (id === currentPage) return;
+    var fromIdx = pageOrder.indexOf(currentPage);
+    var toIdx = pageOrder.indexOf(id);
+    var dir = toIdx > fromIdx ? 'dir-forward' : 'dir-back';
+    currentPage = id;
+
+    origSP(id);
+    fireScanLine();
+
+    var page = document.getElementById('page-' + id);
+    if (page) {
+      page.classList.remove('dir-forward', 'dir-back');
+      void page.offsetWidth;
+      page.classList.add(dir);
+      setTimeout(function () {
+        page.classList.remove('dir-forward', 'dir-back');
+      }, 320);
+    }
+  };
+})();
+
+
 // ── HASH ROUTING (404 fallback) ──
 (function(){
   var hash = window.location.hash.replace('#','');
-  var valid = ['home','about','services','quals','contact'];
+  var valid = ['home','about','services','quals','journal','contact'];
   if(hash && valid.indexOf(hash) !== -1){
     showPage(hash);
   }
