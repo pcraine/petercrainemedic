@@ -626,6 +626,14 @@ body.dark-mode .news-card{background:var(--stone)}
 .jpa-anon{font-size:12px;color:rgba(255,255,255,.22);font-style:italic;line-height:1.7;padding:14px 0;border-top:1px solid rgba(0,107,63,.12)}
 .jpa-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
 
+
+/* ── Blog post images ── */
+.jpa-img-wrap{margin:28px 0;border:1px solid rgba(0,107,63,.2);overflow:hidden}
+.jpa-img{width:100%;display:block;max-height:480px;object-fit:cover;filter:brightness(.92) contrast(1.05)}
+.jpa-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);padding:10px 14px;background:#0d1910;border-top:1px solid rgba(0,107,63,.15)}
+.jpa-img-err{background:#0d1910;border:1px dashed rgba(255,80,80,.3);padding:20px;font-family:var(--mono);font-size:10px;color:rgba(255,100,100,.6);text-align:center;letter-spacing:1px}
+.jpa-img-err small{display:block;margin-top:6px;color:rgba(255,255,255,.25);font-size:9px}
+
 /* ── Responsive ── */
 @media(max-width:900px){
   .journal-body{grid-template-columns:1fr;padding:32px 20px}
@@ -1644,184 +1652,193 @@ document.addEventListener('keydown', function(e){
 
 
 // ══════════════════════════════════════════════════════════════
-// THE JOURNAL — BLOG SYSTEM
+// THE JOURNAL — BLOG SYSTEM v2
 // ══════════════════════════════════════════════════════════════
-// ┌─────────────────────────────────────────────────────────┐
-// │  HOW TO ADD A NEW POST — takes about 2 minutes          │
-// │                                                          │
-// │  1. Copy one of the objects in JOURNAL_POSTS below       │
-// │  2. Paste it at the TOP of the array (newest first)      │
-// │  3. Fill in: date, title, deck, category, tags, body     │
-// │  4. Save the file and re-upload to your hosting          │
-// │                                                          │
-// │  BODY FORMAT: use these building blocks:                 │
-// │    p('Your paragraph text here')                         │
-// │    h2('Section heading')                                 │
-// │    pull('Quote text', 'Attribution')                     │
-// │    callout('Box label', 'Box content')                   │
-// │    divider()                                             │
-// └─────────────────────────────────────────────────────────┘
 
+// ┌──────────────────────────────────────────────────────────────┐
+// │  HOW TO ADD A NEW POST                                        │
+// │                                                               │
+// │  1. Copy one post object from JOURNAL_POSTS below             │
+// │  2. Paste it at the TOP of the array (newest first)           │
+// │  3. Fill in date, title, deck, category, tags, icon, body     │
+// │  4. Save and re-upload to your hosting                        │
+// │                                                               │
+// │  BODY BUILDERS — use these inside the body array:             │
+// │    jP('Your paragraph text')                                  │
+// │    jH('Section heading')                                      │
+// │    jPull('Quote text', 'Attribution')                         │
+// │    jBox('Label', 'Content text')        ← clinical callout    │
+// │    jImg('https://yoursite.com/img.jpg', 'Optional caption')   │
+// │    jLine()                              ← divider             │
+// │    jAnon()                              ← anonymisation note  │
+// └──────────────────────────────────────────────────────────────┘
+
+// ── BODY BUILDER FUNCTIONS — must be defined before JOURNAL_POSTS ──
+function jP(text)            { return '<p class="jpa-p">' + text + '</p>'; }
+function jH(text)            { return '<div class="jpa-h2">' + text + '</div>'; }
+function jLine()             { return '<div class="jpa-divider"></div>'; }
+function jAnon()             { return '<p class="jpa-anon">All patient details have been anonymised in accordance with SJA clinical governance requirements and patient confidentiality obligations. No identifying information has been retained or published.</p>'; }
+function jPull(quote, attr)  { return '<div class="jpa-pull"><p>\u201c' + quote + '\u201d</p><cite>\u2014 ' + attr + '</cite></div>'; }
+function jBox(label, text)   { return '<div class="jpa-callout"><div class="jpa-callout-label">' + label + '</div><p>' + text + '</p></div>'; }
+function jImg(src, caption)  {
+  return '<div class="jpa-img-wrap">' +
+    '<img src="' + src + '" alt="' + (caption||'Blog image') + '" class="jpa-img" loading="lazy" onerror="this.parentNode.innerHTML=\'<div class=jpa-img-err>\u26a0 Image not found: ' + src.split('/').pop() + '<br><small>Upload this file to your hosting root</small></div>\'">' +
+    (caption ? '<div class="jpa-img-caption">' + caption + '</div>' : '') +
+  '</div>';
+}
+
+// ══════════════════════════════════════════════════════════════
+// JOURNAL_POSTS — newest first
+// Add your new post at the TOP of this array
+// ══════════════════════════════════════════════════════════════
 var JOURNAL_POSTS = [
 
-  // ── POST 1 — Newest first ──
   {
-    date: '08 March 2026',
     day: '08', month: 'Mar', year: '2026',
-    title: 'High Legh 10K: When the Runner Doesn\'t Stop Running',
-    deck: 'Vehicle-based EAC on a muddy Cheshire course. One patient, late race, classic exertional presentation — and why your assessment window at an event is nothing like a roadside RTC.',
+    title: "High Legh 10K: When the Runner Doesn\u2019t Stop Running",
+    deck: "Vehicle-based EAC on a muddy Cheshire course. One patient, late race, classic exertional presentation \u2014 and why your assessment window at an event is nothing like a roadside RTC.",
     category: 'Deployment',
     tags: ['EAC', 'Running events', 'Exertional illness', 'Vehicle-based', 'Cheshire'],
-    icon: '🏃',
-    location: 'Running Event · High Legh, Cheshire',
+    icon: '\uD83C\uDFC3',
+    location: 'Running Event \u00b7 High Legh, Cheshire',
     readTime: '6 min read',
     body: [
-      p('The race started at 09:15. By 09:40 we had our first patient — a 47-year-old male, late in the field, found by a marshal near the 8K marker. The call came through on the radio as "runner down, conscious, breathing." Which tells you almost nothing and everything at the same time.'),
-      p('What the radio doesn\'t tell you is colour. It doesn\'t tell you whether the patient is sitting up and embarrassed or lying flat. It doesn\'t tell you how the bystanders look — because experienced medics know that the face of someone standing over a patient tells you as much as the patient\'s face sometimes. I was vehicle-based that morning. I had the kit, the Entonox, the bag and the radio. The road to the 8K marker was grass-edged and slick from overnight rain.'),
-      pull('Your assessment window at a running event is compressed. Patients are still physiologically elevated from exertion — HR, RR, temp, lactate. Nothing looks normal because nothing is normal yet.', 'Field note, High Legh 10K, 08/03/2026'),
-      h2('The Presentation'),
-      p('Exertional heat illness spectrum. Not at the serious end — no altered consciousness, no seizure, no rectal temperature required — but not simple cramp either. The patient had run a half-marathon two weekends prior and made the mistake experienced runners often make: assuming the body performs identically in March mud as it does in October tarmac. It doesn\'t. The energy expenditure is different. The thermoregulation demand is different.'),
-      callout('Clinical Note — CPD Record', 'Exertional presentations at running events can mask early hyponatraemia in over-hydrated participants. Always check fluid intake history alongside standard SAMPLE. If the patient says "I drank loads" — treat with caution. This patient had not over-hydrated. Normal exertional pattern. Assessment confirmed uncomplicated exertional fatigue with mild dehydration.'),
-      p('Management was straightforward. Shade where possible, supine position, oral fluids once GCS confirmed and swallow reflex established. Observations every 5 minutes. Patient recovered to ambulatory within 18 minutes. Declined transport. Full PRF documentation completed and submitted.'),
-      h2('What This Deployment Reinforced'),
-      p('At running events, your initial presentation is always misleading. The patient\'s physiology is not at baseline — it may not return to baseline for 20 minutes after they stop. Don\'t anchor on the first set of obs. The trend is everything. A HR of 130 on first contact from someone who\'s just run 8K means very little. A HR of 130 ten minutes after rest and fluids means considerably more.'),
-      divider(),
-      anon()
+      jP("The race started at 09:15. By 09:40 we had our first patient \u2014 a 47-year-old male, late in the field, found by a marshal near the 8K marker. The call came through on the radio as \u201crunner down, conscious, breathing.\u201d Which tells you almost nothing and everything at the same time."),
+      jP("What the radio doesn\u2019t tell you is colour. It doesn\u2019t tell you whether the patient is sitting up and embarrassed or lying flat. It doesn\u2019t tell you how the bystanders look \u2014 because experienced medics know that the face of someone standing over a patient tells you as much as the patient\u2019s face sometimes. I was vehicle-based that morning. I had the kit, the Entonox, the bag and the radio. The road to the 8K marker was grass-edged and slick from overnight rain."),
+      jPull("Your assessment window at a running event is compressed. Patients are still physiologically elevated from exertion \u2014 HR, RR, temp, lactate. Nothing looks normal because nothing is normal yet.", "Field note, High Legh 10K, 08/03/2026"),
+      jH("The Presentation"),
+      jP("Exertional heat illness spectrum. Not at the serious end \u2014 no altered consciousness, no seizure, no rectal temperature required \u2014 but not simple cramp either. The patient had run a half-marathon two weekends prior and made the mistake experienced runners often make: assuming the body performs identically in March mud as it does in October tarmac."),
+      jBox("Clinical Note \u2014 CPD Record", "Exertional presentations at running events can mask early hyponatraemia in over-hydrated participants. Always check fluid intake history alongside standard SAMPLE. If the patient says \u201cI drank loads\u201d \u2014 treat with caution. This patient had not over-hydrated. Normal exertional pattern. Assessment confirmed uncomplicated exertional fatigue with mild dehydration."),
+      jP("Management was straightforward. Shade, supine position, oral fluids once GCS confirmed and swallow reflex established. Observations every 5 minutes. Patient recovered to ambulatory within 18 minutes. Declined transport. Full PRF documentation completed and submitted."),
+      jH("What This Deployment Reinforced"),
+      jP("At running events, your initial presentation is always misleading. The patient\u2019s physiology is not at baseline \u2014 it may not return to baseline for 20 minutes after they stop. Don\u2019t anchor on the first set of obs. The trend is everything. A HR of 130 on first contact from someone who\u2019s just run 8K means very little. A HR of 130 ten minutes after rest and fluids means considerably more."),
+      jLine(),
+      jAnon()
     ]
   },
 
-  // ── POST 2 ──
   {
-    date: '07 March 2026',
     day: '07', month: 'Mar', year: '2026',
-    title: 'IDTA Dance Festival: 4 Patients, One Shift, Full Scope Used',
-    deck: 'Dismounted EAC at Norbreck Castle, Blackpool. A full competition day — 1,200 dancers, eight age groups, one medical team. What the crowd doesn\'t tell you until it does.',
+    title: "IDTA Dance Festival: 4 Patients, One Shift, Full Scope Used",
+    deck: "Dismounted EAC at Norbreck Castle, Blackpool. A full competition day \u2014 1,200 dancers, eight age groups, one medical team. What the crowd doesn\u2019t tell you until it does.",
     category: 'Deployment',
-    tags: ['EAC', 'Dance festival', 'Dismounted', 'Blackpool', 'Multi-patient'],
-    icon: '💃',
-    location: 'Dance Event · Norbreck Castle, Blackpool',
+    tags: ['EAC', 'Dance festival', 'Dismounted', 'Blackpool', 'Multi-patient', 'GTN'],
+    icon: '\uD83D\uDC83',
+    location: 'Dance Event \u00b7 Norbreck Castle, Blackpool',
     readTime: '7 min read',
     body: [
-      p('Dance competitions look like the lowest-risk event on the calendar. They\'re not. You have a venue packed with competitors in a state of physiological stress — cortisol elevated, hydration inconsistent, fasting in some cases, extreme physical exertion followed by long periods of sedentary waiting. The patient profile is genuinely unpredictable.'),
-      p('The IDTA Nationwide Solo Dance Festival at Norbreck Castle ran from 08:30 to 18:00. Four patients across the day. All assessed and managed to EAC standard. None required transport. Here\'s what I saw.'),
-      h2('Patient 1 — Vasovagal'),
-      p('A 14-year-old competitor, pre-performance anxiety, hadn\'t eaten since 06:00. Classic prodrome: pallor, diaphoresis, nausea. Managed with supine positioning, legs elevated, oral glucose once able to tolerate. Full recovery within 8 minutes. Escorted back to her group. Parents updated.'),
-      callout('Clinical Note — CPD Record', 'Paediatric vasovagal presentations can be difficult to differentiate from more serious causes of collapse in a busy noisy venue. Always ensure adequate space, maintain a calm environment, and resist pressure from concerned bystanders to "do something." Reassurance and positioning IS doing something.'),
-      h2('Patients 2 & 3 — Musculoskeletal'),
-      p('Two separate competitors with ankle injuries from warm-up activities. Both assessed using standard MICE protocol. Neither required transport. Suitable to weight-bear by end of assessment. Both taped and returned to appropriate rest.'),
-      h2('Patient 4 — Chest Pain, Older Spectator'),
-      p('This was the most significant contact of the day. A 68-year-old male spectator reported central chest tightness approximately 20 minutes in duration. Full 12-lead approach considered; GTN administered per EAC scope following appropriate assessment. Ambulance called as a precaution. Patient transferred to WMAS crew on their arrival, clinically stable, no deterioration. This is exactly why EAC-level cover matters at events that welcome older attendees as spectators.'),
-      pull('GTN. Aspirin. 999 called. Patient stable on handover. That\'s the difference between an EAC and a first aider at that moment.', 'Post-incident reflection'),
-      divider(),
-      anon()
+      jP("Dance competitions look like the lowest-risk event on the calendar. They\u2019re not. You have a venue packed with competitors in a state of physiological stress \u2014 cortisol elevated, hydration inconsistent, fasting in some cases, extreme physical exertion followed by long periods of sedentary waiting. The patient profile is genuinely unpredictable."),
+      jP("The IDTA Nationwide Solo Dance Festival at Norbreck Castle ran from 08:30 to 18:00. Four patients across the day. All assessed and managed to EAC standard. None required transport. Here\u2019s what I saw."),
+      jH("Patient 1 \u2014 Vasovagal"),
+      jP("A 14-year-old competitor, pre-performance anxiety, hadn\u2019t eaten since 06:00. Classic prodrome: pallor, diaphoresis, nausea. Managed with supine positioning, legs elevated, oral glucose once able to tolerate. Full recovery within 8 minutes. Escorted back to her group. Parents updated."),
+      jBox("Clinical Note \u2014 CPD Record", "Paediatric vasovagal presentations can be difficult to differentiate from more serious causes of collapse in a busy noisy venue. Always ensure adequate space, maintain a calm environment, and resist pressure from concerned bystanders to \u201cdo something.\u201d Reassurance and positioning IS doing something."),
+      jH("Patients 2 & 3 \u2014 Musculoskeletal"),
+      jP("Two separate competitors with ankle injuries from warm-up activities. Both assessed using standard MICE protocol. Neither required transport. Suitable to weight-bear by end of assessment. Both taped and returned to appropriate rest."),
+      jH("Patient 4 \u2014 Chest Pain, Older Spectator"),
+      jP("This was the most significant contact of the day. A 68-year-old male spectator reported central chest tightness approximately 20 minutes in duration. Full cardiac assessment completed. GTN administered per EAC scope following appropriate assessment. Ambulance called as a precaution. Patient transferred to WMAS crew on their arrival, clinically stable, no deterioration."),
+      jPull("GTN. Aspirin. 999 called. Patient stable on handover. That\u2019s the difference between an EAC and a first aider at that moment.", "Post-incident reflection"),
+      jLine(),
+      jAnon()
     ]
   },
 
-  // ── POST 3 ──
   {
-    date: '15 February 2026',
     day: '15', month: 'Feb', year: '2026',
-    title: 'What Event Organisers Actually Need to Know When Booking Medical Cover',
-    deck: 'Most event organisers don\'t know the difference between a first aider and an EAC. Here\'s a plain-English guide to what the levels mean, what questions to ask, and why it matters for your event licence.',
+    title: "What Event Organisers Actually Need to Know When Booking Medical Cover",
+    deck: "Most event organisers don\u2019t know the difference between a first aider and an EAC. Here\u2019s a plain-English guide to what the levels mean, what questions to ask, and why it matters for your licence.",
     category: 'Industry',
     tags: ['Event organisers', 'Medical cover', 'EAC vs first aider', 'Licensing', 'Purple Guide'],
-    icon: '📋',
+    icon: '\uD83D\uDCCB',
     location: 'Industry Guidance',
     readTime: '5 min read',
     body: [
-      p('Every week I see event listings that describe their medical provision as "qualified first aiders on site." At a small, low-risk event — a village fete, a small indoor gathering — that may well be appropriate. At a 500-person running race, a multi-stage dance competition or a music festival with alcohol present, it almost certainly isn\'t. And in many cases, the event organiser genuinely doesn\'t know the difference.'),
-      p('This post isn\'t criticism. The regulatory landscape around event medical cover is genuinely confusing, inconsistently enforced, and poorly explained to the people who need to understand it most. So here\'s what I\'d want every event organiser in the North West to know.'),
-      h2('The Levels — What They Actually Mean'),
-      callout('First Aider (FA)', 'HSE-compliant first aid training. Manages basic injuries, CPR, bleeding. No medication administration beyond own prescription. The minimum legal requirement for most workplaces. Appropriate for very low-risk, small-scale events.'),
-      callout('Event First Responder (EFR / FREC 3)', 'Higher qualification. Can administer oxygen, manage more complex presentations. Beginning of pre-hospital clinical pathway. More appropriate for events with 500+ attendees or elevated risk profiles.'),
-      callout('Emergency Ambulance Crew (EAC)', 'Operates under ambulance clinical governance framework. JRCALC guidelines. Up to 19 medications within scope. Can manage serious pre-hospital emergencies to a clinical standard. The appropriate provision for high-risk or high-attendance events.'),
-      h2('The Question You Should Always Ask'),
-      p('When booking medical cover, ask the provider: "What is the clinical registration level of the person attending, and what is their medication scope?" A legitimate provider will answer this immediately. If they can\'t tell you what medications their medic can administer, that tells you something important.'),
-      p('The Purple Guide (the industry standard for event safety) recommends a medical needs assessment for any event — the outcome of that assessment should drive your provision level, not the cheapest quote on a search engine.'),
-      pull('The question isn\'t "do we have a first aider." The question is "do we have the right clinical level for this specific event and its specific risk profile."', 'Event medical planning note'),
-      divider(),
-      p('If you\'re running an event in the North West and want a straight answer about what level of cover you actually need, get in touch. I\'m happy to have that conversation without a sales pitch attached to it.')
+      jP("Every week I see event listings that describe their medical provision as \u201cqualified first aiders on site.\u201d At a small, low-risk event \u2014 a village fete, a small indoor gathering \u2014 that may be appropriate. At a 500-person running race, a multi-stage dance competition or a music festival with alcohol present, it almost certainly isn\u2019t. And in many cases, the event organiser genuinely doesn\u2019t know the difference."),
+      jH("The Levels \u2014 What They Actually Mean"),
+      jBox("First Aider (FA)", "HSE-compliant first aid training. Manages basic injuries, CPR, bleeding. No medication administration beyond own prescription. Appropriate for very low-risk, small-scale events."),
+      jBox("Event First Responder (FREC 3)", "Higher qualification. Can administer oxygen, manage more complex presentations. Beginning of pre-hospital clinical pathway. More appropriate for events with 500+ attendees or elevated risk profiles."),
+      jBox("Emergency Ambulance Crew (EAC)", "Operates under ambulance clinical governance framework. JRCALC guidelines. Up to 19 medications within scope. Can manage serious pre-hospital emergencies to a clinical standard. The appropriate provision for high-risk or high-attendance events."),
+      jH("The Question You Should Always Ask"),
+      jP("When booking medical cover, ask the provider: \u201cWhat is the clinical registration level of the person attending, and what is their medication scope?\u201d A legitimate provider will answer this immediately. If they can\u2019t tell you what medications their medic can administer, that tells you something important."),
+      jPull("The question isn\u2019t \u2018do we have a first aider.\u2019 The question is \u2018do we have the right clinical level for this specific event and its specific risk profile.\u2019", "Event medical planning note"),
+      jP("If you\u2019re running an event in the North West and want a straight answer about what level of cover you actually need, get in touch. I\u2019m happy to have that conversation without a sales pitch attached to it.")
     ]
   }
 
 ]; // end JOURNAL_POSTS
 
-// ── Builder helpers (used inside the posts array above) ──
-function p(text) { return '<p class="jpa-p">' + text + '</p>'; }
-function h2(text) { return '<div class="jpa-h2">' + text + '</div>'; }
-function pull(quote, attr) { return '<div class="jpa-pull"><p>&ldquo;' + quote + '&rdquo;</p><cite>&mdash; ' + attr + '</cite></div>'; }
-function callout(label, text) { return '<div class="jpa-callout"><div class="jpa-callout-label">' + label + '</div><p>' + text + '</p></div>'; }
-function divider() { return '<div class="jpa-divider"></div>'; }
-function anon() { return '<p class="jpa-anon">All patient details have been anonymised in accordance with SJA clinical governance requirements and patient confidentiality obligations. No identifying information has been retained or published.</p>'; }
-
-// ── JOURNAL CONTROLLER ──
+// ══════════════════════════════════════════════════════════════
+// JOURNAL CONTROLLER
+// ══════════════════════════════════════════════════════════════
 (function () {
-  var currentFilter = 'all';
 
-  // Tag colour helper
   function tagClass(cat) {
     if (cat === 'Deployment') return 'jtag jtag-depl';
     if (cat === 'Training')   return 'jtag jtag-train';
     return 'jtag jtag-news';
   }
-
-  // Render tag HTML
   function tagHtml(cat) {
     return '<span class="' + tagClass(cat) + '">' + cat + '</span>';
   }
+  function fmtDate(post) { return post.day + ' ' + post.month + ' ' + post.year; }
 
-  // Format date for display
-  function fmtDate(p) { return p.day + ' ' + p.month + ' ' + p.year; }
-
-  // ── Render featured (newest post) ──
+  // ── Featured: always post[0] ──
   function renderFeatured() {
     if (!JOURNAL_POSTS.length) return;
-    var p0 = JOURNAL_POSTS[0];
-    var tagsEl = document.getElementById('jf-tags');
-    var dateEl = document.getElementById('jf-date');
-    var titleEl = document.getElementById('jf-title');
-    var excEl = document.getElementById('jf-excerpt');
-    var iconEl = document.getElementById('jf-icon');
-    var locEl = document.getElementById('jf-location');
-    if (tagsEl) tagsEl.innerHTML = tagHtml(p0.category);
-    if (dateEl) dateEl.textContent = fmtDate(p0) + ' · ' + p0.readTime;
-    if (titleEl) titleEl.textContent = p0.title;
-    if (excEl) excEl.textContent = p0.deck;
-    if (iconEl) iconEl.textContent = p0.icon;
-    if (locEl) locEl.textContent = p0.location;
+    var fp = JOURNAL_POSTS[0];
+    var el = function(id){ return document.getElementById(id); };
+    var tags = el('jf-tags'); if(tags) tags.innerHTML = tagHtml(fp.category);
+    var date = el('jf-date'); if(date) date.textContent = fmtDate(fp) + ' \u00b7 ' + fp.readTime;
+    var titl = el('jf-title'); if(titl) titl.textContent = fp.title;
+    var exc  = el('jf-excerpt'); if(exc)  exc.textContent = fp.deck;
+    var icon = el('jf-icon'); if(icon) icon.textContent = fp.icon;
+    var loc  = el('jf-location'); if(loc)  loc.textContent = fp.location;
+    var card = el('jf-card'); if(card) card.onclick = function(){ openPost(0); };
   }
 
-  // ── Render post list ──
+  // ── Post list: ALL posts (including post[0] so all 3 are always visible) ──
   function renderList(filter) {
     var container = document.getElementById('jb-post-list');
     if (!container) return;
-    var posts = filter === 'all' ? JOURNAL_POSTS.slice(1) : JOURNAL_POSTS.slice(1).filter(function(p){ return p.category === filter; });
-    if (!posts.length) {
-      container.innerHTML = '<div class="jpr-empty">No posts in this category yet &mdash; check back soon.</div>';
+
+    var filtered = JOURNAL_POSTS.filter(function(post) {
+      return filter === 'all' || post.category === filter;
+    });
+
+    if (!filtered.length) {
+      container.innerHTML = '<div class="jpr-empty">No posts in this category yet \u2014 check back soon.</div>';
       return;
     }
-    container.innerHTML = posts.map(function (p, i) {
-      var idx = JOURNAL_POSTS.indexOf(p);
-      return '<div class="jpost-row sr-item" onclick="openPost(' + idx + ')" style="transition-delay:' + (i * 0.07) + 's">' +
-        '<div class="jpr-date"><div class="jpr-day">' + p.day + '</div><div class="jpr-month">' + p.month + '</div></div>' +
-        '<div class="jpr-body">' +
-          '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
-          '<div class="jpr-title">' + p.title + '</div>' +
-          '<div class="jpr-excerpt">' + p.deck + '</div>' +
-          '<div class="jpr-read">' + p.readTime + ' &rarr;</div>' +
-        '</div>' +
-      '</div>';
+
+    container.innerHTML = filtered.map(function(post, i) {
+      var idx = JOURNAL_POSTS.indexOf(post);
+      return (
+        '<div class="jpost-row sr-item" style="transition-delay:' + (i * 0.07) + 's" onclick="openPost(' + idx + ')">' +
+          '<div class="jpr-date">' +
+            '<div class="jpr-day">'   + post.day   + '</div>' +
+            '<div class="jpr-month">' + post.month + '</div>' +
+          '</div>' +
+          '<div class="jpr-body">' +
+            '<div class="jpr-tags">' + tagHtml(post.category) + '</div>' +
+            '<div class="jpr-title">' + post.title + '</div>' +
+            '<div class="jpr-excerpt">' + post.deck + '</div>' +
+            '<div class="jpr-read">' + post.readTime + ' \u2192</div>' +
+          '</div>' +
+        '</div>'
+      );
     }).join('');
-    // Re-trigger scroll reveal on new elements
+
+    // Re-trigger scroll reveal
     if (window._srObserver) {
       container.querySelectorAll('.sr-item').forEach(function(el){ window._srObserver.observe(el); });
     }
   }
 
-  // ── Render sidebar counts ──
+  // ── Sidebar ──
   function renderSidebar() {
     var counts = { Deployment: 0, Training: 0, Industry: 0 };
-    JOURNAL_POSTS.forEach(function(p){ if(counts[p.category] !== undefined) counts[p.category]++; });
+    JOURNAL_POSTS.forEach(function(post) {
+      if (counts[post.category] !== undefined) counts[post.category]++;
+    });
     var d = document.getElementById('jsc-depl');
     var t = document.getElementById('jsc-train');
     var n = document.getElementById('jsc-news');
@@ -1829,58 +1846,65 @@ function anon() { return '<p class="jpa-anon">All patient details have been anon
     if (t) t.textContent = counts.Training;
     if (n) n.textContent = counts.Industry;
 
-    // Post count in hero
     var cnt = document.getElementById('jh-count');
     if (cnt) cnt.textContent = JOURNAL_POSTS.length;
 
-    // Tag cloud
     var allTags = [];
-    JOURNAL_POSTS.forEach(function(p){ (p.tags||[]).forEach(function(t){ if(allTags.indexOf(t)<0) allTags.push(t); }); });
+    JOURNAL_POSTS.forEach(function(post) {
+      (post.tags || []).forEach(function(tag) {
+        if (allTags.indexOf(tag) < 0) allTags.push(tag);
+      });
+    });
     var tc = document.getElementById('jsw-tags');
-    if (tc) tc.innerHTML = allTags.slice(0,14).map(function(t){
-      return '<div class="jsw-tag">' + t + '</div>';
+    if (tc) tc.innerHTML = allTags.slice(0, 16).map(function(tag) {
+      return '<div class="jsw-tag">' + tag + '</div>';
     }).join('');
   }
 
   // ── Open single post ──
-  window.openPost = function (idx) {
-    var p = JOURNAL_POSTS[idx];
-    if (!p) return;
+  window.openPost = function(idx) {
+    var post = JOURNAL_POSTS[idx];
+    if (!post) return;
 
-    document.getElementById('jph-tags').innerHTML = tagHtml(p.category);
-    document.getElementById('jph-date').textContent = fmtDate(p);
-    document.getElementById('jph-title').textContent = p.title;
-    document.getElementById('jph-deck').textContent = p.deck;
-    document.getElementById('jph-readtime').textContent = p.readTime;
+    var el = function(id){ return document.getElementById(id); };
+    var tags = el('jph-tags'); if(tags) tags.innerHTML = tagHtml(post.category);
+    var date = el('jph-date'); if(date) date.textContent = fmtDate(post);
+    var titl = el('jph-title'); if(titl) titl.textContent = post.title;
+    var deck = el('jph-deck'); if(deck) deck.textContent = post.deck;
+    var rt   = el('jph-readtime'); if(rt) rt.textContent = post.readTime;
 
-    // Render body — evaluate builder functions in context
-    var bodyHtml = Array.isArray(p.body) ? p.body.join('') : p.body;
-    document.getElementById('jph-body').innerHTML =
-      bodyHtml +
-      '<div class="jpa-tags">' + (p.tags||[]).map(function(t){ return '<div class="jsw-tag">' + t + '</div>'; }).join('') + '</div>';
+    var bodyHtml = Array.isArray(post.body) ? post.body.join('') : post.body;
+    var tagStrip = (post.tags || []).map(function(tag) {
+      return '<div class="jsw-tag">' + tag + '</div>';
+    }).join('');
 
-    document.getElementById('journal-index-view').style.display = 'none';
-    var pv = document.getElementById('journal-post-view');
-    pv.classList.add('open');
+    var bodyEl = el('jph-body');
+    if (bodyEl) bodyEl.innerHTML = bodyHtml + '<div class="jpa-tags">' + tagStrip + '</div>';
+
+    var iv = el('journal-index-view');
+    var pv = el('journal-post-view');
+    if (iv) iv.style.display = 'none';
+    if (pv) pv.classList.add('open');
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
   // ── Close post ──
-  window.closePost = function () {
-    document.getElementById('journal-post-view').classList.remove('open');
-    document.getElementById('journal-index-view').style.display = '';
+  window.closePost = function() {
+    var iv = document.getElementById('journal-index-view');
+    var pv = document.getElementById('journal-post-view');
+    if (pv) pv.classList.remove('open');
+    if (iv) iv.style.display = '';
     window.scrollTo({ top: 0, behavior: 'instant' });
   };
 
-  // ── Filter posts ──
-  window.filterPosts = function (cat, btn) {
-    currentFilter = cat;
+  // ── Filter ──
+  window.filterPosts = function(cat, btn) {
     document.querySelectorAll('.jb-filter-btn').forEach(function(b){ b.classList.remove('active'); });
     if (btn) btn.classList.add('active');
     renderList(cat);
   };
 
-  // ── Init on journal page show ──
+  // ── Init ──
   function initJournal() {
     renderFeatured();
     renderList('all');
@@ -1888,60 +1912,47 @@ function anon() { return '<p class="jpa-anon">All patient details have been anon
     startJfEcg();
   }
 
-  // Hook into showPage
+  // Expose so scroll reveal can store observer ref
+  window._initJournal = initJournal;
+
   var origSP = window.showPage;
-  window.showPage = function (id) {
+  window.showPage = function(id) {
     origSP(id);
-    if (id === 'journal') {
-      setTimeout(initJournal, 80);
-    }
+    if (id === 'journal') setTimeout(initJournal, 80);
   };
-
-  // Also init if journal is already active on load
-  if (document.getElementById('page-journal') && document.getElementById('page-journal').classList.contains('active')) {
-    setTimeout(initJournal, 200);
-  }
-
-  // Store SR observer reference for dynamic content
-  var origIO = window.IntersectionObserver;
 
 })();
 
-// ── Featured card ECG animation ──
+// ── Featured card ECG ──
 function startJfEcg() {
   var canvas = document.getElementById('jf-ecg-canvas');
-  if (!canvas || canvas._running) return;
-  canvas._running = true;
+  if (!canvas || canvas._ecgRunning) return;
+  canvas._ecgRunning = true;
   var ctx = canvas.getContext('2d');
   var offset = 0;
-  function drawJfEcg() {
-    if (!canvas._running) return;
+  (function draw() {
+    if (!canvas._ecgRunning) return;
     var W = canvas.offsetWidth || 300, H = canvas.offsetHeight || 220;
-    canvas.width = W; canvas.height = H;
-    var mid = H / 2, amp = 28, period = 110;
+    if (canvas.width !== W || canvas.height !== H) { canvas.width = W; canvas.height = H; }
+    var mid = H / 2, amp = 26, period = 108;
     ctx.clearRect(0, 0, W, H);
-    ctx.beginPath();
-    ctx.strokeStyle = '#00A651';
-    ctx.lineWidth = 1.2;
+    ctx.beginPath(); ctx.strokeStyle = '#00A651'; ctx.lineWidth = 1.2;
     for (var x = 0; x < W; x++) {
       var y = mid - ecgPoint(x + offset, period) * amp;
       x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
     ctx.stroke();
-    // second faint line
-    ctx.beginPath();
-    ctx.strokeStyle = '#006B3F';
-    ctx.lineWidth = 0.7;
+    ctx.beginPath(); ctx.strokeStyle = '#006B3F'; ctx.lineWidth = 0.7;
     for (var x = 0; x < W; x++) {
-      var y = mid + 55 - ecgPoint(x + offset + 55, period) * amp * 0.6;
+      var y = mid + 50 - ecgPoint(x + offset + 54, period) * amp * 0.55;
       x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
     ctx.stroke();
     offset = (offset + 1.3) % period;
-    requestAnimationFrame(drawJfEcg);
-  }
-  drawJfEcg();
+    requestAnimationFrame(draw);
+  })();
 }
+
 
 
 // ══════════════════════════════════════════════════════════════════
