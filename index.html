@@ -3516,31 +3516,32 @@ var HB = {
 
   schedule: function() {
     if (!this.running || !this.ctx) return;
-    // Resume if browser suspended context (autoplay policy / tab in background)
+    // If suspended, kick a resume — but DO NOT return; keep the timeout loop alive
     if (this.ctx.state === 'suspended') {
-      var self = this;
-      this.ctx.resume().then(function() { self.schedule(); });
-      return;
+      this.ctx.resume();
     }
-    var now = this.ctx.currentTime;
-    while (this.nextBeat < now + 0.6) {
-      if (this.nextBeat >= now) {
-        this.playBeat(this.nextBeat);
-        this._beatCount++;
-        // Every 7-14 beats drift the tempo slightly
-        this._driftTimer--;
-        if (this._driftTimer <= 0) {
-          var base = 95 / (1.8 * 60);
-          var drift = (Math.random() - 0.5) * 0.18; // ±0.09s (±6bpm)
-          this._targetInterval = Math.max(base * 0.82, Math.min(base * 1.22, base + drift));
-          this._driftTimer = 7 + Math.floor(Math.random() * 8);
+    if (this.ctx.state === 'running') {
+      var now = this.ctx.currentTime;
+      // If nextBeat has fallen far behind (tab was hidden etc.), reset it
+      if (this.nextBeat < now - 2) { this.nextBeat = now + 0.05; }
+      while (this.nextBeat < now + 0.6) {
+        if (this.nextBeat >= now) {
+          this.playBeat(this.nextBeat);
+          this._beatCount++;
+          this._driftTimer--;
+          if (this._driftTimer <= 0) {
+            var base = 95 / (1.8 * 60);
+            var drift = (Math.random() - 0.5) * 0.18;
+            this._targetInterval = Math.max(base * 0.82, Math.min(base * 1.22, base + drift));
+            this._driftTimer = 7 + Math.floor(Math.random() * 8);
+          }
+          this._currentInterval += (this._targetInterval - this._currentInterval) * 0.12;
         }
-        // Ease currentInterval toward target
-        this._currentInterval += (this._targetInterval - this._currentInterval) * 0.12;
+        this.nextBeat += this._currentInterval;
       }
-      this.nextBeat += this._currentInterval;
     }
-    this.timer = setTimeout(function(){ HB.schedule(); }, 120);
+    // Always reschedule — loop never dies
+    this.timer = setTimeout(function(){ HB.schedule(); }, 100);
   },
 
   start: function() {
