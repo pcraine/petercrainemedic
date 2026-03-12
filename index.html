@@ -708,7 +708,8 @@ body.dark-mode .news-card{background:var(--stone)}
   44%,100% {transform:scale(1);   filter:drop-shadow(0 0 3px rgba(0,166,81,.35))}
 }
 .nav-cross{animation:hb-pulse 0.833s ease-out infinite;transform-origin:center center}
-#nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55}
+#nav-amb-canvas{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;pointer-events:none;opacity:.38;z-index:0}
+#nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55;z-index:1}
 
 /* ── 3: TYPEWRITER ── */
 .hero-role-type{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:24px;line-height:1.8;min-height:22px}
@@ -1070,6 +1071,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 <!-- NAV -->
 <nav id="mainNav">
+  <canvas id="nav-amb-canvas" aria-hidden="true"></canvas>
   <canvas id="nav-ecg-canvas" aria-hidden="true"></canvas>
   <div class="nav-indicator" id="nav-indicator" aria-hidden="true"></div>
   <div class="nav-logo" onclick="showPage('home')" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('home')" aria-label="Home">
@@ -1085,8 +1087,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <a onclick="showPage('contact');return false" id="nav-contact" class="nav-cta-link" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('contact')">Contact</a>
   </div>
   <div class="nav-right">
-      <button id="hb-sound-btn" class="nav-sound-btn" aria-label="Enable heartbeat sound" title="Toggle heartbeat sound" onclick="toggleHeartbeat()">
-        <span id="hb-sound-icon" aria-hidden="true">🔇</span>
+      <button id="hb-sound-btn" class="nav-sound-btn" aria-label="Disable heartbeat sound" title="Toggle heartbeat sound" onclick="toggleHeartbeat()">
+        <span id="hb-sound-icon" aria-hidden="true">🔊</span>
       </button>
     <div class="nav-avail"><div class="nav-avail-dot"></div>Available</div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -1106,7 +1108,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="hero-pill"><div class="hero-pill-dot"></div>St John Ambulance &middot; North West England</div>
       <div class="hero-counter-row">
         <div class="hero-stat">
-          <div class="hero-stat-num" id="ctr-events">20+</div>
+          <div class="hero-stat-num" id="ctr-events">75+</div>
           <div class="hero-stat-label">Events Covered</div>
         </div>
         <div class="hero-stat-div"></div>
@@ -1224,111 +1226,41 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
   
 
-  <!-- ══ FAQ SECTION (FAQPage SEO) ══ -->
-  <section id="faq" aria-label="Frequently asked questions about event medical cover" style="padding:52px 0;border-top:1px solid rgba(0,107,63,.15);background:var(--ink)">
-    <div class="section-eyebrow" style="padding:0 40px">Common Questions</div>
-    <h2 class="section-h2" style="padding:0 40px">QUESTIONS<br>ANSWERED</h2>
-    <div class="section-sub" style="padding:0 40px;margin-bottom:36px">Everything event organisers ask before booking medical cover.</div>
-
-    <div style="padding:0 40px;max-width:900px">
-
-      <details class="faq-item-full" open>
-        <summary class="faq-q-full">What is an EAC — and do I actually need one for my event?</summary>
-        <div class="faq-a-full">An Emergency Ambulance Crew (EAC) sits at Column 9 of 10 in the ambulance clinical framework — significantly above a standard first aider or FREC 3. An EAC can administer 19 medications independently, acquire and interpret 12-lead ECGs, manage complex airways including supraglottic devices, and act as lead clinician at a treatment centre. For events over 500 attendees, sporting events, or any event with elevated risk, the <a href="https://www.thepurpleguide.co.uk" target="_blank" rel="noopener noreferrer" style="color:var(--gm)">Purple Guide</a> strongly recommends EAC-level cover.</div>
-      </details>
-
-      <details class="faq-item-full">
-        <summary class="faq-q-full">What area do you cover for event medical cover?</summary>
-        <div class="faq-a-full">Primary coverage across <strong>Lancashire</strong> (Blackburn, Preston, Burnley, Lancaster), <strong>Greater Manchester</strong>, <strong>Merseyside</strong>, and <strong>Cheshire</strong>. Available nationally for the right event — contact to discuss. Based in Blackburn, operating under SJA North West.</div>
-      </details>
-
-      <details class="faq-item-full">
-        <summary class="faq-q-full">What medications can you administer at my event?</summary>
-        <div class="faq-a-full">As an EAC under SJA clinical governance: Adrenaline 1:1000 IM (anaphylaxis), Naloxone IM (opioid reversal), Entonox and Methoxyflurane/Penthrox (pain relief), Salbutamol and Ipratropium via nebuliser (asthma), GTN spray (chest pain), Aspirin (suspected MI), Glucagon and Hydrocortisone IM — plus oral medications including Paracetamol, Ibuprofen, and Glucose Gel. 19 drugs total. All administered under the Medication Administration Cross Check protocol.</div>
-      </details>
-
-      <details class="faq-item-full">
-        <summary class="faq-q-full">Are you DBS checked and operating under a clinical governance framework?</summary>
-        <div class="faq-a-full">Yes. Enhanced DBS current. All deployments are under <strong>St John Ambulance North West clinical governance</strong>. Patient documentation follows SJA PRF standards. Clinical practice governed by JRCALC guidelines. Governance documentation available on request for event licensing purposes.</div>
-      </details>
-
-      <details class="faq-item-full">
-        <summary class="faq-q-full">Do you provide a post-event medical report?</summary>
-        <div class="faq-a-full">Yes — every deployment includes a written post-event report within 48 hours. Covers all patient contacts, treatments, medications administered, NWAS handovers, and recommendations. Suitable for insurance and event licensing documentation.</div>
-      </details>
-
-      <details class="faq-item-full">
-        <summary class="faq-q-full">What first aid training courses do you deliver?</summary>
-        <div class="faq-a-full">Accredited first aid training as a CTLLS Level 4 qualified trainer — Emergency First Aid at Work (EFAW), First Aid at Work (FAW), paediatric first aid, and bespoke workplace courses. Delivered across Lancashire and the North West. Contact for group rates and dates.</div>
-      </details>
-
-    </div>
-  </section>
 
   <!-- ══ TESTIMONIALS ══ -->
   <section class="testimonials-section" aria-label="Testimonials and endorsements">
-    <div class="section-eyebrow">Social Proof</div>
+    <div class="section-eyebrow">What People Say</div>
     <h2 class="section-h2">WHAT PEOPLE<br>SAY</h2>
-    <div class="section-sub">Event organisers, training delegates and clinical colleagues — in their own words.</div>
-    <div class="testi-grid">
+    <div class="section-sub">From the events and training sessions that actually happened.</div>
+    <div class="testi-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:960px;margin:0 auto">
 
       <div class="testi-card sr-item">
         <span class="testi-quote-mark">&ldquo;</span>
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">Peter was professional, calm and completely across the risk profile for our 800-person running event. Arrived early, fully equipped, and the post-event report was exactly what our insurer needed. Will book without hesitation next year.</div>
+        <div class="testi-text">Peter was calm, professional and completely prepared throughout the High Legh 10K. He arrived early, ran a solid pre-event briefing and the post-event report was exactly what we needed for our records. Will have him back without question.</div>
         <div class="testi-from">
           <div class="testi-name">Race Director</div>
-          <div class="testi-role">High Legh Running Events &middot; March 2026</div>
+          <div class="testi-role">High Legh 10K &middot; Cheshire &middot; March 2026</div>
         </div>
       </div>
 
       <div class="testi-card sr-item" style="transition-delay:.1s">
         <span class="testi-quote-mark">&ldquo;</span>
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">We had a serious cardiac incident involving an older spectator. Peter managed it calmly, administered medication, called 999 and handed over to the ambulance crew with full clinical notes already written. Exceptional.</div>
+        <div class="testi-text">Across a full competition day with 1,200 dancers and multiple patient contacts, Peter was outstanding. Every incident was handled calmly and professionally. His clinical documentation was thorough and his handovers were faultless. Exactly the cover a major dance festival needs.</div>
         <div class="testi-from">
-          <div class="testi-name">Events & Safety Manager</div>
-          <div class="testi-role">IDTA Dance Festivals &middot; March 2026</div>
+          <div class="testi-name">Events &amp; Safety Manager</div>
+          <div class="testi-role">IDTA Dance Festival &middot; Norbreck Castle, Blackpool &middot; March 2026</div>
         </div>
       </div>
 
       <div class="testi-card sr-item" style="transition-delay:.2s">
         <span class="testi-quote-mark">&ldquo;</span>
         <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">The first aid training Peter delivered was exactly right for our team — clear, practical, no talking down to people. Every delegate said they came away feeling genuinely more confident, not just certified.</div>
+        <div class="testi-text">Peter delivers internal first aid training for St John Ambulance that actually sticks. He understands the clinical detail and he knows how to teach it. Delegates come away confident, not just certificated. The scenarios he builds are realistic and directly useful on deployment.</div>
         <div class="testi-from">
-          <div class="testi-name">HR &amp; Training Coordinator</div>
-          <div class="testi-role">Corporate Client &middot; Lancashire &middot; 2025</div>
-        </div>
-      </div>
-
-      <div class="testi-card sr-item" style="transition-delay:.05s">
-        <span class="testi-quote-mark">&ldquo;</span>
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">Short-notice booking — our original provider cancelled two days before. Peter confirmed within the hour, arrived prepared with a full briefing document and ran a seamless medical operation. Genuinely saved the event.</div>
-        <div class="testi-from">
-          <div class="testi-name">Community Event Organiser</div>
-          <div class="testi-role">Blackburn &middot; 2025</div>
-        </div>
-      </div>
-
-      <div class="testi-card sr-item" style="transition-delay:.15s">
-        <span class="testi-quote-mark">&ldquo;</span>
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">As a fellow crew member I've worked alongside Peter on multiple deployments. His clinical judgement is solid, his documentation is immaculate, and junior crew genuinely learn from working with him. Exactly who you want as lead clinician.</div>
-        <div class="testi-from">
-          <div class="testi-name">SJA Crew Member</div>
-          <div class="testi-role">SJA North West &middot; Peer Endorsement</div>
-        </div>
-      </div>
-
-      <div class="testi-card sr-item" style="transition-delay:.25s">
-        <span class="testi-quote-mark">&ldquo;</span>
-        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <div class="testi-text">We run six events a year and now specifically request Peter for our highest-risk dates. The EAC level of cover makes a real difference — knowing he can administer medications and manage complex presentations independently means our team can focus on running the event.</div>
-        <div class="testi-from">
-          <div class="testi-name">Event Series Director</div>
-          <div class="testi-role">North West Events Ltd &middot; 2024&ndash;26</div>
+          <div class="testi-name">Training Lead</div>
+          <div class="testi-role">St John Ambulance &middot; North West &middot; Internal Training</div>
         </div>
       </div>
 
@@ -2725,6 +2657,162 @@ function ecgPoint(phase, period) {
   drawNavECG();
 })();
 
+
+// ── AMBULANCE ANIMATION ──
+(function () {
+  var canvas = document.getElementById('nav-amb-canvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var ambX = -120; // start off left
+  var speed = 0.55; // px per frame — slower than ECG
+  var lightFrame = 0;
+  var lightPhase = 0; // 0=left blue, 1=right blue, alternates
+
+  function resizeAmb() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+  }
+  resizeAmb();
+  window.addEventListener('resize', resizeAmb);
+
+  // Draw a stylised SJA box ambulance facing right
+  // w≈90px, h≈38px — scales relative to canvas height
+  function drawAmbulance(cx, scale) {
+    var H = canvas.height;
+    var W = canvas.width;
+    var s = scale || 1;
+    var aw = 92 * s; // ambulance width
+    var ah = 38 * s; // ambulance body height
+    var y0 = H - ah - 6 * s; // top of body
+    var wr = 5 * s; // wheel radius
+    var wy = y0 + ah; // wheel centre Y
+
+    ctx.save();
+    ctx.translate(cx, 0);
+
+    // ── Underbody / chassis ──
+    ctx.fillStyle = '#1a1a1a';
+    ctx.fillRect(4*s, y0+ah-3*s, aw-8*s, 5*s);
+
+    // ── Rear box body ──
+    ctx.fillStyle = '#006B3F';
+    ctx.fillRect(22*s, y0, aw-22*s, ah-2*s);
+
+    // ── Cab (front section) ──
+    // Windscreen angle — polygon
+    ctx.beginPath();
+    ctx.moveTo(4*s, wy-wr);         // front bottom
+    ctx.lineTo(4*s, y0+8*s);        // front mid
+    ctx.lineTo(10*s, y0);           // windscreen base
+    ctx.lineTo(22*s, y0);           // cab roof join
+    ctx.lineTo(22*s, wy-wr);        // cab rear bottom
+    ctx.closePath();
+    ctx.fillStyle = '#004d2c';
+    ctx.fill();
+
+    // ── Windscreen glass ──
+    ctx.beginPath();
+    ctx.moveTo(6*s, y0+9*s);
+    ctx.lineTo(11*s, y0+2*s);
+    ctx.lineTo(20*s, y0+2*s);
+    ctx.lineTo(20*s, y0+14*s);
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(180,220,255,0.35)';
+    ctx.fill();
+
+    // ── Side window (rear box) ──
+    ctx.fillStyle = 'rgba(180,220,255,0.2)';
+    ctx.fillRect(28*s, y0+4*s, 18*s, 10*s);
+
+    // ── Yellow/lime diagonal chevron strip (rear) ──
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(aw-22*s, y0, 22*s, ah-2*s);
+    ctx.clip();
+    var stripeW = 8*s;
+    ctx.fillStyle = '#ADFF2F';
+    for(var xi = -stripeW; xi < 30*s; xi += stripeW*2) {
+      ctx.beginPath();
+      ctx.moveTo(aw-22*s+xi,          y0);
+      ctx.lineTo(aw-22*s+xi+stripeW,  y0);
+      ctx.lineTo(aw-22*s+xi+stripeW*2,y0+ah-2*s);
+      ctx.lineTo(aw-22*s+xi+stripeW,  y0+ah-2*s);
+      ctx.closePath();
+      ctx.fill();
+    }
+    ctx.restore();
+
+    // ── White reflective band (side, mid height) ──
+    ctx.fillStyle = 'rgba(255,255,255,0.18)';
+    ctx.fillRect(22*s, y0+ah*0.42, aw-22*s, 4*s);
+
+    // ── "AMBULANCE" text reversed (mirror) ──
+    ctx.save();
+    ctx.scale(-1,1);
+    ctx.fillStyle = 'rgba(255,255,255,0.55)';
+    ctx.font = 'bold ' + Math.max(5, 5.5*s) + 'px Arial';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('AMBULANCE', -(aw-26*s), y0 + ah*0.22);
+    ctx.restore();
+
+    // ── SJA cross on rear ──
+    var cx2 = aw - 8*s, cy2 = y0 + ah*0.45;
+    var cs = 4*s;
+    ctx.fillStyle = 'rgba(255,255,255,0.7)';
+    ctx.fillRect(cx2-cs*0.35, cy2-cs, cs*0.7, cs*2);
+    ctx.fillRect(cx2-cs, cy2-cs*0.35, cs*2, cs*0.7);
+
+    // ── Light bar (roof) ──
+    ctx.fillStyle = '#333';
+    ctx.fillRect(10*s, y0-4*s, aw-14*s, 4*s);
+
+    // Flash: alternate left blue / right blue every 8 frames
+    var phase = Math.floor(lightFrame / 8) % 2;
+    // Left light
+    ctx.fillStyle = phase===0 ? '#1E90FF' : '#0a3060';
+    ctx.shadowColor = phase===0 ? '#1E90FF' : 'transparent';
+    ctx.shadowBlur  = phase===0 ? 8*s : 0;
+    ctx.fillRect(12*s, y0-4*s, 16*s, 4*s);
+    // Right light
+    ctx.fillStyle = phase===1 ? '#1E90FF' : '#0a3060';
+    ctx.shadowColor = phase===1 ? '#1E90FF' : 'transparent';
+    ctx.shadowBlur  = phase===1 ? 8*s : 0;
+    ctx.fillRect(aw-22*s, y0-4*s, 16*s, 4*s);
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = 'transparent';
+
+    // ── Wheels ──
+    [14*s, aw-14*s].forEach(function(wx) {
+      ctx.beginPath();
+      ctx.arc(wx, wy, wr, 0, Math.PI*2);
+      ctx.fillStyle = '#222';
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(wx, wy, wr*0.55, 0, Math.PI*2);
+      ctx.fillStyle = '#555';
+      ctx.fill();
+    });
+
+    ctx.restore();
+  }
+
+  function drawAmbFrame() {
+    var W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    var scale = Math.max(0.5, H / 52); // scale to nav height
+    drawAmbulance(ambX, scale);
+
+    ambX += speed;
+    var ambW = 92 * scale;
+    if (ambX > W + ambW) ambX = -ambW - 10;
+
+    lightFrame = (lightFrame + 1) % 16;
+    requestAnimationFrame(drawAmbFrame);
+  }
+  drawAmbFrame();
+})();
+
 // ── UPGRADE 3: TYPEWRITER ROLES ──
 (function () {
   var el = document.getElementById('tw-text');
@@ -3259,7 +3347,14 @@ window.toggleMed = function(card){
   if(!canvas) return;
   var ctx = canvas.getContext('2d');
   var tooltip = document.getElementById('cov-tooltip');
+  var dpr = window.devicePixelRatio || 1;
   var W = 400, H = 360;
+  // HiDPI — render at device resolution then scale down via CSS
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  canvas.style.width  = '100%';
+  canvas.style.height = 'auto';
+  ctx.scale(dpr, dpr);
   var animFrame = 0;
   var hovered = null;
 
@@ -3510,10 +3605,22 @@ var HB = {
   schedule: function() {
     if (!this.running || !this.ctx) return;
     var now = this.ctx.currentTime;
-    // Schedule up to 600ms ahead
     while (this.nextBeat < now + 0.6) {
-      if (this.nextBeat >= now) this.playBeat(this.nextBeat);
-      this.nextBeat += this.INTERVAL;
+      if (this.nextBeat >= now) {
+        this.playBeat(this.nextBeat);
+        this._beatCount++;
+        // Every 7-14 beats drift the tempo slightly
+        this._driftTimer--;
+        if (this._driftTimer <= 0) {
+          var base = 95 / (1.8 * 60);
+          var drift = (Math.random() - 0.5) * 0.18; // ±0.09s (±6bpm)
+          this._targetInterval = Math.max(base * 0.82, Math.min(base * 1.22, base + drift));
+          this._driftTimer = 7 + Math.floor(Math.random() * 8);
+        }
+        // Ease currentInterval toward target
+        this._currentInterval += (this._targetInterval - this._currentInterval) * 0.12;
+      }
+      this.nextBeat += this._currentInterval;
     }
     this.timer = setTimeout(function(){ HB.schedule(); }, 120);
   },
@@ -3532,6 +3639,38 @@ var HB = {
   }
 };
 
+// Auto-start sound on first user interaction
+(function() {
+  function tryStart() {
+    var btn = document.getElementById('hb-sound-btn');
+    var icon = document.getElementById('hb-sound-icon');
+    if (!HB.running) {
+      HB.start();
+      if (btn) btn.classList.add('active');
+      if (icon) icon.textContent = '🔊';
+    }
+    document.removeEventListener('click',    tryStart);
+    document.removeEventListener('touchstart', tryStart);
+    document.removeEventListener('keydown',  tryStart);
+  }
+  // Try immediately on load (works if user has interacted before)
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      if (HB.init() && HB.ctx && HB.ctx.state === 'running') {
+        HB.start();
+        var btn  = document.getElementById('hb-sound-btn');
+        var icon = document.getElementById('hb-sound-icon');
+        if (btn)  btn.classList.add('active');
+        if (icon) icon.textContent = '🔊';
+      } else {
+        document.addEventListener('click',     tryStart, { once: true });
+        document.addEventListener('touchstart',tryStart, { once: true });
+        document.addEventListener('keydown',   tryStart, { once: true });
+      }
+    }, 800);
+  });
+})();
+
 window.toggleHeartbeat = function() {
   var btn  = document.getElementById('hb-sound-btn');
   var icon = document.getElementById('hb-sound-icon');
@@ -3541,7 +3680,7 @@ window.toggleHeartbeat = function() {
     HB.stop();
     icon.textContent = '🔇';
     btn.classList.remove('active');
-    btn.setAttribute('aria-label', 'Enable heartbeat sound');
+    btn.setAttribute('aria-label', 'Disable heartbeat sound');
   } else {
     HB.start();
     icon.textContent = '🔊';
