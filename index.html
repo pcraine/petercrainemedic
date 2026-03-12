@@ -1207,26 +1207,6 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     </div>
   </section>
 
-  <div class="commend-strip">
-    <div class="commend-inner">
-      <span class="commend-icon">&#11088;</span>
-      <div class="commend-quote">&ldquo;Commissioner Commendation &mdash; awarded by St John Ambulance for outstanding operational service across the North West.&rdquo;</div>
-      <div class="commend-attr">SJA Commissioner &middot; St John Ambulance &middot; North West Region</div>
-    </div>
-  </div>
-
-  <div class="home-cta">
-    <h2>LET'S TALK</h2>
-    <p>Recruitment enquiry, training booking, or just want to know more &mdash; I reply fast.</p>
-    <div class="home-cta-btns">
-      <a class="btn btn-primary" onclick="showPage('contact');return false" href="#">Get In Touch</a>
-      <a class="btn btn-ghost" href="tel:07756831072">&#128241; 07756 831072</a>
-    </div>
-  </div>
-
-  
-
-
   <!-- ══ TESTIMONIALS ══ -->
   <section class="testimonials-section" aria-label="Testimonials and endorsements">
     <div class="section-eyebrow">What People Say</div>
@@ -1266,6 +1246,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
     </div>
   </section>
+
 
 <footer>
     <div class="footer-inner">
@@ -1345,7 +1326,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div class="sidebar-card" style="background:var(--ink);border-top-color:var(--g)">
           <div class="sc-title" style="color:white">Event Medical Cover — Coverage Area</div>
           <div style="position:relative;margin-bottom:12px">
-  <canvas id="coverage-canvas" width="400" height="360" style="width:100%;display:block;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map — North West England"></canvas>
+  <canvas id="coverage-canvas" style="display:block;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map — North West England"></canvas>
   <div class="cov-map-tooltip" id="cov-tooltip"></div>
 </div>
           <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gm)">Primary:</strong> North West England</div></div>
@@ -1760,7 +1741,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div class="stat-row"><span class="stat-key">EAC medications (scope)</span><span class="stat-val">19</span></div>
           <div class="stat-row"><span class="stat-key">Clinical competencies</span><span class="stat-val">210</span></div>
           <div class="stat-row"><span class="stat-key">Learners trained</span><span class="stat-val">200+</span></div>
-          <div class="stat-row"><span class="stat-key">Events covered</span><span class="stat-val">20+</span></div>
+          <div class="stat-row"><span class="stat-key">Events covered</span><span class="stat-val">75+</span></div>
           <div class="stat-row"><span class="stat-key">FREC 4 status</span><span class="stat-val" style="font-size:13px;color:var(--gold)">In Progress</span></div>
           <div class="stat-row"><span class="stat-key">DBS status</span><span class="stat-val" style="font-size:14px">&#10003; Current</span></div>
         </div>
@@ -2124,7 +2105,7 @@ function animateCounter(el, target, suffix) {
 
 // Run counters on page load (home is active by default)
 window.addEventListener('DOMContentLoaded', function(){
-  var depCount = countDeployments();
+  var depCount = Math.max(countDeployments(), 75);
   animateCounter(document.getElementById('ctr-events'), depCount, '+');
   setTimeout(function(){ animateCounter(document.getElementById('ctr-learners'), 200, '+'); }, 300);
 
@@ -3283,8 +3264,8 @@ window.toggleMed = function(card){
   // HiDPI — render at device resolution then scale down via CSS
   canvas.width  = W * dpr;
   canvas.height = H * dpr;
-  canvas.style.width  = '100%';
-  canvas.style.height = 'auto';
+  canvas.style.width  = W + 'px';
+  canvas.style.height = H + 'px';
   ctx.scale(dpr, dpr);
   var animFrame = 0;
   var hovered = null;
@@ -3535,6 +3516,12 @@ var HB = {
 
   schedule: function() {
     if (!this.running || !this.ctx) return;
+    // Resume if browser suspended context (autoplay policy / tab in background)
+    if (this.ctx.state === 'suspended') {
+      var self = this;
+      this.ctx.resume().then(function() { self.schedule(); });
+      return;
+    }
     var now = this.ctx.currentTime;
     while (this.nextBeat < now + 0.6) {
       if (this.nextBeat >= now) {
