@@ -313,7 +313,7 @@ body{font-family:var(--serif);background:var(--white);color:var(--ink);overflow-
 /* TICKER */
 #ticker{background:var(--g);overflow:hidden;height:36px;display:flex;align-items:center;position:relative;z-index:102}
 #ticker.hidden{display:none}
-.ticker-track{display:flex;white-space:nowrap;animation:ticker 32s linear infinite}
+.ticker-track{display:flex;white-space:nowrap;animation:ticker 120s linear infinite}
 .ticker-track:hover{animation-play-state:paused}
 .ticker-item{font-family:var(--mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.85);padding:0 48px;display:flex;align-items:center;gap:12px}
 .ticker-dot{width:7px;height:7px;background:white;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
@@ -689,13 +689,25 @@ body.dark-mode .news-card{background:var(--stone)}
 
 /* ── 1: HEARTBEAT LOGO ── */
 @keyframes hb-pulse {
-  0%,100%{transform:scale(1);filter:drop-shadow(0 0 3px rgba(0,166,81,.4))}
-  14%    {transform:scale(1.22);filter:drop-shadow(0 0 14px rgba(0,166,81,.9)) drop-shadow(0 0 28px rgba(0,107,63,.5))}
-  28%    {transform:scale(1)}
-  42%    {transform:scale(1.1);filter:drop-shadow(0 0 7px rgba(0,166,81,.6))}
-  56%    {transform:scale(1)}
+  /* Resting */
+  0%   {transform:scale(1);    filter:drop-shadow(0 0 3px rgba(0,166,81,.3))}
+  /* S1 — lub — QRS / mitral+tricuspid valve closure */
+  8%   {transform:scale(1.28); filter:drop-shadow(0 0 18px rgba(0,166,81,1)) drop-shadow(0 0 36px rgba(0,107,63,.65))}
+  18%  {transform:scale(0.97); filter:drop-shadow(0 0 4px rgba(0,166,81,.3))}
+  /* S2 — dub — aortic+pulmonary valve closure (~275ms after S1) */
+  33%  {transform:scale(1.13); filter:drop-shadow(0 0 10px rgba(0,166,81,.7))}
+  43%  {transform:scale(1.0);  filter:drop-shadow(0 0 3px rgba(0,166,81,.3))}
+  /* Diastole — quiescent until next beat */
+  100% {transform:scale(1);    filter:drop-shadow(0 0 3px rgba(0,166,81,.3))}
 }
-.nav-cross{animation:hb-pulse 1.35s ease-in-out infinite;transform-origin:center center}
+  8%       {transform:scale(1.04);filter:drop-shadow(0 0 5px rgba(0,166,81,.5))}
+  11%      {transform:scale(1.23);filter:drop-shadow(0 0 16px rgba(0,166,81,.95)) drop-shadow(0 0 32px rgba(0,107,63,.55))}
+  20%      {transform:scale(1.0); filter:drop-shadow(0 0 4px rgba(0,166,81,.35))}
+  31%      {transform:scale(1.03);filter:drop-shadow(0 0 5px rgba(0,166,81,.45))}
+  35%      {transform:scale(1.11);filter:drop-shadow(0 0 9px rgba(0,166,81,.7))}
+  44%,100% {transform:scale(1);   filter:drop-shadow(0 0 3px rgba(0,166,81,.35))}
+}
+.nav-cross{animation:hb-pulse 0.833s ease-out infinite;transform-origin:center center}
 #nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55}
 
 /* ── 3: TYPEWRITER ── */
@@ -1024,6 +1036,17 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .faq-a-full{font-size:13px;color:rgba(255,255,255,.5);line-height:1.85;padding:0 0 16px 30px;font-style:italic}
 .faq-a-full strong{color:rgba(255,255,255,.75);font-style:normal}
 
+
+/* ══ HEARTBEAT SOUND TOGGLE ══ */
+.nav-sound-btn{
+  background:none;border:1px solid rgba(0,107,63,.25);
+  border-radius:3px;padding:4px 8px;cursor:pointer;
+  font-size:13px;line-height:1;transition:border-color .2s,background .2s;
+  margin-right:6px;display:flex;align-items:center;
+}
+.nav-sound-btn:hover{border-color:rgba(0,166,81,.5);background:rgba(0,107,63,.1)}
+.nav-sound-btn.active{border-color:var(--gm);background:rgba(0,107,63,.15)}
+
 </style>
 </head>
 <body>
@@ -1062,6 +1085,9 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <a onclick="showPage('contact');return false" id="nav-contact" class="nav-cta-link" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('contact')">Contact</a>
   </div>
   <div class="nav-right">
+      <button id="hb-sound-btn" class="nav-sound-btn" aria-label="Enable heartbeat sound" title="Toggle heartbeat sound" onclick="toggleHeartbeat()">
+        <span id="hb-sound-icon" aria-hidden="true">🔇</span>
+      </button>
     <div class="nav-avail"><div class="nav-avail-dot"></div>Available</div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -2632,16 +2658,33 @@ function startJfEcg() {
 // ── ECG WAVEFORM GENERATOR (shared) ──
 function ecgPoint(phase, period) {
   var t = ((phase % period) + period) % period / period;
-  if (t < 0.08) return 0;
-  if (t < 0.13) return t < 0.105 ? -(t - 0.08) * 5 : (t - 0.105) * 8;
-  if (t < 0.18) return 0;
-  if (t < 0.20) return (t - 0.18) * 65;
-  if (t < 0.24) return -(t - 0.20) * 90 + 1.3;
-  if (t < 0.28) return (t - 0.24) * 42 - 2.3;
-  if (t < 0.32) return -(t - 0.28) * 28 + 0.38;
-  if (t < 0.38) return t < 0.35 ? (t - 0.32) * 4 : -(t - 0.35) * 3 + 0.09;
-  if (t < 0.52) return t < 0.46 ? (t - 0.38) * 2.5 : -(t - 0.46) * 2.5 + 0.2;
-  return 0;
+  var v = 0;
+  // P wave — gentle rounded hump (atrial depolarisation)
+  if (t > 0.05 && t < 0.13) {
+    v += 0.17 * Math.sin(Math.PI * (t - 0.05) / 0.08);
+  }
+  // PR segment — flat isoelectric (AV node delay) [0.13–0.20]
+  // Q — small sharp downward deflection
+  if (t > 0.20 && t < 0.225) {
+    v -= 0.14 * Math.sin(Math.PI * (t - 0.20) / 0.025);
+  }
+  // R — dominant tall sharp spike (ventricular depolarisation)
+  if (t > 0.225 && t < 0.27) {
+    v += 1.0 * Math.sin(Math.PI * (t - 0.225) / 0.045);
+  }
+  // S — brief dip below baseline
+  if (t > 0.27 && t < 0.31) {
+    v -= 0.20 * Math.sin(Math.PI * (t - 0.27) / 0.04);
+  }
+  // ST segment — flat isoelectric (ventricular plateau) [0.31–0.40]
+  // T wave — broad asymmetric hump (ventricular repolarisation)
+  if (t > 0.40 && t < 0.57) {
+    // Asymmetric: slow rise, faster fall — clinically accurate
+    var tp = (t - 0.40) / 0.17;
+    v += 0.32 * Math.sin(Math.PI * Math.pow(tp, 0.75));
+  }
+  // TP interval — flat baseline [0.57–1.0]
+  return v;
 }
 
 // ── UPGRADE 1: NAV HEARTBEAT ECG TRACE ──
@@ -2649,7 +2692,7 @@ function ecgPoint(phase, period) {
   var canvas = document.getElementById('nav-ecg-canvas');
   if (!canvas) return;
   var ctx = canvas.getContext('2d');
-  var offset = 0, period = 130;
+  var offset = 0, period = 72;
 
   function resizeNavECG() {
     canvas.width = canvas.offsetWidth;
@@ -2669,7 +2712,14 @@ function ecgPoint(phase, period) {
       x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
     }
     ctx.stroke();
-    offset = (offset + 1.4) % period;
+    // Sync to audio when HB is running — drives exact beat-to-pixel alignment
+    if (window.HB && HB.running && window._hbBeatNow !== undefined) {
+      var elapsed = (performance.now() - _hbBeatNow) / 1000;
+      var fraction = (elapsed % HB.INTERVAL) / HB.INTERVAL;
+      offset = fraction * period;
+    } else {
+      offset = (offset + 1.44) % period; // free-scroll at 72 BPM rate
+    }
     requestAnimationFrame(drawNavECG);
   }
   drawNavECG();
@@ -3041,7 +3091,7 @@ function ecgPoint(phase, period) {
   var canvas = document.getElementById('loader-ecg');
   if(canvas){
     var ctx = canvas.getContext('2d');
-    var off = 0, W = 280, H = 52, period = 90, amp = 18;
+    var off = 0, W = 280, H = 52, period = 95, amp = 18;
     function drawLoaderEcg(){
       ctx.clearRect(0,0,W,H);
       ctx.beginPath();
@@ -3368,6 +3418,156 @@ window.toggleMed = function(card){
   });
 
   draw();
+})();
+</script>
+
+
+<script>
+// ══════════════════════════════════════════════════════════════════
+// HEARTBEAT SOUND — Web Audio synthesis, lub-dub in time with ECG
+// Beat interval matches nav ECG: period=95px, speed=1.8px/frame @60fps
+// 95 / (1.8 * 60) = 0.8796s per beat = 68.2 bpm
+// ══════════════════════════════════════════════════════════════════
+var HB = {
+  ctx:      null,
+  running:  false,
+  nextBeat: 0,
+  timer:    null,
+  INTERVAL: 60 / 72,            // 0.833s — 72 BPM normal resting HR
+  VOLUME:   0.32,               // subtle — adjustable 0.0–1.0
+
+  init: function() {
+    if (this.ctx) return true;
+    try {
+      this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+      return true;
+    } catch(e) { return false; }
+  },
+
+  // Synthesise one lub-dub pair
+  // S1 (lub) — low, longer; S2 (dub) — slightly higher, shorter, 310ms later
+  playBeat: function(t) {
+    var ctx = this.ctx, vol = this.VOLUME;
+    if (!ctx) return;
+
+    function thump(startT, freq1, freq2, dur, gain) {
+      var osc  = ctx.createOscillator();
+      var filt = ctx.createBiquadFilter();
+      var env  = ctx.createGain();
+      // Pitch slides down (gives that "thud" quality)
+      filt.type = 'lowpass';
+      filt.frequency.value = 120;
+      filt.Q.value = 0.8;
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq1, startT);
+      osc.frequency.exponentialRampToValueAtTime(freq2, startT + dur * 0.8);
+      // Envelope: fast attack, exponential decay
+      env.gain.setValueAtTime(0.001, startT);
+      env.gain.linearRampToValueAtTime(gain, startT + 0.012);
+      env.gain.exponentialRampToValueAtTime(0.001, startT + dur);
+      osc.connect(filt);
+      filt.connect(env);
+      env.connect(ctx.destination);
+      osc.start(startT);
+      osc.stop(startT + dur + 0.02);
+
+      // Second harmonic for body (makes it sound less electronic)
+      var osc2 = ctx.createOscillator();
+      var env2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(freq1 * 1.6, startT);
+      osc2.frequency.exponentialRampToValueAtTime(freq2 * 1.4, startT + dur * 0.5);
+      env2.gain.setValueAtTime(0.001, startT);
+      env2.gain.linearRampToValueAtTime(gain * 0.35, startT + 0.008);
+      env2.gain.exponentialRampToValueAtTime(0.001, startT + dur * 0.6);
+      osc2.connect(filt);
+      env2.connect(ctx.destination);
+      osc2.start(startT);
+      osc2.stop(startT + dur);
+    }
+
+    // S1 — lub — QRS / mitral+tricuspid valve closure
+    thump(t,        36, 20, 0.14, vol);
+    // S2 — dub — aortic+pulmonary closure, 275ms after S1
+    thump(t + 0.275, 52, 30, 0.09, vol * 0.65);
+
+    // Sync: drive ECG position + nav-cross from audio clock
+    var delay = Math.max(0, t - (this.ctx ? this.ctx.currentTime : 0));
+    setTimeout(function() {
+      window._hbBeatNow = performance.now();
+      var cross = document.querySelector('.nav-cross');
+      if (cross) {
+        cross.style.animation = 'none';
+        void cross.offsetWidth;
+        cross.style.animation = 'hb-pulse 0.833s ease-out 1';
+        setTimeout(function() {
+          cross.style.animation = 'hb-pulse 0.833s ease-out infinite';
+        }, 840);
+      }
+    }, delay * 1000);
+  },
+
+  schedule: function() {
+    if (!this.running || !this.ctx) return;
+    var now = this.ctx.currentTime;
+    // Schedule up to 600ms ahead
+    while (this.nextBeat < now + 0.6) {
+      if (this.nextBeat >= now) this.playBeat(this.nextBeat);
+      this.nextBeat += this.INTERVAL;
+    }
+    this.timer = setTimeout(function(){ HB.schedule(); }, 120);
+  },
+
+  start: function() {
+    if (!this.init()) return;
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+    this.running  = true;
+    this.nextBeat = this.ctx.currentTime + 0.05;
+    this.schedule();
+  },
+
+  stop: function() {
+    this.running = false;
+    if (this.timer) { clearTimeout(this.timer); this.timer = null; }
+  }
+};
+
+window.toggleHeartbeat = function() {
+  var btn  = document.getElementById('hb-sound-btn');
+  var icon = document.getElementById('hb-sound-icon');
+  if (!btn) return;
+
+  if (HB.running) {
+    HB.stop();
+    icon.textContent = '🔇';
+    btn.classList.remove('active');
+    btn.setAttribute('aria-label', 'Enable heartbeat sound');
+  } else {
+    HB.start();
+    icon.textContent = '🔊';
+    btn.classList.add('active');
+    btn.setAttribute('aria-label', 'Disable heartbeat sound');
+  }
+};
+
+// Auto-start heartbeat sound on first user interaction
+// (browsers block AudioContext until gesture — this is the correct pattern)
+(function() {
+  var hbReady = false;
+  function onFirstGesture() {
+    if (hbReady) return;
+    hbReady = true;
+    ['click','keydown','touchstart','scroll'].forEach(function(ev) {
+      document.removeEventListener(ev, onFirstGesture);
+    });
+    // Short delay so page has settled, then start quietly
+    setTimeout(function() {
+      if (!HB.running) toggleHeartbeat();
+    }, 1200);
+  }
+  ['click','keydown','touchstart','scroll'].forEach(function(ev) {
+    document.addEventListener(ev, onFirstGesture, { passive: true });
+  });
 })();
 </script>
 
