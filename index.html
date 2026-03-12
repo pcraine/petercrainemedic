@@ -635,7 +635,7 @@ footer{background:var(--ink);border-top:2px solid var(--g);padding:40px}
 /* PRINT */
 @media print{
   #ticker,nav,#tap-call,#scroll-top,.hero-btns,.hero-photo-badge,.hamburger,.social-strip{display:none!important}
-  .page{display:block!important;min-height:auto!important}
+  .page{display:none!important}.page.active{display:block!important;min-height:auto!important}
   body{background:white;color:black;font-size:11pt;font-family:Arial,sans-serif}
   .page-hero,.hero,.trust-strip,.commend-strip,.home-cta{background:#004D2C!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .page-h1,.hero-name,.hero-name .surname{color:#006B3F!important}
