@@ -343,8 +343,8 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 @media(max-width:860px){.nav-center{display:none;flex-direction:column;position:fixed;top:60px;left:0;right:0;background:rgba(10,15,12,.98);padding:20px;gap:4px;border-bottom:1px solid rgba(0,107,63,.3)}.nav-center.open{display:flex}.hamburger{display:flex}.nav-avail{display:none}nav{padding:0 20px}}
 
 /* PAGE SYSTEM */
-.page{display:none;min-height:calc(100vh - 60px)}
-.page.active{display:block;animation:fadeUp .3s ease}
+.page{display:none!important;min-height:calc(100vh - 60px);height:0;overflow:hidden}
+.page.active{display:block!important;height:auto!important;overflow:visible!important;animation:fadeUp .3s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 
 /* BUTTONS */
@@ -706,7 +706,6 @@ body.dark-mode .news-card{background:var(--stone)}
   31%      {transform:scale(1.03);filter:drop-shadow(0 0 5px rgba(0,166,81,.45))}
   35%      {transform:scale(1.11);filter:drop-shadow(0 0 9px rgba(0,166,81,.7))}
   44%,100% {transform:scale(1);   filter:drop-shadow(0 0 3px rgba(0,166,81,.35))}
-}
 .nav-cross{animation:hb-pulse 0.833s ease-out infinite;transform-origin:center center}
 #nav-amb-canvas{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:100%;pointer-events:none;opacity:.38;z-index:0}
 #nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55;z-index:1}
@@ -984,9 +983,9 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 /* ══ 6. INTERACTIVE COVERAGE MAP ══ */
 .coverage-section-full{padding:52px 0;border-top:1px solid rgba(0,107,63,.15)}
-.coverage-layout{display:grid;grid-template-columns:1fr 340px;gap:40px;padding:0 40px;align-items:start}
+.coverage-layout{display:grid;grid-template-columns:1fr 280px;gap:32px;padding:0 40px;align-items:start}
 .coverage-map-wrap{position:relative;background:#060f08;border:1px solid rgba(0,107,63,.25);overflow:hidden}
-.coverage-map-wrap canvas{display:block;width:100%}
+.coverage-map-wrap canvas{display:block;width:100%;height:auto}
 .coverage-map-legend{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap}
 .cml-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
 .cml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
@@ -1248,17 +1247,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   </section>
 
 
-<footer>
-    <div class="footer-inner">
-      <div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div>
-      <div class="footer-center">petercrainemedic.co.uk &middot; Blackburn, Lancashire<br>peter.craine&#64;me.com &middot; 07756 831072</div>
-      <div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3<br>Enhanced DBS Current</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div>
-    </div>
-  </footer>
+
 </div>
 
 <!-- ══ ABOUT ══ -->
-<div class="page" id="page-about">
+<div class="page" id="page-about" style="display:none">
   <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Background &amp; Experience</div>
@@ -1326,7 +1319,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div class="sidebar-card" style="background:var(--ink);border-top-color:var(--g)">
           <div class="sc-title" style="color:white">Event Medical Cover — Coverage Area</div>
           <div style="position:relative;margin-bottom:12px">
-  <canvas id="coverage-canvas" style="display:block;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map — North West England"></canvas>
+  <canvas id="coverage-canvas" style="display:block;width:100%;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map — North West England"></canvas>
   <div class="cov-map-tooltip" id="cov-tooltip"></div>
 </div>
           <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gm)">Primary:</strong> North West England</div></div>
@@ -1356,11 +1349,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       </div>
     </div>
   </div>
-  <footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
+  
 </div>
 
 <!-- ══ ON DEPLOYMENT ══ -->
-<div class="page" id="page-services">
+<div class="page" id="page-services" style="display:none">
   <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Clinical Reality</div>
@@ -1592,11 +1585,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   </section>
 
 
-<footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
+
 </div>
 
 <!-- ══ QUALIFICATIONS ══ -->
-<div class="page" id="page-quals">
+<div class="page" id="page-quals" style="display:none">
   <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Credentials &amp; Clinical Scope</div>
@@ -1818,11 +1811,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     </div>
   </section>
 
-<footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
+
 </div>
 
 <!-- ══ CONTACT ══ -->
-<div class="page" id="page-contact">
+<div class="page" id="page-contact" style="display:none">
   <div class="page-hero sr-item-left">
     <div class="page-hero-inner">
       <div class="page-eyebrow">Get In Touch</div>
@@ -1882,11 +1875,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       </div>
     </div>
   </div>
-  <footer><div class="footer-inner"><div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div><div class="footer-center">petercrainemedic.co.uk &middot; Blackburn<br>peter.craine&#64;me.com &middot; 07756 831072</div><div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div></div></footer>
+  
 </div>
 
 <!-- ══ JOURNAL ══ -->
-<div class="page" id="page-journal">
+<div class="page" id="page-journal" style="display:none">
 
   <!-- Index view -->
   <div id="journal-index-view">
@@ -1984,7 +1977,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 
 <!-- ══ 404 PAGE ══ -->
-<div class="page" id="page-404">
+<div class="page" id="page-404" style="display:none">
   <div class="page-404">
     <div class="err-code">404</div>
     <div class="err-content">
@@ -2063,19 +2056,23 @@ var FREC4_PROGRESS = 35; // UPDATE THIS: percentage complete (0-100)
 
 // ── NAV ──
 function showPage(id) {
-  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  // Hide ALL pages — both inline style and class
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.remove('active');
+    p.style.display = 'none';
+  });
   document.querySelectorAll('.nav-center a').forEach(function(a){ a.classList.remove('active'); });
+  // Show target page
   var page = document.getElementById('page-' + id);
-  if(page) page.classList.add('active');
+  if (page) {
+    page.classList.add('active');
+    page.style.display = 'block';
+  }
   var navLink = document.getElementById('nav-' + id);
-  if(navLink) navLink.classList.add('active');
-  window.scrollTo({top:0, behavior:'instant'});
-  document.getElementById('navLinks').classList.remove('open');
-  if(id === 'quals') {
-    setTimeout(function(){
-      var b = document.getElementById('frec4Bar');
-      if(b) b.style.width = FREC4_PROGRESS + '%';
-    }, 400);
+  if (navLink) navLink.classList.add('active');
+  window.scrollTo(0, 0);
+  if (id === 'quals') {
+    setTimeout(function(){ var b=document.getElementById('frec4Bar'); if(b) b.style.width = FREC4_PROGRESS+'%'; }, 400);
   }
 }
 
@@ -2105,6 +2102,10 @@ function animateCounter(el, target, suffix) {
 
 // Run counters on page load (home is active by default)
 window.addEventListener('DOMContentLoaded', function(){
+  // INIT: force-hide all pages, show only home
+  document.querySelectorAll('.page').forEach(function(p){ p.style.display='none'; });
+  var ph=document.getElementById('page-home'); if(ph){ph.style.display='block';}
+
   var depCount = Math.max(countDeployments(), 75);
   animateCounter(document.getElementById('ctr-events'), depCount, '+');
   setTimeout(function(){ animateCounter(document.getElementById('ctr-learners'), 200, '+'); }, 300);
@@ -3051,14 +3052,7 @@ function ecgPoint(phase, period) {
 })();
 
 
-// ── HASH ROUTING (404 fallback) ──
-(function(){
-  var hash = window.location.hash.replace('#','');
-  var valid = ['home','about','services','quals','journal','contact'];
-  if(hash && valid.indexOf(hash) !== -1){
-    showPage(hash);
-  }
-})();
+// hash routing removed
 </script>
 
 <script>
@@ -3259,13 +3253,13 @@ window.toggleMed = function(card){
   if(!canvas) return;
   var ctx = canvas.getContext('2d');
   var tooltip = document.getElementById('cov-tooltip');
+  // Fixed internal buffer — CSS width:100% scales display, no inline style override
   var dpr = window.devicePixelRatio || 1;
-  var W = 400, H = 360;
-  // HiDPI — render at device resolution then scale down via CSS
+  var W = 600, H = 540;
   canvas.width  = W * dpr;
   canvas.height = H * dpr;
-  canvas.style.width  = W + 'px';
-  canvas.style.height = H + 'px';
+  canvas.style.width  = '';
+  canvas.style.height = '';
   ctx.scale(dpr, dpr);
   var animFrame = 0;
   var hovered = null;
@@ -3440,8 +3434,8 @@ var HB = {
   running:  false,
   nextBeat: 0,
   timer:    null,
-  INTERVAL: 60 / 72,            // 0.833s — 72 BPM normal resting HR
-  VOLUME:   0.32,               // subtle — adjustable 0.0–1.0
+  INTERVAL: 60 / 72,
+  VOLUME:   0.28,
 
   init: function() {
     if (this.ctx) return true;
@@ -3451,97 +3445,47 @@ var HB = {
     } catch(e) { return false; }
   },
 
-  // Synthesise one lub-dub pair
-  // S1 (lub) — low, longer; S2 (dub) — slightly higher, shorter, 310ms later
   playBeat: function(t) {
     var ctx = this.ctx, vol = this.VOLUME;
     if (!ctx) return;
-
-    function thump(startT, freq1, freq2, dur, gain) {
-      var osc  = ctx.createOscillator();
+    function thump(startT, f1, f2, dur, gain) {
+      var osc = ctx.createOscillator();
       var filt = ctx.createBiquadFilter();
-      var env  = ctx.createGain();
-      // Pitch slides down (gives that "thud" quality)
-      filt.type = 'lowpass';
-      filt.frequency.value = 120;
-      filt.Q.value = 0.8;
+      var env = ctx.createGain();
+      filt.type = 'lowpass'; filt.frequency.value = 120; filt.Q.value = 0.8;
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(freq1, startT);
-      osc.frequency.exponentialRampToValueAtTime(freq2, startT + dur * 0.8);
-      // Envelope: fast attack, exponential decay
+      osc.frequency.setValueAtTime(f1, startT);
+      osc.frequency.exponentialRampToValueAtTime(f2, startT + dur * 0.8);
       env.gain.setValueAtTime(0.001, startT);
       env.gain.linearRampToValueAtTime(gain, startT + 0.012);
       env.gain.exponentialRampToValueAtTime(0.001, startT + dur);
-      osc.connect(filt);
-      filt.connect(env);
-      env.connect(ctx.destination);
-      osc.start(startT);
-      osc.stop(startT + dur + 0.02);
-
-      // Second harmonic for body (makes it sound less electronic)
-      var osc2 = ctx.createOscillator();
-      var env2 = ctx.createGain();
-      osc2.type = 'sine';
-      osc2.frequency.setValueAtTime(freq1 * 1.6, startT);
-      osc2.frequency.exponentialRampToValueAtTime(freq2 * 1.4, startT + dur * 0.5);
-      env2.gain.setValueAtTime(0.001, startT);
-      env2.gain.linearRampToValueAtTime(gain * 0.35, startT + 0.008);
-      env2.gain.exponentialRampToValueAtTime(0.001, startT + dur * 0.6);
-      osc2.connect(filt);
-      env2.connect(ctx.destination);
-      osc2.start(startT);
-      osc2.stop(startT + dur);
+      osc.connect(filt); filt.connect(env); env.connect(ctx.destination);
+      osc.start(startT); osc.stop(startT + dur + 0.02);
     }
-
-    // S1 — lub — QRS / mitral+tricuspid valve closure
-    thump(t,        36, 20, 0.14, vol);
-    // S2 — dub — aortic+pulmonary closure, 275ms after S1
+    thump(t,         36, 20, 0.14, vol);
     thump(t + 0.275, 52, 30, 0.09, vol * 0.65);
-
-    // Sync: drive ECG position + nav-cross from audio clock
-    var delay = Math.max(0, t - (this.ctx ? this.ctx.currentTime : 0));
+    var delay = Math.max(0, t - ctx.currentTime) * 1000;
     setTimeout(function() {
       window._hbBeatNow = performance.now();
       var cross = document.querySelector('.nav-cross');
       if (cross) {
         cross.style.animation = 'none';
         void cross.offsetWidth;
-        cross.style.animation = 'hb-pulse 0.833s ease-out 1';
-        setTimeout(function() {
-          cross.style.animation = 'hb-pulse 0.833s ease-out infinite';
-        }, 840);
+        cross.style.animation = 'hb-pulse 0.833s ease-out infinite';
       }
-    }, delay * 1000);
+    }, delay);
   },
 
   schedule: function() {
     if (!this.running || !this.ctx) return;
-    // If suspended, kick a resume — but DO NOT return; keep the timeout loop alive
-    if (this.ctx.state === 'suspended') {
-      this.ctx.resume();
+    if (this.ctx.state === 'suspended') this.ctx.resume();
+    var now = this.ctx.currentTime;
+    if (this.nextBeat < now) this.nextBeat = now + 0.05;
+    while (this.nextBeat < now + 0.6) {
+      this.playBeat(this.nextBeat);
+      this.nextBeat += this.INTERVAL;
     }
-    if (this.ctx.state === 'running') {
-      var now = this.ctx.currentTime;
-      // If nextBeat has fallen far behind (tab was hidden etc.), reset it
-      if (this.nextBeat < now - 2) { this.nextBeat = now + 0.05; }
-      while (this.nextBeat < now + 0.6) {
-        if (this.nextBeat >= now) {
-          this.playBeat(this.nextBeat);
-          this._beatCount++;
-          this._driftTimer--;
-          if (this._driftTimer <= 0) {
-            var base = 95 / (1.8 * 60);
-            var drift = (Math.random() - 0.5) * 0.18;
-            this._targetInterval = Math.max(base * 0.82, Math.min(base * 1.22, base + drift));
-            this._driftTimer = 7 + Math.floor(Math.random() * 8);
-          }
-          this._currentInterval += (this._targetInterval - this._currentInterval) * 0.12;
-        }
-        this.nextBeat += this._currentInterval;
-      }
-    }
-    // Always reschedule — loop never dies
-    this.timer = setTimeout(function(){ HB.schedule(); }, 100);
+    this.timer = setTimeout(function() { HB.schedule(); }, 100);
   },
 
   start: function() {
@@ -3558,35 +3502,23 @@ var HB = {
   }
 };
 
-// Auto-start sound on first user interaction
+// Heartbeat ON by default — starts on first user gesture (browser policy)
 (function() {
-  function tryStart() {
-    var btn = document.getElementById('hb-sound-btn');
+  var started = false;
+  function startHB() {
+    if (started) return;
+    started = true;
+    ['click','touchstart','keydown','scroll'].forEach(function(ev){
+      document.removeEventListener(ev, startHB);
+    });
+    HB.start();
+    var btn  = document.getElementById('hb-sound-btn');
     var icon = document.getElementById('hb-sound-icon');
-    if (!HB.running) {
-      HB.start();
-      if (btn) btn.classList.add('active');
-      if (icon) icon.textContent = '🔊';
-    }
-    document.removeEventListener('click',    tryStart);
-    document.removeEventListener('touchstart', tryStart);
-    document.removeEventListener('keydown',  tryStart);
+    if (btn)  btn.classList.add('active');
+    if (icon) icon.textContent = '🔊';
   }
-  // Try immediately on load (works if user has interacted before)
-  window.addEventListener('load', function() {
-    setTimeout(function() {
-      if (HB.init() && HB.ctx && HB.ctx.state === 'running') {
-        HB.start();
-        var btn  = document.getElementById('hb-sound-btn');
-        var icon = document.getElementById('hb-sound-icon');
-        if (btn)  btn.classList.add('active');
-        if (icon) icon.textContent = '🔊';
-      } else {
-        document.addEventListener('click',     tryStart, { once: true });
-        document.addEventListener('touchstart',tryStart, { once: true });
-        document.addEventListener('keydown',   tryStart, { once: true });
-      }
-    }, 800);
+  ['click','touchstart','keydown','scroll'].forEach(function(ev){
+    document.addEventListener(ev, startHB, { once: false, passive: true });
   });
 })();
 
@@ -3608,26 +3540,16 @@ window.toggleHeartbeat = function() {
   }
 };
 
-// Auto-start heartbeat sound on first user interaction
-// (browsers block AudioContext until gesture — this is the correct pattern)
-(function() {
-  var hbReady = false;
-  function onFirstGesture() {
-    if (hbReady) return;
-    hbReady = true;
-    ['click','keydown','touchstart','scroll'].forEach(function(ev) {
-      document.removeEventListener(ev, onFirstGesture);
-    });
-    // Short delay so page has settled, then start quietly
-    setTimeout(function() {
-      if (!HB.running) toggleHeartbeat();
-    }, 1200);
-  }
-  ['click','keydown','touchstart','scroll'].forEach(function(ev) {
-    document.addEventListener(ev, onFirstGesture, { passive: true });
-  });
-})();
+
 </script>
 
+
+<footer>
+    <div class="footer-inner">
+      <div class="footer-brand">PETER <span>CRAINE</span> MEDIC</div>
+      <div class="footer-center">petercrainemedic.co.uk &middot; Blackburn, Lancashire<br>peter.craine&#64;me.com &middot; 07756 831072</div>
+      <div class="footer-right"><p>FREC 3 &middot; CTLLS L4 &middot; CERAD L3<br>Enhanced DBS Current</p><div class="footer-socials"><a href="https://linkedin.com/in/peter-craine" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://tiktok.com/@petercrainemedic" target="_blank" rel="noopener noreferrer">TikTok</a></div></div>
+    </div>
+  </footer>
 </body>
 </html>
