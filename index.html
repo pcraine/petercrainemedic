@@ -1252,6 +1252,107 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .active-dot-a{background:var(--amber)}
 .active-row-label{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.5);flex:1;letter-spacing:.5px}
 .active-row-val{font-family:var(--mono);font-size:9px;font-weight:700;color:rgba(255,255,255,.85)}
+
+/* ── INTERVIEW BADGE + HERO CTA ──────────────────── */
+.interview-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(90deg,rgba(0,107,63,.2),rgba(0,107,63,.1));border:1px solid rgba(0,166,81,.45);border-radius:4px;padding:9px 18px;margin:10px 0 6px;cursor:pointer;text-decoration:none;transition:.2s}
+.interview-badge:hover{background:rgba(0,107,63,.28);border-color:var(--gm)}
+.ib-dot{width:9px;height:9px;border-radius:50%;background:var(--gm);flex-shrink:0;animation:otw-blink 1.3s ease-in-out infinite}
+.ib-text{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.9);text-transform:uppercase}
+.ib-arrow{font-family:var(--mono);font-size:10px;color:var(--gm)}
+
+/* ── GOVERNANCE PANEL ────────────────────────────── */
+.gov-panel{background:rgba(0,107,63,.05);border:1px solid rgba(0,107,63,.2);border-radius:4px;padding:14px;margin-bottom:16px}
+.gov-panel-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--gm);text-transform:uppercase;margin-bottom:12px}
+.gov-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.gov-cell{background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.18);border-radius:3px;padding:9px 8px;text-align:center}
+.gov-cell-label{font-family:var(--mono);font-size:6px;letter-spacing:1px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:3px}
+.gov-cell-val{font-family:var(--mono);font-size:8px;color:var(--gm);font-weight:700;letter-spacing:1px}
+
+/* ── WHAT I BRING PANEL ──────────────────────────── */
+.bring-panel{margin:0 0 32px;padding:24px;background:linear-gradient(135deg,rgba(0,107,63,.06),rgba(0,107,63,.02));border:1px solid rgba(0,107,63,.2);border-radius:4px}
+.bring-title{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--gm);text-transform:uppercase;margin-bottom:20px}
+.bring-item{display:flex;align-items:flex-start;gap:12px;margin-bottom:16px}
+.bring-item:last-child{margin-bottom:0}
+.bring-icon{font-size:20px;flex-shrink:0;margin-top:1px;line-height:1}
+.bring-body{}
+.bring-item-title{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.85);letter-spacing:1px;margin-bottom:3px}
+.bring-item-desc{font-size:12px;color:rgba(255,255,255,.45);line-height:1.7}
+
+/* ── REFERENCES PANEL ────────────────────────────── */
+.ref-panel{background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.15);border-radius:4px;padding:14px;margin-bottom:16px}
+.ref-panel-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--gm);text-transform:uppercase;margin-bottom:10px}
+.ref-item-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(0,107,63,.1)}
+.ref-item-row:last-child{border-bottom:none;padding-bottom:0}
+.ref-icon-sm{font-size:14px;flex-shrink:0}
+.ref-details{flex:1}
+.ref-role-txt{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.6);letter-spacing:.5px}
+.ref-org-txt{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.3);letter-spacing:1px;margin-top:1px}
+.ref-avail-badge{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:var(--gm);background:rgba(0,107,63,.1);border:1px solid rgba(0,107,63,.25);border-radius:3px;padding:2px 6px;white-space:nowrap}
+.ref-note{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.25);letter-spacing:.5px;margin-top:8px;font-style:italic}
+
+/* ── CAREER TIMELINE ─────────────────────────────── */
+.career-timeline{margin:32px 0;position:relative}
+.career-timeline-title{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--gm);text-transform:uppercase;margin-bottom:24px}
+.ct-track{position:relative;padding-left:28px}
+.ct-track::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:1px;background:linear-gradient(180deg,var(--g),rgba(0,107,63,.1))}
+.ct-item{position:relative;margin-bottom:20px;opacity:0;transform:translateX(-16px);transition:opacity .5s ease,transform .5s ease}
+.ct-item.ct-visible{opacity:1;transform:translateX(0)}
+.ct-dot{position:absolute;left:-28px;top:4px;width:14px;height:14px;border-radius:50%;border:2px solid var(--g);background:var(--ink);z-index:1}
+.ct-dot.ct-current{background:var(--gm);border-color:var(--gm);box-shadow:0 0 10px rgba(0,166,81,.4)}
+.ct-dot.ct-progress{background:var(--amber);border-color:var(--amber)}
+.ct-year{font-family:var(--mono);font-size:8px;color:var(--gm);letter-spacing:2px;margin-bottom:3px}
+.ct-role{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.85);letter-spacing:.5px;margin-bottom:2px}
+.ct-org{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.35);letter-spacing:1px}
+
+/* ── RECRUITER FAQ ───────────────────────────────── */
+.recruiter-faq{margin:48px 0 32px;padding:32px;background:rgba(0,107,63,.03);border:1px solid rgba(0,107,63,.15);border-radius:4px}
+.rfaq-eyebrow{font-family:var(--mono);font-size:8px;letter-spacing:4px;color:var(--gm);text-transform:uppercase;margin-bottom:6px}
+.rfaq-title{font-family:var(--display);font-size:clamp(22px,3vw,32px);font-weight:800;letter-spacing:2px;color:white;margin-bottom:24px}
+.rfaq-item{border-bottom:1px solid rgba(0,107,63,.15);overflow:hidden}
+.rfaq-item:last-child{border-bottom:none}
+.rfaq-q{width:100%;text-align:left;background:none;border:none;padding:14px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:12px;font-family:var(--mono);font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.75)}
+.rfaq-q:hover{color:white}
+.rfaq-q-icon{font-size:16px;color:var(--gm);flex-shrink:0;transition:transform .25s;font-family:var(--mono);font-weight:700;line-height:1}
+.rfaq-item.open .rfaq-q-icon{transform:rotate(45deg)}
+.rfaq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.rfaq-item.open .rfaq-a{max-height:300px}
+.rfaq-a-inner{padding:0 0 16px;font-size:13px;color:rgba(255,255,255,.5);line-height:1.8}
+
+/* ── CONTACT TOOLS (SIG + VCARD) ─────────────────── */
+.contact-tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.ctool-card{flex:1;min-width:220px;background:rgba(0,107,63,.05);border:1px solid rgba(0,107,63,.18);border-radius:4px;padding:16px;cursor:pointer;transition:.2s}
+.ctool-card:hover{border-color:rgba(0,166,81,.4);background:rgba(0,107,63,.09)}
+.ctool-icon{font-size:20px;margin-bottom:6px}
+.ctool-title{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.75);margin-bottom:4px}
+.ctool-desc{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6}
+.ctool-btn{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:7px;letter-spacing:2px;padding:4px 12px;background:rgba(0,107,63,.2);border:1px solid rgba(0,107,63,.35);border-radius:3px;color:var(--gm)}
+/* Email sig preview */
+.email-sig-preview{margin-top:12px;padding:12px;background:#fff;border-radius:3px;display:none}
+.email-sig-preview.visible{display:block}
+.esp-name{font-family:Arial,sans-serif;font-size:13px;font-weight:700;color:#006B3F}
+.esp-role{font-family:Arial,sans-serif;font-size:11px;color:#333;margin:2px 0}
+.esp-detail{font-family:Arial,sans-serif;font-size:10px;color:#666;line-height:1.8}
+.esp-copy-btn{margin-top:8px;font-family:var(--mono);font-size:7px;letter-spacing:2px;padding:4px 12px;background:rgba(0,107,63,.15);border:1px solid rgba(0,107,63,.3);border-radius:3px;color:var(--gm);cursor:pointer;display:block}
+
+/* ── INTERVIEW SCHEDULER ─────────────────────────── */
+.sched-card{margin-top:16px;padding:16px;background:rgba(0,107,63,.05);border:1px solid rgba(0,107,63,.2);border-radius:4px}
+.sched-card-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--gm);text-transform:uppercase;margin-bottom:8px}
+.sched-card-desc{font-size:12px;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:12px}
+.sched-link{display:flex;align-items:center;justify-content:center;gap:8px;padding:10px;background:var(--g);border-radius:3px;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#fff;text-decoration:none;transition:.2s}
+.sched-link:hover{background:#008040}
+
+/* ── CPD CHART ───────────────────────────────────── */
+.cpd-chart{margin:20px 0 24px;padding:20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.15);border-radius:4px}
+.cpd-chart-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--gm);text-transform:uppercase;margin-bottom:16px;display:flex;justify-content:space-between;align-items:baseline}
+.cpd-chart-total{font-family:var(--display);font-size:24px;font-weight:800;color:var(--gm)}
+.cpd-months{display:flex;gap:6px;align-items:flex-end;height:64px}
+.cpd-bar-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.cpd-bar-outer{width:100%;flex:1;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden;display:flex;align-items:flex-end;min-height:8px}
+.cpd-bar-inner{width:100%;background:linear-gradient(180deg,var(--gm),var(--g));border-radius:2px;height:0;transition:height 1s cubic-bezier(.4,0,.2,1)}
+.cpd-bar-label{font-family:var(--mono);font-size:6px;color:rgba(255,255,255,.3);letter-spacing:1px}
+.cpd-bar-hrs{font-family:var(--mono);font-size:6px;color:var(--gm)}
+.cpd-topics{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.cpd-topic{font-family:var(--mono);font-size:7px;letter-spacing:1px;padding:3px 8px;border:1px solid rgba(0,107,63,.25);border-radius:3px;color:rgba(255,255,255,.4)}
 .pw-slice.wipe-in{animation:pw-in .2s ease forwards}
 .pw-slice.wipe-out{animation:pw-out .2s ease forwards}
 /* ── OPEN TO WORK BANNER ──────────────────────────── */
@@ -1342,6 +1443,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="hero-content">
       <div class="hero-pill"><div class="hero-pill-dot"></div>St John Ambulance &middot; North West England</div>
+            <a class="interview-badge" onclick="showPage('contact');return false" href="#" aria-label="Available for interview — contact Peter">
+        <div class="ib-dot" aria-hidden="true"></div>
+        <span class="ib-text">Available for Interview &mdash; North West England</span>
+        <span class="ib-arrow">&#8594;</span>
+      </a>
       <div class="hero-counter-row">
         <div class="hero-stat">
           <div class="hero-stat-num" id="ctr-events">0</div>
@@ -1515,6 +1621,37 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="about-body">
         <div class="pull-quote sr-item"><p>&#x201C;Most people see a dance competition or a road race. I see the patients who might need me &mdash; and I make sure I'm ready for every one of them.&#x201D;</p></div>
         <p>I'm a practising Emergency Ambulance Crew (EAC) member and FREC 3-certified pre-hospital practitioner with St John Ambulance, deployed operationally across the North West at sporting events, national competitions, music venues, community events and blue light emergency response.</p>
+        <div class="bring-panel sr-item">
+          <div class="bring-title">What I Bring To Your Team</div>
+          <div class="bring-item">
+            <div class="bring-icon">🚑</div>
+            <div class="bring-body">
+              <div class="bring-item-title">Operational Experience — Not Just Qualifications</div>
+              <div class="bring-item-desc">75+ live deployments across sporting, community, and blue light response. I have managed real patients in real emergencies, administered medications in the field, and handed patients over to NWAS with formal ATMIST pre-alerts. That is different to classroom-trained.</div>
+            </div>
+          </div>
+          <div class="bring-item">
+            <div class="bring-icon">💊</div>
+            <div class="bring-body">
+              <div class="bring-item-title">Broadest Volunteer Medication Scope Available</div>
+              <div class="bring-item-desc">EAC Column 9 authorisation — 19 medications including adrenaline IM, naloxone IM, Penthrox, entonox, salbutamol nebuliser, hydrocortisone IM, and glucagon IM. This scope exceeds most voluntary responder roles and directly bridges to Technician level.</div>
+            </div>
+          </div>
+          <div class="bring-item">
+            <div class="bring-icon">🎓</div>
+            <div class="bring-body">
+              <div class="bring-item-title">I Can Train As Well As Treat</div>
+              <div class="bring-item-desc">CTLLS Level 4 (City &amp; Guilds) teaching qualification. 200+ learners trained across FAW, EFAW, BLS, and AED programmes. I can mentor junior crew, deliver in-house CPD, and contribute to clinical training delivery — not just fill a vehicle seat.</div>
+            </div>
+          </div>
+          <div class="bring-item">
+            <div class="bring-icon">📋</div>
+            <div class="bring-body">
+              <div class="bring-item-title">Clinical Documentation to PRF Standard</div>
+              <div class="bring-item-desc">Every patient contact documented accurately — PRF completion, ATMIST and SBAR handover, SJA clinical governance submission. I do not cut corners on paperwork. It protects the patient, the organisation, and every clinician in the chain.</div>
+            </div>
+          </div>
+        </div>
         <div class="radar-section sr-item">
         <div class="radar-title">Clinical Skills Profile</div>
         <div class="radar-wrap">
@@ -1551,6 +1688,59 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div class="award-title">Commissioner Commendation &mdash; St John Ambulance</div>
           <div class="award-sub">Awarded for outstanding service across the North West region</div>
         </div>
+        <div class="career-timeline sr-item" id="career-timeline">
+          <div class="career-timeline-title">Career Progression</div>
+          <div class="ct-track">
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2004–2018</div>
+              <div class="ct-role">Community Foodbank Founder &amp; Operator</div>
+              <div class="ct-org">BLACKBURN, LANCASHIRE</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2019</div>
+              <div class="ct-role">Volunteer First Aider — SJA</div>
+              <div class="ct-org">ST JOHN AMBULANCE · NORTH WEST</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2021</div>
+              <div class="ct-role">FREC 3 Qualified — Operational Deployment</div>
+              <div class="ct-org">SJA NW · CLINICAL PROGRESSION</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2022</div>
+              <div class="ct-role">CTLLS Level 4 — First Aid Trainer Qualified</div>
+              <div class="ct-org">CITY &amp; GUILDS · TEACHING AUTHORITY</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2023</div>
+              <div class="ct-role">EAC Authorisation — 19 Medications Scope</div>
+              <div class="ct-org">SJA NW · COLUMN 9 CLINICAL FRAMEWORK</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot"></div>
+              <div class="ct-year">2024</div>
+              <div class="ct-role">CERAD Level 3 Blue Light Driving Authority</div>
+              <div class="ct-org">PCV/D1 · CATEGORY C · OPERATIONAL VEHICLES</div>
+            </div>
+            <div class="ct-item ct-current">
+              <div class="ct-dot ct-current"></div>
+              <div class="ct-year">2025–2026</div>
+              <div class="ct-role">75+ Operational Deployments — Active EAC</div>
+              <div class="ct-org">SJA NW · SPORTING, COMMUNITY &amp; BLUE LIGHT</div>
+            </div>
+            <div class="ct-item">
+              <div class="ct-dot ct-progress"></div>
+              <div class="ct-year">2026 →</div>
+              <div class="ct-role">FREC 4 / Advanced Ambulance Practitioner — In Progress</div>
+              <div class="ct-org">EXPANDED CLINICAL SCOPE · FREC 4 TARGET</div>
+            </div>
+          </div>
+        </div>
         <div class="about-sec-title">CPD &amp; Professional Development</div>
         <p>I maintain an active Continuing Professional Development log in line with SJA clinical governance requirements and JRCALC+ guidelines. CPD is not optional at EAC level &mdash; it is the mechanism by which skill fade is prevented and competence is formally evidenced.</p>
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone2);border:1px solid var(--stone2);margin:20px 0">
@@ -1568,6 +1758,42 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
             <div style="font-family:var(--display);font-size:36px;color:var(--g);letter-spacing:1px">Active</div>
             <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-top:4px">Practice Portfolio</div>
             <div style="font-size:11px;color:var(--ink4);font-style:italic;margin-top:3px">Maintained continuously</div>
+          </div>
+        </div>
+        <div class="cpd-chart sr-item" id="cpd-chart">
+          <div class="cpd-chart-title">
+            <span>CPD Activity — 2026</span>
+            <span class="cpd-chart-total">21+ hrs</span>
+          </div>
+          <div class="cpd-months" id="cpd-months">
+            <div class="cpd-bar-col">
+              <div class="cpd-bar-hrs">8h</div>
+              <div class="cpd-bar-outer"><div class="cpd-bar-inner" data-pct="80"></div></div>
+              <div class="cpd-bar-label">JAN</div>
+            </div>
+            <div class="cpd-bar-col">
+              <div class="cpd-bar-hrs">5h</div>
+              <div class="cpd-bar-outer"><div class="cpd-bar-inner" data-pct="50"></div></div>
+              <div class="cpd-bar-label">FEB</div>
+            </div>
+            <div class="cpd-bar-col">
+              <div class="cpd-bar-hrs">8h</div>
+              <div class="cpd-bar-outer"><div class="cpd-bar-inner" data-pct="80"></div></div>
+              <div class="cpd-bar-label">MAR</div>
+            </div>
+            <div class="cpd-bar-col">
+              <div class="cpd-bar-hrs">—</div>
+              <div class="cpd-bar-outer"><div class="cpd-bar-inner" data-pct="0"></div></div>
+              <div class="cpd-bar-label">APR</div>
+            </div>
+          </div>
+          <div class="cpd-topics">
+            <span class="cpd-topic">Simulation exercises</span>
+            <span class="cpd-topic">Responder+ modules</span>
+            <span class="cpd-topic">FREC 4 theory</span>
+            <span class="cpd-topic">Scenario training</span>
+            <span class="cpd-topic">JRCALC+ self-study</span>
+            <span class="cpd-topic">Skills refreshers</span>
           </div>
         </div>
         <p style="font-size:13px;color:var(--ink4);font-style:italic">CPD activities include: simulation exercises, clinical reflective practice, online learning modules (Responder+), scenario training, skills refreshers, mandatory annual updates and self-directed study. Full log available on request.</p
@@ -1624,6 +1850,35 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div class="sc-row"><div class="sc-dot"></div><div class="sc-text">CTLLS Level 4 &mdash; Achieved</div></div>
           <div class="sc-row"><div class="sc-dot"></div><div class="sc-text">CERAD Level 3 Blue Light</div></div>
           <div class="sc-row"><div class="sc-dot"></div><div class="sc-text">PCV/D1 &middot; Category C</div></div>
+        </div>
+        <div class="gov-panel">
+          <div class="gov-panel-title">Governance &amp; Compliance</div>
+          <div class="gov-grid">
+            <div class="gov-cell"><div class="gov-cell-label">Enhanced DBS</div><div class="gov-cell-val">CURRENT</div></div>
+            <div class="gov-cell"><div class="gov-cell-label">PLI Insurance</div><div class="gov-cell-val">COVERED</div></div>
+            <div class="gov-cell"><div class="gov-cell-label">SJA Governance</div><div class="gov-cell-val">ACTIVE</div></div>
+            <div class="gov-cell"><div class="gov-cell-label">Safeguarding</div><div class="gov-cell-val">CERTIFIED</div></div>
+          </div>
+        </div>
+        <div class="ref-panel">
+          <div class="ref-panel-title">References Available</div>
+          <div class="ref-item-row">
+            <div class="ref-icon-sm">👨&zwj;⚕️</div>
+            <div class="ref-details">
+              <div class="ref-role-txt">Clinical Supervisor</div>
+              <div class="ref-org-txt">SJA NORTH WEST</div>
+            </div>
+            <div class="ref-avail-badge">AVAILABLE</div>
+          </div>
+          <div class="ref-item-row">
+            <div class="ref-icon-sm">👩&zwj;🏫</div>
+            <div class="ref-details">
+              <div class="ref-role-txt">Training Manager</div>
+              <div class="ref-org-txt">SJA NW TRAINING</div>
+            </div>
+            <div class="ref-avail-badge">AVAILABLE</div>
+          </div>
+          <div class="ref-note">Character and professional references available on request. Contact via the enquiry form.</div>
         </div>
         <div class="active-panel" id="active-panel">
           <div class="active-panel-title">Actively Practising</div>
@@ -2135,7 +2390,61 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         </table>
       </div>
       <p style="font-size:12px;color:rgba(255,255,255,.4);padding:0 40px;margin-bottom:16px;font-style:italic;line-height:1.8;">Understanding the difference between a first aider, FREC 3, and an Emergency Ambulance Crew (EAC) matters when booking event medical cover in Lancashire, Greater Manchester, Merseyside or Cheshire. The table below shows exactly what each clinical level can do — and why EAC-level cover is the appropriate choice for events over 500 people, sporting events, and any event where medication administration may be required.</p>
-<div class="comparison-note">
+  <div class="recruiter-faq" id="recruiter-faq">
+    <div class="rfaq-eyebrow">For Recruiters &amp; Employers</div>
+    <div class="rfaq-title">Common Questions</div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        What NHS band are you targeting?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Band 4 initially, progressing to Band 5 on completion of FREC 4 / AAP in 2026. Open to discussion around the right role.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        Are you available for full-time shift work?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Yes. Available full-time including nights, weekends and bank holidays. PCV/D1 and Category C driving authority, CERAD Level 3 blue light authority.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        Can you relocate or are you North West only?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Based in Blackburn, Lancashire. Preference for North West England. Open to relocation discussions for the right opportunity.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        What is your notice period?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Currently voluntary with SJA &mdash; no formal notice period. Available to start employment with reasonable notice.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        Are references available?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Yes. Clinical supervisor and training manager from SJA NW available. Contact details on request after interview stage.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        What is your DBS status?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">Enhanced DBS current through SJA governance. No unspent convictions. Safeguarding training completed. Certificate available at interview stage.</div></div>
+    </div>
+    <div class="rfaq-item">
+      <button class="rfaq-q" onclick="toggleRfaq(this)" aria-expanded="false">
+        What is your salary expectation?
+        <span class="rfaq-q-icon">+</span>
+      </button>
+      <div class="rfaq-a"><div class="rfaq-a-inner">NHS Band 4&ndash;5 range (approximately &pound;28,000&ndash;&pound;35,000). Open to discussion based on the specific role and development pathway.</div></div>
+    </div>
+  </div>
+
+      <div class="comparison-note">
         EAC = Emergency Ambulance Crew, Column 9 of 10 in the ambulance clinical career framework &middot; FREC = First Responder Emergency Care &middot; JRCALC = Joint Royal Colleges Ambulance Liaison Committee &middot; All medication administration within SJA clinical governance
       </div>
     </div>
@@ -2156,6 +2465,26 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   <div class="content-wrap">
     <div class="contact-layout">
       <div>
+        <div class="contact-tools">
+          <div class="ctool-card">
+            <div class="ctool-icon">✉️</div>
+            <div class="ctool-title">Email Signature</div>
+            <div class="ctool-desc">Generate a professional HTML email signature with your credentials. Copy and paste into Gmail, Apple Mail, or Outlook.</div>
+            <span class="ctool-btn" onclick="toggleEmailSig(this)">GENERATE SIGNATURE ↓</span>
+            <div class="email-sig-preview" id="email-sig-preview">
+              <div class="esp-name">Peter Craine</div>
+              <div class="esp-role">Emergency Ambulance Crew (EAC) · FREC 3 · First Aid Trainer</div>
+              <div class="esp-detail">St John Ambulance · North West<br>📱 07756 831072 · ✉ peter.craine@me.com<br>🌐 www.petercrainemedic.co.uk · 🔗 linkedin.com/in/peter-craine<br>FREC 3 · EAC · CTLLS L4 · CERAD L3 · Enhanced DBS Current</div>
+              <button class="esp-copy-btn" onclick="copyEmailSig()">COPY HTML SIGNATURE</button>
+            </div>
+          </div>
+          <div class="ctool-card">
+            <div class="ctool-icon">📇</div>
+            <div class="ctool-title">Save to Contacts</div>
+            <div class="ctool-desc">Download Peter's contact card (.vcf). Tap on mobile to save directly to your phone contacts, or import into Outlook.</div>
+            <span class="ctool-btn" onclick="downloadVCard()">DOWNLOAD .VCF CONTACT</span>
+          </div>
+        </div>
         <div class="s-eyebrow">Send an Enquiry</div>
         <div class="s-h2" style="margin-bottom:8px">Let's Talk</div>
         <div class="s-rule"></div>
@@ -2195,6 +2524,13 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div class="avail-card">
           <div class="ac-title">// Current Availability</div>
           <div class="ac-body">Available for event medical deployments and employer discussions across the North West. Race and festival season runs March&ndash;October &mdash; enquire early for specific weekend dates.</div>
+        </div>
+        <div class="sched-card">
+          <div class="sched-card-title">Book a Call</div>
+          <div class="sched-card-desc">15-minute introductory call — book a slot directly in my calendar. No email chains, no phone tag.</div>
+          <a class="sched-link" href="https://tidycal.com/petercraine" target="_blank" rel="noopener noreferrer" aria-label="Book a 15-minute call with Peter Craine">
+            &#128197; Book a 15-min Call
+          </a>
         </div>
         <div class="social-strip">
           <a class="soc-btn" href="https://linkedin.com/in/peter-craine" aria-label="Connect on LinkedIn" target="_blank" rel="noopener noreferrer">LinkedIn</a>
@@ -4196,6 +4532,99 @@ function toggleSiren(){
   }
 }
 
+
+
+
+
+// ── EMAIL SIGNATURE + VCARD ─────────────────────────────────────
+function toggleEmailSig(btn){
+  var preview = document.getElementById('email-sig-preview');
+  if(!preview) return;
+  preview.classList.toggle('visible');
+  btn.textContent = preview.classList.contains('visible') ? 'HIDE SIGNATURE ↑' : 'GENERATE SIGNATURE ↓';
+}
+function copyEmailSig(){
+  var sig = '<div style="font-family:Arial,sans-serif;font-size:13px;border-top:2px solid #006B3F;padding-top:10px;margin-top:10px">'
+    + '<strong style="color:#006B3F;font-size:14px">Peter Craine</strong><br>'
+    + '<span style="color:#333;font-size:11px">Emergency Ambulance Crew (EAC) &bull; FREC 3 &bull; First Aid Trainer CTLLS L4</span><br>'
+    + '<span style="color:#666;font-size:10px">St John Ambulance &bull; North West England</span><br><br>'
+    + '<span style="color:#333;font-size:11px">📱 <a href="tel:07756831072" style="color:#006B3F;text-decoration:none">07756 831072</a>'
+    + ' &nbsp;|&nbsp; ✉ <a href="mailto:peter.craine@me.com" style="color:#006B3F;text-decoration:none">peter.craine@me.com</a></span><br>'
+    + '<span style="color:#333;font-size:11px">🌐 <a href="https://www.petercrainemedic.co.uk" style="color:#006B3F;text-decoration:none">www.petercrainemedic.co.uk</a>'
+    + ' &nbsp;|&nbsp; 🔗 <a href="https://linkedin.com/in/peter-craine" style="color:#006B3F;text-decoration:none">LinkedIn</a></span><br>'
+    + '<span style="color:#999;font-size:10px">FREC 3 &bull; EAC &bull; CTLLS L4 &bull; CERAD L3 Blue Light &bull; Enhanced DBS Current</span>'
+    + '</div>';
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(sig).then(function(){ alert('HTML signature copied to clipboard. Paste into your email client signature settings.'); });
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = sig; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    document.execCommand('copy'); document.body.removeChild(ta);
+    alert('HTML signature copied. Paste into your email client signature settings.');
+  }
+}
+function downloadVCard(){
+  var vcf = 'BEGIN:VCARD\r\nVERSION:3.0\r\n'
+    + 'FN:Peter Craine\r\nN:Craine;Peter;;;\r\n'
+    + 'TITLE:Emergency Ambulance Crew (EAC) / FREC 3 Practitioner\r\n'
+    + 'ORG:St John Ambulance North West\r\n'
+    + 'TEL;TYPE=CELL:+447756831072\r\n'
+    + 'EMAIL:peter.craine@me.com\r\n'
+    + 'URL:https://www.petercrainemedic.co.uk\r\n'
+    + 'ADR;TYPE=HOME:;;Blackburn;Lancashire;BB1;;GB\r\n'
+    + 'NOTE:FREC 3 | EAC | CTLLS L4 | CERAD L3 Blue Light | Enhanced DBS Current | SJA NW\r\n'
+    + 'END:VCARD';
+  var blob = new Blob([vcf], {type:'text/vcard'});
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = 'Peter_Craine_Medic.vcf';
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a); URL.revokeObjectURL(url);
+}
+
+// ── RECRUITER FAQ ACCORDION ─────────────────────────────────────
+function toggleRfaq(btn){
+  var item = btn.closest('.rfaq-item');
+  var isOpen = item.classList.contains('open');
+  document.querySelectorAll('.rfaq-item.open').forEach(function(i){ i.classList.remove('open'); i.querySelector('.rfaq-q').setAttribute('aria-expanded','false'); });
+  if(!isOpen){ item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+}
+
+
+// ── CPD CHART ANIMATION ─────────────────────────────────────────
+(function(){
+  var cpdDone = false;
+  function animateCPD(){
+    if(cpdDone) return;
+    var chart = document.getElementById('cpd-chart');
+    if(!chart) return;
+    var rect = chart.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.88){
+      cpdDone = true;
+      var bars = chart.querySelectorAll('.cpd-bar-inner');
+      bars.forEach(function(b, i){
+        var pct = parseInt(b.getAttribute('data-pct')) || 0;
+        setTimeout(function(){ b.style.height = pct + '%'; }, i * 120);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateCPD, {passive:true});
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(animateCPD, 600); });
+})();
+
+// ── CAREER TIMELINE ANIMATION ──────────────────────────────────
+(function(){
+  function checkCareerItems(){
+    var items = document.querySelectorAll('.ct-item');
+    items.forEach(function(item){
+      var rect = item.getBoundingClientRect();
+      if(rect.top < window.innerHeight * 0.88){ item.classList.add('ct-visible'); }
+    });
+  }
+  window.addEventListener('scroll', checkCareerItems, {passive:true});
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(checkCareerItems, 300); });
+})();
 
 // ── COMPETENCY MATRIX ANIMATION ────────────────────────────────
 (function(){
