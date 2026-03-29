@@ -955,17 +955,7 @@ body.dark-mode .news-card{background:var(--stone)}
 #scroll-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--g2),var(--gm),#7FFFD4);z-index:9999;transition:width .05s linear;box-shadow:0 0 8px rgba(0,166,81,.6)}
 
 /* ══ 2. PAGE LOADER ══ */
-#page-loader{position:fixed;inset:0;background:var(--gd);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease;pointer-events:none}
-#page-loader.loaded{opacity:0;visibility:hidden;pointer-events:none}
-.loader-cross{width:52px;height:52px;background:var(--g);clip-path:polygon(35% 0%,65% 0%,65% 35%,100% 35%,100% 65%,65% 65%,65% 100%,35% 100%,35% 65%,0% 65%,0% 35%,35% 35%);animation:loader-pulse 1s ease-in-out infinite}
-@keyframes loader-pulse{0%,100%{transform:scale(1);filter:drop-shadow(0 0 6px rgba(0,166,81,.5))}50%{transform:scale(1.15);filter:drop-shadow(0 0 18px rgba(0,166,81,.9))}}
-.loader-wordmark{font-family:var(--display);font-size:28px;letter-spacing:5px;color:white;margin-top:18px}
-.loader-wordmark span{color:var(--gm)}
-.loader-sub{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:8px}
-.loader-ecg-wrap{width:280px;height:52px;margin:24px 0 0;opacity:.6}
-.loader-bar{width:220px;height:2px;background:rgba(0,107,63,.2);border-radius:1px;margin-top:20px;overflow:hidden}
-.loader-bar-fill{height:100%;background:linear-gradient(90deg,var(--g2),var(--gm));border-radius:1px;animation:loader-fill 1.4s ease forwards}
-@keyframes loader-fill{from{width:0}to{width:100%}}
+
 
 /* ══ 3. INTERACTIVE MEDICATIONS GRID ══ */
 .meds-interactive-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:2px;margin-bottom:16px}
@@ -1271,13 +1261,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 </head>
 <body>
 
-<div id="page-loader" role="status" aria-label="Loading petercrainemedic.co.uk">
-  <div class="loader-cross" aria-hidden="true"></div>
-  <div class="loader-wordmark">PETER <span>CRAINE</span></div>
-  <div class="loader-sub">EAC &middot; FREC 3 &middot; North West</div>
-  <canvas class="loader-ecg-wrap" id="loader-ecg" width="280" height="52" aria-hidden="true"></canvas>
-  <div class="loader-bar"><div class="loader-bar-fill"></div></div>
-</div>
+
 
 <div id="scroll-bar" aria-hidden="true"></div>
 
@@ -2360,6 +2344,7 @@ var DEPLOYMENTS = [
   '2026-03-07','2026-03-08',
   '2026-03-22',  // Community First Aid Course — lead trainer
   '2026-03-25',  // RTC — 2 injured drivers, care + handover to ambulance crew
+  '2026-03-28'   // Rugby match — DW Stadium, Wigan
   '2026-01-15',  // RTC — woman, seizure at wheel, handover to ambulance crew
   '2025-11-15'   // RTC — motorbike v pedestrian, multi-agency inc HART team
 ];
@@ -2383,6 +2368,7 @@ function countDeployments(){
     'Enhanced DBS Current · FREC 3 · CERAD L3 Blue Light · PCV/D1 · Cat C',
     'Recent: Community First Aid Course — Lead Trainer/Assessor · 8 delegates · March 2026',
     'Recent: RTC — 2 injured drivers, care given, handed over to ambulance · 25 Mar 2026',
+    'Recent deployment: Rugby match — DW Stadium, Wigan · 28 Mar 2026',
     'Multi-agency RTC: worked alongside paramedics, police, fire & HART team',
   ];
   var SEASONAL = {
@@ -3514,50 +3500,9 @@ function ecgPoint(phase, period) {
   upd();
 })();
 
-// ══════════════════════════════════════════════════════════════════
-// 2. PAGE LOADER
-// ══════════════════════════════════════════════════════════════════
-(function(){
-  var loader = document.getElementById('page-loader');
-  if(!loader) return;
+// Loader removed — no blocking overlay
 
-  // ECG on loader canvas
-  try {
-    var canvas = document.getElementById('loader-ecg');
-    if(canvas && typeof ecgPoint === 'function'){
-      var ctx = canvas.getContext('2d');
-      var off = 0, W = 280, H = 52, period = 95, amp = 18;
-      function drawLoaderEcg(){
-        ctx.clearRect(0,0,W,H);
-        ctx.beginPath();
-        ctx.strokeStyle = '#00A651';
-        ctx.lineWidth = 1.5;
-        var mid = H/2;
-        for(var x=0;x<W;x++){
-          var y = mid - ecgPoint(x+off, period)*amp;
-          x===0 ? ctx.moveTo(x,y) : ctx.lineTo(x,y);
-        }
-        ctx.stroke();
-        off = (off+1.5) % period;
-        if(!loader.classList.contains('loaded')) requestAnimationFrame(drawLoaderEcg);
-      }
-      drawLoaderEcg();
-    }
-  } catch(e) { /* skip loader ECG if ecgPoint unavailable */ }
 
-  // Dismiss after page ready
-  function dismiss(){
-    loader.classList.add('loaded');
-    setTimeout(function(){ loader.style.display='none'; }, 700);
-  }
-  if(document.readyState === 'complete'){
-    dismiss();
-  } else {
-    window.addEventListener('load', function(){ dismiss(); });
-  }
-  // Failsafe — always fires
-  setTimeout(dismiss, 1500);
-})();
 
 // ══════════════════════════════════════════════════════════════════
 // 3. INTERACTIVE MEDICATIONS GRID
@@ -3657,96 +3602,109 @@ var MEDS_DATA = [
     indication:'Asthma — patient-prescribed reliever',
     dose:'2–4 puffs via spacer if available',
     onset:'5–10 minutes',
-    note:"Help patient with own device. Spacer significantly improves drug delivery" },
+    note:"Help patient with own device. Spacer significantly improves drug delivery" }
+,
 
   {
     day: '22', month: 'Mar', year: '2026',
-    title: "Community First Aid Course — Lead Trainer & Assessor",
-    deck: "Eight delegates, one full day. Lead trainer and assessor role on a community first aid programme — from basic life support to managing a choking infant. Why good teaching is a clinical skill in its own right.",
+    title: "Community First Aid Course — Lead Trainer and Assessor",
+    deck: "Eight delegates, one full day. Lead trainer and assessor role on a community first aid programme — BLS, choking, wound management, full scenario assessment. Why good teaching is a clinical skill in its own right.",
     category: 'Training',
-    tags: ['Training', 'First Aid', 'Assessor', 'Community', 'BLS', 'Teaching'],
-    icon: '🎓',
+    tags: ['Training', 'First Aid', 'Assessor', 'Community', 'BLS'],
+    icon: '\uD83C\uDF93',
     location: 'Training Venue · North West England',
     readTime: '5 min read',
     body: [
-      jP("Eight people arrived not knowing how to use a defibrillator. By mid-afternoon they were confident, competent, and — in at least one case — emotional about it. That last part matters more than the certificate."),
-      jP("As lead trainer and assessor on this community first aid course I was responsible for the full programme — session planning, delivery, practical assessments, and signing off each delegate. Eight students across a mix of backgrounds: a school teaching assistant, a sports coach, two parents, a care worker, and three people who'd simply decided it was time they knew."),
-      jPull("The moment someone does their first compression on a manikin and realises how hard you actually have to push — that's the moment the course changes from theory to reality.", "Community First Aid Course, March 2026"),
-      jH("The Day"),
-      jP("We opened with a risk assessment and introductions, then moved immediately into primary survey and basic life support. No PowerPoint slides first. Get them on their knees beside the manikin within the first fifteen minutes — the cognitive stuff lands better when there's already muscle memory to anchor it. CPR for adults, then children, then the infant scenario which never fails to get everyone's attention."),
-      jP("Choking algorithms mid-morning. Wound management and bleeding control after lunch. We finished with a full scenario: collapsed adult in a park, unresponsive, bystanders present, 999 called. Watching delegates apply a structured approach they didn't have eight hours earlier is one of the most satisfying things in this work."),
+      jP("Eight people arrived not knowing how to use a defibrillator. By mid-afternoon they were confident, competent, and in at least one case, emotional about it. That last part matters more than the certificate."),
+      jP("As lead trainer and assessor I was responsible for the full programme — session planning, delivery, practical assessments, and signing off each delegate. A mix of backgrounds: a school teaching assistant, a sports coach, two parents, a care worker, and three people who had simply decided it was time they knew."),
+      jPull("The moment someone does their first compression and realises how hard you actually have to push — that is the moment the course changes from theory to reality.", "Community First Aid Course, March 2026"),
       jH("Assessment"),
-      jP("All eight delegates were assessed against the criteria throughout the day. Practical competency sign-offs on each module. One delegate needed a second attempt on the infant CPR sequence — depth and rate — but got there with targeted feedback. All eight passed and were certificated. Course documentation completed and filed same day."),
-      jP("Teaching is clinical practice. It requires the same precision as patient assessment, the same situational awareness, and the same ability to adapt mid-scenario when something isn't landing. CTLLS L4 gives me the pedagogical framework. The deployment experience gives me the credibility. Both matter in the room.")
+      jP("All eight delegates were assessed throughout the day. One needed a second attempt on infant CPR — depth and rate — but got there with targeted feedback. All eight passed. Course documentation completed same day."),
+      jP("Teaching is clinical practice. It requires the same precision as patient assessment, the same situational awareness, and the same ability to adapt when something is not landing. CTLLS L4 gives the pedagogical framework. Deployment experience gives the credibility. Both matter in the room.")
     ]
   },
 
   {
     day: '25', month: 'Mar', year: '2026',
     title: "RTC — Two Injured Drivers, Roadside Care, Ambulance Handover",
-    deck: "Yesterday afternoon. Two vehicles, two drivers. Primary surveys, injury management, and a clean handover to the incoming ambulance crew. The thirty minutes between scene arrival and paramedic arrival are the ones that count.",
+    deck: "Yesterday. Two vehicles, two drivers. Primary surveys, injury management, and a clean handover to the incoming ambulance crew. The thirty minutes between scene arrival and paramedic arrival are the ones that count.",
     category: 'Deployment',
-    tags: ['RTC', 'Trauma', 'Roadside', 'Handover', 'EAC', 'Multi-patient'],
-    icon: '🚗',
+    tags: ['RTC', 'Trauma', 'Roadside', 'Handover', 'EAC'],
+    icon: '\uD83D\uDE97',
     location: 'Road Traffic Collision · North West England',
     readTime: '5 min read',
     body: [
-      jP("Yesterday afternoon. Two vehicles, collision at a junction. Both drivers conscious on arrival, both vehicles static, no immediate fire or extrication required. I was first on scene before emergency services arrived."),
-      jP("Two patients simultaneously is a triage decision before it's anything else. I walked the scene in under fifteen seconds: Driver A — self-extricated, sitting on the kerb, talking. Driver B — still in vehicle, seatbelt on, moving but not attempting to exit. Driver A got a rapid primary survey while I radioed for ambulance. Driver B was the priority."),
-      jPull("Scene safety, triage, primary surveys, injury management, documentation. Then you stand there and give a handover so complete the paramedics can step straight into treatment without asking you to repeat yourself.", "Roadside RTC, 25 March 2026"),
-      jH("Driver B"),
-      jP("Mechanism consistent with impact to the driver's side. AVPU — Alert. Complaining of left-sided chest pain and left shoulder pain. I kept him in the vehicle pending ambulance arrival — suspected rib involvement, no obvious respiratory compromise but not a patient I was moving without paramedic backup. Oxygen via NRB mask, continuous monitoring, regular AVPU reassessment. Calm voice. Keep them talking."),
-      jH("Driver A"),
-      jP("Secondary survey once ambulance was confirmed en route. Laceration to the forehead, superficial but bleeding well. Direct pressure, wound closure strips when bleeding controlled. Suspected soft tissue whiplash mechanism — cervical tenderness on palpation but full motor function in upper limbs, no neurological deficit. Sat with him, kept him still, documented."),
+      jP("Two vehicles, collision at a junction. Both drivers conscious on arrival, no immediate fire or extrication required. I was first on scene before emergency services arrived."),
+      jP("Two patients simultaneously is a triage decision before it is anything else. Driver A — self-extricated, sitting on the kerb. Driver B — still in vehicle, seatbelt on, not attempting to exit. Driver B was the priority."),
+      jPull("Scene safety, triage, primary surveys, injury management, documentation. Then a handover so complete the paramedics can step straight into treatment without asking you to repeat yourself.", "Roadside RTC, 25 March 2026"),
+      jH("Patients"),
+      jP("Driver B: left-sided chest pain and left shoulder pain. Kept in vehicle pending ambulance. Oxygen via NRB, continuous monitoring. Driver A: laceration to the forehead, direct pressure, wound closure. Cervical tenderness but full motor function in upper limbs."),
       jH("Handover"),
-      jP("Ambulance crew arrived approximately twenty-eight minutes post-collision. ATMIST handover for both patients. Driver B transported with suspected chest wall injury and left shoulder injury — imaging required. Driver A assessed and declined transport after being cleared on scene. All documentation completed. The crew said thank you, which they always say, but it still lands well."),
-      jP("This is what the training is for. Not the events with the gazebo and the easy day. The unexpected moments when you happen to be there and your presence makes a material difference to two people.")
+      jP("Ambulance arrived approximately twenty-eight minutes post-collision. ATMIST handover for both patients. Driver B transported with suspected chest wall and shoulder injury. Driver A assessed and declined transport. All documentation completed. This is what the training is for.")
     ]
   },
 
   {
     day: '15', month: 'Jan', year: '2026',
     title: "RTC — Seizure at the Wheel: Managing an Unconscious Driver",
-    deck: "A woman had a seizure while driving. Vehicle stationary, engine running. Unconscious patient in a seatbelt with no bystander history and no obvious mechanism of injury. One of the most clinically complex scenes I've attended.",
+    deck: "A woman had a seizure while driving. Vehicle stationary, engine running. Unconscious patient in a seatbelt with no history and no obvious mechanism of injury. One of the most clinically complex scenes I have attended.",
     category: 'Deployment',
-    tags: ['RTC', 'Seizure', 'Neurology', 'Unconscious', 'EAC', 'Handover'],
-    icon: '🧠',
+    tags: ['RTC', 'Seizure', 'Neurology', 'Unconscious', 'EAC'],
+    icon: '\uD83E\uDDA0',
     location: 'Road Traffic Collision · North West England',
     readTime: '6 min read',
     body: [
-      jP("The call came through as an RTC. The reality on arrival was more nuanced: a vehicle stationary at the side of the road, engine still running, sole occupant slumped in the driver's seat, no other vehicle involved. No skid marks. No debris field. Someone had called it in from a passing car."),
-      jP("My first assessment: was this a medical cause causing the RTC, or an RTC causing a medical presentation? The difference shapes everything — airway management, extrication decision, what you say to the incoming ambulance crew. No external trauma visible. No deployed airbags. No windscreen impact. This looked medical first, mechanical consequence second."),
-      jPull("You cannot ask an unconscious patient what happened. You have to read the scene, the vehicle, the patient, and piece together a picture with zero direct history. That's where clinical experience becomes the difference-maker.", "RTC, January 2026"),
+      jP("The call came through as an RTC. The reality on arrival: a vehicle stationary at the roadside, engine still running, sole occupant slumped in the driver's seat, no other vehicle involved. No skid marks. No deployed airbags."),
+      jP("My first assessment: was this a medical cause causing the RTC, or an RTC causing a medical presentation? The difference shapes everything — airway management, extrication decision, the handover narrative."),
+      jPull("You cannot ask an unconscious patient what happened. You read the scene, the vehicle, the patient, and piece together a picture with zero direct history. That is where clinical experience becomes the difference-maker.", "RTC, January 2026"),
       jH("The Patient"),
-      jP("Female, 40s. AVPU — Unresponsive to voice, minimal response to pain. Airway compromised by posture and reduced tone — jaw thrust applied while maintaining seatbelt. Breathing present, adequate. No palpable external injuries to head or neck. Pupils: equal, sluggishly reactive — consistent with post-ictal state rather than raised intracranial pressure at this stage."),
-      jP("Post-ictal presentation in the context of a possible seizure at the wheel. Kept in vehicle pending ambulance. Airway maintained, oxygen via NRB, AVPU documented at two-minute intervals. Recovery of consciousness over approximately twelve minutes — slow, confused orientation, no memory of events."),
+      jP("Female, 40s. AVPU — unresponsive to voice, minimal response to pain. Airway compromised by posture — jaw thrust applied. Pupils equal, sluggishly reactive — consistent with post-ictal state. Kept in vehicle, oxygen via NRB, AVPU documented at two-minute intervals. Recovery of consciousness over approximately twelve minutes — slow, confused."),
       jH("Handover"),
-      jP("Paramedics arrived as the patient was entering the confused but rousable phase. Full ATMIST including seizure assessment findings, pupil findings, GCS trajectory, and the contextual evidence suggesting medical cause rather than trauma. She was transported for full neurological assessment and DVLA notification guidance — a seizure at the wheel has driving licence implications her GP would need to initiate."),
-      jP("This case sits with me because it required genuine clinical reasoning under time pressure with no history, no witnesses, and a patient who couldn't tell me anything. That's the gap that pre-hospital experience fills.")
+      jP("Paramedics arrived as the patient was entering the rousable phase. Full ATMIST including seizure assessment findings, GCS trajectory, and contextual evidence suggesting medical cause. Transported for neurological assessment. A seizure at the wheel has driving licence implications her GP would need to initiate.")
     ]
   },
 
   {
     day: '15', month: 'Nov', year: '2025',
     title: "RTC — Motorbike v Pedestrian: Multi-Agency Scene, HART Team",
-    deck: "A motorcyclist and a pedestrian. Blue-light services, HART team, and fire. Working within a multi-agency command structure to free a trapped pedestrian and support safe patient care. The most complex scene I've attended.",
+    deck: "A motorcyclist and a pedestrian. Blue-light services, HART team, and fire. Working within a multi-agency command structure to free a trapped pedestrian and support safe patient care.",
     category: 'Deployment',
-    tags: ['RTC', 'Multi-agency', 'HART', 'Trauma', 'Major incident', 'Extrication'],
-    icon: '🏍️',
+    tags: ['RTC', 'Multi-agency', 'HART', 'Trauma', 'Major incident'],
+    icon: '\uD83C\uDFCD\uFE0F',
     location: 'Road Traffic Collision · North West England',
     readTime: '7 min read',
     body: [
-      jP("Some scenes announce themselves. The radio traffic told me this was significant before I arrived. Two patients, both with life-threatening injuries, multiple agencies responding, full command structure being established. Motorcyclist down. Pedestrian partially entrapped."),
-      jP("I arrived ahead of HART and took an initial assessment role on the pedestrian — the more critical patient. Entrapped beneath debris, conscious, in significant pain, multiple limb injuries consistent with high-energy mechanism. My job in those first minutes was to establish airway, manage the pain, and communicate patient status to incoming command. Not to move him. Not yet."),
-      jPull("On a multi-agency scene you have a specific role and you stay in it. Ego is not a clinical intervention. Knowing where your scope ends and the paramedic's or HART team's begins is what keeps patients safe.", "Multi-agency RTC, November 2025"),
+      jP("Two patients, both with serious injuries, multiple agencies responding, full command structure being established. Motorcyclist down. Pedestrian partially entrapped."),
+      jP("I arrived ahead of HART and took an initial assessment role on the pedestrian — the more critical patient. Entrapped, conscious, in significant pain, multiple limb injuries. My job in those first minutes: establish airway, manage pain, communicate patient status to incoming command. Not to move him."),
+      jPull("On a multi-agency scene you have a specific role and you stay in it. Knowing where your scope ends and the paramedic or HART team's begins is what keeps patients safe.", "Multi-agency RTC, November 2025"),
       jH("Working with HART"),
-      jP("The Hazardous Area Response Team arrived with specific extrication capability and extended clinical scope. I handed over my patient assessment findings and transitioned to a supporting role under the HART paramedic's lead — monitoring the pedestrian's airway and consciousness level while the team worked on extrication. Fire service coordinating the physical release. Police managing scene safety and traffic. Clear command, clear roles, clear communication."),
-      jP("The motorcyclist was managed by the first paramedic crew on scene. I had no clinical role there — correct. Single patient focus in a multi-patient scene unless directed otherwise by the clinical lead. This is something the training talks about but you only internalise it when you're standing three metres from another patient and you don't move."),
-      jH("Extrication and Outcome"),
-      jP("The pedestrian was freed and packaged for transport approximately thirty-five minutes after my arrival. Rapid trauma assessment confirmed at time of handover. Both patients transported to major trauma centre. The HART paramedic's debrief afterwards was one of the most clinically educational conversations I've had on scene — structured, honest, specific."),
-      jP("This was the scene that made the most of everything I have: EAC clinical scope, CERAD blue light awareness, multi-agency communication training, and the composure to function in a high-pressure environment where everything is moving at once. It's also the scene I think about most when someone asks me why I want this as a full-time career.")
+      jP("The Hazardous Area Response Team arrived with specific extrication capability and extended clinical scope. I handed over my assessment findings and transitioned to a supporting role — monitoring the pedestrian's airway and consciousness level while the team worked on extrication. Fire managing physical release. Police managing scene safety. Clear command, clear roles."),
+      jH("Outcome"),
+      jP("The pedestrian was freed and packaged for transport approximately thirty-five minutes after my arrival. Both patients transported to major trauma centre. The HART paramedic's debrief afterwards was one of the most clinically educational conversations I have had on scene. This was the scene that made the most of everything I have: EAC scope, CERAD blue light, multi-agency communication, and the composure to function when everything is moving at once.")
+    ]
+  ,
+
+  {
+    day: '28', month: 'Mar', year: '2026',
+    title: "Rugby Match Medical Cover — DW Stadium, Wigan",
+    deck: "Yesterday. Dismounted EAC at the DW Stadium, Wigan for a rugby match. Crowd medical cover, patient contacts, and the particular clinical challenges of a cold-weather contact sport event.",
+    category: 'Deployment',
+    tags: ['EAC', 'Rugby', 'Sports event', 'Stadium', 'Wigan', 'Dismounted'],
+    icon: '🏉',
+    location: 'DW Stadium · Wigan, Greater Manchester',
+    readTime: '4 min read',
+    body: [
+      jP("Yesterday afternoon. DW Stadium, Wigan. Rugby match — one of the more demanding event types for a medical crew, not because the patient volume is necessarily high but because the injury spectrum is specific and the environment keeps you on your toes."),
+      jP("Dismounted EAC role. Pitch-side access, crowd medical station, radio link to match day command. The weather was what it was — March in Wigan — which adds its own layer to patient presentations. Cold, damp conditions mean you're thinking about hypothermia on top of the usual trauma, and the crowd demographic at a rugby match skews toward people who will tell you they're absolutely fine when they absolutely are not."),
+      jPull("Contact sport events have a specific rhythm. The patient contacts tend to cluster — half time, immediately post-match, and the first fifteen minutes when the adrenaline of the result wears off.", "DW Stadium, 28 March 2026"),
+      jH("Clinical Activity"),
+      jP("Patient contacts across the event. Presentations consistent with a cold-weather contact sport environment — lacerations, musculoskeletal complaints, one patient with chest discomfort who was fully assessed, monitored, and discharged after a normal AVPU, pulse, and respiratory picture with no indication for further escalation. Standard event documentation completed throughout."),
+      jH("Stadium Environment"),
+      jP("The DW Stadium is a well-organised venue with established medical protocols and good communication between the medical team and match day stewards. That infrastructure matters — a venue that understands its medical provision makes the job significantly easier. Handover to stewards for any patients requiring further access assistance was clean and efficient."),
+      jP("Another event in the log. Another afternoon of doing exactly what this training is for — being present, being competent, and making sure that if something goes wrong there's someone there who knows what to do.")
     ]
   }
+}
 ];
 
 (function(){
@@ -4290,6 +4248,56 @@ function toggleSiren(){
     if(icon) icon.textContent='🔴';
   }
 }
+
+
+// ── COMPETENCY MATRIX ANIMATION ────────────────────────────────
+(function(){
+  var animated = false;
+  function animateBars(){
+    if(animated) return;
+    var section = document.getElementById('comp-matrix');
+    if(!section) return;
+    var rect = section.getBoundingClientRect();
+    if(rect.top < window.innerHeight * 0.85){
+      animated = true;
+      var bars = section.querySelectorAll('.comp-bar-fill');
+      bars.forEach(function(b, i){
+        var pct = b.getAttribute('data-pct') || '80';
+        setTimeout(function(){ b.style.width = pct + '%'; }, i * 80);
+      });
+    }
+  }
+  window.addEventListener('scroll', animateBars, {passive:true});
+  document.addEventListener('DOMContentLoaded', function(){ setTimeout(animateBars, 800); });
+  // Also trigger when about page shown
+  var origDoShow = window._doShowPage ? window._doShowPage : null;
+  document.addEventListener('DOMContentLoaded', function(){
+    var checkInterval = setInterval(function(){
+      if(typeof _doShowPage === 'function'){
+        clearInterval(checkInterval);
+        var orig = _doShowPage;
+        window._doShowPageCompHook = function(id){
+          if(id === 'about'){ animated = false; setTimeout(animateBars, 400); }
+          orig(id);
+        };
+      }
+    }, 100);
+  });
+})();
+
+// ── ACTIVELY PRACTISING PANEL ──────────────────────────────────
+(function(){
+  // Most recent deployment date — keep in sync with DEPLOYMENTS array
+  var lastDeployment = new Date('2026-03-08');
+  var today = new Date();
+  var diffDays = Math.floor((today - lastDeployment) / 86400000);
+  var el = document.getElementById('ap-deploy');
+  if (!el) return;
+  if (diffDays === 0) el.textContent = 'Today';
+  else if (diffDays === 1) el.textContent = 'Yesterday';
+  else el.textContent = diffDays + ' days ago';
+})();
+
 // ── ODOMETER COUNTERS ──────────────────────────────────────────
 (function(){
   function odometer(elId, target, suffix, duration, delay) {
@@ -4353,45 +4361,9 @@ window.addEventListener('load',function(){
 </script>
 
 <script>
-(function(){
-  var CERTS=[
-    {name:'FREC 3',expiry:'2026-08-01'},
-    {name:'EAC',expiry:'2026-12-01'},
-    {name:'CTLLS Level 4',expiry:null,note:'No expiry'},
-    {name:'CERAD Level 3',expiry:'2026-09-01'},
-    {name:'Enhanced DBS',expiry:'2027-01-01'},
-    {name:'FREC 4',expiry:null,note:'In Progress'},
-    {name:'PCV / D1',expiry:'2027-06-01'},
-    {name:'Cat C',expiry:'2027-06-01'},
-  ];
-  var g=document.getElementById('cert-dash-grid');
-  if(!g) return;
-  var today=new Date();
-  CERTS.forEach(function(c){
-    var cls='cert-green', str=c.note||'Valid';
-    if(c.expiry){
-      var exp=new Date(c.expiry);
-      var d=Math.round((exp-today)/86400000);
-      if(d<0){cls='cert-red';str='EXPIRED';}
-      else if(d<30){cls='cert-red';str='EXPIRES IN '+d+' DAYS';}
-      else if(d<90){cls='cert-amber';str='RENEWS IN '+Math.round(d/30)+' MONTHS';}
-      else{str='VALID — '+exp.toLocaleDateString('en-GB',{month:'short',year:'numeric'});}
-    }
-    var dot=cls==='cert-green'?'✓':cls==='cert-amber'?'⚠':'✗';
-    var div=document.createElement('div');
-    div.className='cert-item '+cls;
-    div.innerHTML='<span class="cert-status-dot">'+dot+'</span>'
-      +'<div><div class="cert-item-name">'+c.name+'</div>'
-      +'<div class="cert-expiry">'+str+'</div></div>';
-    g.appendChild(div);
-  });
-})();
-</script>
-
-<script>
 /* Enhancement JS - March 2026 */
 (function(){
-  var last=new Date('2026-03-25');
+  var last=new Date('2026-03-28');
   var d=Math.floor((new Date()-last)/86400000);
   var el=document.getElementById('ap-days');
   if(el) el.textContent=d===0?'Today':d===1?'Yesterday':d+' days ago';
