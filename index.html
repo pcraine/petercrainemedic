@@ -2344,7 +2344,7 @@ var DEPLOYMENTS = [
   '2026-03-07','2026-03-08',
   '2026-03-22',  // Community First Aid Course — lead trainer
   '2026-03-25',  // RTC — 2 injured drivers, care + handover to ambulance crew
-  '2026-03-28'   // Rugby match — DW Stadium, Wigan
+  '2026-03-28',  // Rugby match — DW Stadium, Wigan
   '2026-01-15',  // RTC — woman, seizure at wheel, handover to ambulance crew
   '2025-11-15'   // RTC — motorbike v pedestrian, multi-agency inc HART team
 ];
@@ -2469,6 +2469,7 @@ function renderCertDash() {
       +'<div class="cert-indicator">'+indicator+'</div>';
     g.appendChild(el);
   });
+}
 
 function toggleMenu(){
   var nl=document.getElementById('navLinks'),hb=document.querySelector('.hamburger');
@@ -3682,7 +3683,7 @@ var MEDS_DATA = [
       jH("Outcome"),
       jP("The pedestrian was freed and packaged for transport approximately thirty-five minutes after my arrival. Both patients transported to major trauma centre. The HART paramedic's debrief afterwards was one of the most clinically educational conversations I have had on scene. This was the scene that made the most of everything I have: EAC scope, CERAD blue light, multi-agency communication, and the composure to function when everything is moving at once.")
     ]
-  ,
+  },
 
   {
     day: '28', month: 'Mar', year: '2026',
@@ -3704,7 +3705,6 @@ var MEDS_DATA = [
       jP("Another event in the log. Another afternoon of doing exactly what this training is for — being present, being competent, and making sure that if something goes wrong there's someone there who knows what to do.")
     ]
   }
-}
 ];
 
 (function(){
