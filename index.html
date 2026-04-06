@@ -1213,6 +1213,137 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .sig-rl{font-family:Arial,sans-serif;font-size:10px;color:#333;margin:2px 0}
 .sig-det{font-family:Arial,sans-serif;font-size:9px;color:#666;line-height:1.8}
 .sig-copy{display:block;margin-top:8px;font-family:var(--mono);font-size:7px;letter-spacing:2px;padding:4px 10px;background:rgba(0,107,63,.15);border:1px solid rgba(0,107,63,.3);border-radius:3px;color:var(--gm);cursor:pointer}
+
+/* ══════════════════════════════════════════════════════
+   ABOUT PAGE — DARK THEME (scoped to #page-about only)
+   ══════════════════════════════════════════════════════ */
+#page-about { background: var(--ink); }
+#page-about .content-wrap { background: var(--ink); }
+
+/* Body text */
+#page-about .about-body p {
+  color: rgba(255,255,255,.75);
+  font-size: 15px;
+  line-height: 1.95;
+}
+#page-about .about-body p:first-of-type::first-letter {
+  color: var(--gm);
+}
+
+/* Section titles */
+#page-about .about-sec-title {
+  color: var(--gm);
+  border-bottom-color: rgba(0,107,63,.3);
+}
+
+/* Pull quote */
+#page-about .pull-quote {
+  background: rgba(0,107,63,.1);
+  border-left-color: var(--gm);
+}
+#page-about .pull-quote p {
+  color: rgba(255,255,255,.85);
+  font-size: 17px;
+}
+
+/* Award card */
+#page-about .award-card {
+  background: rgba(184,134,11,.08);
+  border-left-color: #FFD54F;
+  border-color: rgba(184,134,11,.2);
+}
+#page-about .award-label { color: #FFD54F; }
+#page-about .award-title { color: rgba(255,255,255,.92); }
+#page-about .award-sub   { color: rgba(255,255,255,.55); font-style: italic; }
+
+/* Deployment timeline */
+#page-about .timeline::before { background: rgba(0,107,63,.35); }
+#page-about .tl-item::before  {
+  background: var(--gm);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--gm);
+}
+#page-about .tl-date   { color: var(--gm); opacity: 1; }
+#page-about .tl-event  { color: rgba(255,255,255,.9); }
+#page-about .tl-detail { color: rgba(255,255,255,.48); }
+
+/* Radar section */
+#page-about .radar-section {
+  background: rgba(255,255,255,.03);
+  border-color: rgba(0,107,63,.2);
+}
+#page-about .radar-title { color: var(--gm); }
+#page-about .rl-name     { color: rgba(255,255,255,.7); }
+#page-about .rl-bar      { background: rgba(255,255,255,.06); }
+
+/* CPD italic note */
+#page-about .cpd-note {
+  color: rgba(255,255,255,.45);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.75;
+  margin-top: 12px;
+  display: block;
+}
+
+/* Sidebar cards */
+#page-about .sidebar-card {
+  background: rgba(255,255,255,.04);
+  border-color: rgba(0,107,63,.22);
+  border-top-color: var(--g);
+}
+#page-about .sc-title  { color: var(--gm); }
+#page-about .sc-text   { color: rgba(255,255,255,.7); }
+#page-about .sc-text strong { color: rgba(255,255,255,.9); }
+#page-about .sc-text a { color: var(--gm); }
+#page-about .sc-text a:hover { color: #7FFFD4; }
+#page-about .sc-dot    { background: var(--gm); opacity: .75; }
+
+/* Govenance, References, Actively Practising, LinkedIn panels
+   — already designed for dark; just ensure text contrast */
+#page-about .gov-cl  { color: rgba(255,255,255,.45); }
+#page-about .gov-cv  { color: var(--gm); font-weight: 700; }
+#page-about .ref-n   { color: rgba(255,255,255,.75); }
+#page-about .ref-o   { color: rgba(255,255,255,.38); }
+#page-about .ref-foot{ color: rgba(255,255,255,.3); }
+#page-about .act-lbl { color: rgba(255,255,255,.55); }
+#page-about .act-val { color: rgba(255,255,255,.9); font-weight: 700; }
+#page-about .sp-hd   { color: var(--gm); letter-spacing: 3px; }
+#page-about .li-nm   { color: rgba(255,255,255,.9); }
+#page-about .li-rl   { color: rgba(255,255,255,.4); }
+
+/* Recruiter FAQ */
+#page-about .rfaq {
+  background: rgba(0,107,63,.05);
+  border-color: rgba(0,107,63,.2);
+}
+#page-about .rfaq-h    { color: rgba(255,255,255,.95); }
+#page-about .rfaq-eye  { color: var(--gm); }
+#page-about .rfaq-q    { color: rgba(255,255,255,.75); }
+#page-about .rfaq-q:hover { color: #fff; }
+#page-about .rfaq-ico  { color: var(--gm); }
+#page-about .rfaq-ai   { color: rgba(255,255,255,.52); }
+#page-about .rfaq-item { border-bottom-color: rgba(0,107,63,.18); }
+
+/* ══ CLINICAL EVIDENCE CARDS ══ */
+.clinical-evidence-strip{background:var(--ink);padding:52px 40px;border-top:1px solid rgba(0,107,63,.2);border-bottom:1px solid rgba(0,107,63,.1)}
+.cev-inner{max-width:1100px;margin:0 auto}
+.cev-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.cev-eyebrow::before{content:'';width:20px;height:1px;background:var(--gm)}
+.cev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.cev-card{padding:28px 24px;position:relative;overflow:hidden}
+.cev-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.cev-card--blue{background:rgba(26,58,92,.35);border:1px solid rgba(46,92,138,.3)}
+.cev-card--blue::before{background:linear-gradient(90deg,#2E5C8A,#5B9AD5)}
+.cev-card--green{background:rgba(0,107,63,.12);border:1px solid rgba(0,107,63,.3)}
+.cev-card--green::before{background:linear-gradient(90deg,var(--g),var(--gm))}
+.cev-card--purple{background:rgba(107,63,159,.12);border:1px solid rgba(107,63,159,.3)}
+.cev-card--purple::before{background:linear-gradient(90deg,#6B3F9F,#A06FD0)}
+.cev-icon{font-size:28px;margin-bottom:12px}
+.cev-label{font-family:var(--display);font-size:17px;letter-spacing:1px;color:white;margin-bottom:10px;line-height:1.2}
+.cev-body{font-size:13px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:14px}
+.cev-meta{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+@media(max-width:800px){.cev-grid{grid-template-columns:1fr}.clinical-evidence-strip{padding:40px 20px}}
 </style>
 <script type="application/ld+json">
 {
@@ -1256,6 +1387,49 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     "name": "Peter Craine EAC Job Search",
     "value": "peter-craine-eac-nw-2026"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Key Pre-Hospital Clinical Events — Peter Craine EAC",
+  "description": "Verified clinical activities demonstrating pre-hospital competency",
+  "itemListElement": [
+    {
+      "@type": "ListItem", "position": 1,
+      "item": {
+        "@type": "MedicalProcedure",
+        "name": "Pre-Hospital 12-Lead ECG Acquisition and Pre-Alert",
+        "description": "Suspected MI patient — 12-lead ECG acquired and interpreted, pre-alert issued to A&E, aspirin administered per EAC protocol, ATMIST handover to NWAS. Patient dispatched under pre-alert pathway.",
+        "procedureType": { "@type": "MedicalProcedureType", "name": "Pre-hospital emergency care" },
+        "status": "CompletedProcedure",
+        "recognizingAuthority": { "@type": "Organization", "name": "St John Ambulance North West" }
+      }
+    },
+    {
+      "@type": "ListItem", "position": 2,
+      "item": {
+        "@type": "MedicalProcedure",
+        "name": "Multi-Agency RTC — HART Scene, Entrapped Patient",
+        "description": "Motorbike v pedestrian RTC. First EAC on scene. Operated within HART/police/fire command structure per JESIP. Airway management of entrapped pedestrian pending extrication.",
+        "procedureType": { "@type": "MedicalProcedureType", "name": "Pre-hospital trauma care" },
+        "status": "CompletedProcedure",
+        "recognizingAuthority": { "@type": "Organization", "name": "St John Ambulance North West" }
+      }
+    },
+    {
+      "@type": "ListItem", "position": 3,
+      "item": {
+        "@type": "MedicalProcedure",
+        "name": "Dual-Role Crowd and Player Medical Cover",
+        "description": "AFC Fylde v AFC Marine. Sole EAC medical resource for approximately 3,000 spectators and both playing squads and staff. Full clinical scope maintained throughout.",
+        "procedureType": { "@type": "MedicalProcedureType", "name": "Event medical cover" },
+        "status": "CompletedProcedure",
+        "recognizingAuthority": { "@type": "Organization", "name": "St John Ambulance North West" }
+      }
+    }
+  ]
 }
 </script>
 </head>
@@ -1330,6 +1504,11 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div class="hero-stat-num" id="ctr-meds">19</div>
           <div class="hero-stat-label">EAC Medications</div>
         </div>
+        <div class="hero-stat-div"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" id="ctr-last-duty" style="font-size:clamp(24px,3vw,40px)">&#x2014;</div>
+          <div class="hero-stat-label">Last Duty</div>
+        </div>
       </div>
       <h1 class="hero-name">PETER<br><span class="surname">CRAINE</span></h1>
       <div class="hero-role-type" aria-label="Event Medic · FREC 3 EAC · First Aid Trainer · CTLLS L4 · SJA North West"><span class="tw-text" id="tw-text"></span><span class="tw-cursor" aria-hidden="true"></span></div>
@@ -1354,7 +1533,33 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="trust-item"><div class="trust-label">Qualification</div><div class="trust-value">FREC 3 Certified</div><div class="trust-sub">Pre-hospital emergency care</div></div>
       <div class="trust-item"><div class="trust-label">Training</div><div class="trust-value">CTLLS Level 4</div><div class="trust-sub">FAW &middot; EFAW &middot; BLS &middot; AED</div></div>
       <div class="trust-item"><div class="trust-label">Driving</div><div class="trust-value">CERAD Level 3</div><div class="trust-sub">PCV/D1 &middot; Cat C &middot; Blue light</div></div>
-      <div class="trust-item"><div class="trust-label">Compliance</div><div class="trust-value">Enhanced DBS</div><div class="trust-sub">Current &middot; In date</div></div>
+      <div class="trust-item"><div class="trust-label">Compliance</div><div class="trust-value">Enhanced DBS</div><!-- ══ CLINICAL EVIDENCE CARDS ══ -->
+<section class="clinical-evidence-strip" aria-label="Key clinical achievements">
+  <div class="cev-inner">
+    <div class="cev-eyebrow">Verified Clinical Activity</div>
+    <div class="cev-grid">
+      <div class="cev-card cev-card--blue sr-item">
+        <div class="cev-icon">🫀</div>
+        <div class="cev-label">Suspected MI &mdash; Clinical Lead</div>
+        <div class="cev-body">12-lead ECG acquired &amp; interpreted. Pre-alert called to A&amp;E. Aspirin administered per EAC protocol. Full ATMIST handover to NWAS. Patient dispatched under pre-alert pathway.</div>
+        <div class="cev-meta">Community duty &middot; April 2026</div>
+      </div>
+      <div class="cev-card cev-card--green sr-item sr-stagger-2">
+        <div class="cev-icon">&#x26A1;</div>
+        <div class="cev-label">HART Multi-Agency RTC</div>
+        <div class="cev-body">Motorbike v pedestrian. First on scene. Operated within HART, police and fire command structure. Airway management of entrapped patient pending extrication. Full ATMIST handover.</div>
+        <div class="cev-meta">Multi-agency RTC &middot; November 2025</div>
+      </div>
+      <div class="cev-card cev-card--purple sr-item sr-stagger-3">
+        <div class="cev-icon">&#x26BD;</div>
+        <div class="cev-label">Dual-Role Football Cover</div>
+        <div class="cev-body">AFC Fylde v AFC Marine. Sole medical resource for ~3,000 crowd and both playing squads &amp; staff. No team doctor on site. Full EAC clinical scope throughout.</div>
+        <div class="cev-meta">Mill Farm Stadium &middot; March 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="trust-sub">Current &middot; In date</div></div>
     </div>
   </div>
 
@@ -1483,26 +1688,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="about-body">
         <div class="pull-quote sr-item"><p>&#x201C;Most people see a dance competition or a road race. I see the patients who might need me &mdash; and I make sure I'm ready for every one of them.&#x201D;</p></div>
         <p>I'm a practising Emergency Ambulance Crew (EAC) member and FREC 3-certified pre-hospital practitioner with St John Ambulance, deployed operationally across the North West at sporting events, national competitions, music venues, community events and blue light emergency response.</p>
-        <div class="radar-section sr-item">
-        <div class="radar-title">Clinical Skills Profile</div>
-        <div class="radar-wrap">
-          <div class="radar-svg-wrap">
-            <svg id="radar-svg" width="200" height="190" viewBox="0 0 200 190" xmlns="http://www.w3.org/2000/svg">
-              <!-- Grid rings -->
-              <polygon id="rg3" points="" fill="none" stroke="rgba(0,107,63,.12)" stroke-width="1"/>
-              <polygon id="rg2" points="" fill="none" stroke="rgba(0,107,63,.1)" stroke-width="1"/>
-              <polygon id="rg1" points="" fill="none" stroke="rgba(0,107,63,.08)" stroke-width="1"/>
-              <!-- Spokes -->
-              <g id="radar-spokes" stroke="rgba(0,107,63,.1)" stroke-width="1"></g>
-              <!-- Data polygon -->
-              <polygon id="radar-data" points="" fill="rgba(0,166,81,.12)" stroke="#00A651" stroke-width="1.5" stroke-linejoin="round"/>
-              <!-- Labels -->
-              <g id="radar-labels" font-family="Space Mono,monospace" font-size="7" fill="rgba(255,255,255,.4)" text-anchor="middle"></g>
-            </svg>
-          </div>
-          <div class="radar-legend" id="radar-legend"></div>
-        </div>
-      </div>
+        
         <div class="about-sec-title">Clinical Background</div>
         <p>My clinical training covers the full pre-hospital emergency care spectrum. I am competent in advanced airway management using OPA, NPA and iGel adjuncts, bag-valve-mask ventilation, capnography, 12-lead ECG acquisition and interpretation, haemorrhage control, spinal immobilisation with cervical collar and head blocks, traction splinting, pelvic binder application, blood glucose monitoring, and major incident management using the METHANE and JESIP frameworks.</p>
         <p>I administer medications to full EAC scope &mdash; including adrenaline (IM), salbutamol (nebuliser), entonox, methoxyflurane (Penthrox), naloxone (IM), hydrocortisone (IM), GTN, glucagon (IM), ipratropium bromide, aspirin, paracetamol, ibuprofen, loratadine, glucose gel and oral rehydration salts. Every patient contact is documented to PRF standard and handed over using ATMIST and SBAR protocols to receiving NWAS crews, including formal pre-alert where required.</p>
@@ -1521,24 +1707,24 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         </div>
         <div class="about-sec-title">CPD &amp; Professional Development</div>
         <p>I maintain an active Continuing Professional Development log in line with SJA clinical governance requirements and JRCALC+ guidelines. CPD is not optional at EAC level &mdash; it is the mechanism by which skill fade is prevented and competence is formally evidenced.</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--stone2);border:1px solid var(--stone2);margin:20px 0">
-          <div style="background:var(--white);padding:18px 16px;text-align:center">
-            <div style="font-family:var(--display);font-size:36px;color:var(--g);letter-spacing:1px">21+</div>
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-top:4px">CPD Hours Logged</div>
-            <div style="font-size:11px;color:var(--ink4);font-style:italic;margin-top:3px">March 2026</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,107,63,.2);border:1px solid rgba(0,107,63,.25);border-radius:3px;margin:20px 0;overflow:hidden">
+          <div style="background:rgba(255,255,255,.04);padding:18px 16px;text-align:center">
+            <div style="font-family:var(--display);font-size:36px;color:var(--gm);letter-spacing:1px;line-height:1">21+</div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px">CPD Hours Logged</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.3);font-style:italic;margin-top:3px">March 2026</div>
           </div>
-          <div style="background:var(--white);padding:18px 16px;text-align:center;border-left:1px solid var(--stone2);border-right:1px solid var(--stone2)">
-            <div style="font-family:var(--display);font-size:36px;color:var(--g);letter-spacing:1px">JRCALC+</div>
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-top:4px">Clinical Guidelines</div>
-            <div style="font-size:11px;color:var(--ink4);font-style:italic;margin-top:3px">Current edition</div>
+          <div style="background:rgba(255,255,255,.04);padding:18px 16px;text-align:center;border-left:1px solid rgba(0,107,63,.2);border-right:1px solid rgba(0,107,63,.2)">
+            <div style="font-family:var(--display);font-size:36px;color:var(--gm);letter-spacing:1px;line-height:1">JRCALC+</div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px">Clinical Guidelines</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.3);font-style:italic;margin-top:3px">Current edition</div>
           </div>
-          <div style="background:var(--white);padding:18px 16px;text-align:center">
-            <div style="font-family:var(--display);font-size:36px;color:var(--g);letter-spacing:1px">Active</div>
-            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);margin-top:4px">Practice Portfolio</div>
-            <div style="font-size:11px;color:var(--ink4);font-style:italic;margin-top:3px">Maintained continuously</div>
+          <div style="background:rgba(255,255,255,.04);padding:18px 16px;text-align:center">
+            <div style="font-family:var(--display);font-size:36px;color:var(--gm);letter-spacing:1px;line-height:1">Active</div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:6px">Practice Portfolio</div>
+            <div style="font-size:11px;color:rgba(255,255,255,.3);font-style:italic;margin-top:3px">Maintained continuously</div>
           </div>
         </div>
-        <p style="font-size:13px;color:var(--ink4);font-style:italic">CPD activities include: simulation exercises, clinical reflective practice, online learning modules (Responder+), scenario training, skills refreshers, mandatory annual updates and self-directed study. Full log available on request.</p
+        <p class="cpd-note">CPD activities include: simulation exercises, clinical reflective practice, online learning modules (Responder+), scenario training, skills refreshers, mandatory annual updates and self-directed study. Full log available on request.</p
 
         <div class="radar-section sr-item">
           <div class="radar-title">Clinical Skill Profile</div>
@@ -1549,6 +1735,9 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <p>I am currently progressing my FREC 4 / Advanced Ambulance Practitioner qualification &mdash; significantly expanding clinical scope, medication range and patient assessment capability.</p>
         <div class="about-sec-title">Recent Deployments</div>
         <div class="timeline">
+          <div class="tl-item"><div class="tl-date">05 Apr 2026</div><div class="tl-event">Darwen Roller Coaster Half Marathon</div><div class="tl-detail">Darwen, Lancashire &middot; Vehicle EAC &middot; Driver &amp; clinician &middot; Treatment centre deployed</div></div>
+          <div class="tl-item"><div class="tl-date">04 Apr 2026</div><div class="tl-event">Community EAC Ambulance Duty</div><div class="tl-detail">Public event &middot; 2 patients &middot; ECG &amp; pre-alert &middot; MI dispatched to A&amp;E</div></div>
+          <div class="tl-item"><div class="tl-date">31 Mar 2026</div><div class="tl-event">AFC Fylde v AFC Marine</div><div class="tl-detail">Mill Farm Stadium &middot; Dismounted EAC &middot; Crowd &amp; player/staff medical cover</div></div>
           <div class="tl-item"><div class="tl-date">March 2026</div><div class="tl-event">High Legh 10K</div><div class="tl-detail">Cheshire &middot; EAC in Vehicle &middot; Race route cover</div></div>
           <div class="tl-item"><div class="tl-date">March 2026</div><div class="tl-event">IDTA Nationwide Solo Dance Festival</div><div class="tl-detail">Norbreck Castle, Blackpool &middot; EAC Dismounted</div></div>
           <div class="tl-item"><div class="tl-date">Ongoing</div><div class="tl-event">SJA North West Operational Deployments</div><div class="tl-detail">Sporting, music, community, corporate &amp; blue light response</div></div>
@@ -2345,6 +2534,9 @@ var DEPLOYMENTS = [
   '2026-03-22',  // Community First Aid Course — lead trainer
   '2026-03-25',  // RTC — 2 injured drivers, care + handover to ambulance crew
   '2026-03-28',  // Rugby match — DW Stadium, Wigan
+  '2026-03-31',  // Football — AFC Fylde v AFC Marine, dismounted EAC
+  '2026-04-04',  // Community EAC duty — 2 patients inc suspected MI, ECG + pre-alert
+  '2026-04-05',  // Darwen Roller Coaster HM — vehicle EAC, driver + clinician, treatment centre
   '2026-01-15',  // RTC — woman, seizure at wheel, handover to ambulance crew
   '2025-11-15'   // RTC — motorbike v pedestrian, multi-agency inc HART team
 ];
@@ -2369,6 +2561,9 @@ function countDeployments(){
     'Recent: Community First Aid Course — Lead Trainer/Assessor · 8 delegates · March 2026',
     'Recent: RTC — 2 injured drivers, care given, handed over to ambulance · 25 Mar 2026',
     'Recent deployment: Rugby match — DW Stadium, Wigan · 28 Mar 2026',
+    'Recent deployment: AFC Fylde v AFC Marine — Dual-role: crowd & player/staff medical cover · 31 Mar 2026',
+    'Today: EAC ambulance duty — community event · ECG acquired, pre-alert called, suspected MI dispatched to A&E · 4 Apr 2026',
+    'Today: Darwen Roller Coaster Half Marathon — Vehicle EAC · Driver & clinician · Treatment centre deployed · 5 Apr 2026',
     'Multi-agency RTC: worked alongside paramedics, police, fire & HART team',
   ];
   var SEASONAL = {
@@ -2866,6 +3061,78 @@ var JOURNAL_POSTS = [
       jP("The Hazardous Area Response Team arrived with specific extrication capability and extended clinical scope. I handed over my assessment findings and transitioned to a supporting role — monitoring the pedestrian's airway and consciousness level while the team worked on extrication. Fire managed physical release. Police managed scene safety. Clear command, clear roles, clear communication."),
       jH("Outcome"),
       jP("The pedestrian was freed and packaged for transport approximately thirty-five minutes after my arrival. Both patients transported to major trauma centre. The HART paramedic's debrief afterwards was one of the most clinically educational conversations I have had on scene. This was the scene that made the most of everything I have: EAC scope, CERAD blue light, multi-agency communication, and the composure to function when everything is moving at once.")
+    ]
+  }
+
+,
+
+  {
+    day: '31', month: 'Mar', year: '2026',
+    title: "AFC Fylde v AFC Marine — Dual-Role Football Medical Cover",
+    deck: "Lower-league football at Mill Farm. ~3,000 crowd, two full squads, coaching staff and officials. When the gate is small enough the medical team carries responsibility for everyone inside the ground — players included. A different kind of duty.",
+    category: 'Deployment',
+    tags: ['EAC', 'Football', 'Stadium', 'Player care', 'Dual-role', 'Dismounted'],
+    icon: '⚽',
+    location: 'Mill Farm Stadium · Fylde, Lancashire',
+    readTime: '5 min read',
+    body: [
+      jP("There is a meaningful clinical difference between a Premier League fixture and a lower-league match, and it is not what most people assume. It is not the quality of the football. It is the scope of your responsibility. At a 60,000-seat ground there is a separate medical team for the players, a separate team for the stands, a team doctor, a physio, and clear demarcation between them. At Mill Farm on a Tuesday night with AFC Fylde hosting AFC Marine, the demarcation does not exist. The EAC covers the crowd. The EAC covers the players. The EAC covers the staff."),
+      jP("Attendance approximately 3,000. Dismounted EAC role throughout. Pre-match: walk the ground, identify the medical room, confirm communication with match day safety officer, locate the nearest AED points, brief the stewards on escalation procedure. Standard pre-deployment checks — kit, oxygen, medications. By kick-off you know the ground and the ground knows you."),
+      jPull("Lower-league football is not a lesser clinical environment. It is a more complete one. You are the only medical resource for everyone on the pitch and everyone in the stands.", "Mill Farm Stadium, 31 March 2026"),
+      jH("Player and Staff Cover"),
+      jP("The dual-role element is the operationally interesting part. For crowd medical cover you are largely reactive — waiting for a call from a steward or a member of the public. For player cover you are watching the game with a different eye. Every significant challenge, every collision, every player down you are already moving to the touchline in your mind, assessing mechanism from distance, ready to enter the field of play if the referee signals. You are not the physio. You are the clinical escalation above the physio."),
+      jP("No significant incidents on the night. The match completed without major event. Post-match documentation completed, handover to safety officer, equipment checks signed off. An uneventful duty is a successful duty — the preparation that goes in beforehand is what makes the uneventful possible."),
+      jH("What This Duty Demonstrates"),
+      jP("Dual-role coverage is a competency marker. It requires situational awareness across two entirely different patient populations simultaneously, clear communication with match officials regarding field-of-play entry protocol, and the confidence to operate as the most senior clinical resource on site. For anyone reviewing this portfolio: this is not crowd first aid. This is pre-hospital clinical care delivered in a complex, multi-population environment with no clinical backup on site.")
+    ]
+  }
+
+,
+
+  {
+    day: '04', month: 'Apr', year: '2026',
+    title: "Community EAC Duty — Two Patients, One Suspected MI",
+    deck: "A seven-hour ambulance duty on a community event. Two patient contacts: a minor wound managed by the nurse on crew, and a suspected myocardial infarction requiring full primary survey, 12-lead ECG acquisition, pre-alert to A&E, and handover to NWAS. The kind of shift that earns every hour of training.",
+    category: 'Deployment',
+    tags: ['EAC', 'Cardiac', 'ECG', 'Pre-alert', 'Handover', 'Community', 'NWAS'],
+    icon: '🫀',
+    location: 'Community Event · North West England',
+    readTime: '6 min read',
+    body: [
+      jP("Seven hours on the ambulance. 15:00 to 22:00. Community public duty — the kind of shift where the first three hours are quiet enough that you check your kit twice, rotate positions, keep sharp, and wait. Then the radio changes tone and you earn the day in the space of forty minutes."),
+      jP("Two patient contacts across the shift. That number undersells it. One was straightforward. One was not."),
+      jH("Patient One — Laceration, Right Hand"),
+      jP("Self-presented to the ambulance. Male, adult, laceration to the finger sustained at the event. Bleeding controlled on arrival. The nurse on crew assessed the wound — clean, margins approximated well, no tendon involvement, neurovascular status intact. Steri-strips applied, wound dressed, aftercare advice given, documentation completed. Patient discharged on scene. Textbook minor wound management. The system working as it should."),
+      jH("Patient Two — Suspected Myocardial Infarction"),
+      jP("The second call was different. Male patient, middle-aged, presenting with central chest pain radiating to the left arm, onset approximately twenty minutes prior to our arrival. Diaphoretic. Pale. Nauseous. The clinical picture was unambiguous before I had finished the primary survey."),
+      jPull("A 12-lead ECG in the pre-hospital environment is not a formality. It is the difference between a patient arriving at A&E as a walk-in and arriving as a pre-alerted STEMI. Those two outcomes are not comparable.", "Community EAC Duty, 4 April 2026"),
+      jH("Clinical Management"),
+      jP("Primary survey completed and documented. 12-lead ECG acquired — changes consistent with acute coronary syndrome, pre-alert criteria met. NWAS dispatched. Pre-alert called to the receiving A&E with patient details, clinical findings, and ECG interpretation. Aspirin administered per EAC protocol while awaiting NWAS. Continuous monitoring throughout — AVPU, pulse, respiratory rate, oxygen saturation, pain score. Patient kept calm, position of comfort, reassurance maintained."),
+      jP("NWAS crew arrived and I delivered a full ATMIST handover including the 12-lead findings and the pre-alert number. Patient transferred to NWAS care and transported to A&E under pre-alert. Handover accepted, documentation submitted."),
+      jH("Why This Matters"),
+      jP("The pre-hospital 12-lead ECG and pre-alert pathway exists because time-to-balloon matters in STEMI management. Every minute of door-to-balloon time carries clinical weight. The EAC's role in that pathway is to identify the presentation, acquire the ECG, interpret it correctly, make the call, and communicate it clearly. That is exactly what happened tonight. The training, the qualifications, the CPD hours — they are all for moments like this one.")
+    ]
+  }
+
+,
+
+  {
+    day: '05', month: 'Apr', year: '2026',
+    title: "Darwen Roller Coaster Half Marathon — Vehicle EAC, Driver & Clinician",
+    deck: "07:00 start. Drove the treatment centre to Darwen, covered the race as vehicle-based EAC with dual driver-clinician responsibility, drove back at finish. The logistics of a running event are as much a part of the clinical picture as the medicine.",
+    category: 'Deployment',
+    tags: ['EAC', 'Running events', 'Vehicle-based', 'Driver', 'Treatment centre', 'Lancashire'],
+    icon: '🏃',
+    location: 'Darwen, Lancashire',
+    readTime: '4 min read',
+    body: [
+      jP("07:00 start. The Darwen Roller Coaster Half Marathon — named accurately, as anyone who has seen the elevation profile will confirm. Drove the treatment centre from base to Darwen, established the medical point, covered the race as vehicle-based EAC throughout, then drove back at close. Shift finished 13:30."),
+      jP("The dual driver-clinician role is one that gets underappreciated in conversation about pre-hospital work. It is not simply a matter of being qualified to do both. It requires a different kind of shift awareness — you are responsible for the vehicle, its condition, its positioning, its safe operation, and simultaneously for the clinical readiness of everything inside it. Pre-departure checks are not optional. Kit checks are not optional. Neither is knowing your route to the nearest ED before you leave base."),
+      jPull("Driving the treatment centre is a clinical decision as much as a logistical one. Where you park determines how quickly you can reach a patient. How you position the vehicle determines how quickly NWAS can reach you.", "Darwen Roller Coaster HM, 5 April 2026"),
+      jH("The Event"),
+      jP("Half marathon across the Darwen moors — significant elevation, exposed terrain, variable weather. The clinical risk profile of a hilly moorland half marathon differs from a flat road race. Cardiac presentations are more likely on sustained climbs. Hypothermia is a genuine risk if a runner stops moving in cold conditions at altitude. Musculoskeletal injuries from uneven terrain are more complex than road-race equivalents. All of that shapes how you position, how you patrol, and what you pre-draw in the vehicle."),
+      jH("Uneventful"),
+      jP("No patient contacts. The race completed without medical incident — which is the best possible outcome and not an accident. Good pre-event planning, correct vehicle positioning, visible medical presence and well-briefed stewards are what make an uneventful event uneventful. The work that prevents incidents is invisible. That is the point.")
     ]
   }
 
@@ -4122,16 +4389,93 @@ window.toggleHeartbeat = function() {
 </script>
 
 <!-- PRINTABLE CREDENTIAL PAGE -->
-<div class="print-cred-page" id="print-cred-page" style="display:none;font-family:Arial,sans-serif;padding:40px;color:#111;max-width:760px;margin:0 auto">
-  <div style="border-bottom:3px solid #006B3F;padding-bottom:16px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:flex-end">
+<div class="print-cred-page" id="print-cred-page" style="display:none;font-family:Arial,sans-serif;padding:36px;color:#111;max-width:800px;margin:0 auto">
+
+  <!-- HEADER -->
+  <div style="border-bottom:4px solid #006B3F;padding-bottom:14px;margin-bottom:18px;display:flex;justify-content:space-between;align-items:flex-end">
     <div>
-      <div style="font-size:26px;font-weight:900;letter-spacing:3px;color:#111">PETER CRAINE</div>
-      <div style="font-size:13px;font-weight:700;letter-spacing:2px;color:#006B3F">EMERGENCY AMBULANCE CREW · FIRST AID TRAINER</div>
+      <div style="font-size:28px;font-weight:900;letter-spacing:3px;color:#0a0f0c">PETER CRAINE</div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;color:#006B3F;margin-top:3px">EMERGENCY AMBULANCE CREW &middot; FREC 3 &middot; FIRST AID TRAINER &middot; CTLLS L4</div>
     </div>
-    <div style="text-align:right;font-size:10px;color:#666">
-      07756 831072<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c2b2a7b6a7b0eca1b0a3abaca782afa7eca1adaf">[email&#160;protected]</a><br>petercrainemedic.co.uk
+    <div style="text-align:right;font-size:10px;color:#444;line-height:1.8">
+      07756 831072<br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6f1f0a1b0a1d410c1d0e06010a2f020a410c0002">[email&#160;protected]</a><br>petercrainemedic.co.uk<br>Blackburn, Lancashire
     </div>
   </div>
+
+  <!-- STATS BAR -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e0ede6;border:1px solid #e0ede6;margin-bottom:16px">
+    <div style="background:#f0f7f4;padding:10px 12px;text-align:center">
+      <div style="font-size:22px;font-weight:900;color:#006B3F">27+</div>
+      <div style="font-size:8px;letter-spacing:2px;color:#5A6A60;text-transform:uppercase;margin-top:2px">Duties Deployed</div>
+    </div>
+    <div style="background:#e8f5ee;padding:10px 12px;text-align:center">
+      <div style="font-size:22px;font-weight:900;color:#006B3F">208+</div>
+      <div style="font-size:8px;letter-spacing:2px;color:#5A6A60;text-transform:uppercase;margin-top:2px">Learners Trained</div>
+    </div>
+    <div style="background:#f0f7f4;padding:10px 12px;text-align:center">
+      <div style="font-size:22px;font-weight:900;color:#006B3F">19</div>
+      <div style="font-size:8px;letter-spacing:2px;color:#5A6A60;text-transform:uppercase;margin-top:2px">Medications in Scope</div>
+    </div>
+    <div style="background:#e8f5ee;padding:10px 12px;text-align:center">
+      <div style="font-size:22px;font-weight:900;color:#006B3F">FREC 4</div>
+      <div style="font-size:8px;letter-spacing:2px;color:#5A6A60;text-transform:uppercase;margin-top:2px">In Progress 2026</div>
+    </div>
+  </div>
+
+  <!-- KEY CLINICAL ACHIEVEMENTS -->
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#006B3F;color:white;padding:6px 10px;margin-bottom:0">KEY CLINICAL ACHIEVEMENTS</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#ddd;margin-bottom:16px">
+    <div style="background:#0f2540;padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;color:#FFD700;margin-bottom:5px">&#x2665; Suspected MI &mdash; Clinical Lead</div>
+      <div style="font-size:9px;color:#C8DCF0;line-height:1.7">12-lead ECG acquired &amp; interpreted. Pre-alert to A&amp;E. Aspirin administered. ATMIST handover to NWAS. Dispatched under pre-alert pathway.</div>
+      <div style="font-size:8px;color:#8AAAC8;margin-top:5px;font-style:italic">Community duty &middot; April 2026</div>
+    </div>
+    <div style="background:#0f2518;padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;color:#00D46A;margin-bottom:5px">&#x26A1; HART Multi-Agency RTC</div>
+      <div style="font-size:9px;color:#A8D8B8;line-height:1.7">First on scene. Operated within HART/police/fire command. Airway management of entrapped patient pending extrication. ATMIST handover.</div>
+      <div style="font-size:8px;color:#6A9A7A;margin-top:5px;font-style:italic">Multi-agency RTC &middot; November 2025</div>
+    </div>
+    <div style="background:#1a0f2a;padding:12px 14px">
+      <div style="font-size:10px;font-weight:700;color:#D4A0FF;margin-bottom:5px">&#x26BD; Dual-Role Football Cover</div>
+      <div style="font-size:9px;color:#C8B0E8;line-height:1.7">AFC Fylde v AFC Marine. Sole EAC resource for ~3,000 crowd and both squads &amp; staff. No team doctor on site. Full scope throughout.</div>
+      <div style="font-size:8px;color:#8A6AAA;margin-top:5px;font-style:italic">Mill Farm Stadium &middot; March 2026</div>
+    </div>
+  </div>
+
+  <!-- QUALIFICATIONS -->
+  <div style="font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;background:#006B3F;color:white;padding:6px 10px;margin-bottom:0">QUALIFICATIONS &amp; LICENCES</div>
+  <table style="width:100%;border-collapse:collapse;font-size:10px;margin-bottom:16px">
+    <tr style="background:#e8f5ee">
+      <th style="padding:6px 10px;text-align:left;color:#004D2C">Qualification</th>
+      <th style="padding:6px 10px;text-align:left;color:#004D2C">Awarding Body</th>
+      <th style="padding:6px 10px;text-align:left;color:#004D2C">Status</th>
+    </tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">FREC 3 — First Responder Emergency Care</td><td style="padding:6px 10px;color:#666">IHCD / St John Ambulance</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#f9f9f9"><td style="padding:6px 10px">FREC 4 / Advanced Ambulance Practitioner</td><td style="padding:6px 10px;color:#666">IHCD</td><td style="padding:6px 10px;color:#B8860B;font-weight:700">IN PROGRESS 2026</td></tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">IREC — Immediate Responder Emergency Care</td><td style="padding:6px 10px;color:#666">IHCD</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#f9f9f9"><td style="padding:6px 10px">FROS Level 3 — First Responder on Scene</td><td style="padding:6px 10px;color:#666">FutureQuals</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">CTLLS Level 4 — Certificate in Teaching</td><td style="padding:6px 10px;color:#666">City &amp; Guilds</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; ACHIEVED</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#f9f9f9"><td style="padding:6px 10px">AAVRA Assessor Award</td><td style="padding:6px 10px;color:#666">AAVRA</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">FAW &amp; EFAW Trainer / Assessor</td><td style="padding:6px 10px;color:#666">Regulated Awarding Body</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#f9f9f9"><td style="padding:6px 10px">BLS &amp; AED Trainer / Assessor</td><td style="padding:6px 10px;color:#666">St John Ambulance</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">CERAD Level 3 — Blue Light Driving</td><td style="padding:6px 10px;color:#666">CERAD</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee;background:#f9f9f9"><td style="padding:6px 10px">PCV / D1 &amp; Category C Licence</td><td style="padding:6px 10px;color:#666">DVSA</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="border-bottom:1px solid #eee"><td style="padding:6px 10px">Enhanced DBS Certificate</td><td style="padding:6px 10px;color:#666">Disclosure &amp; Barring Service</td><td style="padding:6px 10px;color:#006B3F;font-weight:700">&#10003; CURRENT</td></tr>
+    <tr style="background:#f9f9f9"><td style="padding:6px 10px">Commissioner Commendation — Outstanding Service</td><td style="padding:6px 10px;color:#666">St John Ambulance</td><td style="padding:6px 10px;color:#B8860B;font-weight:700">&#11088; AWARDED</td></tr>
+  </table>
+
+  <!-- MEDICATION SCOPE -->
+  <div style="padding:10px 12px;background:#f0f7f2;border-left:3px solid #006B3F;margin-bottom:14px">
+    <div style="font-size:8px;font-weight:700;letter-spacing:2px;color:#006B3F;text-transform:uppercase;margin-bottom:5px">EAC Medication Scope &mdash; 19 Medications &middot; Column 9 of 10</div>
+    <div style="font-size:9px;color:#333;line-height:1.9">Adrenaline 1:1000 IM &middot; Naloxone IM &middot; Salbutamol NEB &middot; Ipratropium Bromide NEB &middot; Entonox INH &middot; Penthrox INH &middot; Hydrocortisone IM &middot; Glucagon IM &middot; GTN Spray SL &middot; Aspirin PO &middot; Paracetamol PO &middot; Ibuprofen PO &middot; Glucose Gel 40% PO &middot; Loratadine PO &middot; Oral Rehydration Salts PO &middot; Oxygen INH &middot; Adrenaline Auto-Injector (own) &middot; GTN Spray (own) &middot; Salbutamol Inhaler (own)</div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid #006B3F;padding-top:10px">
+    <div style="font-size:9px;color:#666">Enhanced DBS Current &middot; PCV/D1 &middot; Cat C &middot; CERAD L3 Blue Light &middot; Available Immediately</div>
+    <div style="font-size:9px;color:#999;font-style:italic" id="print-date"></div>
+  </div>
+</div>
   <table style="width:100%;border-collapse:collapse;font-size:11px">
     <tr style="background:#006B3F;color:white">
       <th style="padding:8px 12px;text-align:left;letter-spacing:1px">QUALIFICATION</th>
@@ -4156,7 +4500,7 @@ window.toggleHeartbeat = function() {
     <div id="print-date"></div>
   </div>
 </div>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function printCredentials(){
   var d=document.getElementById('print-cred-page');
   var pd=document.getElementById('print-date');
@@ -4356,9 +4700,16 @@ window.addEventListener('load',function(){
 </script>
 
 <script>
+(function(){
+  var LAST = new Date('2026-04-04');
+  var el = document.getElementById('ctr-last-duty');
+  if (!el) return;
+  var diff = Math.floor((new Date() - LAST) / 86400000);
+  el.textContent = diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff + 'd ago';
+})();
 /* Enhancement JS - March 2026 */
 (function(){
-  var last=new Date('2026-03-28');
+  var last=new Date('2026-04-05');
   var d=Math.floor((new Date()-last)/86400000);
   var el=document.getElementById('ap-days');
   if(el) el.textContent=d===0?'Today':d===1?'Yesterday':d+' days ago';
@@ -4417,7 +4768,9 @@ function copySig(){
 function doVcard(){
   var lines=['BEGIN:VCARD','VERSION:3.0','FN:Peter Craine','N:Craine;Peter;;;','TITLE:Emergency Ambulance Crew / FREC 3','ORG:St John Ambulance North West','TEL;TYPE=CELL:+447756831072','EMAIL:peter.craine@me.com','URL:https://www.petercrainemedic.co.uk','ADR;TYPE=HOME:;;Blackburn;Lancashire;BB1;;GB','NOTE:FREC 3 | EAC | CTLLS L4 | CERAD L3 | Enhanced DBS | SJA NW','END:VCARD'];
   var v=lines.join('\r\n');
-  try{var b=new Blob([v],{type:'text/vcard'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;a.download='Peter_Craine_Medic.vcf';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);}catch(e){alert('Download failed.');}
+  try{var b=new Blob([v],{type:'text/vcard'});var u=URL.createObjectURL(b);var a=document.createElement('a');a.href=u;
+a.download='Peter_Craine_Medic.vcf';a.click();URL.revokeObjectURL(u);
+}catch(e){alert('Download failed.');}
 }
 </script>
 </body>
