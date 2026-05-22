@@ -1430,6 +1430,9 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 #page-about .content-wrap .pull-quote{background:var(--gl);border-left-color:var(--g)}
 #page-about .content-wrap .pull-quote p{color:#00402A}
 
+#page-about .content-wrap .community-list a.inline-cta-link{color:var(--g);border-bottom-color:rgba(0,107,63,.4);font-style:normal}
+#page-about .content-wrap .community-list a.inline-cta-link:hover{color:var(--gm)}
+
 /* Recruiter FAQ */
 #page-about .rfaq {
   background: rgba(0,107,63,.05);
@@ -1797,7 +1800,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     </button>
   </div>
 </nav>
-<div id="otw-banner" style="z-index:98;background:linear-gradient(90deg,rgba(0,107,63,.18),rgba(0,107,63,.08),rgba(0,107,63,.18));border-bottom:1px solid rgba(0,107,63,.35);padding:9px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:10px"><div style="width:9px;height:9px;border-radius:50%;background:#00A651"></div><span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.85)">Open to Work — North West England</span><span style="font-family:var(--mono);font-size:7px;padding:3px 10px;border:1px solid rgba(0,166,81,.4);border-radius:20px;color:#00A651;background:rgba(0,107,63,.12);margin-left:6px">NHS EAC / Technician</span></div><a style="font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:5px 14px;background:#006B3F;border-radius:3px;color:#fff;text-decoration:none" onclick="showPage(&#39;contact&#39;);return false" href="#">Contact Peter →</a></div>
+<div id="otw-banner" style="z-index:98;background:linear-gradient(90deg,var(--g2),#003d22,var(--g2));border-bottom:1px solid rgba(0,107,63,.5);padding:9px 24px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap"><div style="display:flex;align-items:center;gap:10px"><div style="width:9px;height:9px;border-radius:50%;background:#00A651;box-shadow:0 0 6px rgba(0,166,81,.6)"></div><span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.9)">Open to Work — North West England</span><span style="font-family:var(--mono);font-size:7px;padding:3px 10px;border:1px solid rgba(0,166,81,.5);border-radius:20px;color:#7FFFD4;background:rgba(0,107,63,.3);margin-left:6px">NHS EAC / Technician</span></div><a style="font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:5px 14px;background:rgba(0,166,81,.25);border:1px solid rgba(0,166,81,.4);border-radius:3px;color:#fff;text-decoration:none" onclick="showPage('contact');return false" href="#">Contact Peter →</a></div>
 <div id="cursor-glow" aria-hidden="true"></div>
 <div id="scan-line" aria-hidden="true"></div>
 
@@ -2176,7 +2179,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     </div>
 
     <!-- HEMS AERIAL SCOPE: Clinical Skill Profile -->
-    <div class="about-sec-title" style="color:white">Clinical Skill Profile &mdash; Aerial View</div>
+    <div class="about-sec-title">Clinical Skill Profile &mdash; Aerial View</div>
     <div style="position:relative;margin-bottom:32px;background:#05100a;border:1px solid rgba(0,107,63,.2);padding:30px;border-radius:2px">
       <canvas id="about-hems-skills" width="600" height="420" style="display:block;width:100%;max-width:600px;margin:0 auto" aria-label="HEMS scope view of clinical skills"></canvas>
       <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.4)">// CLINICAL CAPABILITY SCOPE &mdash; EAC LEVEL 3 OF 10 &mdash; FREC 4 IN PROGRESS</div>
@@ -2194,14 +2197,14 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     </div>
 
     <!-- HEMS AERIAL SCOPE: Event Coverage Area -->
-    <div class="about-sec-title" style="color:white">Event Medical Cover &mdash; Coverage Area</div>
+    <div class="about-sec-title">Event Medical Cover &mdash; Coverage Area</div>
     <div style="position:relative;margin-bottom:12px">
       <canvas id="coverage-canvas" style="display:block;width:100%;background:#040c06;border:1px solid rgba(0,107,63,.25)" aria-label="Interactive coverage map &mdash; North West England" height="320"></canvas>
       <div class="cov-map-tooltip" id="cov-tooltip"></div>
     </div>
-    <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gm)">Primary:</strong> North West England</div></div>
-    <div class="sc-row"><div class="sc-dot" style="background:var(--gold)"></div><div class="sc-text" style="color:rgba(255,255,255,.7)"><strong style="color:var(--gold)">Extended:</strong> National &mdash; available with notice</div></div>
-    <div style="margin-top:10px;font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.4)">// HEMS TARGETING SCOPE &mdash; DEPLOYMENT COVERAGE &mdash; EAST LANCASHIRE BASE</div>
+    <div class="sc-row"><div class="sc-dot" style="background:var(--gm)"></div><div class="sc-text" style="color:var(--ink2)"><strong style="color:var(--g)">Primary:</strong> North West England</div></div>
+    <div class="sc-row"><div class="sc-dot" style="background:var(--gold)"></div><div class="sc-text" style="color:var(--ink2)"><strong style="color:var(--gold)">Extended:</strong> National &mdash; available with notice</div></div>
+    <div style="margin-top:10px;font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,107,63,.6)">// HEMS TARGETING SCOPE &mdash; DEPLOYMENT COVERAGE &mdash; EAST LANCASHIRE BASE</div>
     <div class="coverage-nudge">
       <div class="coverage-nudge-text">Covering events across Lancashire, Greater Manchester, and surrounding regions &mdash; enquiries welcome for further afield.</div>
       <a onclick="showPage('contact');return false" class="coverage-nudge-link">Check availability &rarr;</a>
@@ -2272,7 +2275,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div>
         <div style="font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:12px">Community &amp; Professional</div>
         <ul class="community-list">
-          <li><span class="cl-dot"></span><span><strong>Good Neighbour Award 2021</strong> &mdash; Community CVS &amp; Blackburn with Darwen Borough Council. Awarded by public nomination from 300+ submissions across the borough.</span></li>
+          <li><span class="cl-dot"></span><span><strong>Good Neighbour Award 2021</strong> &mdash; Community CVS &amp; Blackburn with Darwen Borough Council. Awarded by public nomination from 300+ submissions across the borough. Recognised for organising street and alleyway clean-ups, running a community education programme on household waste, and bringing residents together to transform a litter-strewn neighbourhood into something the community was genuinely proud of. The impact was captured by the <em>Lancashire Telegraph</em>: residents had made the back alleys so clean that a family chose to hold their wedding celebration there. <a href="https://www.lancashiretelegraph.co.uk/news/19555610.so-clean-people-happy-put-wedding-tents-up-residents-transform-litter-strewn-back-alleys/" target="_blank" rel="noopener" class="inline-cta-link">Read the full story &rarr;</a></span></li>
           <li><span class="cl-dot"></span><span>Organ Donor Commemorative Service &mdash; Formal SJA representative, family engagement, April 2026</span></li>
           <li><span class="cl-dot"></span><span>Police Volunteer &mdash; Mental Health Diagnostic Team, Lancashire Constabulary</span></li>
           <li><span class="cl-dot"></span><span>Cenotaph Guard of Honour &mdash; Remembrance Sunday ceremonial duties</span></li>
