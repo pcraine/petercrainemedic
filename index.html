@@ -2843,17 +2843,23 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <button class="print-cred-btn" onclick="printCredentials()">&#128438; Print</button>
       </div>
       <h1 class="page-h1">Qualifications</h1>
-      <div class="page-sub">Full clinical qualifications, driving authorities, teaching credentials and regulatory compliance.</div>
+      <div class="page-sub">Peter holds a clinical credential stack that goes significantly beyond standard event first aid provision &mdash; qualified to FREC&nbsp;3 EAC level, CTLLS&nbsp;L4 teaching authority, full blue-light driving and a 19-medication scope. Every qualification listed here is current, evidenced, and maintained under St John Ambulance clinical governance.</div>
     </div>
   </div>
 
   <div style="background:var(--ink);min-height:80vh;padding:0 0 80px">
     <div style="max-width:1060px;margin:0 auto;padding:48px 40px">
 
-      <!-- FREC 4 Progress Banner -->
-      <div style="background:linear-gradient(135deg,rgba(26,58,92,.6),rgba(0,40,80,.4));border:1px solid rgba(100,150,255,.2);border-left:4px solid #4488ff;padding:24px 28px;margin-bottom:40px;position:relative;overflow:hidden">
+      <!-- Narrative Intro -->
+      <div style="background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.15);border-left:4px solid var(--gm);padding:24px 28px;margin-bottom:28px">
+        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.85">Most event medical providers hold basic first aid certificates. Peter operates at <strong style="color:rgba(255,255,255,.85)">Emergency Ambulance Crew level</strong> &mdash; a pre-hospital clinical tier that sits between a first aider and a paramedic. That means structured patient assessment, a 19-medication formulary, 12-lead ECG capability, and the authority to pre-alert receiving hospitals. The credentials below are the evidence. FREC&nbsp;4 is currently in progress, targeting completion in 2027.</p>
+      </div>
+
+      <!-- FREC 4 Progress Banner + CPD -->
+      <div style="display:flex;gap:16px;align-items:stretch;margin-bottom:40px">
+      <div style="flex:1;background:linear-gradient(135deg,rgba(26,58,92,.6),rgba(0,40,80,.4));border:1px solid rgba(100,150,255,.2);border-left:4px solid #4488ff;padding:24px 28px;position:relative;overflow:hidden">
         <div style="position:absolute;top:0;right:0;bottom:0;width:4px;background:linear-gradient(180deg,#FFD700,#4488ff)"></div>
-        <div style="font-family:var(--mono);font-size:8px;letter-spacing:4px;color:#4488ff;margin-bottom:8px">IN PROGRESS &mdash; 2026</div>
+        <div style="font-family:var(--mono);font-size:8px;letter-spacing:4px;color:#4488ff;margin-bottom:8px">IN PROGRESS &mdash; TARGET: 2027</div>
         <div style="font-family:var(--display);font-size:22px;color:#fff;letter-spacing:2px;margin-bottom:6px">FREC 4 / Advanced Ambulance Practitioner</div>
         <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px">Significantly expands clinical scope, medication range and patient assessment capability</div>
         <div style="height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
@@ -2868,6 +2874,13 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.25);font-family:var(--mono)">SIGN OFF</div>
         </div>
       </div>
+      <!-- CPD Stat Card -->
+      <div style="width:160px;flex-shrink:0;background:rgba(0,107,63,.1);border:1px solid rgba(0,166,81,.2);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px 16px;text-align:center;gap:4px">
+        <div style="font-family:var(--display);font-size:42px;color:var(--gm);letter-spacing:2px;line-height:1">100<span style="font-size:24px;color:rgba(0,200,80,.5)">+</span></div>
+        <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:4px">CPD Hours</div>
+        <div style="font-size:10px;color:rgba(0,200,100,.5);font-family:var(--mono)">This year &amp; growing</div>
+      </div>
+      </div><!-- /frec4 flex row -->
 
       <!-- Cert dashboard grid (populated by renderCertDash) -->
       <div id="cert-dash-grid" style="margin-bottom:24px"></div>
@@ -2882,7 +2895,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div style="padding:28px 26px">
             <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.55);margin-bottom:12px">CLINICAL QUALIFICATION</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">FREC 3</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.5">First Responder Emergency Care<br>IHCD / St John Ambulance</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">First Responder Emergency Care<br>IHCD / St John Ambulance</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2022 &middot; MAINTAINED UNDER SJA GOVERNANCE</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#00A651;box-shadow:0 0 8px #00A651;animation:pulse 2s infinite"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#00A651;letter-spacing:2px">CURRENT</span>
@@ -2896,7 +2910,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div style="padding:28px 26px">
             <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(100,150,255,.55);margin-bottom:12px">TEACHING QUALIFICATION</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">CTLLS L4</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.5">Certificate in Teaching &mdash; Level 4<br>City &amp; Guilds</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">Certificate in Teaching &mdash; Level 4<br>City &amp; Guilds</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2023 &middot; CITY &amp; GUILDS ACCREDITED</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#4488ff"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#4488ff;letter-spacing:2px">ACHIEVED</span>
@@ -2910,7 +2925,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div style="padding:28px 26px">
             <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(255,215,0,.55);margin-bottom:12px">DRIVING AUTHORITY</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">CERAD L3</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.5">Blue Light Driving Authority<br>Category C &middot; PCV / D1</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">Blue Light Driving Authority<br>Category C &middot; PCV / D1</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">CURRENT &middot; DVSA CATEGORY C &middot; PCV D1 &middot; MIDAS</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#FFD700;box-shadow:0 0 8px rgba(255,215,0,.6)"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#FFD700;letter-spacing:2px">CURRENT</span>
@@ -2925,55 +2941,110 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:40px">
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.12);border-left:3px solid #006B3F;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">IREC &mdash; Immediate Responder Emergency Care</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">IHCD / St John Ambulance</div></div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">IREC &mdash; Immediate Responder Emergency Care</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">IHCD / St John Ambulance &middot; <em>Foundation-level pre-hospital emergency care</em></div></div>
           <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">FROS Level 3 &mdash; First Responder on Scene</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">FutureQuals</div></div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">FROS Level 3 &mdash; First Responder on Scene</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">FutureQuals &middot; <em>Scene management and initial clinical response</em></div></div>
           <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(26,58,92,.08);border:1px solid rgba(26,58,92,.2);border-left:3px solid #1A3A5C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">AAVRA Assessor Award</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">FAW &middot; EFAW &middot; BLS &middot; AED &mdash; Trainer &amp; Assessor</div></div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">AAVRA Assessor Award</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">Accredited Assessor &amp; Verifier &mdash; FAW &middot; EFAW &middot; BLS &middot; AED &middot; <em>Authority to train and assess first aid to national standard</em></div></div>
           <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#4488ff"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">PCV / D1 &amp; Category C Licence</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">DVSA &mdash; Full driving authority</div></div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">PCV / D1 &amp; Category C Licence</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">DVSA &mdash; Full driving authority including ambulance and minibus classes</div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div style="width:8px;height:8px;border-radius:50%;background:#FFD700"></div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">MIDAS &mdash; Minibus Driver Awareness Scheme</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">DVSA / Passenger Transport &mdash; Enhanced minibus driving assessment &middot; Complements PCV / D1 authority</div></div>
           <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#FFD700"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.12);border-left:3px solid #006B3F;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">Enhanced DBS Certificate</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">Disclosure &amp; Barring Service &mdash; In date</div></div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">Enhanced DBS Certificate</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">Disclosure &amp; Barring Service &mdash; In date &middot; Available on request for event organisers and training clients</div></div>
           <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
-        <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(184,134,11,.08);border:1px solid rgba(184,134,11,.2);border-left:3px solid #B8860B;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">&#9733; Commissioner Commendation &mdash; Outstanding Service</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">SJA North West &mdash; Awarded 2025</div></div>
-          <div style="font-size:10px;color:rgba(255,215,0,.6);white-space:nowrap;font-family:var(--mono)">2025</div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#FFD700;box-shadow:0 0 6px rgba(255,215,0,.5)"></div>
-        </div>
-
-        <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(184,134,11,.08);border:1px solid rgba(184,134,11,.2);border-left:3px solid #B8860B;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">&#9733; Commissioner Commendation &mdash; Outstanding Service</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">SJA North West &mdash; Awarded 2026</div></div>
-          <div style="font-size:10px;color:rgba(255,215,0,.6);white-space:nowrap;font-family:var(--mono)">2026</div>
-          <div style="width:8px;height:8px;border-radius:50%;background:#FFD700;box-shadow:0 0 6px rgba(255,215,0,.5)"></div>
-        </div>
-
       </div><!-- /compact list -->
+
+      <!-- Commendations & Recognition -->
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:rgba(255,255,255,.25);margin:0 0 16px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:rgba(255,255,255,.15);display:inline-block"></span>COMMENDATIONS &amp; RECOGNITION</div>
+      <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:40px">
+
+        <!-- Commendation 1: Janet Catto, May 2025 -->
+        <div style="padding:24px 28px;border-left:4px solid #B8860B;background:rgba(184,134,11,.06);border-top:1px solid rgba(184,134,11,.15);border-right:1px solid rgba(184,134,11,.1);border-bottom:1px solid rgba(184,134,11,.1)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="font-size:22px;flex-shrink:0">&#127885;</div>
+              <div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.6);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
+                <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Janet Catto</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.4)">Deputy Chief Commissioner, St John Ambulance</div>
+              </div>
+            </div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);padding:5px 12px;white-space:nowrap;color:#FFD700;flex-shrink:0">May 2025</div>
+          </div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"Your unwavering commitment has not gone unnoticed &mdash; it is my pleasure to acknowledge the significant impact you have made in establishing the Darwen team, which has become a beacon of hope for East Lancashire."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.4)">Commissioner Commendation &middot; May 2025 &middot; Community Leadership &amp; Operational Excellence</div>
+        </div>
+
+        <!-- Commendation 2: Adam Brogden, June 2025 -->
+        <div style="padding:24px 28px;border-left:4px solid #B8860B;background:rgba(184,134,11,.06);border-top:1px solid rgba(184,134,11,.15);border-right:1px solid rgba(184,134,11,.1);border-bottom:1px solid rgba(184,134,11,.1)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="font-size:22px;flex-shrink:0">&#127885;</div>
+              <div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.6);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
+                <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Adam Brogden</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.4)">Commissioner for the North West, St John Ambulance</div>
+              </div>
+            </div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);padding:5px 12px;white-space:nowrap;color:#FFD700;flex-shrink:0">June 2025</div>
+          </div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"The work you have done in Darwen is incredible. I look forward to working with you in the future."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.4)">Commissioner Commendation &middot; June 2025 &middot; Community Service &amp; Impact</div>
+        </div>
+
+        <!-- Award 3: Prior's Award, January 2026 -->
+        <div style="padding:24px 28px;border-left:4px solid #C0C0C0;background:rgba(192,192,192,.05);border-top:1px solid rgba(192,192,192,.15);border-right:1px solid rgba(192,192,192,.1);border-bottom:1px solid rgba(192,192,192,.1)">
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:12px">
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="font-size:22px;flex-shrink:0">&#9875;</div>
+              <div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(192,192,192,.6);text-transform:uppercase;margin-bottom:3px">Award from the Prior</div>
+                <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Rear Admiral Simon Williams</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.4)">Prior, St John Ambulance</div>
+              </div>
+            </div>
+            <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.25);padding:5px 12px;white-space:nowrap;color:#C0C0C0;flex-shrink:0">January 2026</div>
+          </div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(192,192,192,.2);padding-left:14px;margin-bottom:10px">"Showing adaptability, learning and creativity in responding to community and organisational needs."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(192,192,192,.4)">Responsiveness &amp; Resilience Award &middot; January 2026 &middot; National Recognition</div>
+        </div>
+
+      </div><!-- /awards -->
 
 
       <!-- Medications Section -->
       <div style="margin-bottom:40px">
         <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--gm);margin-bottom:6px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:var(--gm);display:inline-block"></span>MEDICATION SCOPE</div>
-        <h2 style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:6px">19 Medications in Clinical Scope</h2>
-        <p style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:24px">Click any medication to see route and indication</p>
+        <h2 style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:16px">19 Medications in Clinical Scope</h2>
+        <div style="background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.2);padding:16px 20px;margin-bottom:16px;display:flex;align-items:flex-start;gap:14px">
+          <div style="font-size:20px;flex-shrink:0;margin-top:2px">&#128138;</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.75"><strong style="color:rgba(255,255,255,.85)">Most event medics carry oxygen and aspirin.</strong> Peter's EAC scope includes <strong style="color:rgba(255,255,255,.85)">adrenaline</strong> for anaphylaxis, <strong style="color:rgba(255,255,255,.85)">naloxone</strong> for opioid emergencies, <strong style="color:rgba(255,255,255,.85)">salbutamol</strong> for acute asthma, <strong style="color:rgba(255,255,255,.85)">Penthrox</strong> (methoxyflurane) for pain management, and <strong style="color:rgba(255,255,255,.85)">Entonox</strong> &mdash; all administered under St John Ambulance clinical governance. Click any medication below to view route and indication.</div>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.25);margin-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:1px">CLICK ANY MEDICATION TO SEE ROUTE &amp; INDICATION</p>
         <div id="meds-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px"></div>
       </div>
 
@@ -3008,6 +3079,42 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
               <div class="comp-card">Independent prescribing</div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- What this means for your event -->
+      <div style="background:linear-gradient(135deg,rgba(0,107,63,.12),rgba(0,60,30,.08));border:1px solid rgba(0,166,81,.2);border-left:4px solid var(--gm);padding:24px 28px;margin-bottom:40px">
+        <div style="font-family:var(--mono);font-size:9px;letter-spacing:3px;color:var(--gm);margin-bottom:12px;text-transform:uppercase">What This Means for Your Event</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.85">At this clinical level, a single responder can manage <strong style="color:rgba(255,255,255,.85)">cardiac arrest, anaphylaxis, acute respiratory emergencies, and trauma</strong> &mdash; with the medication authority to treat, not just stabilise and wait. All deployments operate under <strong style="color:rgba(255,255,255,.85)">St John Ambulance North West clinical governance</strong>. If you need first aid training for staff or volunteers, Peter's CTLLS&nbsp;L4 and AAVRA Assessor Award mean <strong style="color:rgba(255,255,255,.85)">accredited training delivered to the same standard</strong>.</div>
+      </div>
+
+      <!-- Cross-page navigation -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:40px">
+        <a onclick="showPage('deployments');return false" href="#" style="padding:20px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(0,107,63,.1)';this.style.borderColor='rgba(0,166,81,.2)'" onmouseout="this.style.background='rgba(255,255,255,.03)';this.style.borderColor='rgba(255,255,255,.07)'">
+          <div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:4px">See the credentials in action</div>
+            <div style="font-family:var(--display);font-size:18px;letter-spacing:1px;color:#fff">On Deployment &rarr;</div>
+          </div>
+          <div style="font-size:20px;color:var(--gm);flex-shrink:0">&#9889;</div>
+        </a>
+        <a onclick="showPage('training');return false" href="#" style="padding:20px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(0,107,63,.1)';this.style.borderColor='rgba(0,166,81,.2)'" onmouseout="this.style.background='rgba(255,255,255,.03)';this.style.borderColor='rgba(255,255,255,.07)'">
+          <div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:4px">CTLLS L4 qualified trainer</div>
+            <div style="font-family:var(--display);font-size:18px;letter-spacing:1px;color:#fff">First Aid Training &rarr;</div>
+          </div>
+          <div style="font-size:20px;color:var(--gm);flex-shrink:0">&#128203;</div>
+        </a>
+      </div>
+
+      <!-- Bottom CTA -->
+      <div style="background:linear-gradient(135deg,rgba(0,107,63,.15),rgba(0,40,20,.1));border:1px solid rgba(0,166,81,.2);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+        <div>
+          <div style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:6px">Looking for event medical cover?</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">FREC 3 EAC &middot; 19-medication scope &middot; North West England &middot; SJA clinical governance</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="showPage('contact')" class="btn btn-solid" style="font-size:10px;letter-spacing:2px;padding:12px 24px">Get in Touch</button>
+          <button onclick="showPage('about')" class="btn btn-outline" style="font-size:10px;letter-spacing:2px;padding:12px 24px">About Peter</button>
         </div>
       </div>
 
