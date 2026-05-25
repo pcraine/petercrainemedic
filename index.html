@@ -584,30 +584,80 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 @media(max-width:860px){.quals-layout{grid-template-columns:1fr}.comp-grid{grid-template-columns:1fr}}
 
 /* CONTACT */
-.contact-layout{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:start}
+.contact-grid{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:start}
 label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink4);margin-bottom:6px}
 input,select,textarea{width:100%;font-family:var(--serif);font-size:15px;color:var(--ink);background:var(--white);border:1.5px solid var(--stone2);padding:12px 16px;border-radius:var(--r);margin-bottom:18px;transition:border-color .2s,box-shadow .2s;outline:none;-webkit-appearance:none}
 input:focus,select:focus,textarea:focus{border-color:var(--g);box-shadow:0 0 0 3px var(--gl)}
-input.err,select.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
-textarea{min-height:120px;resize:vertical}
+input.err,textarea.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(192,57,43,.08)}
+textarea{min-height:120px;resize:vertical;font-style:italic;color:var(--ink3)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .err-msg{font-family:var(--mono);font-size:10px;color:var(--red);letter-spacing:1px;margin-top:-14px;margin-bottom:12px;display:none}
-.form-ok{background:var(--gl);border:1px solid rgba(0,107,63,.3);padding:20px;border-radius:var(--r);display:none;margin-top:16px}
-.form-ok strong{font-family:var(--display);font-size:18px;color:var(--g);display:block;margin-bottom:4px}
-.form-ok p{font-size:14px;color:var(--ink2);margin:0}
-.contact-detail{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px}
-.ci{font-size:22px;flex-shrink:0;margin-top:1px}
-.cd-label{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:3px}
-.cd-value{font-size:15px;color:var(--ink2)}
-.cd-value a{color:var(--g2);text-decoration:none;font-weight:600}
-.cd-value a:hover{color:var(--gm)}
-.avail-card{background:var(--gl);border:1px solid rgba(0,107,63,.2);border-left:3px solid var(--g);padding:18px 20px;border-radius:0 var(--r) var(--r) 0;margin-top:28px}
-.ac-title{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:6px}
-.ac-body{font-size:14px;color:#004D2C;line-height:1.65}
-.social-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
-.soc-btn{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:8px 16px;border:1.5px solid var(--stone2);border-radius:var(--r);color:var(--ink2);text-decoration:none;transition:all .2s;background:var(--white)}
-.soc-btn:hover{background:var(--gl);border-color:rgba(0,107,63,.3);color:#004D2C}
-@media(max-width:860px){.contact-layout{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+.intent-router{margin-bottom:40px}
+.intent-router-label{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ink4);margin-bottom:14px}
+.intent-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.intent-card{border:1.5px solid var(--stone2);border-radius:var(--r);padding:20px 18px;cursor:pointer;background:var(--white);transition:all .2s;position:relative;overflow:hidden;text-align:left;font-family:inherit}
+.intent-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--g);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.intent-card:hover{border-color:rgba(0,107,63,.3);box-shadow:var(--shadow)}
+.intent-card:hover::before,.intent-card.ic-active::before{transform:scaleX(1)}
+.intent-card.ic-active{border-color:var(--g);background:var(--gl);box-shadow:0 0 0 3px rgba(0,107,63,.08)}
+.ic-icon{font-size:24px;margin-bottom:10px;display:block;line-height:1}
+.ic-title{font-family:var(--display);font-size:17px;letter-spacing:1px;color:var(--ink);margin-bottom:5px}
+.ic-sub{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:var(--ink4);text-transform:uppercase;line-height:1.6}
+.wa-btn{display:flex;align-items:center;gap:14px;background:#25D366;color:#fff;border:none;border-radius:var(--r);padding:15px 20px;width:100%;cursor:pointer;text-align:left;margin-bottom:8px;transition:background .2s,transform .15s;text-decoration:none}
+.wa-btn:hover{background:#1ebe5d;transform:translateY(-1px)}
+.wa-icon{font-size:22px;flex-shrink:0;line-height:1}
+.wa-title{font-family:var(--display);font-size:17px;letter-spacing:1px;color:#fff;display:block;line-height:1}
+.wa-sub{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.8);text-transform:uppercase;margin-top:3px;display:block}
+.or-divider{display:flex;align-items:center;gap:12px;margin:16px 0;font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--ink4)}
+.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--stone2)}
+.contact-proof{background:var(--g2);border-top:1px solid rgba(0,166,81,.15);border-bottom:1px solid rgba(0,166,81,.15);padding:0 40px}
+.cp-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.cp-item{padding:18px 14px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:4px}
+.cp-item:last-child{border-right:none}
+.cp-val{font-family:var(--display);font-size:21px;letter-spacing:2px;color:#fff;line-height:1}
+.cp-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.35);text-transform:uppercase}
+.cp-live{display:flex;align-items:center;gap:7px}
+.cp-dot{width:7px;height:7px;border-radius:50%;background:var(--gm);box-shadow:0 0 6px var(--gm);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
+.submit-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
+.no-obligation{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);line-height:1.7}
+.post-send{display:none;margin-top:22px;border:1px solid rgba(0,107,63,.25);border-left:3px solid var(--g);border-radius:0 var(--r) var(--r) 0;padding:20px 22px;background:var(--gl)}
+.post-send.ps-show{display:block}
+.ps-headline{font-family:var(--display);font-size:20px;letter-spacing:1px;color:var(--g2);margin-bottom:14px}
+.ps-steps{display:flex;gap:0;margin-bottom:16px;align-items:flex-start}
+.ps-step{flex:1;text-align:center;position:relative}
+.ps-step:not(:last-child)::after{content:'';position:absolute;top:14px;left:50%;right:-50%;height:2px;background:var(--g);opacity:.25}
+.ps-icon{width:28px;height:28px;border-radius:50%;background:var(--g);color:#fff;font-family:var(--mono);font-size:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 6px;position:relative;z-index:1}
+.ps-step-lbl{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--g2);text-transform:uppercase}
+.ps-follow{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);border-top:1px solid rgba(0,107,63,.15);padding-top:12px}
+.ps-follow a{color:var(--g);text-decoration:none}
+.ps-follow a:hover{color:var(--gm)}
+.contact-aside{}
+.ca-section{border:1px solid var(--stone2);border-radius:var(--r);padding:18px 20px;margin-bottom:12px;background:var(--white)}
+.ca-label{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:var(--g);margin-bottom:12px}
+.ca-item{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;color:var(--ink2)}
+.ca-item:last-child{margin-bottom:0}
+.ca-icon{font-size:15px;flex-shrink:0;width:22px;text-align:center}
+.ca-link{color:var(--g2);text-decoration:none;font-weight:600;font-family:var(--serif)}
+.ca-link:hover{color:var(--gm)}
+.avail-pulse{background:rgba(0,107,63,.06);border:1px solid rgba(0,166,81,.2);border-left:3px solid var(--g);border-radius:0 var(--r) var(--r) 0;padding:14px 16px;margin-bottom:12px;display:flex;align-items:center;gap:12px}
+.avail-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;background:var(--gm);box-shadow:0 0 8px var(--gm);animation:pulse 1.8s ease-in-out infinite}
+.avail-status{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g2)}
+.avail-sub{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink4);margin-top:3px}
+.social-strip{display:flex;gap:8px;flex-wrap:wrap}
+.soc-btn{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 14px;border:1.5px solid var(--stone2);border-radius:var(--r);color:var(--ink2);text-decoration:none;transition:all .2s;background:var(--white)}
+.soc-btn:hover{background:var(--gl);border-color:rgba(0,107,63,.3);color:var(--g2)}
+.soc-btn.soc-li:hover{background:#e8f0fa;border-color:rgba(10,102,194,.4);color:#0a66c2}
+.soc-btn.soc-tt:hover{background:#f0f0f0;border-color:rgba(0,0,0,.2);color:#000}
+.soc-note{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink4);margin-top:10px;line-height:1.6;border-top:1px solid var(--stone2);padding-top:10px}
+.soc-note strong{color:var(--g)}
+.cov-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:4px}
+.cov-area{font-family:var(--mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:var(--ink3);padding:6px 8px;background:var(--stone);border:1px solid var(--stone2);border-radius:var(--r);display:flex;align-items:center;gap:6px}
+.cov-dot{width:5px;height:5px;border-radius:50%;background:var(--gm);flex-shrink:0}
+.cov-note{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:var(--ink4);margin-top:8px;line-height:1.6}
+.aside-trust{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--ink4);line-height:1.8;padding:0 2px}
+.aside-trust span{color:var(--g)}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.intent-cards{grid-template-columns:1fr}.cp-inner{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.contact-proof{padding:0 20px}}
 
 
 /* NEWS/BLOG */
@@ -826,6 +876,22 @@ body.dark-mode .news-card{background:var(--stone)}
 .jh-eyebrow::before{content:'';width:24px;height:1px;background:var(--gm)}
 .jh-title{font-family:var(--display);font-size:clamp(52px,8vw,86px);color:white;letter-spacing:4px;line-height:.92;margin-bottom:18px}
 .jh-sub{font-size:15px;color:rgba(255,255,255,.38);font-style:italic;line-height:1.75;max-width:540px}
+.jh-stats{display:flex;gap:22px;margin-top:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(0,107,63,.12)}
+.jh-stat{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.55);display:flex;align-items:center;gap:6px}
+.jh-stat-val{color:rgba(255,255,255,.6)}
+.jh-stat::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gm);opacity:.5}
+
+/* Article next/prev navigation */
+.jpa-nav{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:44px 0 0;border-top:1px solid rgba(0,107,63,.12);padding-top:32px}
+.jpa-nav-item{background:#0d1910;border:1px solid rgba(0,107,63,.15);padding:18px 20px;cursor:pointer;transition:border-color .2s,background .2s}
+.jpa-nav-item:hover{background:#111d14;border-color:rgba(0,166,81,.3)}
+.jpa-nav-dir{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,166,81,.4);margin-bottom:6px}
+.jpa-nav-title{font-size:12px;color:rgba(255,255,255,.5);line-height:1.4;transition:color .2s}
+.jpa-nav-item:hover .jpa-nav-title{color:rgba(255,255,255,.75)}
+.jpa-nav-next{text-align:right}
+
+/* Article reading progress (scoped, above scroll bar) */
+#article-progress{position:fixed;top:3px;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(0,107,63,.8),var(--gm),#7FFFD4);z-index:10000;transition:width .08s linear;pointer-events:none;display:none}
 .jh-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
 .jh-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:6px}
 .jh-meta-dot{width:4px;height:4px;border-radius:50%;background:var(--gm)}
@@ -863,8 +929,11 @@ body.dark-mode .news-card{background:var(--stone)}
 .jpr-body{background:#0d1910;padding:14px 18px;border-bottom:1px solid rgba(0,107,63,.07)}
 .jpr-tags{display:flex;gap:5px;margin-bottom:5px}
 .jpr-title{font-family:var(--display);font-size:16px;letter-spacing:.5px;color:rgba(255,255,255,.82);margin-bottom:4px;line-height:1.15;transition:color .18s}
-.jpr-excerpt{font-size:12px;color:rgba(255,255,255,.28);line-height:1.65;font-style:italic}
+.jpr-excerpt{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65;font-style:italic}
 .jpr-read{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.4);margin-top:5px}
+.jpr-meta{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:6px}
+.jpr-hint{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,0);margin-top:5px;transition:color .2s}
+.jpost-row:hover .jpr-hint{color:rgba(0,166,81,.55)}
 .jpr-empty{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2);padding:28px 0;font-style:italic;text-align:center}
 
 /* Category filter */
@@ -1855,6 +1924,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 
 <div id="scroll-bar" aria-hidden="true"></div>
+<div id="article-progress" aria-hidden="true"></div>
 
 <!-- TICKER -->
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -3141,7 +3211,13 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="jh-inner">
         <div class="jh-eyebrow">Field Notes</div>
         <div class="jh-title">THE<br>JOURNAL</div>
-        <div class="jh-sub">Clinical reflections, deployment accounts and pre-hospital thinking from an active EAC. Written month to month from the actual work.</div>
+        <div class="jh-sub">From a muddy Cheshire course at 7am to the perimeter of a nuclear site &mdash; this is the work that doesn&rsquo;t fit on a CV.</div>
+        <div class="jh-stats" id="jh-stats">
+          <div class="jh-stat"><span class="jh-stat-val" id="jhs-posts">—</span>&nbsp;posts</div>
+          <div class="jh-stat"><span class="jh-stat-val" id="jhs-deps">—</span>&nbsp;deployments documented</div>
+          <div class="jh-stat"><span class="jh-stat-val" id="jhs-cats">—</span>&nbsp;categories</div>
+          <div class="jh-stat"><span class="jh-stat-val" id="jhs-learners">208+</span>&nbsp;trained</div>
+        </div>
       </div>
     </div>
 
@@ -3175,6 +3251,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <button class="jb-filter-btn" onclick="filterPosts('Training',this)">Training</button>
           <button class="jb-filter-btn" onclick="filterPosts('Leadership',this)">Leadership</button>
           <button class="jb-filter-btn" onclick="filterPosts('Clinical',this)">Clinical</button>
+          <button class="jb-filter-btn" onclick="filterPosts('Ceremonial',this)">Ceremonial</button>
         </div>
         <div id="jb-list"></div>
       </div>
@@ -3190,9 +3267,10 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div id="jsb-tags" class="jsw-tags"></div>
         </div>
         <div class="jsw">
-          <div class="jsw-title">EAC Cover?</div>
-          <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:12px">Event medical cover for your race, fixture or public event. FREC 3 &middot; 19 medications &middot; North West England.</p>
-          <button onclick="showPage('contact')" class="btn btn-solid" style="width:100%;font-size:10px">Get in Touch</button>
+          <div class="jsw-title">Need Cover?</div>
+          <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:12px">Race, fixture, public event or community function. FREC 3 EAC &middot; 19 medications &middot; Full clinical scope &middot; North West England.</p>
+          <p style="font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(0,166,81,.5);line-height:1.6;margin-bottom:14px">32+ deployments &middot; Available now</p>
+          <button onclick="showPage('contact')" class="btn btn-solid" style="width:100%;font-size:10px">Enquire About Cover</button>
         </div>
       </aside>
     </div>
@@ -3231,60 +3309,127 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <canvas id="contact-shock-canvas" aria-hidden="true"></canvas>
     <div class="page-hero-inner">
       <div class="page-eyebrow">Get In Touch</div>
-      <h1 class="page-h1">Contact</h1>
-      <div class="page-sub">Recruitment enquiries, event deployments, training bookings &mdash; I aim to respond within 24 hours.</div>
+      <h1 class="page-h1">Start the Conversation</h1>
+      <div class="page-sub">One message is all it takes &mdash; event cover, first aid training, or a new role. I&rsquo;ll come back to you within 24 hours.</div>
+    </div>
+  </div>
+  <div class="contact-proof">
+    <div class="cp-inner">
+      <div class="cp-item">
+        <div class="cp-val">208+</div>
+        <div class="cp-lbl">Learners Trained</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-val">40+</div>
+        <div class="cp-lbl">Event Deployments</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-val">&lt;24hr</div>
+        <div class="cp-lbl">Response Time</div>
+      </div>
+      <div class="cp-item">
+        <div class="cp-live">
+          <div class="cp-dot"></div>
+          <div>
+            <div class="cp-val" style="font-size:14px;letter-spacing:1px">Available</div>
+            <div class="cp-lbl">North West England</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="content-wrap">
+    <div class="intent-router">
+      <div class="intent-router-label">What brings you here?</div>
+      <div class="intent-cards">
+        <button class="intent-card ic-active" type="button" onclick="cIntent('cover',this)">
+          <span class="ic-icon">🚑</span>
+          <div class="ic-title">Event Cover</div>
+          <div class="ic-sub">FREC 3 &middot; 19 Medications<br>North West England</div>
+        </button>
+        <button class="intent-card" type="button" onclick="cIntent('training',this)">
+          <span class="ic-icon">🎓</span>
+          <div class="ic-title">First Aid Training</div>
+          <div class="ic-sub">FAW &middot; EFAW &middot; BLS<br>CTLLS L4 Trainer</div>
+        </button>
+        <button class="intent-card" type="button" onclick="cIntent('employment',this)">
+          <span class="ic-icon">💼</span>
+          <div class="ic-title">Employment</div>
+          <div class="ic-sub">EAC &middot; NHS Band 4&ndash;5<br>North West England</div>
+        </button>
+      </div>
+    </div>
     <div class="contact-grid">
       <div>
-        <div class="s-label">Let's Talk</div>
+        <div class="s-label" id="c-heading">Event Medical Cover</div>
         <div class="s-rule"></div>
+        <a id="c-wa" class="wa-btn" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20looking%20for%20EAC-level%20medical%20cover%20for%20an%20event%20in%20%5Blocation%5D%20on%20%5Bdate%5D%20for%20approximately%20%5BX%5D%20attendees." target="_blank" rel="noopener">
+          <span class="wa-icon">💬</span>
+          <span>
+            <span class="wa-title">Message on WhatsApp</span>
+            <span class="wa-sub">Fastest response &middot; Opens with a starter message</span>
+          </span>
+        </a>
+        <div class="or-divider">or send a message below</div>
         <form id="cForm" action="https://formspree.io/f/xnjgpdjr" method="POST" novalidate>
+          <input type="hidden" name="type" id="c-type" value="Event medical cover">
           <div class="form-row">
             <div><label for="fn">Your Name *</label><input type="text" id="fn" name="name" placeholder="Full name" required autocomplete="name"><div class="err-msg" id="e-name">Please enter your full name</div></div>
             <div><label for="fe">Email Address *</label><input type="email" id="fe" name="email" placeholder="your@email.com" required autocomplete="email"><div class="err-msg" id="e-email">Please enter a valid email address</div></div>
           </div>
-          <div class="form-row">
-            <div>
-              <label for="ft">Enquiry Type *</label>
-              <select id="ft" name="type" required>
-                <option value="">Select enquiry type&hellip;</option>
-                <option value="Event medical cover">Event medical cover</option>
-                <option value="First aid training">First aid training</option>
-                <option value="Recruitment / employment">Recruitment / employment</option>
-                <option value="Volunteer deployment">Volunteer deployment</option>
-                <option value="Other">Other</option>
-              </select>
-              <div class="err-msg" id="e-type">Please select an enquiry type</div>
-            </div>
-            <div><label for="fc">Organisation / Event</label><input type="text" id="fc" name="organisation" placeholder="Optional" autocomplete="organization"></div>
+          <div><label for="fm">Your Message</label><textarea id="fm" name="message" rows="5">Hi Peter, I'm looking for EAC-level medical cover for an event in [location] on [date] for approximately [X] attendees.</textarea></div>
+          <div class="submit-row">
+            <button type="submit" id="c-btn" class="btn btn-primary">Request Event Cover &rarr;</button>
+            <div class="no-obligation">All enquiries welcome<br>No obligation to proceed</div>
           </div>
-          <div><label for="fm">Message</label><textarea id="fm" name="message" placeholder="Tell me about your event, training need or enquiry&hellip;" rows="5"></textarea></div>
-          <button type="submit" class="btn btn-solid">Send Message</button>
-          <div class="form-success" id="form-success" style="display:none">
-            <strong>&#10003; Message sent.</strong> I'll be in touch within 24 hours.
+          <div class="post-send" id="post-send">
+            <div class="ps-headline">&#10003;&ensp;Message received.</div>
+            <div class="ps-steps">
+              <div class="ps-step"><div class="ps-icon">&#10003;</div><div class="ps-step-lbl">Received</div></div>
+              <div class="ps-step"><div class="ps-icon" style="background:rgba(0,107,63,.4)">&#8635;</div><div class="ps-step-lbl">Peter reviews</div></div>
+              <div class="ps-step"><div class="ps-icon" style="background:rgba(0,107,63,.2)">&#9993;</div><div class="ps-step-lbl">Reply &lt;24hrs</div></div>
+            </div>
+            <div class="ps-follow">While you wait &mdash; <a href="https://www.linkedin.com/in/peter-craine" target="_blank" rel="noopener">follow on LinkedIn &rarr;</a> or <a href="https://www.tiktok.com/@petercrainemedic" target="_blank" rel="noopener">see the work on TikTok &rarr;</a></div>
           </div>
         </form>
       </div>
       <div class="contact-aside">
-        <div class="ca-section">
-          <div class="ca-label">Direct Contact</div>
-          <div class="ca-item"><span class="ca-icon">&#128222;</span><a href="tel:07756831072" class="ca-link">07756 831072</a></div>
-          <div class="ca-item"><span class="ca-icon">&#128231;</span><a href="mailto:peter.craine@me.com" class="ca-link">peter.craine@me.com</a></div>
-          <div class="ca-item"><span class="ca-icon">&#127760;</span><a href="https://petercrainemedic.co.uk" class="ca-link" target="_blank">petercrainemedic.co.uk</a></div>
+        <div class="avail-pulse">
+          <div class="avail-dot"></div>
+          <div>
+            <div class="avail-status">Available for bookings</div>
+            <div class="avail-sub">North West England &middot; Accepting enquiries now</div>
+          </div>
         </div>
         <div class="ca-section">
-          <div class="ca-label">Response Time</div>
-          <div class="ca-item"><span class="ca-icon">&#9200;</span><span>Within 24 hours</span></div>
-          <div class="ca-item"><span class="ca-icon">&#127968;</span><span>North West England based</span></div>
+          <div class="ca-label">Direct Contact</div>
+          <div class="ca-item"><span class="ca-icon">&#128222;</span><a href="tel:07756831072" class="ca-link">07756 831 072</a></div>
+          <div class="ca-item"><span class="ca-icon">&#128231;</span><a href="mailto:peter.craine@me.com" class="ca-link">peter.craine@me.com</a></div>
         </div>
         <div class="ca-section">
           <div class="ca-label">Connect</div>
           <div class="social-strip">
-            <a href="https://www.linkedin.com/in/peter-craine" class="soc-btn" target="_blank" rel="noopener">LinkedIn</a>
-            <a href="https://petercrainemedic.co.uk" class="soc-btn" target="_blank" rel="noopener">Website</a>
+            <a href="https://www.linkedin.com/in/peter-craine" class="soc-btn soc-li" target="_blank" rel="noopener">LinkedIn</a>
+            <a href="https://www.tiktok.com/@petercrainemedic" class="soc-btn soc-tt" target="_blank" rel="noopener">TikTok</a>
           </div>
+          <div class="soc-note"><strong>@petercrainemedic</strong><br>Deployments, clinical skills &amp; field notes</div>
+        </div>
+        <div class="ca-section">
+          <div class="ca-label">Coverage Area</div>
+          <div class="cov-grid">
+            <div class="cov-area"><div class="cov-dot"></div>Lancashire</div>
+            <div class="cov-area"><div class="cov-dot"></div>Gtr Manchester</div>
+            <div class="cov-area"><div class="cov-dot"></div>Merseyside</div>
+            <div class="cov-area"><div class="cov-dot"></div>Cheshire</div>
+            <div class="cov-area"><div class="cov-dot"></div>West Yorkshire</div>
+            <div class="cov-area"><div class="cov-dot"></div>Cumbria</div>
+          </div>
+          <div class="cov-note">Primary: North West England &middot; National events considered &mdash; contact to discuss</div>
+        </div>
+        <div class="aside-trust">
+          All enquiries welcome<br>
+          No obligation to proceed<br>
+          <span>Response within 24 hours</span>
         </div>
       </div>
     </div>
@@ -3320,12 +3465,18 @@ var JOURNAL_POSTS = [
     tags: ['Leadership', 'Conference', 'CPD', 'Volunteering', 'Recruitment', 'Retention', 'Network Lead'],
     icon: '\ud83c\udfd7',
     location: 'St John Ambulance HQ, Leeds',
-    readTime: '3 min read',
+    readTime: '4 min read',
+    img: { src: '/img/journal/leeds-conference.jpg', alt: 'Professional conference room with projector glow', caption: 'SJA NW Management Conference, Leeds \u2014 April 2026' },
     body: [
-      jP("Two days in Leeds at St John Ambulance HQ for the North West regional management conference. The focus: the new SJA volunteer journey framework, volunteer recruitment strategy, and what good retention and engagement actually looks like in practice."),
-      jP("As Network Lead for East Lancashire \u2014 currently holding seven functional leadership roles concurrently, including Volunteering Services Lead and Community Lead \u2014 this is not abstract professional development. Volunteer recruitment, onboarding, welfare and retention are live responsibilities that land on my desk every week."),
-      jP("The new volunteer journey is one of the most significant changes SJA has undertaken in recent years. Getting the recruitment and onboarding process right \u2014 making sure people feel valued from the first contact, supported through training, and connected to the mission long-term \u2014 is the foundation everything else is built on."),
-      jP("Two days. Full programme. Representing East Lancashire. Everything that comes out of it goes straight back into how the network operates."),
+      jP("The train pulls into Leeds just before nine. Two days. Full programme. The kind of conference where the agenda lands in your inbox three days before and you realise there is not a single item on it that does not directly apply to a problem you are already trying to solve."),
+      jH("The New Volunteer Journey"),
+      jP("SJA has redesigned how volunteers come in, how they are onboarded, how they are developed and \u2014 critically \u2014 how they are kept. The new volunteer journey is the framework that holds all of that together. Two days in a room with the people responsible for implementing it across North West gives you a very different understanding than reading a policy document on your own."),
+      jP("The numbers behind volunteer retention are uncomfortable. The gap between recruitment and deployment-ready volunteers is wider than it should be. People join, go through some of the process, and disappear before they are operational. Understanding why that happens, and designing an onboarding experience that prevents it, is one of the most important things the organisation can do right now."),
+      jPull("The first point of contact is everything. If it feels bureaucratic, disconnected and slow, people leave before they have seen the work.", "SJA NW Management Conference, 2026"),
+      jH("Directly Applicable, Not Abstract"),
+      jP("I am not at this conference as someone learning about volunteer management in theory. I am holding the Volunteering Services Lead role for East Lancashire \u2014 one of seven roles I currently cover concurrently \u2014 and I have been watching the recruitment-to-operational pipeline up close for twelve months. What comes back from Leeds is not theory. It is a set of tools, frameworks and shared language that go straight into how the network runs."),
+      jLine(),
+      jP("Two days. Leeds. Back to East Lancashire with more to implement than I arrived with. That is exactly what a conference should do."),
     ]
   },
 
@@ -3337,12 +3488,19 @@ var JOURNAL_POSTS = [
     tags: ['Ceremonial', 'Organ donation', 'Family liaison', 'Community', 'Representation'],
     icon: '\u2764',
     location: 'North West England',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/organ-donor-service.jpg', alt: 'Candlelit commemorative service setting, flowers and programme sheets', caption: 'Organ Donor Commemorative Service \u2014 April 2026' },
     body: [
-      jP("There are days in this role that are not about clinical skills or medical interventions. They are about presence. About representing something larger than yourself, and doing it with the dignity and care it deserves. The organ donor commemorative service was one of those days."),
-      jP("The service honoured St John Ambulance members, and members of the public, who had died and chose to donate their organs. People whose final act was to give life to someone else."),
-      jP("I attended as a St John representative. My role was both formal \u2014 representing the organisation \u2014 and personal: speaking with the families. Making sure that the people who had lost someone knew that what their loved one had done was seen, was valued, and was not forgotten."),
-      jP("You cannot prepare for those conversations. What you can do is be present, be honest, and mean what you say. I meant every word."),
+      jP("There are days in this role that have nothing to do with clinical skills or medical interventions. No equipment to check. No patient to assess. Just the weight of the occasion, and the responsibility of carrying it well. The organ donor commemorative service was one of those days."),
+      jH("What the Service Honours"),
+      jP("The service brought together families whose loved ones had donated organs after death. Some were St John members. Some were members of the public. What they shared was a final decision \u2014 made in the hardest possible moment \u2014 to give life to someone else."),
+      jP("There is no adequate word for that. Gift is used, but it does not cover it. An organ donor did not wrap something up and hand it over. They made a decision, or had one made on their behalf, in the worst hours of a family\u2019s existence, and what came from it is that somewhere, someone is still breathing who otherwise would not be."),
+      jPull("You cannot prepare for those conversations. What you can do is be present, be honest, and mean what you say. I meant every word.", "Peter Craine, April 2026"),
+      jH("Representing the Organisation"),
+      jP("I attended in my capacity as a St John representative. That means being in uniform, being approachable, and being the person that families can speak to about the role St John members play in the work they care about. Making that connection explicit \u2014 so that when a family looks around the room, they understand why we are there."),
+      jP("Speaking with families is the part of this work that cannot be trained. You can be given frameworks for difficult conversations. You can prepare what you might say. And then you stand in front of someone who has lost their child, or their parent, or their partner, and the frameworks go quiet. What remains is whether you can hold that space with enough care and honesty to make the person in front of you feel truly heard."),
+      jLine(),
+      jP("I wore the uniform with more care that day than most. Some duties ask you to be clinical. Some ask you to be human. This one asked for both."),
       jAnon(),
     ]
   },
@@ -3355,13 +3513,21 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'Multi-agency', 'Exercise', 'JESIP', 'Heysham', 'Nuclear', 'Major incident'],
     icon: '\u26a0',
     location: 'Heysham Nuclear Power Station, Lancashire',
-    readTime: '5 min read',
+    readTime: '6 min read',
+    img: { src: '/img/journal/heysham-exercise.jpg', alt: 'Emergency service vehicles at dusk near an industrial site', caption: 'Heysham NPP Multi-Agency Exercise \u2014 April 2026' },
     body: [
-      jP("Heysham Nuclear Power Station. A nuclear site emergency planning exercise \u2014 site-led, full-scale, multi-agency. The scenario: a simulated attack. Our role: the ambulance response."),
-      jP("Five simulated casualties: two stab wounds and three gunshot wounds. Each one required full clinical response \u2014 haemorrhage control, wound packing, tourniquet application where indicated, START triage, patient assessment and ATMIST handover. PRF documentation completed throughout."),
-      jP("We participated in three JESIP command huddles across the exercise. My contribution was the clinical voice \u2014 feeding patient status, resource requirements and treatment priorities into a command structure alongside police, fire and EOD commanders."),
-      jP("The exercise concluded with a hot debrief \u2014 immediate, structured, multi-agency. Every decision examined. Every intervention reviewed."),
-      jP("Exercises like this are why training matters. The skills are the same whether the casualties are simulated or real. The command environment, the multi-agency relationships, the JESIP structure \u2014 all of that is built in exercises."),
+      jP("You approach Heysham by the coast road. The cooling towers are visible from a mile out \u2014 enormous, almost surreal against the Lancashire sky. The security clearance process before you are even on site is a reminder of what you are walking into. Very few places in the UK carry the consequence of failure that Heysham carries. You feel it the moment you arrive."),
+      jH("The Scenario"),
+      jP("A simulated attack on a nuclear site. Full-scale, site-led, multi-agency. Fire, police, armed response, Army EOD \u2014 and us, the ambulance element, responsible for the clinical response to five simulated casualties. Two stab wounds and three gunshot wounds, each requiring a full clinical assessment under exercise conditions that mirror operational pressure as closely as a training environment can."),
+      jP("START triage first \u2014 sort the picture quickly, identify priority order, allocate resources. Then work through: haemorrhage control, wound packing, tourniquet application where indicated, monitoring, documentation. A PRF for every patient. The paperwork does not stop because the scenario is complex."),
+      jPull("The skills are the same whether the casualties are simulated or real. The only difference is the stakes \u2014 and your body does not know the difference.", "Peter Craine, April 2026"),
+      jH("Command and JESIP"),
+      jP("Three JESIP command huddles across the exercise. Each one brings together police, fire, EOD and ambulance leads to share the operational picture, update on patient status and resource requirements, and make decisions about how the response develops. My contribution is the clinical voice into that structure \u2014 translating vital signs and treatment priorities into operational language that makes sense to commanders whose frame of reference is completely different from mine."),
+      jP("That is a specific skill. In command, you are not managing a patient. You are managing the information about the patient and ensuring it lands correctly in a room full of people who are making decisions based on it. Precision matters more, not less."),
+      jH("Hot Debrief"),
+      jP("The exercise closes with an immediate, structured, multi-agency debrief. Every agency in the same room. Every decision examined. What worked, what did not, what the clinical picture looked like from each perspective. The uncomfortable observations are the useful ones."),
+      jLine(),
+      jP("Exercises like this exist because the real incident cannot be a first attempt. The relationships, the communication patterns, the shared understanding of how each agency operates \u2014 all of that is built in exercises, so that when the scenario is no longer simulated, the response is not starting from scratch."),
       jAnon(),
     ]
   },
@@ -3374,12 +3540,21 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'RTC', 'Multi-agency', 'Trauma', 'KED', 'Height', 'Fire service'],
     icon: '\u26a7',
     location: 'North West England',
-    readTime: '5 min read',
+    readTime: '6 min read',
+    img: { src: '/img/journal/scaffolding-rtc.jpg', alt: 'Scaffold structure at night with emergency service lighting', caption: 'Multi-agency RTC response \u2014 April 2026' },
     body: [
-      jP("The call came in as a road traffic collision involving a scaffolding structure. What that meant in practice: a patient trapped at height, multi-trauma presentation, and a working environment that required me to ascend to 25 metres with fire service before I could begin clinical assessment."),
-      jP("Primary survey on ascent. Mechanism of injury: window impact at height, significant deceleration force. Conscious, GCS 14, pain in chest and upper limb, reduced breath sounds on the right. Keep the airway open, monitor, communicate the picture down to crew below."),
-      jP("KED applied at height with fire service supporting. That is a different skill set from applying it on the ground \u2014 confined space, working around scaffold poles, maintaining spinal precautions throughout, constant communication with fire team managing the patient's position."),
-      jP("Extricated, transferred to scoop stretcher, lowered with fire service. Transported in SJA ambulance to hospital. ATMIST handover to A&E team on arrival. Patient received."),
+      jP("The call comes in as a road traffic collision involving a scaffolding structure. That phrase alone tells you almost nothing and almost everything simultaneously. A vehicle has made contact with scaffolding. What that means for the patient, and for the clinical response, becomes apparent on arrival."),
+      jH("On Scene"),
+      jP("The patient is not on the ground. The vehicle struck a section of the scaffold at speed, and the impact carried the patient upward into the structure. Fire service is already on scene, assessing access. The working environment is 25 metres up, on scaffold boards that were not designed to function as a clinical treatment area. The wind is noticeable at height. The scaffold poles are cold."),
+      jP("You put the clinical equipment on and you go up. Primary survey begins on ascent \u2014 mechanism of injury, conscious state, obvious injuries. By the time I reach the patient the working picture is clear: GCS 14, chest pain on the right side, reduced breath sounds unilaterally, upper limb pain, mechanism consistent with significant deceleration force. Adrenaline is doing its job. You do yours."),
+      jPull("25 metres up, on scaffold boards, applying a KED with fire service. The setting is unfamiliar. The skills are not.", "Peter Craine, April 2026"),
+      jH("KED Application at Height"),
+      jP("The Kendrick Extrication Device is designed to immobilise the spine and allow safe patient movement in a confined space. Applying it on the ground, with a stable surface and clear access, takes training and practice. Applying it at 25 metres, working around scaffold poles and bracing, maintaining spinal precautions throughout, constant communication with fire team managing the patient\u2019s position \u2014 that is a different discipline."),
+      jP("Communication with fire service is constant. Every movement coordinated. Spinal precautions maintained throughout. The patient is conscious, in pain, frightened. You speak to them. You tell them what you are doing and why. You keep the clinical picture moving while keeping the person in front of you informed and as calm as the situation allows."),
+      jH("Extrication and Transport"),
+      jP("KED applied. Patient immobilised. Fire service manages the lowering sequence with the scoop stretcher. The descent takes longer than you want and exactly as long as it needs to. Transfer to the ambulance is clean. ATMIST handover to A\u0026E on arrival: mechanism, injuries, vital signs, interventions. Patient received."),
+      jLine(),
+      jP("There is no way to train for every environment you will work in. What you train is adaptability \u2014 the ability to apply clinical skills in conditions that are nothing like the training room. This was one of those days."),
       jAnon(),
     ]
   },
@@ -3392,12 +3567,21 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'Grand National', 'Mass gathering', 'Zone lead', 'Aintree', 'Racecourse'],
     icon: '\ud83c\udfc7',
     location: 'Aintree Racecourse, Liverpool',
-    readTime: '5 min read',
+    readTime: '6 min read',
+    img: { src: '/img/journal/grand-national.jpg', alt: 'Aerial view of a large British racecourse crowd at golden hour', caption: 'Aintree Racecourse, Grand National Day \u2014 April 2026' },
     body: [
-      jP("Grand National day. Zone lead clinician responsibility for a designated area of Aintree Racecourse across the full event. 25 patient contacts by end of day."),
-      jP("The presentations: predominantly alcohol-related, as expected for a major race day. But within that: three cases of hypovolaemia requiring positional management and fluid monitoring before NWAS handover. One patient with airway compromise \u2014 manual positioning maintained continuously until handover. One burst stoma bag, managed with dignity in a crowded environment with no private space and a patient who was distressed and embarrassed."),
-      jP("Mass gathering medicine is its own discipline. You are not managing one patient at a time. You are managing a queue, a resource, a communication channel and a documentation process simultaneously while making clinical decisions."),
-      jP("Every patient documented. Every NWAS handover completed with full ATMIST. Every PRF signed and filed. That is the standard regardless of what else is happening."),
+      jP("Aintree on Grand National day is its own kind of world. The stands are packed from early morning. By eleven o\u2019clock the atmosphere is already electric and the first patients are already presenting. You have been in your zone for an hour by then \u2014 medical post established, communication with medical command confirmed, kit checked twice. You are ready. And then it starts."),
+      jH("Zone Lead"),
+      jP("Zone lead clinician means you are responsible for a designated geographic area of the site. You know everything happening in your zone: what patients you have, their status, what resources you need, and what goes into the central medical log. You are also a clinician managing patients. Both things happen simultaneously, constantly, for the full duration of the event."),
+      jP("Twenty-five patient contacts across the day. The majority: alcohol-related illness, as expected for a major race event. Nausea, reduced mobility, impaired consciousness at various levels. Each one assessed, documented, observed, discharged or handed over. Every single one on a PRF. That is the administrative baseline that does not change regardless of how busy the day becomes."),
+      jPull("Mass gathering medicine is not about individual patients. It is about systems \u2014 and making sure the system does not stop working when three patients arrive at once.", "Peter Craine, April 2026"),
+      jH("The Cases That Were Not Routine"),
+      jP("Three patients with hypovolaemia \u2014 genuine volume depletion, not just mild dehydration. Positional management, fluid monitoring, NWAS handover for each. One patient with airway compromise: manual positioning maintained continuously until handover. That is not a quick intervention. That is you, hands on a patient\u2019s airway, maintaining a safe position in a crowded, noisy, unpredictable environment, until the transfer is complete and signed off."),
+      jP("The stoma case stays with you. A burst stoma bag, in the middle of Grand National day, with no private space, thousands of people walking past, and a patient who is distressed and deeply embarrassed. The clinical picture is manageable. What requires the most skill is protecting that person\u2019s dignity in an environment that offers none of the conditions you would need to do it properly. You make it work. That is the job."),
+      jH("The Standard"),
+      jP("Every patient documented. Every NWAS handover completed with full ATMIST. Every PRF signed and filed. The documentation does not slip because the day is busy. It is what makes the busy day manageable."),
+      jLine(),
+      jP("By the end of the day, the final race is done, the stands are emptying, and you are completing the last PRF. Twenty-five patients. All accounted for. That is what a good day at Grand National looks like from the medical post."),
       jAnon(),
     ]
   },
@@ -3410,11 +3594,18 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'Running events', 'Vehicle', 'Driver', 'Half marathon', 'Darwen'],
     icon: '\ud83c\udfc3',
     location: 'Darwen, Lancashire',
-    readTime: '3 min read',
+    readTime: '4 min read',
+    img: { src: '/img/journal/darwen-marathon.jpg', alt: 'Misty early morning road with race cones and Lancashire hills', caption: 'Darwen Roller Coaster Half Marathon \u2014 April 2026' },
     body: [
-      jP("07:00 start. The treatment centre needs to be at the venue before the first runner sets off. That means pre-dawn prep: vehicle checks, equipment checks, medication checks, route planning. By the time the race briefing starts, everything is already in place."),
-      jP("Dual driver-clinician role throughout. Vehicle-based EAC means you are the mobile response as well as the fixed treatment point. You are driving the course, communicating with marshals, monitoring for calls, and ready to transition from driver to clinician in seconds."),
-      jP("No patient contacts on this deployment. That is also a good outcome \u2014 it means the risk assessment worked, the marshalling was effective, and the runners stayed safe. The clinical presence is part of what makes that possible."),
+      jP("The alarm goes at five. The treatment centre needs to be at the venue before the first runner sets off, which means leaving before most people are awake. Vehicle checks first: ambulance, equipment, medications, oxygen, all kit accounted for. Then the drive to Darwen. By the time the race director is briefing the marshals, the medical post is already established and the clinical resource is in position."),
+      jH("Dual Driver-Clinician"),
+      jP("A vehicle-based EAC deployment means you are two things simultaneously: a mobile clinical resource \u2014 able to respond anywhere on the course and transition from driver to clinician in seconds \u2014 and a logistics function. The treatment centre has to be where it needs to be, which means driving, positioning and repositioning throughout the event."),
+      jP("The Darwen course earns its name. Rolling hills, tight turns, sections of exposed moorland where the wind is a real factor for runners in the final kilometres. The route changes the risk profile. A late-race presentation on an exposed hillside is a different proposition from one at the finish line with full team support. You know that before the first runner sets off."),
+      jPull("A no-patient-contact deployment is not a quiet day. It is evidence that the risk assessment worked.", "Peter Craine, April 2026"),
+      jH("The Outcome That Matters"),
+      jP("No patient contacts across the event. A running event with zero medical incidents does not happen by accident. It happens because the risk assessment is right, the marshalling is effective, the clinical resource is correctly positioned, and the presence of the vehicle is itself a visible reassurance to runners and organisers alike."),
+      jLine(),
+      jP("Drive back at finish. Equipment restocked. Documentation completed. Everyone who started finished or stepped off safely. A very good day."),
       jAnon(),
     ]
   },
@@ -3427,12 +3618,21 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'Cardiac', 'ECG', 'Pre-alert', 'NWAS', 'MI', 'Community'],
     icon: '\u2665',
     location: 'North West England',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/community-cardiac.jpg', alt: 'ECG monitoring equipment with green trace lines in ambulance interior', caption: 'Community EAC \u2014 Cardiac call, April 2026' },
     body: [
-      jP("Community ambulance duty. One call that mattered: a patient with chest pain, diaphoresis, and a presentation that immediately required the full clinical picture."),
-      jP("12-lead ECG acquired and interpreted. The trace showed changes consistent with a suspected myocardial infarction. Pre-alert called to A&E: patient details, suspected diagnosis, ETA, current clinical status. Aspirin administered per EAC protocol. Continuous monitoring throughout. Patient position managed. The picture communicated clearly to crew and receiving team."),
-      jP("ATMIST handover to NWAS on arrival. Patient dispatched under pre-alert pathway. Received at A&E."),
-      jP("This is why the clinical scope matters. A first aider at this scene does BLS if needed and calls 999. An EAC acquires a 12-lead, interprets it, activates the PPCI pathway, administers aspirin, and hands over a complete clinical picture. The difference in outcome is real."),
+      jP("Community ambulance duty. These shifts sit alongside operational event deployments in the diary \u2014 the work that happens between the races and the fixtures. A community crew responding to everyday calls. On this shift, one of those calls was not everyday at all."),
+      jH("The Call"),
+      jP("Chest pain. The presentation that, as a pre-hospital clinician, you are always ready for and never casual about. The details en route: male, middle-aged, onset approximately forty minutes ago, central chest pain radiating to the left arm, diaphoresis reported. That clinical picture, before you have even seen the patient, has a differential at the top that does not change much."),
+      jP("On arrival: conscious, distressed, pale and sweating. The grip of pain in his face tells you more than any triage form. The primary survey is fast. Airway clear. Breathing adequate. Circulation needs watching. You get the electrodes on."),
+      jPull("The trace tells the story. Your job is to read it correctly and act on it without hesitation.", "Peter Craine, April 2026"),
+      jH("The 12-Lead"),
+      jP("ECG acquired and interpreted on scene. ST elevation in a distribution consistent with a suspected anterior MI. This is no longer a chest-pain call. This is a PPCI pathway activation. The pre-alert goes into A\u0026E: patient details, suspected diagnosis, current status, ETA. Aspirin administered per protocol. The patient is told, clearly and calmly, what we are doing and why. Continuous monitoring throughout transport."),
+      jP("ATMIST handover to NWAS on arrival: clean, complete, nothing missed. A\u0026E team waiting under pre-alert. Patient received."),
+      jH("The Difference in Scope"),
+      jP("This is why clinical scope matters. A first aider manages the airway if needed and calls 999 \u2014 the right thing with the tools they have. An EAC acquires a 12-lead, interprets the trace, activates the PPCI pathway, administers aspirin, and hands over a complete clinical picture to a receiving team who are already prepared. The time difference between an unknown chest pain arrival and a pre-alerted suspected MI is a treatment window. That window is what this qualification is for."),
+      jLine(),
+      jP("Patient received at hospital. Pathway activated. Job done."),
       jAnon(),
     ]
   },
@@ -3446,11 +3646,17 @@ var JOURNAL_POSTS = [
     icon: '\u26bd',
     location: 'Mill Farm Stadium, Fylde',
     readTime: '4 min read',
+    img: { src: '/img/journal/afc-fylde.jpg', alt: 'Non-league football stadium at golden hour, empty pitch and floodlights', caption: 'Mill Farm Stadium, Fylde \u2014 March 2026' },
     body: [
-      jP("Mill Farm Stadium. AFC Fylde v AFC Marine. Crowd of approximately 3,000. No team doctor on site for either squad."),
-      jP("That dual-role structure changes the risk profile of the deployment. As the sole clinical resource for both the crowd and both squads, the job is to triage any incident first: is this a crowd patient or a player? What is the severity? What is happening elsewhere at the same moment?"),
-      jP("No patient contacts on this deployment. Ninety minutes of fixture, full clinical cover maintained throughout. Pre-event briefing with stadium safety team completed. Medical post established. Communication with match officials confirmed."),
-      jP("The absence of incidents is not the absence of clinical work. The preparation, the positioning, the communication and the readiness are the job. The patients are the exception, not the measure."),
+      jP("Mill Farm Stadium. AFC Fylde against AFC Marine. Approximately 3,000 in the ground. Pre-event briefing with the stadium safety team completed, medical post established, communication with match officials confirmed. And then the note that changes the risk calculation for the entire deployment: no team doctor on site for either squad."),
+      jH("What Dual Role Means"),
+      jP("A standard sports event deployment means crowd cover. You are the medical resource for the spectators. When there is no team doctor, you also become the clinical resource for the players and staff of both squads. One person, responsible for the clinical welfare of everyone in the building."),
+      jP("That changes how you think about your position throughout the match. Accessible to the crowd and visible to the bench simultaneously. If a player goes down, you need the pitch. If someone in the stand collapses, you need the stand. The positioning has to be a compromise that minimises the worst-case response time for either scenario."),
+      jPull("The absence of incidents is not the absence of work. Ninety minutes of readiness is a clinical skill in its own right.", "Peter Craine, March 2026"),
+      jH("Ninety Minutes"),
+      jP("No patient contacts across the fixture. The game is played, both squads leave the pitch healthy, the crowd files out without incident. Ninety minutes of active situational awareness \u2014 reading the crowd, watching the pitch, monitoring the bench, ready to move at any moment. The preparation, the positioning, the communication and the readiness are the job. The patients are the exception."),
+      jLine(),
+      jP("The standard is the same whether anyone needs you or not. That is what professional cover means."),
       jAnon(),
     ]
   },
@@ -3464,10 +3670,16 @@ var JOURNAL_POSTS = [
     icon: '\ud83c\udfc9',
     location: 'DW Stadium, Wigan',
     readTime: '4 min read',
+    img: { src: '/img/journal/dw-stadium.jpg', alt: 'Large stadium interior with floodlights at night, dramatic lighting', caption: 'DW Stadium, Wigan \u2014 March 2026' },
     body: [
-      jP("Cold weather, contact sport, full stadium. The DW Stadium for a rugby fixture: crowd cover, pitch-side awareness, and patient contacts across the event."),
-      jP("Rugby presents a specific injury profile: musculoskeletal, facial trauma, concussion. The crowd presents differently: cardiac, respiratory, hypothermia, alcohol-related. Both require clinical assessment and documentation to the same standard."),
-      jP("Patient contacts included a presentation of chest discomfort: assessed, monitored, vital signs within normal parameters, symptoms resolved, patient discharged with advice. Documented. Followed up with safety team before end of event."),
+      jP("The DW Stadium on a cold March evening. The kind of night where the temperature drops fast once the sun goes and the wind comes across the open stands like it has a personal grievance. Rugby weather. Medical post established, pitch-side awareness on one side, crowd station on the other."),
+      jH("The Injury Profile"),
+      jP("Rugby and football present completely different clinical pictures. Rugby crowds tend to be older, hardier, and less likely to seek help for minor complaints \u2014 but when they do present, it can be more acute. Cold weather adds its own layer: hypothermia risk in older spectators, exacerbation of cardiac and respiratory conditions. The pitch-side picture produces musculoskeletal injuries, facial trauma and concussion with regularity."),
+      jPull("Cold stadium, contact sport, patient contacts. Every one assessed, every one documented. That is the baseline regardless of conditions.", "Peter Craine, March 2026"),
+      jH("The Patient"),
+      jP("One significant patient contact: chest discomfort, mid-game. Male spectator, older. Full primary survey, vital signs within normal parameters, 12-lead monitoring used. Symptoms present on arrival, monitored across the assessment period, settling. No acute cardiac picture on trace. Discharged at scene with advice: see your GP in the next 48 hours, return immediately if symptoms worsen. Documented in full. Followed up with the stadium safety team before end of event."),
+      jLine(),
+      jP("Match ends. Stands empty. Medical log completed. Another one on the PRF."),
       jAnon(),
     ]
   },
@@ -3480,12 +3692,21 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'RTC', 'Trauma', 'Multi-patient', 'NWAS', 'First on scene'],
     icon: '\ud83d\ude98',
     location: 'North West England',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/rtc-two-drivers.jpg', alt: 'UK road at night after a collision with emergency lighting', caption: 'RTC response, North West England \u2014 March 2026' },
     body: [
-      jP("First on scene to a road traffic collision. Two vehicles, two drivers, both injured."),
-      jP("Scene safety first. Both patients conscious. Rapid primary survey of both: Patient one \u2014 suspected rib injury and shoulder pain, mechanism consistent with seatbelt loading. O2 applied, vital signs monitored, positioned. Patient two \u2014 laceration to head, controlled with direct pressure, no signs of neurological deficit, GCS 15 throughout."),
-      jP("Dual-scene management: move between both patients, communicate status to crew, document both presentations simultaneously, maintain clinical oversight of both until NWAS arrival."),
-      jP("ATMIST handover for both patients to NWAS paramedic on arrival. Patient one: transported with monitoring. Patient two: assessed by NWAS, discharged at scene with advice."),
+      jP("You are first on scene. Two vehicles, both stopped at angles that tell the story of the impact. Both drivers still inside. Two patients. Two separate assessments needed from one clinician, simultaneously."),
+      jH("Scene Safety and Initial Assessment"),
+      jP("Scene safety first. Fuel, smoke, hazards, oncoming traffic. Satisfied on all counts. Approach vehicle one: male driver, conscious and confused, defensive posture protecting the right side of his chest. Seatbelt loaded \u2014 mechanism consistent with rib injury and clavicle involvement. Vital signs running in your head as you talk to him."),
+      jP("Move to vehicle two: female driver, forehead laceration \u2014 significant but not arterial. GCS 15, oriented, distressed but responsive. Direct pressure on the wound. Take the mechanism: the impact, where she was hit, what she struck. Neurological status normal throughout."),
+      jPull("Two patients, one clinician, simultaneous management. You build the sequence in your head and you do not deviate from it.", "Peter Craine, March 2026"),
+      jH("Managing Both"),
+      jP("The cognitive load of running two separate clinical pictures simultaneously, while communicating with both patients, documenting on the move, and coordinating with incoming NWAS \u2014 this is the part that no training exercise fully replicates. Patient one: oxygen applied, vital signs monitored, spinal precautions noted. Patient two: wound controlled, monitored, reassessed. Move between them. Keep both in the picture."),
+      jP("NWAS on scene. ATMIST for both patients in sequence: patient one transported with monitoring, patient two fully assessed by NWAS and discharged at scene with advice."),
+      jH("First on Scene"),
+      jP("Being first on scene at an RTC is a specific responsibility. The decisions made in the first three minutes shape everything that follows \u2014 the scene assessment, the patient priority, the treatment sequence, the information passed to NWAS control. You do not get a second chance at the first impression of a scene."),
+      jLine(),
+      jP("Both patients accounted for. PRFs completed. NWAS departed. Job done."),
       jAnon(),
     ]
   },
@@ -3498,12 +3719,21 @@ var JOURNAL_POSTS = [
     tags: ['Training', 'First Aid', 'Assessor', 'Community', 'BLS', 'Teaching'],
     icon: '\ud83c\udf93',
     location: 'North West England',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/first-aid-training.jpg', alt: 'CPR manikins and defibrillator in a community training hall', caption: 'Community First Aid Training \u2014 March 2026' },
     body: [
-      jP("Eight delegates. One full day. Lead trainer and assessor role on a community first aid programme covering BLS, AED, choking \u2014 adult and infant \u2014 and managing common medical emergencies."),
-      jP("Teaching first aid is a different skill from performing first aid. You are not managing a patient. You are managing eight people's understanding of how to manage a patient under pressure, probably for the first time, probably terrified."),
-      jP("All eight delegates assessed and certificated. The scenarios were realistic, the feedback was direct, and every delegate left with something they didn't have when they arrived."),
-      jP("208+ learners and counting. The training side of this role is as important as the operational side. Every person who learns CPR properly is a potential first link in someone's chain of survival."),
+      jP("Eight people in a room who have never done this before. Some are nervous before the day even starts \u2014 you can tell from the way they come in, the careful way they pick their seats, the phone they check one more time before putting it away. They know, on some level, that learning this matters. They\u2019re just not sure they can do it."),
+      jH("Teaching First Aid"),
+      jP("There is a version of first aid training that ticks the box. The slides, the manikin, the certificate. Everyone goes home with the same piece of paper and remembers roughly how many chest compressions per minute. That is not what this is."),
+      jP("Teaching first aid properly means teaching people who have never been in a medical emergency how to manage one. That means addressing the fear as much as the technique. Most people freeze not because they don\u2019t know what to do, but because the gap between knowing and doing, under pressure, with a real person in front of them, is enormous. Your job as a trainer is to build the bridge."),
+      jPull("Every delegate who passes today becomes a potential first link in someone else\u2019s chain of survival. That is not a metaphor. It is arithmetic.", "Peter Craine, March 2026"),
+      jH("The Moment It Clicks"),
+      jP("There is a point in almost every training day when something changes. A delegate who was hesitant with the manikin \u2014 checking their hands, looking up for permission to press harder \u2014 suddenly just does it. Rate right, depth right, recoil complete. They look up and they are different. Something abstract is now in their muscle memory."),
+      jP("Today a delegate told me at the start that she would not be able to do the CPR. Not strong enough. Bad hands. By the end of the session she was coaching the person next to her on compression depth. That is the work."),
+      jH("The Numbers"),
+      jP("All eight delegates assessed and certificated. BLS, AED, choking \u2014 adult and infant \u2014 and common medical emergencies. Every scenario completed. 208 learners across the programme and counting."),
+      jLine(),
+      jP("Every person who leaves today able to manage a cardiac arrest until a crew arrives is a real, measurable improvement in public safety. Not glamorous. Some of the most important work I do."),
     ]
   },
 
@@ -3515,29 +3745,46 @@ var JOURNAL_POSTS = [
     tags: ['Leadership', 'Network Lead', 'East Lancashire', 'SJA', 'Management'],
     icon: '\ud83c\udfd7',
     location: 'East Lancashire Network',
-    readTime: '5 min read',
+    readTime: '6 min read',
+    img: { src: '/img/journal/network-lead.jpg', alt: 'Desk covered in planning documents with laptop screen glowing at night', caption: 'Network Lead \u2014 East Lancashire, 2026' },
     body: [
-      jP("Ten months as East Lancashire Community Network Lead. For most of that time, I have also been: Event Delivery Lead, Operational Support Lead, Network Training Lead, Volunteering Services Lead, Community Lead, Youth Services Lead and Network President. All simultaneously. All on top of operational deployments and training delivery."),
-      jP("People ask how that works. The honest answer is: it works because it has to. The network doesn't stop needing risk assessments because the Event Delivery Lead post is vacant. The volunteers don't stop needing onboarding because Volunteering Services is unoccupied. The work exists regardless of whether someone is formally holding the title."),
-      jP("The combined theoretical monthly commitment across all roles is over 200 hours. The actual hours vary. What doesn't vary is that the network needs to function, the deployments need to go out, the volunteers need support, and the governance needs to be right."),
-      jP("Twelve months in \u2014 two Commissioner Commendations, 32+ deployments, 208+ learners trained, a fully active network. The role is the job. The job is the role."),
+      jP("Ten months. I have been East Lancashire Community Network Lead for ten months. For most of that time \u2014 almost all of it \u2014 I have also been covering every other leadership role in the network simultaneously."),
+      jH("What Seven Roles Actually Means"),
+      jP("Event Delivery Lead. Operational Support Lead. Network Training Lead. Volunteering Services Lead. Community Lead. Youth Services Lead. Network President. Each has its own governance requirements, its own workload, its own demands on time. Covering them concurrently, on top of operational deployments and training delivery, is not a description of an unusual month. It has been the description of every month for nearly a year."),
+      jP("People ask how that works. The honest answer is: it works because the alternative is that the network does not function. The risk assessment does not write itself because the Event Delivery Lead post is vacant. The volunteer does not get onboarded because no one is covering Volunteering Services. The work exists regardless of who holds the title."),
+      jPull("The role has asked more of me than any job description could have anticipated. I am more capable because of it.", "Peter Craine, February 2026"),
+      jH("What a Week Looks Like"),
+      jP("Monday: risk assessment for an upcoming deployment submitted. Two volunteer welfare queries responded to. Email chain about a schools engagement session for Youth Services. Tuesday: training materials updated for the next cohort. Deployment paperwork from the weekend completed. Wednesday: management call with divisional lead. Governance documentation for the Community Lead function filed. Thursday: planning meeting for next quarter\u2019s event schedule, then an operational shift. Friday: two volunteer onboarding conversations, a youth services referral followed up."),
+      jP("That is a compressed version of a real week. It does not include the evenings when things need finishing, or the weekends when deployments happen, or the messages that come through on days off that still need a response."),
+      jH("What Has Come From It"),
+      jP("Thirty-two deployments and counting. Two Commissioner Commendations in twelve months \u2014 2025 and 2026. A fully active network that has continued to function through a period when it should, structurally, have been much harder to keep running. 208 learners trained. A Heysham nuclear exercise. A Grand National. A network that is still deploying."),
+      jLine(),
+      jP("Twelve months in. Still holding all seven. FREC 4 in progress. The role is the job. The job is the role."),
     ]
   },
 
   {
     day: '15', month: 'Jan', year: '2026',
-    title: "FREC 4 \u2014 Why I'm Progressing to Advanced Ambulance Practitioner",
+    title: "FREC 4 \u2014 Why I\u2019m Progressing to Advanced Ambulance Practitioner",
     deck: "FREC 3 is the current qualification. FREC 4 is the target. What the progression means clinically, what it adds to scope, and why it matters for the kind of pre-hospital work I want to do.",
     category: 'Clinical',
     tags: ['FREC 4', 'CPD', 'Clinical development', 'AAP', 'Qualifications'],
     icon: '\ud83d\udcca',
     location: 'North West England',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/frec4-progression.jpg', alt: 'Open medical textbooks and clinical reference materials on a desk under lamp light', caption: 'FREC 4 Progression \u2014 2026' },
     body: [
-      jP("FREC 3 is a strong clinical qualification. 19 medications. Full airway management. 12-lead ECG. Spinal immobilisation. Haemorrhage control. It covers a lot of ground and it covers it properly."),
-      jP("FREC 4 \u2014 the Advanced Ambulance Practitioner level \u2014 expands that significantly. Additional medications. IV cannulation. Broader patient assessment capability. A deeper pharmacology base. The clinical confidence to manage more complex presentations with more tools."),
-      jP("The reason I'm progressing is straightforward: the work demands it. The Heysham exercise, the Grand National, the community cardiac calls \u2014 every one of those incidents is better served by a clinician with a wider scope and a deeper evidence base."),
-      jP("FREC 4 in progress. Completion 2026."),
+      jP("FREC 3 is a strong qualification. Let me be specific about that before explaining why it is not enough. Nineteen medications. Full airway management: OPA, NPA, iGel, BVM. 12-lead ECG acquisition and interpretation. Spinal immobilisation. Haemorrhage control including tourniquet application and wound packing. That is a real clinical scope that has made a real difference to real patients."),
+      jH("What FREC 4 Adds"),
+      jP("FREC 4 \u2014 the Advanced Ambulance Practitioner pathway \u2014 extends that scope significantly. IV cannulation. A wider pharmacology base, including additional medications and routes. More sophisticated patient assessment capability. A deeper clinical reasoning framework that supports better decision-making in complex presentations under pressure."),
+      jP("The difference is not marginal. IV access changes what you can do for a patient before hospital. An expanded drug formulary changes the presentations you can manage definitively at scene. A more developed clinical reasoning process changes the quality of decisions made under pressure."),
+      jPull("FREC 3 made me a capable clinician. FREC 4 will make me a better one. That distinction matters on the day it matters.", "Peter Craine, January 2026"),
+      jH("Why the Work Demands It"),
+      jP("The Heysham nuclear exercise: five casualties, complex mechanism, multi-agency command. The Grand National: twenty-five patients, airway compromise, hypovolaemia, simultaneous management. The community cardiac call: a suspected MI requiring 12-lead interpretation and PPCI pathway activation. Every one of those incidents is better served by a wider scope and a deeper evidence base."),
+      jH("The Goal"),
+      jP("NHS Band 4 to Band 5 EAC employment. The FREC 4 \u2014 alongside the operational experience, the network leadership, the training delivery and the multi-agency history \u2014 builds a clinical and professional profile that is genuinely competitive for those roles in the North West."),
+      jLine(),
+      jP("FREC 4 in progress. Completion 2026. That is not a timeline. It is a commitment."),
     ]
   },
 
@@ -3549,30 +3796,46 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'RTC', 'HART', 'Multi-agency', 'Trauma', 'Entrapment'],
     icon: '\u26a1',
     location: 'North West England',
-    readTime: '5 min read',
+    readTime: '6 min read',
+    img: { src: '/img/journal/hart-rtc.jpg', alt: 'UK urban road at night with blue and red emergency lights reflecting on wet tarmac', caption: 'HART Multi-Agency RTC, November 2025' },
     body: [
-      jP("Motorbike versus pedestrian. Patient entrapped. Fire service, police, HART and SJA on scene. The kind of incident where the clinical picture and the operational picture are moving simultaneously and you have to manage both."),
-      jP("My role: clinical cover for the entrapped patient pending extrication. That means: assess what you can reach, manage the airway, monitor vital signs, communicate the clinical picture into command, and be ready to move when fire service gives the word."),
-      jP("Operated within HART, police and fire command per JESIP throughout. Clinical input into three command huddles. Patient airway managed manually pending extrication."),
-      jP("ATMIST handover to HART paramedic lead on extrication. Patient transported under HART cover."),
+      jP("Motorbike versus pedestrian. The mechanism alone tells you what to expect. High energy, concentrated impact. The patient is entrapped when the ambulance arrives \u2014 fire service already working, police managing the outer cordon, HART incoming. The clinical picture is active and moving before you have fully assessed it."),
+      jH("Getting to the Patient"),
+      jP("Entrapment means you work with what you can access. Fire service controls what moves and when, and you communicate your clinical needs into their operational plan. Every movement is coordinated. The patient cannot be moved until fire says so. You assess what you can reach: airway, breathing, conscious level, obvious haemorrhage. You manage what you can manage in the space you have."),
+      jP("Airway manually maintained. The patient is conscious but deteriorating \u2014 pain level high, anxiety visible, vital signs trending in the wrong direction. You talk to them. You tell them what is happening and what is being done. You keep the clinical picture and the patient\u2019s state in front of you simultaneously."),
+      jPull("In entrapment, the patient is not the only thing you are managing. You are managing the environment around the patient, the communication into command, and the preparation for the moment fire gives you the word.", "Peter Craine, November 2025"),
+      jH("Command and JESIP"),
+      jP("Three command huddles across the incident: police, fire, HART, SJA. Each one takes the current picture from each agency and builds the next phase of the response. My contribution: patient status, interventions completed, what the patient needs from extrication, what HART needs to know before they take clinical lead."),
+      jP("JESIP holds it together. Shared situational awareness, clear command, defined responsibilities. Easy to say. A different thing to operationalise on a live scene with multiple agencies, a deteriorating patient, and no time to consult the flowchart. The structure works because you have trained it until it is automatic."),
+      jH("Extrication and Handover"),
+      jP("Fire gives the word. Patient moved. ATMIST handover to HART paramedic lead: age, complaint, mechanism, vital signs trend, interventions, time of last assessment. Clean and complete. HART transports under their cover."),
+      jLine(),
+      jP("Multi-agency RTCs are the most operationally demanding environment this role operates in. The medicine is the constant. Everything around it is moving."),
       jAnon(),
     ]
   },
 
   {
     day: '08', month: 'Mar', year: '2026',
-    title: "High Legh 10K \u2014 When the Runner Doesn't Stop Running",
+    title: "High Legh 10K \u2014 When the Runner Doesn\u2019t Stop Running",
     deck: "Vehicle-based EAC on a muddy Cheshire course. One patient, late race, classic exertional presentation \u2014 and why your assessment window at an event is nothing like a roadside RTC.",
     category: 'Deployment',
     tags: ['EAC', 'Running events', 'Exertional illness', 'Vehicle', 'Cheshire'],
     icon: '\ud83c\udfc3',
     location: 'High Legh, Cheshire',
     readTime: '4 min read',
+    img: { src: '/img/journal/high-legh-10k.jpg', alt: 'Misty early morning Cheshire countryside lane with frost on grass and race markers', caption: 'High Legh 10K \u2014 March 2026' },
     body: [
-      jP("Vehicle-based EAC. High Legh 10K. Muddy course, cold morning, field of club runners and first-timers. The kind of event where the clinical presentation you are most likely to see is exertional illness in the final kilometre from someone who pushed harder than they should have."),
-      jP("One patient, late race. Classic presentation: pale, diaphoretic, unsteady gait, unable to maintain pace. Stopped at the side of the course. Assessment: no loss of consciousness, GCS 15, hypoglycaemia excluded, no cardiac symptoms, respiratory rate elevated but settling. Exertional fatigue with mild dehydration."),
+      jP("Seven o\u2019clock in a Cheshire field and the ground is exactly as muddy as the forecast suggested. The course winds through lanes and farmland \u2014 the kind of route that looks charming on the event website and feels considerably less charming around kilometre eight when the field has churned the mud into something more substantial. Vehicle positioned. Medical post established. First runners warming up."),
+      jH("The Running Event Patient"),
+      jP("Running event medicine has its own shape. Presentations cluster in predictable places: in the final kilometre as effort overwhelms preparation, at the finish line as the adrenaline drops, occasionally in the early miles when someone realises they have set off too fast. The profile: generally fit and active people in self-induced physiological difficulty. Most of them do not want to stop."),
+      jP("That last part matters clinically. A trained runner, competitive by instinct and deeply invested in finishing, is not always a cooperative patient. Your assessment needs to happen fast enough and clearly enough that they understand why stopping is the right call."),
+      jPull("The assessment window at a running event is nothing like a roadside RTC. The patient is mobile, motivated and may be trying to argue with you. Adapt.", "Peter Craine, March 2026"),
+      jH("The Patient"),
+      jP("Late race. Kilometre nine. Classic presentation: pale, diaphoretic, unsteady gait, pace dropped to near-walking. Stopped at the side of the course when approached. GCS 15, oriented, no loss of consciousness. Hypoglycaemia excluded. No cardiac symptoms. Respiratory rate elevated but settling. Exertional fatigue with mild dehydration on a cold, muddy, hilly course."),
       jP("Treatment: position, oral fluids, monitoring, reassurance, observation to recovery. Discharged at scene with advice. PRF completed."),
-      jP("The assessment window at a running event is different from a roadside RTC. The patient often wants to keep moving. The crowd is watching. The environment is wet, loud and unpredictable. You adapt."),
+      jLine(),
+      jP("Patient recovered well. Finished the race \u2014 with a slightly smaller margin of the field behind them than planned. By most measures, the best possible outcome."),
       jAnon(),
     ]
   },
@@ -3585,34 +3848,50 @@ var JOURNAL_POSTS = [
     tags: ['EAC', 'SJA', 'Volunteering', 'Training', 'Clinical scope', 'Career'],
     icon: '\ud83c\udfe5',
     location: 'East Lancashire',
-    readTime: '4 min read',
+    readTime: '5 min read',
+    img: { src: '/img/journal/two-years-eac.jpg', alt: 'Pre-hospital medical kit and equipment laid out on dark background', caption: 'Two Years as an EAC \u2014 March 2026' },
     body: [
-      jP("Most people think SJA volunteers hand out plasters at fun runs. Some do. That is not what an Emergency Ambulance Crew member does."),
-      jP("EAC is a clinical role. You carry a full drug pack \u2014 19 medications including adrenaline IM and naloxone IM. You manage airways with OPA, NPA, iGel and BVM. You acquire and interpret 12-lead ECGs. You apply tourniquets, pack wounds, manage spinal injuries and activate pre-alert pathways to A&E."),
-      jP("The training is structured and demanding. IREC to FROS to FREC 3, each level adding clinical scope, assessment capability and operational responsibility. It takes time and commitment to get to EAC standard. The people who complete it are genuinely clinically capable."),
-      jP("Two years in. 32+ deployments. 208+ learners trained. A network to lead. And FREC 4 in progress. The work is real. The clinical impact is real. The commitment required is real. That is why it matters."),
+      jP("Two years ago I was completing the final assessment for FREC 3. I remember the practical scenario \u2014 a witnessed cardiac arrest, the examiner watching every compression, every airway check, every rhythm assessment. Passing felt significant. Not because of the certificate, but because of what it meant I was now authorised to do."),
+      jH("What People Think EAC Is"),
+      jP("Most people, when they hear St John Ambulance volunteer, think of someone handing out plasters at a fun run. A well-meaning person in a green uniform with a first aid kit and a limited scope. That person exists, and the work they do matters. But they are not what an Emergency Ambulance Crew member is."),
+      jP("An EAC carries a full drug pack. Nineteen medications, including adrenaline IM and naloxone IM. Airways: OPA, NPA, iGel and BVM. 12-lead ECG \u2014 acquired and interpreted, not just printed and handed to a paramedic. Tourniquets. Wound packing. Haemorrhage control. Spinal immobilisation. Pre-alert pathway activation. A real clinical scope, used in real emergencies."),
+      jPull("The first time you tell someone \u2018we\u2019re pre-alerting A\u0026E\u2019 \u2014 and mean it, and do it properly \u2014 is the moment the qualification becomes real.", "Peter Craine, March 2026"),
+      jH("What Two Years Has Looked Like"),
+      jP("Thirty-two deployments: road traffic collisions, mass gathering events, community ambulance shifts, multi-agency exercises, sports fixtures, running events, and a nuclear site emergency planning exercise. Two Commissioner Commendations. A network to lead. 208 people trained in first aid."),
+      jP("The training is structured and demanding. IREC to FROS to FREC 3 \u2014 each level adds clinical scope, assessment capability, and operational responsibility. The people who complete it are genuinely clinically capable. Not paramedics. Not doctors. EACs: a defined, regulated, scope-limited clinical role that sits in a real and important part of the pre-hospital system."),
+      jH("Where It Goes"),
+      jP("FREC 4 in progress. Target: NHS Band 4 to 5 employment as a professional EAC. The scope, the experience, the leadership, and the training delivery background are all pointing in the same direction."),
+      jLine(),
+      jP("The work is real. The clinical impact is real. The commitment required is real. That is why it matters \u2014 and why I keep showing up."),
     ]
   },
-
-
 
   {
     day: '01', month: 'Sep', year: '2025',
-    title: "Foster Carer and TNR — Community Animal Welfare Since September 2025",
-    deck: "Alongside operational deployments and network leadership, I have been a foster carer for cats since September 2025 and part of a community Trap, Neuter and Return project for feral cat colonies.",
+    title: "Foster Care, TNR and Search Capability \u2014 Community Animal Welfare Since 2025",
+    deck: "Foster carer for cats since September 2025. Part of a community Trap, Neuter and Return project for feral colonies. And more recently \u2014 thermal camera operator and drone pilot for animal search and rescue. Community work that turned out to have more in common with the clinical side than expected.",
     category: 'Leadership',
-    tags: ['Community', 'Animal welfare', 'Foster care', 'TNR', 'Volunteering'],
-    icon: '\u{1F431}',
+    tags: ['Community', 'Animal welfare', 'Foster care', 'TNR', 'Drone', 'Thermal imaging', 'Volunteering'],
+    icon: '\ud83d\udc31',
     location: 'Blackburn, Lancashire',
-    readTime: '3 min read',
+    readTime: '4 min read',
+    img: { src: '/img/journal/cat-sar.jpg', alt: 'Thermal camera view showing a small heat signature in dark undergrowth at night', caption: 'Animal SAR \u2014 thermal and drone operations, 2025\u20132026' },
     body: [
-      jP("Community work takes many forms. Since September 2025 I have been a foster carer for cats \u2014 providing a home for animals between rescue and adoption. Post-surgical recovery cases, kittens who need round-the-clock care, cats who have been through trauma and need time with a patient human before they can trust again."),
-      jP("I am also part of a community Trap, Neuter and Return project working with feral cat colonies. TNR is the evidence-based approach to managing feral populations humanely \u2014 it stabilises colony size, eliminates unwanted litters and improves welfare of the cats already there. The work involves humane trapping, coordinating with vets for neutering, and monitoring colony health."),
-      jP("The clinical skills transfer more than you would expect. Assessment, calm under pressure, recognising signs of distress or illness, making decisions with incomplete information. The settings are different. The underlying discipline is the same."),
-      jP("It is unglamorous, time-consuming and occasionally heartbreaking work. It is also genuinely useful."),
+      jP("This one is different from the rest of the journal. No patients, no ATMIST handover, no clinical documentation. Just community work that started in one place and ended up somewhere I did not expect."),
+      jH("Foster Care"),
+      jP("Since September 2025 I have been a foster carer for cats \u2014 providing a home for animals between rescue and permanent adoption. Post-surgical recovery cases needing monitoring and medication. Kittens needing round-the-clock feeding and warmth. Cats who have been through trauma and need weeks of patient, quiet presence before they can trust again. The last category is the most time-consuming and, probably, the most rewarding."),
+      jH("Trap, Neuter and Return"),
+      jP("TNR \u2014 Trap, Neuter and Return \u2014 is the evidence-based method for managing feral cat colonies humanely. Feral cats are not strays. They live outside, are not socialised to humans, and cannot be rehomed. The alternatives to TNR are ineffective at best and lethal at worst. Trapping, arranging neutering through partner vets, recovering the cats and returning them to their colony stops the cycle, improves welfare, and stabilises the population over time."),
+      jP("The work is unglamorous. Early mornings, humane traps, waiting. A feral cat in a trap is not calm. The clinical skills transfer: assessing signs of distress or illness in an animal that cannot tell you what is wrong, making decisions with incomplete information, staying calm when the subject is frightened and reactive."),
+      jPull("The settings are different. The underlying discipline \u2014 patient assessment, calm under pressure, decisions with incomplete information \u2014 is exactly the same.", "Peter Craine, 2026"),
+      jH("Thermal Imaging and Drone Search"),
+      jP("More recently I have added two capabilities to this work: thermal camera operation and drone piloting. When a cat is lost \u2014 trapped in a building, injured in undergrowth, sheltering under a structure \u2014 the conventional search is limited by what human eyes detect in low light. A thermal camera changes that entirely. Body heat in a hedge. A shape in a roof cavity. A signature under decking that the naked eye would never find."),
+      jP("The drone adds height and coverage. A search that would take an hour on foot can be covered in ten minutes from the air. Combined with the thermal, it becomes a genuinely effective SAR tool for an animal that does not respond to its name and cannot call for help."),
+      jLine(),
+      jP("Community work takes many forms. This particular strand is genuinely useful, occasionally technical, and occasionally heartbreaking. I am proud to do it alongside the rest of it."),
     ]
   },
-]; // end JOURNAL_POSTS
+];
 
 /* ── DEPLOYMENTS (for last-duty calculation) ──────────────────────────────── */
 var DEPLOYMENTS = [
@@ -4210,14 +4489,39 @@ function renderJournalList() {
     return '<div class="jpost-row" onclick="openPost(' + realIdx + ')">' +
       '<div class="jpr-date"><span class="jpr-day">' + p.day + '</span><span class="jpr-month">' + p.month + '</span></div>' +
       '<div class="jpr-body">' +
-        '<div class="jpr-cat">' + p.category + '</div>' +
+        '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
         '<div class="jpr-title">' + p.title + '</div>' +
-        '<div class="jpr-deck">' + p.deck + '</div>' +
-        '<div class="jpr-meta">' + p.location + ' \u00b7 ' + p.readTime + '</div>' +
+        '<div class="jpr-excerpt">' + p.deck + '</div>' +
+        '<div class="jpr-meta">' + p.location + ' &middot; ' + p.readTime + '</div>' +
+        '<div class="jpr-hint">Read entry &nbsp;&rarr;</div>' +
       '</div>' +
       '</div>';
   }).join('');
   renderJournalSidebar();
+  updateFilterCounts();
+  updateJournalStats();
+}
+
+function updateFilterCounts() {
+  var counts = {};
+  JOURNAL_POSTS.forEach(function(p){ counts[p.category] = (counts[p.category]||0)+1; });
+  document.querySelectorAll('.jb-filter-btn').forEach(function(btn){
+    var cat = btn.getAttribute('onclick').match(/'([^']+)'/);
+    if (!cat) return;
+    cat = cat[1];
+    var n = cat === 'all' ? JOURNAL_POSTS.length : (counts[cat]||0);
+    var label = cat === 'all' ? 'All Posts' : cat === 'Deployment' ? 'Deployments' : cat;
+    btn.textContent = label + ' (' + n + ')';
+  });
+}
+
+function updateJournalStats() {
+  var cats = {};
+  JOURNAL_POSTS.forEach(function(p){ cats[p.category]=1; });
+  var deps = JOURNAL_POSTS.filter(function(p){ return p.category==='Deployment'; }).length;
+  var ps = document.getElementById('jhs-posts'); if(ps) ps.textContent = JOURNAL_POSTS.length;
+  var pd = document.getElementById('jhs-deps'); if(pd) pd.textContent = deps;
+  var pc = document.getElementById('jhs-cats'); if(pc) pc.textContent = Object.keys(cats).length;
 }
 
 function renderJournalSidebar() {
@@ -4227,7 +4531,7 @@ function renderJournalSidebar() {
   if (catEl) {
     var catHTML = '';
     Object.keys(cats).forEach(function(k){
-      catHTML += '<div class="jsw-cat" onclick="filterPosts(\'' + k + '\',null)" style="cursor:pointer"><span class="jsw-cat-name">' + k + '</span><span class="jsw-cat-n">' + cats[k] + '</span></div>';
+      catHTML += '<div class="jsw-cat" onclick="filterPosts(\'' + k + '\',null);document.querySelectorAll(\'.jb-filter-btn\').forEach(function(b){b.classList.remove(\'active\')});" style="cursor:pointer"><span class="jsw-cat-name">' + k + '</span><span class="jsw-cat-n">' + cats[k] + '</span></div>';
     });
     catEl.innerHTML = catHTML;
   }
@@ -4235,12 +4539,34 @@ function renderJournalSidebar() {
   JOURNAL_POSTS.forEach(function(p){ (p.tags||[]).forEach(function(t){ tags[t]=(tags[t]||0)+1; }); });
   var tagEl = document.getElementById('jsb-tags');
   if (tagEl) {
-    tagEl.innerHTML = Object.keys(tags).slice(0,18).map(function(t){
-      return '<span class="jsw-tag" style="cursor:pointer">' + t + '</span>';
+    tagEl.innerHTML = Object.keys(tags).slice(0,20).map(function(t){
+      return '<span class="jsw-tag" onclick="filterByTag(\'' + t.replace(/'/g,"\\'") + '\')" title="Filter by: ' + t + '">' + t + '</span>';
     }).join('');
   }
 }
 
+function filterByTag(tag) {
+  _currentFilter = 'tag:' + tag;
+  document.querySelectorAll('.jb-filter-btn').forEach(function(b){ b.classList.remove('active'); });
+  var list = document.getElementById('jb-list');
+  if (!list) return;
+  var posts = JOURNAL_POSTS.filter(function(p){ return (p.tags||[]).indexOf(tag) > -1; });
+  list.innerHTML = posts.length ? posts.map(function(p){
+    var realIdx = JOURNAL_POSTS.indexOf(p);
+    return '<div class="jpost-row" onclick="openPost(' + realIdx + ')">' +
+      '<div class="jpr-date"><span class="jpr-day">' + p.day + '</span><span class="jpr-month">' + p.month + '</span></div>' +
+      '<div class="jpr-body">' +
+        '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
+        '<div class="jpr-title">' + p.title + '</div>' +
+        '<div class="jpr-excerpt">' + p.deck + '</div>' +
+        '<div class="jpr-meta">' + p.location + ' &middot; ' + p.readTime + '</div>' +
+        '<div class="jpr-hint">Read entry &nbsp;&rarr;</div>' +
+      '</div></div>';
+  }).join('') : '<div class="jpr-empty">No posts tagged &ldquo;' + tag + '&rdquo;</div>';
+  updateFilterCounts();
+}
+
+var _articleProgressFn = null;
 function openPost(idx) {
   var p = JOURNAL_POSTS[idx];
   if (!p) return;
@@ -4249,19 +4575,63 @@ function openPost(idx) {
   if (indexView) indexView.style.display='none';
   if (articleView) { articleView.style.display='block'; articleView.innerHTML = buildArticleHTML(idx, p); }
   window.scrollTo(0,0);
+  var bar = document.getElementById('article-progress');
+  if (bar) {
+    bar.style.display='block'; bar.style.width='0%';
+    if (_articleProgressFn) window.removeEventListener('scroll', _articleProgressFn);
+    _articleProgressFn = function() {
+      var art = document.getElementById('jpa-content');
+      if (!art) return;
+      var scrolled = window.scrollY;
+      var artTop = art.offsetTop;
+      var artH = art.offsetHeight;
+      var pct = Math.min(100, Math.max(0, ((scrolled - artTop) / (artH - window.innerHeight)) * 100));
+      bar.style.width = pct + '%';
+    };
+    window.addEventListener('scroll', _articleProgressFn, {passive:true});
+  }
 }
 
 function buildArticleHTML(idx, p) {
   var catColours = { Deployment:'#1A3A5C', Training:'#006B3F', Leadership:'#B8860B', Clinical:'#C0392B', Ceremonial:'#4A1A5C' };
   var bg = catColours[p.category] || '#1a2e27';
+
+  // Contextual CTA per category
+  var ctaMap = {
+    'Deployment': { label:'Need event medical cover?', sub:'FREC 3 EAC &middot; 19 medications &middot; North West England', btn:'Enquire About Cover', page:'contact' },
+    'Training':   { label:'Need a first aid course?', sub:'FAW &middot; EFAW &middot; BLS &middot; Community programmes &middot; CTLLS L4 trainer', btn:'Book Training', page:'contact' },
+    'Leadership': { label:'Working with SJA?', sub:'Network Lead &middot; East Lancashire &middot; Volunteering &amp; strategy', btn:'Get in Touch', page:'contact' },
+    'Clinical':   { label:'Looking for an EAC?', sub:'FREC 3 &middot; Full clinical scope &middot; NHS Band 4&ndash;5 target roles', btn:'View Full Profile', page:'home' },
+    'Ceremonial': { label:'A different kind of service', sub:'Formal representation &middot; Family liaison &middot; Community presence', btn:'About Peter', page:'about' }
+  };
+  var cta = ctaMap[p.category] || ctaMap['Deployment'];
+
+  // More posts (exclude current, show 4)
   var moreHTML = JOURNAL_POSTS.filter(function(_,i){ return i!==idx; }).slice(0,4).map(function(q){
     var qi = JOURNAL_POSTS.indexOf(q);
-    return '<div class="jsw-cat" onclick="openPost('+qi+')" style="cursor:pointer"><span class="jsw-cat-name" style="font-size:11px">'+q.title+'</span></div>';
+    return '<div class="jsw-cat" onclick="openPost('+qi+')" style="cursor:pointer"><span class="jsw-cat-name" style="font-size:11px;line-height:1.4">'+q.title+'</span><span class="jsw-cat-n" style="font-size:7px;min-width:32px;text-align:center">'+q.month+'</span></div>';
   }).join('');
+
+  // Next / Prev
+  var prevHTML = idx > 0 ? '<div class="jpa-nav-item" onclick="openPost('+(idx-1)+')">' +
+    '<div class="jpa-nav-dir">&#9664; Previous</div>' +
+    '<div class="jpa-nav-title">'+JOURNAL_POSTS[idx-1].title+'</div>' +
+    '</div>' : '<div></div>';
+  var nextHTML = idx < JOURNAL_POSTS.length-1 ? '<div class="jpa-nav-item jpa-nav-next" onclick="openPost('+(idx+1)+')">' +
+    '<div class="jpa-nav-dir">Next &#9654;</div>' +
+    '<div class="jpa-nav-title">'+JOURNAL_POSTS[idx+1].title+'</div>' +
+    '</div>' : '<div></div>';
+
+  // Image block
+  var imgHTML = '';
+  if (p.img && p.img.src) {
+    imgHTML = '<div class="jpa-img-wrap"><img class="jpa-img" src="'+p.img.src+'" alt="'+p.img.alt+'" loading="lazy" onerror="this.parentElement.innerHTML=\'<div class=\\"jpa-img-err\\">Image not yet available<small>'+p.img.caption+'</small></div>\'">' +
+      '<div class="jpa-img-caption">'+p.img.caption+'</div></div>';
+  }
 
   return '<div class="jpost-hero">' +
     '<div class="jph-inner">' +
-      '<a class="jph-back" onclick="closePost();return false" href="#" style="display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border:1px solid rgba(0,107,63,.4);border-radius:3px;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--gm);text-decoration:none;background:rgba(0,107,63,.06);margin-bottom:20px">&#9664; Back to Journal</a>' +
+      '<a class="jph-back" onclick="closePost();return false" href="#">&#9664; Back to Journal</a>' +
       '<div class="jph-tags"><span style="background:'+bg+';color:#fff;font-size:8px;letter-spacing:2px;padding:3px 10px;text-transform:uppercase">'+p.category+'</span></div>' +
       '<h1 class="jph-title">'+p.title+'</h1>' +
       '<div class="jph-deck">'+p.deck+'</div>' +
@@ -4273,16 +4643,26 @@ function buildArticleHTML(idx, p) {
     '</div>' +
   '</div>' +
   '<div style="display:grid;grid-template-columns:1fr 260px;gap:0;max-width:1060px;margin:0 auto;padding:0 48px">' +
-    '<article class="jpost-article">' + (p.body||[]).join('') + '</article>' +
+    '<article class="jpost-article" id="jpa-content">' +
+      imgHTML +
+      (p.body||[]).join('') +
+      '<div class="jpa-nav">'+prevHTML+nextHTML+'</div>' +
+    '</article>' +
     '<aside style="padding:52px 0 52px 32px;border-left:1px solid rgba(0,107,63,.12)">' +
+      '<div class="jsw" style="margin-bottom:18px;border-top-color:'+bg+'">' +
+        '<div class="jsw-title">' + cta.label + '</div>' +
+        '<p style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:12px">' + cta.sub + '</p>' +
+        '<button onclick="showPage(\''+cta.page+'\')" class="btn btn-solid" style="width:100%;font-size:10px">' + cta.btn + '</button>' +
+      '</div>' +
       '<div class="jsw">' +
         '<div class="jsw-title">More Posts</div>' +
         moreHTML +
       '</div>' +
       '<div class="jsw">' +
         '<div class="jsw-title">About Peter</div>' +
-        '<p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:12px">EAC &middot; FREC 3 &middot; Network Lead &middot; East Lancashire</p>' +
-        '<button onclick="gotoContact()" class="btn btn-outline" style="width:100%;font-size:10px">Get in Touch</button>' +
+        '<p style="font-size:12px;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:12px">EAC &middot; FREC 3 &middot; Network Lead &middot; East Lancashire. Available for event medical cover and first aid training across North West England.</p>' +
+        '<button onclick="showPage(\'about\')" class="btn btn-outline" style="width:100%;font-size:10px;margin-bottom:6px">Full Profile</button>' +
+        '<button onclick="showPage(\'contact\')" class="btn btn-outline" style="width:100%;font-size:10px">Get in Touch</button>' +
       '</div>' +
     '</aside>' +
   '</div>';
@@ -4294,6 +4674,9 @@ function closePost() {
   if (indexView) indexView.style.display='block';
   if (articleView) articleView.style.display='none';
   window.scrollTo(0,0);
+  var bar = document.getElementById('article-progress');
+  if (bar) { bar.style.display='none'; bar.style.width='0%'; }
+  if (_articleProgressFn) { window.removeEventListener('scroll', _articleProgressFn); _articleProgressFn=null; }
 }
 
 function initJournalECG() {
@@ -4559,41 +4942,85 @@ document.querySelectorAll('.sr-item,.sr-item-left,.sr-item-right').forEach(funct
   if (!form) return;
   // Formspree connection: https://formspree.io/f/xnjgpdjr — works when hosted
 
+  var intents = {
+    cover: {
+      heading: 'Event Medical Cover',
+      wa: 'https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20looking%20for%20EAC-level%20medical%20cover%20for%20an%20event%20in%20%5Blocation%5D%20on%20%5Bdate%5D%20for%20approximately%20%5BX%5D%20attendees.',
+      msg: "Hi Peter, I'm looking for EAC-level medical cover for an event in [location] on [date] for approximately [X] attendees.",
+      btn: 'Request Event Cover \u2192',
+      type: 'Event medical cover'
+    },
+    training: {
+      heading: 'First Aid Training',
+      wa: 'https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20looking%20for%20first%20aid%20training%20for%20%5Bgroup%20or%20company%5D%20%E2%80%94%20can%20we%20talk%20through%20options%3F',
+      msg: "Hi Peter, I'm looking for first aid training for [group or company] \u2014 can we talk through options?",
+      btn: 'Book Training \u2192',
+      type: 'First aid training'
+    },
+    employment: {
+      heading: 'Employment Enquiry',
+      wa: 'https://wa.me/447756831072?text=Hi%20Peter%2C%20I%20came%20across%20your%20profile%20and%20wanted%20to%20discuss%20a%20potential%20opportunity.',
+      msg: "Hi Peter, I came across your profile and I\u2019d like to discuss a potential opportunity \u2014 [your name, organisation, role].",
+      btn: 'Start Conversation \u2192',
+      type: 'Recruitment / employment'
+    }
+  };
+
+  window.cIntent = function(key, el) {
+    document.querySelectorAll('.intent-card').forEach(function(c){ c.classList.remove('ic-active'); });
+    el.classList.add('ic-active');
+    var d = intents[key];
+    var heading = document.getElementById('c-heading');
+    var wa = document.getElementById('c-wa');
+    var fm = document.getElementById('fm');
+    var btn = document.getElementById('c-btn');
+    var type = document.getElementById('c-type');
+    if (heading) heading.textContent = d.heading;
+    if (wa) wa.href = d.wa;
+    if (fm && !fm.dataset.edited) fm.value = d.msg;
+    if (btn) btn.textContent = d.btn;
+    if (type) type.value = d.type;
+  };
+
+  // Mark textarea as manually edited so intent switch won't overwrite user's text
+  var fm = document.getElementById('fm');
+  if (fm) fm.addEventListener('input', function(){ fm.dataset.edited = '1'; });
+
   function showFieldError(fieldId, msgId){
     var f=document.getElementById(fieldId); if(f) f.style.borderColor='var(--red)';
     var m=document.getElementById(msgId); if(m) m.style.display='block';
   }
   function clearErrors(){
-    form.querySelectorAll('input,select,textarea').forEach(function(f){ f.style.borderColor=''; });
+    form.querySelectorAll('input,textarea').forEach(function(f){ f.style.borderColor=''; });
     form.querySelectorAll('.err-msg').forEach(function(m){ m.style.display='none'; });
   }
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
     clearErrors();
-    var fn=document.getElementById('fn'), fe=document.getElementById('fe'), ft=document.getElementById('ft');
+    var fn=document.getElementById('fn'), fe=document.getElementById('fe');
     var valid=true;
     if(!fn||!fn.value.trim()){ showFieldError('fn','e-name'); valid=false; }
     if(!fe||!fe.value.trim()||fe.value.indexOf('@')<1){ showFieldError('fe','e-email'); valid=false; }
-    if(!ft||!ft.value){ showFieldError('ft','e-type'); valid=false; }
     if(!valid) return;
-    var btn=form.querySelector('button[type=submit]');
+    var btn=document.getElementById('c-btn');
     var orig=btn?btn.textContent:'';
     if(btn){ btn.textContent='Sending\u2026'; btn.disabled=true; }
     fetch(form.getAttribute('action'),{
       method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}
     }).then(function(res){
-      if(btn){ btn.textContent=orig; btn.disabled=false; }
       if(res.ok){
-        var suc=document.getElementById('form-success');
-        if(suc){ suc.style.display='block'; }
-        form.reset();
+        var ps=document.getElementById('post-send');
+        if(ps) ps.classList.add('ps-show');
+        if(btn) btn.style.display='none';
+        form.querySelectorAll('input,textarea').forEach(function(f){ f.disabled=true; });
       } else {
-        alert('There was a problem sending your message. Please email peter.craine@me.com directly.');
+        if(btn){ btn.textContent=orig; btn.disabled=false; }
+        alert('There was a problem sending your message. Please WhatsApp or email peter.craine@me.com directly.');
       }
     }).catch(function(){
       if(btn){ btn.textContent=orig; btn.disabled=false; }
-      alert('Connection error. Please email peter.craine@me.com directly.');
+      alert('Connection error. Please WhatsApp or email peter.craine@me.com directly.');
     });
   });
 })();
