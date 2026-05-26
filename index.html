@@ -1829,6 +1829,108 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .sticky-strip-close:hover{color:rgba(255,255,255,.5)}
 @media(max-width:640px){.sticky-strip-sub,.coverage-note-txt{display:none}.serv-stats-inner{grid-template-columns:repeat(2,1fr)}.process-steps-grid{grid-template-columns:1fr}.process-steps-grid::before{display:none}.process-inner{padding:0 20px}.dep-card-nudge{flex-direction:column;align-items:flex-start}}
 
+/* ── INTENT CARDS (gate modal) ───────────────────────────── */
+.ic-card{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.13);border-radius:4px;
+  padding:11px 10px;cursor:pointer;text-align:center;transition:border-color .18s,background .18s;
+  user-select:none;display:flex;flex-direction:column;align-items:center;gap:5px}
+.ic-card:hover,.ic-card.ic-sel{border-color:var(--gm,#00A651);background:rgba(0,166,81,.09)}
+.ic-em{font-size:19px;line-height:1}
+.ic-lb{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1.5px;
+  text-transform:uppercase;color:rgba(255,255,255,.5)}
+.ic-card.ic-sel .ic-lb{color:var(--gm,#00A651)}
+
+/* ── TRAINER PAGE — COURSE MENU ─────────────────────────── */
+.tr-avail{display:inline-flex;align-items:center;gap:11px;background:rgba(0,107,63,.09);
+  border:1px solid rgba(0,166,81,.22);border-radius:4px;padding:10px 18px;margin-top:20px}
+.tr-avail-dot{width:8px;height:8px;border-radius:50%;background:var(--gm,#00A651);
+  box-shadow:0 0 6px var(--gm,#00A651);flex-shrink:0;animation:tr-pulse 2s ease-in-out infinite}
+@keyframes tr-pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.tr-avail-txt{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;color:#fff}
+.tr-avail-sub{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:1px;
+  color:rgba(0,166,81,.55);margin-top:2px}
+.tr-trust{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.tr-tb{display:inline-flex;align-items:center;gap:5px;background:rgba(0,107,63,.1);
+  border:1px solid rgba(0,166,81,.17);border-radius:20px;padding:4px 11px;
+  font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--gm,#00A651)}
+.tr-tb::before{content:'\2713';font-size:9px}
+.tr-cs{max-width:960px;margin:0 auto;padding:36px 24px 80px}
+.tr-helper{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.17);border-radius:4px;
+  padding:15px 20px;margin-bottom:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.tr-hl{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;
+  color:rgba(255,255,255,.45);white-space:nowrap}
+.tr-hsel{background:var(--ink,#030805);border:1px solid rgba(0,166,81,.17);border-radius:4px;
+  color:#fff;padding:8px 11px;font-size:13px;flex:1;min-width:150px;cursor:pointer;outline:none}
+.tr-hsel option{background:var(--ink,#030805)}
+.tr-hres{font-size:13px;color:var(--gm,#00A651);font-family:var(--mono,'Courier New',monospace);
+  letter-spacing:1px}
+.tr-ctabs{display:flex;gap:5px;margin-bottom:20px;flex-wrap:wrap}
+.tr-ctab{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.13);border-radius:4px;
+  color:rgba(255,255,255,.45);font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;padding:8px 16px;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;gap:7px}
+.tr-ctab:hover{color:#fff;border-color:rgba(0,166,81,.35)}
+.tr-ctab.tr-act{background:var(--gm,#00A651);color:var(--ink,#030805);
+  border-color:var(--gm,#00A651);font-weight:700}
+.tr-tc{background:rgba(0,0,0,.2);border-radius:10px;padding:1px 6px;font-size:9px}
+.tr-act .tr-tc{background:rgba(0,0,0,.22)}
+.tr-cgrid{display:flex;flex-direction:column;gap:9px}
+.tr-cc{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.1);border-radius:4px;
+  overflow:hidden;transition:border-color .18s}
+.tr-cc:hover{border-color:rgba(0,166,81,.28)}
+.tr-cch{display:grid;grid-template-columns:1fr 28px;align-items:start;gap:12px;
+  padding:16px 18px;cursor:pointer}
+.tr-cn{font-size:15px;font-weight:600;margin-bottom:4px}
+.tr-cb{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+.tr-cm{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
+.tr-mc{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1.5px;
+  text-transform:uppercase;padding:3px 8px;border-radius:12px;
+  border:1px solid rgba(0,166,81,.17);color:rgba(255,255,255,.5)}
+.tr-mc.tr-p{color:var(--gm,#00A651);border-color:rgba(0,166,81,.32);background:rgba(0,107,63,.09)}
+.tr-ctog{font-size:19px;color:rgba(0,166,81,.4);transition:transform .22s;text-align:right;
+  margin-top:2px;line-height:1}
+.tr-cc.tr-exp .tr-ctog{transform:rotate(45deg)}
+.tr-cbody{display:none;padding:0 18px 18px;border-top:1px solid rgba(0,166,81,.08)}
+.tr-cc.tr-exp .tr-cbody{display:block}
+.tr-cdt{font-size:13px;color:rgba(255,255,255,.5);line-height:1.82;margin:14px 0}
+.tr-slbl{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(0,166,81,.42);margin-bottom:9px;padding-bottom:7px;
+  border-bottom:1px solid rgba(0,166,81,.07)}
+.tr-obj{list-style:none;margin-bottom:17px}
+.tr-obj li{font-size:12px;color:rgba(255,255,255,.45);padding:3px 0 3px 15px;position:relative}
+.tr-obj li::before{content:'\2014';position:absolute;left:0;color:var(--gm,#00A651)}
+.tr-eqr{display:flex;gap:8px;flex-wrap:wrap}
+.tr-ewa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;
+  border:none;border-radius:4px;padding:9px 15px;font-family:var(--mono,'Courier New',monospace);
+  font-size:10px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;font-weight:700;transition:background .18s}
+.tr-ewa:hover{background:#1da851}
+.tr-eem{display:inline-flex;align-items:center;gap:6px;background:transparent;
+  color:var(--gm,#00A651);border:1px solid rgba(0,166,81,.32);border-radius:4px;
+  padding:9px 15px;font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;
+  transition:all .18s}
+.tr-eem:hover{background:rgba(0,166,81,.09);border-color:var(--gm,#00A651)}
+.tr-at{width:100%;border-collapse:collapse;font-size:13px}
+.tr-at th{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,.4);padding:7px 10px;text-align:left;
+  border-bottom:1px solid rgba(0,166,81,.11)}
+.tr-at td{padding:11px 10px;border-bottom:1px solid rgba(0,166,81,.05);vertical-align:top}
+.tr-at tr:hover td{background:rgba(0,107,63,.04)}
+.tr-an{font-weight:600;font-size:13px;margin-bottom:3px}
+.tr-ad{font-size:11px;color:rgba(255,255,255,.45)}
+.tr-ap{color:var(--gm,#00A651);font-family:var(--mono,'Courier New',monospace);font-size:11px;white-space:nowrap}
+.tr-adu{font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  color:rgba(255,255,255,.35);white-space:nowrap}
+.tr-aeq{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.17);border-radius:3px;
+  color:var(--gm,#00A651);font-family:var(--mono,'Courier New',monospace);font-size:9px;
+  letter-spacing:1px;padding:5px 10px;cursor:pointer;text-decoration:none;
+  white-space:nowrap;display:inline-block;transition:all .18s}
+.tr-aeq:hover{background:rgba(0,166,81,.12)}
+@media(max-width:600px){
+  .tr-cs{padding:22px 14px 60px}
+  .tr-at th:nth-child(3),.tr-at td:nth-child(3){display:none}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -5565,10 +5667,19 @@ function toggleSiren(){if(SIREN.running)SIREN.stop();else SIREN.start();}
 // Access codes — Peter changes these to whatever he wants.
 // Approved users receive the code privately; they enter it once and stay logged in.
 // TRAINER and MEDIC have separate codes so access can be granted independently.
+// Each entry is an ARRAY — add each approved code as a new string in the list.
+// Codes come from the Formspree email (each request generates a unique code).
+// Format: trainer: ['A3B7-XD92', 'KM4N-QR85']  — quotes and comma between each.
 var GATED_CODES = {
-  trainer: 'TRAINER2026',   // <-- Peter: change this to your chosen code
-  medic:   'MEDIC2026'      // <-- Peter: change this to your chosen code
+  trainer: ['TRAINER2026'],
+  medic:   ['MEDIC2026']
 };
+// Helper: generate a unique 8-char code (used in the request form)
+function _genCode() {
+  var c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789', s='';
+  for(var i=0;i<8;i++){ if(i===4)s+='-'; s+=c[Math.floor(Math.random()*c.length)]; }
+  return s;
+}
 
 var _gatedTarget = null;
 
@@ -5607,23 +5718,23 @@ function switchAccessTab(tab, btn) {
 }
 
 function verifyCode() {
-  var input = (document.getElementById('code-input').value || '').trim().toUpperCase();
-  var stored = (GATED_CODES[_gatedTarget] || '').trim().toUpperCase();
-  var msgEl  = document.getElementById('code-msg');
-  if(!input) {
+  var raw   = (document.getElementById('code-input').value || '').trim().toUpperCase().replace(/[\s\-]/g,'');
+  var list  = (GATED_CODES[_gatedTarget] || []).map(function(c){ return c.trim().toUpperCase().replace(/[\s\-]/g,''); });
+  var msgEl = document.getElementById('code-msg');
+  if(!raw) {
     msgEl.textContent = 'Please enter your access code.';
     msgEl.className = 'access-msg err'; msgEl.style.display='block'; return;
   }
-  if(input === stored) {
+  if(list.indexOf(raw) !== -1) {
     localStorage.setItem('access_' + _gatedTarget, 'granted');
-    msgEl.textContent = 'Access granted. Opening page…';
+    msgEl.textContent = 'Access granted. Opening page\u2026';
     msgEl.className = 'access-msg ok'; msgEl.style.display='block';
     setTimeout(function(){
       closeAccessModal();
       _doShowPage(_gatedTarget);
     }, 800);
   } else {
-    msgEl.textContent = 'Access code not recognised. Please check and try again, or submit a request.';
+    msgEl.textContent = 'Code not recognised \u2014 check for typos, or request access via the other tab.';
     msgEl.className = 'access-msg err'; msgEl.style.display='block';
   }
 }
@@ -5633,31 +5744,55 @@ function revokeAccess(page) {
   _doShowPage('home');
 }
 
-// Handle access request form submission
+// Intent card selection
+var _reqIntent = 'Not specified';
+function selIntent(el, label) {
+  document.querySelectorAll('.ic-card').forEach(function(c){ c.classList.remove('ic-sel'); });
+  el.classList.add('ic-sel');
+  _reqIntent = label;
+  document.getElementById('req-intent').value = label;
+}
+
+// Handle access request form submission — generates unique code per request
 (function(){
   var form = document.getElementById('access-request-form');
   if(!form) return;
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    var name  = (document.getElementById('req-name')  || {}).value || '';
+    var email = (document.getElementById('req-email') || {}).value || '';
+    var msgEl = document.getElementById('request-msg');
+    if(!name.trim() || !email.trim()) {
+      msgEl.textContent = 'Please fill in your name and email.';
+      msgEl.className='access-msg err'; msgEl.style.display='block'; return;
+    }
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      msgEl.textContent = 'Please enter a valid email address.';
+      msgEl.className='access-msg err'; msgEl.style.display='block'; return;
+    }
+    // Generate unique code and inject into form before sending
+    var code = _genCode();
+    var codeField = document.getElementById('req-code');
+    if(codeField) codeField.value = code;
     var btn = form.querySelector('button[type=submit]');
     var orig = btn ? btn.textContent : '';
-    if(btn){ btn.textContent='Sending…'; btn.disabled=true; }
+    if(btn){ btn.textContent='Sending\u2026'; btn.disabled=true; }
     fetch(form.getAttribute('action'), {
       method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}
     }).then(function(res){
       if(btn){ btn.textContent=orig; btn.disabled=false; }
-      var msgEl = document.getElementById('request-msg');
       if(res.ok){
-        msgEl.innerHTML = '&#10003; Request sent. Peter will review it and be in touch if approved.';
+        msgEl.innerHTML = '\u2713 Request sent. Peter will review it and, if approved, email you your unique access code.<br><span style="font-size:11px;opacity:.65">Typically reviewed within 24\u202fhrs.</span>';
         msgEl.className='access-msg ok'; msgEl.style.display='block';
         form.reset();
+        document.querySelectorAll('.ic-card').forEach(function(c){ c.classList.remove('ic-sel'); });
+        _reqIntent = 'Not specified';
       } else {
-        msgEl.textContent='There was a problem. Please email peter.craine@me.com directly.';
+        msgEl.textContent='There was a problem sending your request. Please email peter.craine@me.com directly.';
         msgEl.className='access-msg err'; msgEl.style.display='block';
       }
     }).catch(function(){
       if(btn){ btn.textContent=orig; btn.disabled=false; }
-      var msgEl = document.getElementById('request-msg');
       msgEl.textContent='Connection error. Please email peter.craine@me.com directly.';
       msgEl.className='access-msg err'; msgEl.style.display='block';
     });
@@ -5729,23 +5864,44 @@ function toggleChecklist(){
 
     <!-- REQUEST ACCESS PANEL -->
     <div class="access-panel active" id="panel-request">
+      <!-- Teaser: what's behind the gate -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid rgba(0,166,81,.1)">
+        <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);display:flex;align-items:center;gap:5px">&#10003; 28 courses across 3 tiers</span>
+        <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);display:flex;align-items:center;gap:5px">&#10003; Transparent pricing</span>
+        <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);display:flex;align-items:center;gap:5px">&#10003; One-tap enquiry per course</span>
+      </div>
+      <!-- Intent cards -->
+      <p style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.6">What best describes you? <em>(tap one — no typing needed)</em></p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px" id="intent-grid">
+        <div class="ic-card" onclick="selIntent(this,'Corporate / Workplace')"><span class="ic-em">&#127962;</span><span class="ic-lb">Corporate / Workplace</span></div>
+        <div class="ic-card" onclick="selIntent(this,'School / Nursery')"><span class="ic-em">&#127979;</span><span class="ic-lb">School / Nursery</span></div>
+        <div class="ic-card" onclick="selIntent(this,'Sports Club / Events')"><span class="ic-em">&#127939;</span><span class="ic-lb">Sports Club / Events</span></div>
+        <div class="ic-card" onclick="selIntent(this,'Community / Voluntary')"><span class="ic-em">&#129309;</span><span class="ic-lb">Community / Voluntary</span></div>
+        <div class="ic-card" onclick="selIntent(this,'Healthcare / Care Sector')"><span class="ic-em">&#127973;</span><span class="ic-lb">Healthcare / Care</span></div>
+        <div class="ic-card" onclick="selIntent(this,'Exploring Options')"><span class="ic-em">&#128161;</span><span class="ic-lb">Exploring Options</span></div>
+      </div>
       <form id="access-request-form" action="https://formspree.io/f/xnjgpdjr" method="POST" novalidate>
         <input type="hidden" name="type" id="request-type" value="Access Request">
+        <input type="hidden" name="intent" id="req-intent" value="Not specified">
+        <input type="hidden" name="unique_access_code" id="req-code" value="">
         <div class="access-field">
           <label>Full Name *</label>
-          <input type="text" name="name" placeholder="Your full name" required>
+          <input type="text" name="name" id="req-name" placeholder="Your full name" required autocomplete="name">
         </div>
         <div class="access-field">
-          <label>Email Address *</label>
-          <input type="email" name="email" placeholder="your@email.com" required>
+          <label>Work Email *</label>
+          <input type="email" name="email" id="req-email" placeholder="you@organisation.com" required autocomplete="email">
         </div>
         <div class="access-field">
-          <label>Organisation / Company</label>
-          <input type="text" name="organisation" placeholder="Optional">
-        </div>
-        <div class="access-field">
-          <label>Why are you requesting access?</label>
-          <textarea name="reason" placeholder="Brief description of your interest&hellip;"></textarea>
+          <label>Organisation <span style="opacity:.4;font-size:11px;font-weight:400">(optional)</span></label>
+          <input type="text" name="organisation" placeholder="Company or organisation" list="org-dl" autocomplete="organization">
+          <datalist id="org-dl">
+            <option value="NHS Trust"><option value="Primary School"><option value="Secondary School">
+            <option value="Nursery / Preschool"><option value="Sports Club"><option value="Security Company">
+            <option value="Events Company"><option value="Care Home"><option value="Construction Company">
+            <option value="Hospitality"><option value="Retail"><option value="Manufacturing">
+            <option value="Volunteer Organisation">
+          </datalist>
         </div>
         <button type="submit" class="access-btn">Send Access Request &rarr;</button>
         <div class="access-msg" id="request-msg"></div>
@@ -5772,18 +5928,55 @@ function toggleChecklist(){
 <div id="page-trainer" style="display:none">
   <div class="page-hero sr-item-left" style="min-height:220px;background:var(--ink)">
     <div class="page-hero-inner">
-      <div class="page-eyebrow">Approved Access &mdash; Trainer</div>
-      <h1 class="page-h1">Hire Me as a Trainer</h1>
-      <div class="page-sub">CTLLS Level 4 &middot; AAVRA Assessor &middot; 208+ Learners &middot; FAW &middot; EFAW &middot; BLS &middot; AED</div>
+      <div class="page-eyebrow">Approved Access &mdash; Trainer Portfolio</div>
+      <h1 class="page-h1">Hire Me <span style="color:var(--gm)">as a Trainer</span></h1>
+      <div class="page-sub">Practical, clinically-grounded first aid training from a practising EAC. Every course built around what actually happens &mdash; not what the textbook says should happen.</div>
+      <div class="tr-trust">
+        <span class="tr-tb">CTLLS Level 4</span>
+        <span class="tr-tb">AET+ Assessor</span>
+        <span class="tr-tb">Enhanced DBS</span>
+        <span class="tr-tb">Fully Insured</span>
+        <span class="tr-tb">208+ Learners</span>
+        <span class="tr-tb">SJA Clinical Governance</span>
+        <span class="tr-tb">FREC 3 Practitioner</span>
+      </div>
+      <div class="tr-avail">
+        <div class="tr-avail-dot"></div>
+        <div>
+          <div class="tr-avail-txt">TAKING BOOKINGS &mdash; Q3 / Q4 2026</div>
+          <div class="tr-avail-sub">North West England &middot; Typical lead time 2&ndash;4 weeks &middot; Enquire now to secure your date</div>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="gated-placeholder">
-    <div class="gated-placeholder-icon">&#127979;</div>
-    <div class="gated-placeholder-title">Content Coming Soon</div>
-    <div class="gated-placeholder-body">
-      This section is being prepared. Rates, availability, course outlines and booking information will appear here shortly.
-      In the meantime, use the <button onclick="showPage('contact')" style="background:none;border:none;color:var(--gm);cursor:pointer;font-size:inherit;text-decoration:underline;padding:0">contact page</button> to get in touch directly.
+  <div class="tr-cs">
+    <!-- Helper -->
+    <div class="tr-helper">
+      <span class="tr-hl">NOT SURE WHICH COURSE?</span>
+      <select class="tr-hsel" onchange="trHelper(this.value)">
+        <option value="">Select your organisation type &rarr;</option>
+        <option value="wp">Workplace / Office (low-risk)</option>
+        <option value="cx">Construction / High-risk</option>
+        <option value="sc">School / Nursery (EYFS)</option>
+        <option value="sp">Sports Club / Pitch-side</option>
+        <option value="ch">Care Home / Healthcare</option>
+        <option value="od">Outdoor / Expeditions</option>
+        <option value="se">Security / Events</option>
+        <option value="vo">Volunteer Responder Team</option>
+      </select>
+      <span class="tr-hres" id="tr-hres"></span>
     </div>
+    <!-- Tabs -->
+    <div class="tr-ctabs">
+      <button class="tr-ctab tr-act" onclick="trTab('core',this)">Core Courses <span class="tr-tc">10</span></button>
+      <button class="tr-ctab" onclick="trTab('spec',this)">Specialist <span class="tr-tc">8</span></button>
+      <button class="tr-ctab" onclick="trTab('add',this)">Add-Ons <span class="tr-tc">10</span></button>
+    </div>
+    <div id="tr-core" class="tr-cgrid"></div>
+    <div id="tr-spec" class="tr-cgrid" style="display:none"></div>
+    <div id="tr-add" style="display:none"></div>
+  </div>
+  <div style="text-align:center;padding:40px 24px 60px;border-top:1px solid rgba(0,107,63,.1)">
     <button class="gated-logout" onclick="revokeAccess('trainer')">&#128275; Sign out of this page</button>
   </div>
 </div>
@@ -5823,5 +6016,204 @@ function toggleChecklist(){
     <button class="sticky-strip-close" onclick="dismissSticky()" aria-label="Dismiss">&#10005;</button>
   </div>
 </div>
+<script>
+/* ── TRAINER PAGE: COURSE DATA & RENDERER ────────────────── */
+var TR_WA='447756831072', TR_EM='peter.craine@me.com';
+function trWA(n){return 'https://wa.me/'+TR_WA+'?text='+encodeURIComponent('Hi Peter, I\'m interested in booking '+n+' and would like to discuss availability and dates. (Via petercrainemedic.co.uk)');}
+function trEM(n){return 'mailto:'+TR_EM+'?subject='+encodeURIComponent('Training Enquiry: '+n)+'&body='+encodeURIComponent('Hi Peter,\n\nI\'m interested in booking '+n+'.\n\nNumber of delegates:\nPreferred date / flexibility:\nLocation (on-site or I can travel):\n\nThanks');}
+
+var TR_CORE=[
+  {n:'Emergency First Aid at Work (EFAW)',p:'\xa3575/day',d:'1 day (6\u20137 hrs)',m:12,t:'Classroom + Practical',
+   b:'HSE-compliant entry-level workplace qualification. Ideal for low-risk workplaces. Certificate valid 3 years.',
+   dt:'Covers primary survey, CPR and AED, choking, shock, severe bleeding control, burns, fractures, and common medical emergencies. Meets HSE requirements for offices, retail, and low-risk industry.',
+   o:['Primary survey and scene safety','Adult CPR and AED operation','Choking \u2014 conscious and unconscious','Severe bleeding and wound management','Shock recognition and response','Burns, scalds, and fractures','Common medical emergencies: seizures, diabetes, asthma']},
+  {n:'First Aid at Work (FAW)',p:'\xa3650/day',d:'3 days (18 hrs)',m:12,t:'Classroom + Practical',
+   b:'Full HSE-regulated workplace qualification. Required for higher-risk workplaces. Certificate valid 3 years.',
+   dt:'Extends EFAW with comprehensive patient assessment, spinal injury management, chest injuries, head injuries, poisoning, and extended scenario practice. Meets HSE requirements for all workplaces including construction and manufacturing.',
+   o:['Full primary and secondary patient survey','Adult CPR with AED','Spinal and head injury management','Chest, eye, and abdominal injuries','Multi-casualty management principles','Stroke, cardiac events, anaphylaxis','Extended scenario and practical assessment']},
+  {n:'FAW Requalification',p:'\xa3650/day',d:'2 days (12 hrs)',m:12,t:'Classroom + Practical',
+   b:'For current FAW holders. Must be completed before the existing certificate expires.',
+   dt:'Refreshes all core FAW competencies against current Resus Council and JRCALC guidelines. Certificate renewed for a further 3 years. Note: a lapsed certificate requires the full 3-day FAW, not requalification.',
+   o:['CPR and AED \u2014 updated guidelines','Full scenario refresher across all FAW units','Updated patient assessment technique','Medical emergency management \u2014 full range','Lapsed certificates: full FAW required, not requalification']},
+  {n:'Paediatric First Aid (Full \u2014 2 Day)',p:'\xa3650/day',d:'2 days (12 hrs)',m:12,t:'Classroom + Practical',
+   b:'Full paediatric qualification meeting EYFS, Ofsted, and Paediatric First Aid statutory criteria.',
+   dt:'Covers infant and child CPR, choking, seizures, meningitis recognition, febrile illness, anaphylaxis, head injuries, and safeguarding awareness. Meets PFA requirements under EYFS statutory guidance. Mandatory for most Ofsted-registered childcare settings.',
+   o:['Infant and child CPR with AED','Choking \u2014 infant, child, and unconscious','Febrile illness and meningitis recognition','Paediatric anaphylaxis and auto-injector use','Head injury and seizure management','Safeguarding awareness for first responders','EYFS and Ofsted compliance \u2014 what this covers']},
+  {n:'Emergency Paediatric First Aid (EPFA)',p:'\xa3575/day',d:'1 day (6 hrs)',m:12,t:'Classroom + Practical',
+   b:'Short-format paediatric qualification for childcare compliance where the full 2-day PFA is not required.',
+   dt:'Covers CPR, choking, unconsciousness, and unresponsiveness in infants and children. EYFS-compliant for eligible settings. Does not substitute for full PFA in most Ofsted-registered nurseries \u2014 check which applies before booking.',
+   o:['Infant and child CPR and AED awareness','Choking \u2014 all ages and levels of consciousness','Unconscious child \u2014 recovery position','Anaphylaxis recognition in children','EYFS compliance: which settings this covers']},
+  {n:'CPR & AED Training',p:'\xa398/hr',d:'2.5\u20134 hrs',m:14,t:'Hands-On Practical',
+   b:'High-impact awareness session. Recognise cardiac arrest and use an AED \u2014 the skills that save lives.',
+   dt:'Focused hands-on session: recognition of cardiac arrest, effective CPR technique, AED familiarisation and operation, team CPR for workplaces, and calling 999. Excellent standalone session or add-on. Ideal for sports clubs, schools, and any workplace with an AED in situ.',
+   o:['Cardiac arrest recognition \u2014 what to look for','CPR: rate, depth, recoil, and switching','AED: turning on, pad placement, operating cycles','Team CPR \u2014 switching, compression fatigue','Recovery position and ongoing monitoring','Integrating 999 \u2014 what information to give']},
+  {n:'Basic Life Support for Healthcare (BLS)',p:'\xa3105/hr',d:'3\u20134 hrs',m:6,t:'Clinical Practical',
+   b:'Annual BLS competency update aligned to Resus Council UK guidelines. Care homes, GP, dental, and clinical support.',
+   dt:'Covers in-hospital and care-home cardiac arrest scenarios, adult CPR, AED operation, bag-valve-mask technique (single and two-person), team dynamics in resuscitation, and post-arrest care. Annual update format available.',
+   o:['Resus Council UK guideline-aligned CPR','Bag-valve-mask: single and two-person','AED in clinical settings','Team roles and communication in resuscitation','Post-cardiac arrest care and documentation','Paediatric BLS differentiation']},
+  {n:'Mental Health First Aid Awareness',p:'\xa390/hr',d:'4 hrs',m:12,t:'Facilitated Workshop',
+   b:'Awareness-level workshop on mental health, common conditions, and how to support a colleague in distress.',
+   dt:'Covers the mental health spectrum, common conditions (anxiety, depression, psychosis, self-harm), how to start a difficult conversation, active listening, signposting, and workplace mental health obligations. Meets organisational awareness training requirements for most settings.',
+   o:['The mental health spectrum \u2014 what it means','Common conditions: anxiety, depression, burnout, psychosis','How to open a conversation \u2014 the ALGEE approach','Active listening without advice-giving','Signposting and referral pathways','Workplace mental health obligations']},
+  {n:'Anaphylaxis & Auto-Injector Training',p:'\xa398/hr',d:'2\u20133 hrs',m:12,t:'Practical',
+   b:'Essential for schools and nurseries. Allergy recognition and adrenaline auto-injector use \u2014 trainer pens used throughout.',
+   dt:'Covers allergy vs anaphylaxis differentiation, systemic reaction progression, when to administer, correct technique for EpiPen, Jext, and Emerade (trainer pens), positioning, and aftercare. Meets DfE guidance for trained designated staff.',
+   o:['Allergy vs anaphylaxis \u2014 clinical difference','Systemic reaction: skin, respiratory, circulatory signs','Auto-injector types: EpiPen, Jext, Emerade','Step-by-step administration with trainer devices','Position and ongoing care post-injection','Calling 999 \u2014 what to tell the dispatcher','Post-incident documentation']},
+  {n:'Catastrophic Bleeding & Trauma Response',p:'\xa3115/hr',d:'3\u20134 hrs',m:8,t:'Trauma Skills \u2014 Practical',
+   b:'Hands-on trauma skills for high-risk roles. MARCH, tourniquet application, wound packing, haemostatic agents.',
+   dt:'Covers catastrophic haemorrhage control using the MARCH framework, CAT tourniquet application, wound packing with haemostatic agents, improvised pressure dressings, and primary trauma survey. Scenario-based throughout. High demand in security, events, and volunteer medical sectors.',
+   o:['MARCH framework \u2014 massive haemorrhage first','Tourniquet application: CAT, SOFT-T, improvised','Wound packing and haemostatic agents','Pressure dressings under stress','Penetrating vs blunt trauma \u2014 priorities','Primary trauma survey in a dynamic environment','Handover to emergency services']}
+];
+
+var TR_SPEC=[
+  {n:'Outdoor First Aid',p:'\xa3775/day',d:'2 days (16 hrs)',m:10,t:'Practical \u2014 Outdoors',
+   b:'Wilderness and remote environment first aid. Outdoor leaders, expedition staff, and activity centres.',
+   dt:'Patient assessment in austere settings, hypothermia and cold injury, heat illness, altitude sickness awareness, water-related emergencies, improvised casualty care, stretcher construction, and evacuation planning. Significant outdoor practical component regardless of weather.',
+   o:['Patient assessment away from definitive care','Hypothermia: recognition, field management, evacuation','Heat illness: exertional heat stroke response','Environmental hazards: lightning, water, altitude','Wound management without hospital resources','Improvised stretcher and carry techniques','When to call vs self-rescue decision-making']},
+  {n:'Remote Area First Aid',p:'\xa3950/day',d:'3\u20135 days',m:8,t:'Practical \u2014 Field',
+   b:'High-end specialist training for those operating far from definitive care. Expedition and wilderness focus.',
+   dt:'Extended wilderness medicine training: prolonged patient care, wound irrigation and improvised closure, environmental injuries, oral fluid management, expedition pharmacology awareness, emergency communications in remote areas, and medical kit selection.',
+   o:['Prolonged patient care \u2014 hours, not minutes','Wound irrigation, closure, and infection management','Splinting and improvised immobilisation','Altitude illness: AMS, HACE, HAPE protocols','Emergency communications: PLB, satellite, VHF','Triage in a multi-casualty remote scenario','Medical kit selection and maintenance']},
+  {n:'Event Medical Team Induction',p:'\xa3750/day',d:'1 day',m:10,t:'Practical + Classroom',
+   b:'Structured induction for event medical volunteers and staff. Operational, clinical, and documentation essentials.',
+   dt:'Purple Guide framework, command-and-control, radio communications, mass casualty triage principles, PRF documentation, AED deployment, medication log, and end-of-event reporting. Tabletop scenario included. Designed for new or recently recruited event medical team members.',
+   o:['Purple Guide \u2014 medical provision categories','Incident command \u2014 your role in the structure','Radio: ProWords, net discipline, METHANE','Mass casualty declaration and triage principles','Patient report form: what, when, and why','AED deployment and team coordination','Post-event medical report requirements']},
+  {n:'Immediate Emergency Care (Intro Level)',p:'\xa31,150/day',d:'2\u20135 days',m:6,t:'Clinical Practical',
+   b:'Clinical emergency care beyond first aid. A credible, properly delivered step toward FREC qualifications.',
+   dt:'Introduction to emergency care beyond first aid responder level. Structured clinical assessment using ABCDE and primary/secondary surveys, airway management, trauma response, shock management, chest injury management, and emergency decision-making. Delivered by a practising FREC 3 EAC.',
+   o:['ABCDE assessment framework \u2014 clinical application','Airway: basic, supraglottic, positioning','Breathing: chest exam, SpO2, oxygen delivery','Circulation: haemorrhage, shock, IV awareness','Disability: GCS, pupils, blood glucose','Exposure: trauma, temperature, environment','Packaging and pre-alert: ATMIST/SBAR']},
+  {n:'FREC-Style Bridging & Prep Training',p:'\xa3950/day',d:'2\u20135 days',m:8,t:'Clinical Scenario-Based',
+   b:'Structured preparation for candidates progressing toward FREC 3 or an equivalent clinical qualification.',
+   dt:'Clinical skills and scenario practice aligned to FREC 3 competency frameworks. Patient assessment, clinical documentation, medication administration awareness, structured scenario assessments, and exam technique. For candidates wanting to enter their FREC course better prepared, or refreshing before re-assessment.',
+   o:['FREC 3 competency framework overview','Patient assessment to EAC standard','Clinical scenario practice with hot debriefs','PRF completion to expected standard','Medication awareness \u2014 EAC column scope','ATMIST, SBAR, and pre-alert communication','Exam and portfolio preparation guidance']},
+  {n:'Emergency Oxygen Administration',p:'\xa3115/hr',d:'3\u20134 hrs',m:9,t:'Practical',
+   b:'Safe supplemental oxygen delivery. Sports clubs, diving, security, and event medical roles.',
+   dt:'Indications for supplemental oxygen, cylinder types and regulators, flow rates, delivery devices (NRB mask, simple mask, nasal cannula), oxygen safety, documentation, and hypoxia awareness. Suitable for sports clubs with oxygen kits, diving organisations, and event medical teams.',
+   o:['Indications: when to give oxygen and when not to','Cylinder types: D, CD \u2014 differences','Regulators, flow rates, and delivery devices','Non-rebreather mask: fitting and correct flow rate','Oxygen safety: fire, storage, and transport','SpO2 monitoring alongside oxygen delivery','Documentation: what to record on the PRF']},
+  {n:'Safeguarding for Responders',p:'\xa390/hr',d:'3 hrs',m:12,t:'Facilitated Workshop',
+   b:'Safeguarding principles for first responders working with children or vulnerable adults.',
+   dt:'Safeguarding legislation and frameworks, indicators of abuse and neglect, first responder obligations, appropriate escalation pathways, documentation requirements, and boundaries of the clinical role. Strong add-on for organisations deploying first aiders at public events, schools, or care environments.',
+   o:['UK safeguarding legislation: Children Act, Care Act','Categories of abuse: physical, emotional, sexual, neglect','Indicators you may observe as a first responder','Your duty to act \u2014 and how','Escalation: who to tell, when, and what to say','Documentation: what to record','Boundaries: clinical vs safeguarding role']},
+  {n:'Patient Handling & Extraction Basics',p:'\xa3110/hr',d:'4\u20136 hrs',m:8,t:'Practical Skills',
+   b:'Safe manual handling and casualty extraction for first responders and event medical teams.',
+   dt:'Safe manual handling principles, log-roll with spinal precautions, recovery position variations, drag and carry techniques for confined spaces, stretcher operation, stair descent, and vehicle extraction basics. Particularly useful for event medical teams and volunteer responder organisations.',
+   o:['Manual handling law and risk assessment','Log-roll: 3 and 4-person, with and without equipment','Recovery position variations for clinical scenarios','Drag, carry, and firefighter lift techniques','Stretcher: scoop, folding, and carry','Stair descent with a patient','Basic vehicle extraction']}
+];
+
+var TR_ADD=[
+  {n:'AED Awareness',d:'1\u20132 hrs',m:16,p:'\xa3275/session',desc:'Recognition of cardiac arrest, AED familiarisation, and when to deploy. No CPR assessment component.'},
+  {n:'Bleed Control Workshop',d:'2 hrs',m:12,p:'\xa3350/session',desc:'Hands-on tourniquet and wound-packing skills for non-clinical staff. MARCH principles introduced practically.'},
+  {n:'Naloxone Awareness',d:'1\u20132 hrs',m:12,p:'\xa3275/session',desc:'Opioid overdose recognition and intranasal/auto-injector naloxone. Community and harm-reduction settings.'},
+  {n:'Heat & Cold Injury',d:'1.5 hrs',m:16,p:'\xa3225/session',desc:'Prevention, recognition, and first response for heat exhaustion, heat stroke, hypothermia, and frostbite.'},
+  {n:'Sports Injury Immediate Care',d:'3 hrs',m:10,p:'\xa3400/session',desc:'SALTAPS, PRICE/POLICE, pitch-side decision making, and concussion recognition for coaches and volunteers.'},
+  {n:'Incident Reporting & Handover',d:'2 hrs',m:12,p:'\xa3300/session',desc:'Patient contact documentation, PRF-style completion, and ATMIST/SBAR delivery to paramedics or A&E.'},
+  {n:'Radio Communications for Responders',d:'2 hrs',m:10,p:'\xa3325/session',desc:'VHF radio operation, ProWords, net discipline, METHANE declaration, and communication under pressure.'},
+  {n:'Basic Triage',d:'3 hrs',m:10,p:'\xa3450/session',desc:'START and sieve-and-sort triage for mass casualty scenarios. Tabletop and practical exercises.'},
+  {n:'Volunteer Responder Induction',d:'4 hrs',m:12,p:'\xa3525/session',desc:'End-to-end onboarding for new volunteer first responders: role, equipment, documentation, radio, first scenario.'},
+  {n:'Scenario Exercise Day',d:'Full day',m:9,p:'\xa3950/day',desc:'A full day of bespoke simulated scenarios for your team. Casualties, moulage, debrief, and CPD documentation.'}
+];
+
+function trRenderCards(arr, containerId) {
+  var el=document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML='';
+  arr.forEach(function(c,i){
+    var id='trcc-'+containerId+'-'+i;
+    var div=document.createElement('div');
+    div.className='tr-cc'; div.id=id;
+    div.innerHTML=
+      '<div class="tr-cch" onclick="trTog(\''+id+'\')">'
+        +'<div>'
+          +'<div class="tr-cn">'+c.n+'</div>'
+          +'<div class="tr-cb">'+c.b+'</div>'
+          +'<div class="tr-cm">'
+            +'<span class="tr-mc tr-p">'+c.p+'</span>'
+            +'<span class="tr-mc">\u23f1 '+c.d+'</span>'
+            +'<span class="tr-mc">\ud83d\udc65 Max '+c.m+'</span>'
+            +'<span class="tr-mc">'+c.t+'</span>'
+          +'</div>'
+        +'</div>'
+        +'<div class="tr-ctog">+</div>'
+      +'</div>'
+      +'<div class="tr-cbody">'
+        +'<p class="tr-cdt">'+c.dt+'</p>'
+        +'<div class="tr-slbl">What you\'ll cover</div>'
+        +'<ul class="tr-obj">'+c.o.map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>'
+        +'<div class="tr-eqr">'
+          +'<a class="tr-ewa" href="'+trWA(c.n)+'" target="_blank">\ud83d\udcac WhatsApp Enquiry</a>'
+          +'<a class="tr-eem" href="'+trEM(c.n)+'">\u2709 Email Enquiry</a>'
+        +'</div>'
+      +'</div>';
+    el.appendChild(div);
+  });
+}
+
+function trRenderAddons() {
+  var el=document.getElementById('tr-add');
+  if(!el) return;
+  var h='<div class="tr-slbl" style="margin-bottom:13px">One-tap enquiry \u2014 message pre-written for you</div>'
+    +'<table class="tr-at"><thead><tr><th>Session</th><th>Duration</th><th>Max</th><th>Price</th><th></th></tr></thead><tbody>';
+  TR_ADD.forEach(function(a){
+    h+='<tr>'
+      +'<td><div class="tr-an">'+a.n+'</div><div class="tr-ad">'+a.desc+'</div></td>'
+      +'<td><span class="tr-adu">'+a.d+'</span></td>'
+      +'<td><span class="tr-adu">'+a.m+'</span></td>'
+      +'<td><span class="tr-ap">'+a.p+'</span></td>'
+      +'<td><a class="tr-aeq" href="'+trWA(a.n)+'" target="_blank">Enquire \u2192</a></td>'
+      +'</tr>';
+  });
+  h+='</tbody></table>';
+  el.innerHTML=h;
+}
+
+function trTog(id){ var c=document.getElementById(id); if(c) c.classList.toggle('tr-exp'); }
+
+function trTab(name,btn){
+  document.querySelectorAll('.tr-ctab').forEach(function(b){b.classList.remove('tr-act');});
+  if(btn) btn.classList.add('tr-act');
+  var core=document.getElementById('tr-core');
+  var spec=document.getElementById('tr-spec');
+  var add =document.getElementById('tr-add');
+  if(core) core.style.display=name==='core'?'flex':'none';
+  if(spec) spec.style.display=name==='spec'?'flex':'none';
+  if(add)  add.style.display =name==='add' ?'block':'none';
+}
+
+var _trHmap={
+  wp:'\u2192 EFAW (1 day) or FAW (3-day) \u2014 start here',
+  cx:'\u2192 First Aid at Work (FAW) \u2014 HSE-mandatory for high-risk sites',
+  sc:'\u2192 Paediatric First Aid (full 2-day) + Anaphylaxis & Auto-Injector',
+  sp:'\u2192 CPR & AED + Sports Injury Immediate Care',
+  ch:'\u2192 Basic Life Support (Healthcare) + Safeguarding for Responders',
+  od:'\u2192 Outdoor First Aid or Remote Area First Aid',
+  se:'\u2192 Catastrophic Bleeding & Trauma + EFAW',
+  vo:'\u2192 Volunteer Responder Induction + Event Medical Team Induction'
+};
+function trHelper(v){
+  var r=document.getElementById('tr-hres');
+  if(r) r.textContent=v?(_trHmap[v]||''):'';
+}
+
+// Initialise when page-trainer becomes visible
+(function(){
+  var _trInit=false;
+  function trInit(){
+    if(_trInit) return; _trInit=true;
+    trRenderCards(TR_CORE,'tr-core');
+    trRenderCards(TR_SPEC,'tr-spec');
+    trRenderAddons();
+  }
+  // Hook into the existing _doShowPage function
+  var _origDoShowPage = window._doShowPage;
+  window._doShowPage = function(page){
+    if(typeof _origDoShowPage==='function') _origDoShowPage(page);
+    if(page==='trainer') trInit();
+  };
+  // Also init if localStorage already has access (page loads directly into trainer)
+  if(localStorage.getItem('access_trainer')==='granted'){
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(trInit, 100); });
+  }
+})();
+</script>
 </body>
 </html>
