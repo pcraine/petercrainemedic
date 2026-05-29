@@ -363,7 +363,7 @@ body{font-family:var(--serif);background:var(--white);color:var(--ink);overflow-
 .ticker-dot{width:7px;height:7px;background:white;border-radius:50%;animation:pulse 2s infinite;flex-shrink:0}
 @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(1.4)}}
-.ticker-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.5);cursor:pointer;font-size:18px;padding:4px 8px;z-index:10;line-height:1}
+.ticker-close{position:absolute;right:14px;top:50%;transform:translateY(-50%);background:none;border:none;color:rgba(255,255,255,.78);cursor:pointer;font-size:18px;padding:4px 8px;z-index:10;line-height:1}
 .ticker-close:hover{color:white}
 
 /* NAV */
@@ -375,7 +375,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .nav-wordmark{font-family:var(--display);font-size:20px;color:white;letter-spacing:2px;line-height:1}
 .nav-wordmark span{color:var(--gm)}
 .nav-center{display:flex;gap:2px;align-items:center}
-.nav-center a{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.55);text-decoration:none;padding:6px 13px;border-radius:var(--r);transition:all .2s;border:1px solid transparent;cursor:pointer}
+.nav-center a{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.78);text-decoration:none;padding:6px 13px;border-radius:var(--r);transition:all .2s;border:1px solid transparent;cursor:pointer}
 .nav-center a:hover,.nav-center a.active{color:white;background:rgba(0,107,63,.25);border-color:rgba(0,107,63,.3)}
 .nav-cta-link{background:var(--g)!important;color:white!important;border-color:var(--g)!important}
 .nav-cta-link:hover{background:var(--gm)!important;border-color:var(--gm)!important}
@@ -395,7 +395,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .btn{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:14px 28px;border-radius:var(--r);cursor:pointer;border:1.5px solid transparent;text-decoration:none;display:inline-block;transition:all .2s;line-height:1}
 .btn-primary{background:var(--g);color:white;border-color:var(--g)}
 .btn-primary:hover{background:var(--gm);border-color:var(--gm);transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,107,63,.35)}
-.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.25)}
+.btn-ghost{background:transparent;color:rgba(255,255,255,.8);border-color:rgba(255,255,255,.62)}
 .btn-ghost:hover{border-color:var(--gm);color:white;transform:translateY(-2px)}
 
 /* HOME */
@@ -408,14 +408,14 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .hero-counter-row{display:flex;gap:20px;margin-bottom:28px}
 .hero-stat{display:flex;flex-direction:column;align-items:flex-start}
 .hero-stat-num{font-family:var(--display);font-size:52px;color:var(--gm);line-height:1;letter-spacing:2px}
-.hero-stat-label{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:2px}
+.hero-stat-label{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:2px}
 .hero-stat-div{width:1px;background:rgba(255,255,255,.08);margin:4px 0}
 .hero-name{font-family:var(--display);font-size:clamp(64px,7vw,96px);line-height:.9;color:white;letter-spacing:3px;margin-bottom:12px}
 .hero-name .surname{color:var(--gm)}
-.hero-role{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:24px;line-height:1.8}
+.hero-role{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.7);margin-bottom:24px;line-height:1.8}
 .hero-role strong{color:rgba(255,255,255,.75)}
-.hero-tagline{font-size:17px;color:rgba(255,255,255,.5);font-style:italic;line-height:1.85;max-width:440px;margin-bottom:36px}
-.hero-tagline em{color:rgba(255,255,255,.8);font-style:normal}
+.hero-tagline{font-size:17px;color:rgba(255,255,255,.75);font-style:italic;line-height:1.85;max-width:440px;margin-bottom:36px}
+.hero-tagline em{color:rgba(255,255,255,.9);font-style:normal}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap}
 .hero-photo-panel{position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
 .hero-photo-panel::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,77,44,.6) 0%,transparent 60%)}
@@ -429,12 +429,12 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 /* TRUST STRIP */
 .trust-strip{background:var(--g2);border-top:1px solid rgba(0,166,81,.2);border-bottom:1px solid rgba(0,166,81,.2)}
 .trust-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.trust-item{padding:22px 20px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:5px;transition:background .2s}.trust-item--dash{align-items:flex-start;cursor:default}.trust-item--dash:hover{background:rgba(255,255,255,.04)}.trust-dash-icon{font-size:22px;margin-bottom:6px;line-height:1}.trust-dash-val{font-family:var(--display);font-size:20px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:3px}.trust-dash-lbl{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.35);margin-bottom:8px}.trust-dash-status{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--gm)}.trust-live-dot{width:7px;height:7px;border-radius:50%;background:var(--gm);box-shadow:0 0 6px var(--gm);display:inline-block;animation:trustPulse 2s ease-in-out infinite;flex-shrink:0}@keyframes trustPulse{0%,100%{opacity:1;box-shadow:0 0 6px var(--gm)}50%{opacity:.4;box-shadow:0 0 2px var(--gm)}}
+.trust-item{padding:22px 20px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:5px;transition:background .2s}.trust-item--dash{align-items:flex-start;cursor:default}.trust-item--dash:hover{background:rgba(255,255,255,.04)}.trust-dash-icon{font-size:22px;margin-bottom:6px;line-height:1}.trust-dash-val{font-family:var(--display);font-size:20px;letter-spacing:2px;color:#fff;line-height:1;margin-bottom:3px}.trust-dash-lbl{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.68);margin-bottom:8px}.trust-dash-status{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:8px;letter-spacing:2px;color:var(--gm)}.trust-live-dot{width:7px;height:7px;border-radius:50%;background:var(--gm);box-shadow:0 0 6px var(--gm);display:inline-block;animation:trustPulse 2s ease-in-out infinite;flex-shrink:0}@keyframes trustPulse{0%,100%{opacity:1;box-shadow:0 0 6px var(--gm)}50%{opacity:.4;box-shadow:0 0 2px var(--gm)}}
 .trust-item:hover{background:rgba(0,107,63,.15)}
 .trust-item:last-child{border-right:none}
 .trust-label{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gm)}
 .trust-value{font-family:var(--display);font-size:14px;letter-spacing:1px;color:white}
-.trust-sub{font-size:12px;color:rgba(255,255,255,.3);font-style:italic}
+.trust-sub{font-size:12px;color:rgba(255,255,255,.65);font-style:italic}
 @media(max-width:700px){.trust-inner{grid-template-columns:repeat(2,1fr)}}
 
 /* WHY HIRE ME */
@@ -471,13 +471,13 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .commend-inner{max-width:860px;margin:0 auto;text-align:center}
 .commend-icon{font-size:36px;margin-bottom:16px;display:block}
 .commend-quote{font-size:clamp(18px,2.5vw,24px);font-style:italic;color:white;line-height:1.7;margin-bottom:16px}
-.commend-attr{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.commend-attr{font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.75)}
 
 /* HOME CTA */
 .home-cta{padding:80px 40px;background:var(--ink);text-align:center;position:relative;overflow:hidden}
 .home-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(0,107,63,.15) 0%,transparent 70%)}
 .home-cta h2{font-family:var(--display);font-size:clamp(36px,5vw,60px);color:white;letter-spacing:2px;margin-bottom:12px;position:relative}
-.home-cta p{font-size:16px;color:rgba(255,255,255,.45);font-style:italic;margin-bottom:36px;position:relative}
+.home-cta p{font-size:16px;color:rgba(255,255,255,.72);font-style:italic;margin-bottom:36px;position:relative}
 .home-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;position:relative}
 
 /* ABOUT */
@@ -487,7 +487,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .page-hero-inner{max-width:900px;margin:0 auto;position:relative;z-index:1}
 .page-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:14px}
 .page-h1{font-family:var(--display);font-size:clamp(40px,5.5vw,64px);color:white;letter-spacing:2px;margin-bottom:14px;line-height:1}
-.page-sub{font-size:16px;color:rgba(255,255,255,.45);font-style:italic;max-width:560px;line-height:1.7}
+.page-sub{font-size:16px;color:rgba(255,255,255,.72);font-style:italic;max-width:560px;line-height:1.7}
 .content-wrap{max-width:1060px;margin:0 auto;padding:64px 40px 80px;background:var(--white);color:var(--ink)}
 .content-wrap-wide{max-width:1200px;margin:0 auto;padding:64px 40px 80px}
 @media(max-width:680px){.content-wrap,.content-wrap-wide{padding:44px 20px 60px}.page-hero{padding:52px 20px 40px}}
@@ -520,10 +520,10 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .dep-intro{font-size:16px;color:var(--ink2);line-height:1.95;margin-bottom:44px;max-width:780px}
 .scope-banner{background:var(--ink);border:1px solid rgba(0,107,63,.3);border-top:4px solid var(--g);padding:40px 44px;border-radius:var(--r);margin-bottom:40px;box-shadow:var(--shadow-lg)}
 .scope-banner h3{font-family:var(--display);font-size:24px;color:white;letter-spacing:1px;margin-bottom:6px}
-.scope-banner-sub{font-size:14px;color:rgba(255,255,255,.35);font-style:italic;margin-bottom:24px}
+.scope-banner-sub{font-size:14px;color:rgba(255,255,255,.65);font-style:italic;margin-bottom:24px}
 .scope-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .scope-k{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gm);margin-bottom:5px}
-.scope-v{font-size:14px;color:rgba(255,255,255,.65);line-height:1.6}
+.scope-v{font-size:14px;color:rgba(255,255,255,.82);line-height:1.6}
 .dep-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:48px}
 .dep-card{background:var(--white);border:1px solid var(--stone2);border-top:4px solid var(--g);padding:36px 32px;border-radius:0 0 var(--r) var(--r);box-shadow:0 2px 16px rgba(0,0,0,.04);transition:box-shadow .2s,transform .2s}
 .dep-card:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
@@ -574,7 +574,7 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .med-tag{font-family:var(--mono);font-size:11px;background:var(--stone);border:1px solid var(--stone2);padding:5px 12px;border-radius:var(--r);color:var(--ink2);letter-spacing:.5px;transition:all .15s;cursor:default}
 .med-tag:hover{background:var(--gl);border-color:rgba(0,107,63,.3);color:#004D2C}
 .cv-dl{background:var(--ink);border-top:3px solid var(--g);padding:28px;border-radius:0 0 var(--r) var(--r);text-align:center}
-.cv-dl p{font-size:13px;color:rgba(255,255,255,.35);margin-bottom:16px;font-style:italic}
+.cv-dl p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:16px;font-style:italic}
 .qs-card{background:var(--stone);border:1px solid var(--stone2);border-top:3px solid var(--g);padding:22px;border-radius:0 0 var(--r) var(--r);margin-bottom:18px}
 .qs-title{font-family:var(--display);font-size:15px;letter-spacing:1px;color:var(--ink);margin-bottom:14px;text-transform:uppercase}
 .stat-row{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--stone2)}
@@ -615,7 +615,7 @@ textarea{min-height:120px;resize:vertical;font-style:italic;color:var(--ink3)}
 .cp-item{padding:18px 14px;border-right:1px solid rgba(255,255,255,.06);display:flex;flex-direction:column;gap:4px}
 .cp-item:last-child{border-right:none}
 .cp-val{font-family:var(--display);font-size:21px;letter-spacing:2px;color:#fff;line-height:1}
-.cp-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.35);text-transform:uppercase}
+.cp-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.65);text-transform:uppercase}
 .cp-live{display:flex;align-items:center;gap:7px}
 .cp-dot{width:7px;height:7px;border-radius:50%;background:var(--gm);box-shadow:0 0 6px var(--gm);flex-shrink:0;animation:pulse 2s ease-in-out infinite}
 .submit-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:4px}
@@ -680,13 +680,13 @@ textarea{min-height:120px;resize:vertical;font-style:italic;color:var(--ink3)}
 /* FOOTER */
 footer{background:var(--ink);border-top:2px solid var(--g);padding:40px}
 .footer-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center}
-.footer-brand{font-family:var(--display);font-size:18px;color:rgba(255,255,255,.5);letter-spacing:2px}
+.footer-brand{font-family:var(--display);font-size:18px;color:rgba(255,255,255,.78);letter-spacing:2px}
 .footer-brand span{color:var(--gm)}
-.footer-center{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:2px;text-align:center;line-height:2}
+.footer-center{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.62);letter-spacing:2px;text-align:center;line-height:2}
 .footer-right{text-align:right}
-.footer-right p{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.2);letter-spacing:1px;line-height:1.8}
+.footer-right p{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.62);letter-spacing:1px;line-height:1.8}
 .footer-socials{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
-.footer-socials a{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-socials a{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s}
 .footer-socials a:hover{color:var(--gm)}
 @media(max-width:680px){footer{padding:28px 20px}.footer-inner{grid-template-columns:1fr;text-align:center}.footer-right{text-align:center}.footer-socials{justify-content:center}}
 
@@ -698,7 +698,7 @@ footer{background:var(--ink);border-top:2px solid var(--g);padding:40px}
 .err-content{position:relative;z-index:1}
 .err-badge{font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:16px}
 .err-heading{font-family:var(--display);font-size:clamp(32px,5vw,52px);color:white;letter-spacing:2px;margin-bottom:14px}
-.err-sub{font-size:16px;color:rgba(255,255,255,.4);font-style:italic;max-width:400px;margin:0 auto 36px}
+.err-sub{font-size:16px;color:rgba(255,255,255,.70);font-style:italic;max-width:400px;margin:0 auto 36px}
 .err-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
 /* MOBILE CALL BAR */
@@ -722,8 +722,8 @@ footer{background:var(--ink);border-top:2px solid var(--g);padding:40px}
 .cookie-btn{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:9px 18px;border-radius:2px;cursor:pointer;border:1.5px solid transparent;transition:all .2s}
 .cookie-accept{background:var(--g);color:white;border-color:var(--g)}
 .cookie-accept:hover{background:var(--gm)}
-.cookie-decline{background:transparent;color:rgba(255,255,255,.4);border-color:rgba(255,255,255,.15)}
-.cookie-decline:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.3)}
+.cookie-decline{background:transparent;color:rgba(255,255,255,.70);border-color:rgba(255,255,255,.15)}
+.cookie-decline:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.65)}
 @media(max-width:600px){#cookie-banner{flex-direction:column;align-items:flex-start}}
 
 /* PRINT */
@@ -743,7 +743,7 @@ footer{background:var(--ink);border-top:2px solid var(--g);padding:40px}
 
 
 /* THEME TOGGLE */
-#theme-toggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.55);width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;flex-shrink:0}
+#theme-toggle{background:none;border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.80);width:32px;height:32px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;flex-shrink:0}
 #theme-toggle:hover{border-color:var(--gm);color:white}
 body.light-mode{--white:#FAFAF8;--stone:#F2F0EB;--stone2:#E5E2DC;--ink:#0a0f0c;--ink2:#1e2e27;--ink3:#3d5249;--ink4:#6b8c7e}
 body.dark-mode{--white:#0e1512;--stone:#141c18;--stone2:#1c2822;--ink:#080d0a;--ink2:#b0c8bc;--ink3:#7ea893;--ink4:#5c8070;color:#c0d8cc;background:var(--white)}
@@ -805,7 +805,7 @@ body.dark-mode .news-card{background:var(--stone)}
 #nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55;z-index:1}
 
 /* ── 3: TYPEWRITER ── */
-.hero-role-type{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:24px;line-height:1.8;min-height:22px}
+.hero-role-type{font-family:var(--mono);font-size:13px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.72);margin-bottom:24px;line-height:1.8;min-height:22px}
 .hero-role-type .tw-text{color:rgba(255,255,255,.7)}
 .tw-cursor{display:inline-block;width:2px;height:13px;background:var(--gm);animation:tw-blink .65s step-end infinite;vertical-align:middle;margin-left:2px}
 @keyframes tw-blink{0%,100%{opacity:1}50%{opacity:0}}
@@ -875,7 +875,7 @@ body.dark-mode .news-card{background:var(--stone)}
 .jh-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .jh-eyebrow::before{content:'';width:24px;height:1px;background:var(--gm)}
 .jh-title{font-family:var(--display);font-size:clamp(52px,8vw,86px);color:white;letter-spacing:4px;line-height:.92;margin-bottom:18px}
-.jh-sub{font-size:15px;color:rgba(255,255,255,.38);font-style:italic;line-height:1.75;max-width:540px}
+.jh-sub{font-size:15px;color:rgba(255,255,255,.68);font-style:italic;line-height:1.75;max-width:540px}
 .jh-stats{display:flex;gap:22px;margin-top:20px;flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(0,107,63,.12)}
 .jh-stat{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.55);display:flex;align-items:center;gap:6px}
 .jh-stat-val{color:rgba(255,255,255,.6)}
@@ -886,14 +886,14 @@ body.dark-mode .news-card{background:var(--stone)}
 .jpa-nav-item{background:#0d1910;border:1px solid rgba(0,107,63,.15);padding:18px 20px;cursor:pointer;transition:border-color .2s,background .2s}
 .jpa-nav-item:hover{background:#111d14;border-color:rgba(0,166,81,.3)}
 .jpa-nav-dir{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(0,166,81,.4);margin-bottom:6px}
-.jpa-nav-title{font-size:12px;color:rgba(255,255,255,.5);line-height:1.4;transition:color .2s}
+.jpa-nav-title{font-size:12px;color:rgba(255,255,255,.78);line-height:1.4;transition:color .2s}
 .jpa-nav-item:hover .jpa-nav-title{color:rgba(255,255,255,.75)}
 .jpa-nav-next{text-align:right}
 
 /* Article reading progress (scoped, above scroll bar) */
 #article-progress{position:fixed;top:3px;left:0;height:2px;width:0%;background:linear-gradient(90deg,rgba(0,107,63,.8),var(--gm),#7FFFD4);z-index:10000;transition:width .08s linear;pointer-events:none;display:none}
 .jh-meta{display:flex;gap:28px;margin-top:28px;flex-wrap:wrap}
-.jh-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);display:flex;align-items:center;gap:6px}
+.jh-meta-item{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);display:flex;align-items:center;gap:6px}
 .jh-meta-dot{width:4px;height:4px;border-radius:50%;background:var(--gm)}
 
 /* ── Index: featured post ── */
@@ -904,9 +904,9 @@ body.dark-mode .news-card{background:var(--stone)}
 .jf-card:hover{transform:translateY(-3px);box-shadow:0 10px 48px rgba(0,0,0,.5),0 0 0 1px rgba(0,166,81,.2)}
 .jf-body{padding:36px 32px}
 .jf-tags{display:flex;gap:7px;margin-bottom:14px;flex-wrap:wrap}
-.jf-date{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:12px}
+.jf-date{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:12px}
 .jf-title{font-family:var(--display);font-size:clamp(20px,2.5vw,30px);letter-spacing:1px;color:white;line-height:1.1;margin-bottom:14px}
-.jf-excerpt{font-size:14px;color:rgba(255,255,255,.38);line-height:1.85;font-style:italic}
+.jf-excerpt{font-size:14px;color:rgba(255,255,255,.68);line-height:1.85;font-style:italic}
 .jf-more{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-top:22px;border-bottom:1px solid rgba(0,166,81,.25);padding-bottom:2px;transition:gap .2s,border-color .2s}
 .jf-card:hover .jf-more{gap:14px;border-color:var(--gm)}
 .jf-visual{background:linear-gradient(135deg,#050e08 0%,#0c1e12 55%,#040c06 100%);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;min-height:220px}
@@ -916,7 +916,7 @@ body.dark-mode .news-card{background:var(--stone)}
 
 /* ── Index: post list + sidebar ── */
 .journal-body{display:grid;grid-template-columns:1fr 268px;gap:44px;padding:44px 48px;max-width:1140px;margin:0 auto;width:100%;background:var(--ink)}
-.jb-list-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:18px;display:flex;align-items:center;gap:10px}
+.jb-list-label{font-family:var(--mono);font-size:8px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:18px;display:flex;align-items:center;gap:10px}
 .jb-list-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05)}
 
 /* Post row card */
@@ -929,16 +929,16 @@ body.dark-mode .news-card{background:var(--stone)}
 .jpr-body{background:#0d1910;padding:14px 18px;border-bottom:1px solid rgba(0,107,63,.07)}
 .jpr-tags{display:flex;gap:5px;margin-bottom:5px}
 .jpr-title{font-family:var(--display);font-size:16px;letter-spacing:.5px;color:rgba(255,255,255,.82);margin-bottom:4px;line-height:1.15;transition:color .18s}
-.jpr-excerpt{font-size:12px;color:rgba(255,255,255,.45);line-height:1.65;font-style:italic}
+.jpr-excerpt{font-size:12px;color:rgba(255,255,255,.72);line-height:1.65;font-style:italic}
 .jpr-read{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.4);margin-top:5px}
-.jpr-meta{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:6px}
+.jpr-meta{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:6px}
 .jpr-hint{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,0);margin-top:5px;transition:color .2s}
 .jpost-row:hover .jpr-hint{color:rgba(0,166,81,.55)}
-.jpr-empty{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.2);padding:28px 0;font-style:italic;text-align:center}
+.jpr-empty{font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.65);padding:28px 0;font-style:italic;text-align:center}
 
 /* Category filter */
 .jb-filter{display:flex;gap:6px;margin-bottom:18px;flex-wrap:wrap}
-.jb-filter-btn{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(0,107,63,.25);background:rgba(0,107,63,.08);color:rgba(255,255,255,.55);cursor:pointer;border-radius:1px;transition:all .18s}
+.jb-filter-btn{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;padding:5px 12px;border:1px solid rgba(0,107,63,.25);background:rgba(0,107,63,.08);color:rgba(255,255,255,.80);cursor:pointer;border-radius:1px;transition:all .18s}
 .jb-filter-btn.active,.jb-filter-btn:hover{background:rgba(0,107,63,.2);color:var(--gm);border-color:rgba(0,166,81,.4)}
 
 /* Sidebar widgets */
@@ -948,13 +948,13 @@ body.dark-mode .news-card{background:var(--stone)}
 .jsw-cat{display:flex;align-items:center;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.03);cursor:pointer;transition:padding-left .15s}
 .jsw-cat:hover{padding-left:5px}
 .jsw-cat:last-child{border-bottom:none}
-.jsw-cat-name{font-size:13px;color:rgba(255,255,255,.4);transition:color .15s}
+.jsw-cat-name{font-size:13px;color:rgba(255,255,255,.70);transition:color .15s}
 .jsw-cat:hover .jsw-cat-name{color:rgba(255,255,255,.7)}
 .jsw-cat-n{font-family:var(--mono);font-size:8px;color:rgba(0,166,81,.5);background:rgba(0,107,63,.1);border:1px solid rgba(0,107,63,.2);padding:1px 6px;border-radius:1px}
 .jsw-tags{display:flex;flex-wrap:wrap;gap:5px}
-.jsw-tag{font-family:var(--mono);font-size:7px;letter-spacing:1px;padding:3px 8px;background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.18);color:rgba(255,255,255,.3);cursor:pointer;border-radius:1px;transition:all .15s}
+.jsw-tag{font-family:var(--mono);font-size:7px;letter-spacing:1px;padding:3px 8px;background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.18);color:rgba(255,255,255,.65);cursor:pointer;border-radius:1px;transition:all .15s}
 .jsw-tag:hover{background:rgba(0,107,63,.2);color:var(--gm)}
-.jsw-about{font-size:12px;color:rgba(255,255,255,.3);line-height:1.75}
+.jsw-about{font-size:12px;color:rgba(255,255,255,.65);line-height:1.75}
 
 /* ── TAGS ── */
 .jtag{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px;border-radius:1px}
@@ -973,10 +973,10 @@ body.dark-mode .news-card{background:var(--stone)}
 .jph-tags{display:flex;gap:7px;margin-bottom:14px}
 .jph-date{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:12px}
 .jph-title{font-family:var(--display);font-size:clamp(28px,4.5vw,50px);color:white;letter-spacing:2px;line-height:.95;margin-bottom:16px}
-.jph-deck{font-size:16px;color:rgba(255,255,255,.38);font-style:italic;line-height:1.75;max-width:660px}
+.jph-deck{font-size:16px;color:rgba(255,255,255,.68);font-style:italic;line-height:1.75;max-width:660px}
 .jph-byline{display:flex;align-items:center;gap:14px;margin-top:24px;padding-top:18px;border-top:1px solid rgba(0,107,63,.18)}
 .jph-avatar{width:36px;height:36px;border-radius:50%;background:var(--g);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:13px;color:white;letter-spacing:1px;flex-shrink:0}
-.jph-name{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.jph-name{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.80)}
 .jph-role{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(0,166,81,.45)}
 .jph-readtime{margin-left:auto;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.18)}
 
@@ -986,22 +986,22 @@ body.dark-mode .news-card{background:var(--stone)}
 .jpa-p:first-of-type::first-letter{font-family:var(--display);font-size:68px;line-height:.82;float:left;margin-right:10px;color:var(--g);padding-top:6px}
 .jpa-h2{font-family:var(--display);font-size:22px;letter-spacing:1px;color:white;margin:36px 0 12px}
 .jpa-pull{border-left:3px solid var(--g);padding:14px 22px;margin:30px 0;background:rgba(0,107,63,.05)}
-.jpa-pull p{font-size:18px;font-style:italic;color:rgba(255,255,255,.55);line-height:1.65;font-family:Georgia,serif}
+.jpa-pull p{font-size:18px;font-style:italic;color:rgba(255,255,255,.80);line-height:1.65;font-family:Georgia,serif}
 .jpa-pull cite{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.4);display:block;margin-top:8px}
 .jpa-callout{background:#0d1910;border:1px solid rgba(0,107,63,.22);border-left:3px solid var(--gm);padding:16px 20px;margin:26px 0;border-radius:0 2px 2px 0}
 .jpa-callout-label{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:var(--gm);margin-bottom:6px}
-.jpa-callout p{font-size:13px;color:rgba(255,255,255,.42);line-height:1.75;font-family:Georgia,serif}
+.jpa-callout p{font-size:13px;color:rgba(255,255,255,.75);line-height:1.75;font-family:Georgia,serif}
 .jpa-divider{height:1px;background:rgba(0,107,63,.13);margin:36px 0}
-.jpa-anon{font-size:12px;color:rgba(255,255,255,.22);font-style:italic;line-height:1.7;padding:14px 0;border-top:1px solid rgba(0,107,63,.12)}
+.jpa-anon{font-size:12px;color:rgba(255,255,255,.65);font-style:italic;line-height:1.7;padding:14px 0;border-top:1px solid rgba(0,107,63,.12)}
 .jpa-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:28px}
 
 
 /* ── Blog post images ── */
 .jpa-img-wrap{margin:28px 0;border:1px solid rgba(0,107,63,.2);overflow:hidden}
 .jpa-img{width:100%;display:block;max-height:480px;object-fit:cover;filter:brightness(.92) contrast(1.05)}
-.jpa-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);padding:10px 14px;background:#0d1910;border-top:1px solid rgba(0,107,63,.15)}
+.jpa-img-caption{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.62);padding:10px 14px;background:#0d1910;border-top:1px solid rgba(0,107,63,.15)}
 .jpa-img-err{background:#0d1910;border:1px dashed rgba(255,80,80,.3);padding:20px;font-family:var(--mono);font-size:10px;color:rgba(255,100,100,.6);text-align:center;letter-spacing:1px}
-.jpa-img-err small{display:block;margin-top:6px;color:rgba(255,255,255,.25);font-size:9px}
+.jpa-img-err small{display:block;margin-top:6px;color:rgba(255,255,255,.62);font-size:9px}
 
 /* ── Responsive ── */
 @media(max-width:900px){
@@ -1041,13 +1041,13 @@ body.dark-mode .news-card{background:var(--stone)}
 .route-sl{background:rgba(184,134,11,.2);color:#FFD54F;border:1px solid rgba(184,134,11,.3)}
 .med-card-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s ease;padding:0 14px}
 .med-card.open .med-card-body{max-height:200px;padding:0 14px 14px}
-.med-indication{font-size:11px;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:8px;font-style:italic}
+.med-indication{font-size:11px;color:rgba(255,255,255,.78);line-height:1.65;margin-bottom:8px;font-style:italic}
 .med-detail-row{display:flex;align-items:baseline;gap:6px;margin-bottom:3px}
 .med-detail-label{font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(0,166,81,.5);width:52px;flex-shrink:0}
-.med-detail-val{font-size:11px;color:rgba(255,255,255,.4)}
+.med-detail-val{font-size:11px;color:rgba(255,255,255,.70)}
 .med-chevron{font-size:9px;color:rgba(0,166,81,.4);transition:transform .25s;flex-shrink:0;margin-top:2px}
 .med-card.open .med-chevron{transform:rotate(180deg)}
-.meds-instruction{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.meds-instruction{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .meds-instruction::before{content:'';width:16px;height:1px;background:rgba(0,107,63,.3)}
 
 /* ══ 4. TESTIMONIALS ══ */
@@ -1055,13 +1055,13 @@ body.dark-mode .news-card{background:var(--stone)}
 .section-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--gm);margin-bottom:14px;display:flex;align-items:center;gap:12px;padding:0 40px}
 .section-eyebrow::before{content:'';width:20px;height:1px;background:var(--gm)}
 h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);font-size:clamp(36px,5vw,54px);color:var(--ink);letter-spacing:3px;line-height:.95;padding:0 40px;margin-bottom:8px}
-.section-sub{font-size:15px;color:rgba(255,255,255,.45);font-style:italic;padding:0 40px;margin-bottom:36px;max-width:560px}
+.section-sub{font-size:15px;color:rgba(255,255,255,.72);font-style:italic;padding:0 40px;margin-bottom:36px;max-width:560px}
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 40px}
 .testi-quote-mark{font-family:var(--display);font-size:72px;color:rgba(0,107,63,.2);line-height:.7;margin-bottom:8px;display:block}
 .testi-stars{color:#FFD54F;font-size:13px;letter-spacing:3px;margin-bottom:10px}
 .testi-text{font-size:13px;color:rgba(255,255,255,.52);line-height:1.8;font-style:italic;margin-bottom:14px}
 .testi-from{border-top:1px solid rgba(0,107,63,.15);padding-top:12px}
-.testi-name{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.testi-name{font-family:var(--mono);font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.80)}
 .testi-role{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(0,166,81,.45);margin-top:2px}
 @media(max-width:900px){.testi-grid{grid-template-columns:1fr;padding:0 20px}.section-eyebrow,.section-h2,.section-sub{padding:0 20px}}
 
@@ -1088,13 +1088,13 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .coverage-map-wrap{position:relative;background:#060f08;border:1px solid rgba(0,107,63,.25);overflow:hidden}
 .coverage-map-wrap canvas{display:block;width:100%;height:auto}
 .coverage-map-legend{margin-top:12px;display:flex;gap:16px;flex-wrap:wrap}
-.cml-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cml-item{display:flex;align-items:center;gap:7px;font-family:var(--mono);font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .cml-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .coverage-info{padding-top:8px}
 .cov-stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:20px}
 .cov-stat{background:var(--ink2);padding:14px;border-top:2px solid rgba(0,107,63,.3)}
 .cov-stat-num{font-family:var(--display);font-size:32px;color:var(--gm);letter-spacing:1px;line-height:1}
-.cov-stat-label{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:3px}
+.cov-stat-label{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.62);margin-top:3px}
 .cov-zone{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(0,107,63,.08)}
 .cov-zone-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0}
 .cov-zone-name{font-size:13px;color:rgba(255,255,255,.6);flex:1}
@@ -1114,9 +1114,9 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .ct-head th:first-child{text-align:left}
 .ct-head .th-eac{background:rgba(0,107,63,.15);color:var(--gm);border-bottom:2px solid var(--gm)}
 .ct-level-name{font-family:var(--display);font-size:16px;letter-spacing:1px;color:white;display:block}
-.ct-level-sub{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.3);margin-top:2px;display:block}
+.ct-level-sub{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.65);margin-top:2px;display:block}
 .comparison-table tbody tr:hover td{background:rgba(0,107,63,.04)}
-.comparison-table td{padding:11px 16px;border-bottom:1px solid rgba(0,107,63,.1);text-align:center;font-size:12px;color:rgba(255,255,255,.55);vertical-align:middle}
+.comparison-table td{padding:11px 16px;border-bottom:1px solid rgba(0,107,63,.1);text-align:center;font-size:12px;color:rgba(255,255,255,.80);vertical-align:middle}
 .comparison-table td:first-child{text-align:left;color:rgba(255,255,255,.85);font-size:13px}
 .comparison-table td.td-eac{background:rgba(0,107,63,.12);font-weight:600}
 .ct-yes{color:var(--gm);font-size:15px}
@@ -1124,7 +1124,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .ct-part{color:#FFD54F;font-size:11px;font-family:var(--mono)}
 .ct-cat-row td{background:rgba(0,107,63,.08)!important;font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(0,166,81,.6)!important;font-weight:700;padding:7px 16px!important}
 .ct-you-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:7px;letter-spacing:1.5px;text-transform:uppercase;background:rgba(0,107,63,.2);border:1px solid rgba(0,166,81,.3);color:var(--gm);padding:2px 8px;border-radius:1px;margin-top:4px}
-.comparison-note{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-top:14px;line-height:1.8}
+.comparison-note{font-family:var(--mono);font-size:8px;letter-spacing:1.5px;color:rgba(255,255,255,.68);margin-top:14px;line-height:1.8}
 @media(max-width:900px){.comparison-wrap{padding:0 20px}}
 
 
@@ -1134,7 +1134,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .faq-item-full summary.faq-q-full::before{content:'+';font-family:var(--mono);font-size:14px;color:var(--gm);width:20px;flex-shrink:0;transition:transform .2s}
 .faq-item-full[open] summary.faq-q-full::before{transform:rotate(45deg)}
 .faq-item-full summary::-webkit-details-marker{display:none}
-.faq-a-full{font-size:13px;color:rgba(255,255,255,.5);line-height:1.85;padding:0 0 16px 30px;font-style:italic}
+.faq-a-full{font-size:13px;color:rgba(255,255,255,.78);line-height:1.85;padding:0 0 16px 30px;font-style:italic}
 .faq-a-full strong{color:rgba(255,255,255,.75);font-style:normal}
 
 
@@ -1164,7 +1164,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 @keyframes pr{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.5)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}
 .cert-info{flex:1;min-width:0}
 .cert-name{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:rgba(255,255,255,.75)}
-.cert-expiry{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.3);margin-top:2px}
+.cert-expiry{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.65);margin-top:2px}
 
 .frec4-milestone-wrap{margin-top:10px;position:relative}
 .frec4-ms-bar{display:flex;justify-content:space-between;margin-bottom:6px}
@@ -1172,7 +1172,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .frec4-ms::before{content:'';position:absolute;top:-8px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(0,107,63,.3);transition:background .3s,box-shadow .3s}
 .frec4-ms.ms-done::before{background:var(--gm);border-color:var(--gm);box-shadow:0 0 6px rgba(0,166,81,.5)}
 .frec4-ms.ms-active::before{background:var(--amber);border-color:var(--amber);animation:pa 1.5s ease-in-out infinite}
-.frec4-ms-label{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.3);text-align:center}
+.frec4-ms-label{font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.65);text-align:center}
 .frec4-ms.ms-done .frec4-ms-label{color:var(--gm)}
 .frec4-ms.ms-active .frec4-ms-label{color:var(--amber)}
 
@@ -1181,7 +1181,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .testi-front{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .testi-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg);background:rgba(0,107,63,.12);border:1px solid rgba(0,166,81,.3);border-radius:inherit;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
 .testi-back-name{font-family:var(--display);font-size:18px;font-weight:700;letter-spacing:2px;color:var(--gm);text-align:center}
-.testi-back-role{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.5);text-align:center}
+.testi-back-role{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.78);text-align:center}
 .testi-back-icon{font-size:28px}
 
 .radar-section{margin:32px 0;padding:28px;background:rgba(0,0,0,.2);border:1px solid rgba(0,107,63,.2);border-radius:4px}
@@ -1208,13 +1208,13 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .jf-search:focus{border-color:rgba(0,166,81,.5)}
 .jf-search::placeholder{color:rgba(255,255,255,.2)}
 .jf-tags{display:flex;gap:6px;flex-wrap:wrap}
-.jf-tag{font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:5px 12px;border:1px solid rgba(0,107,63,.25);border-radius:20px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s;text-transform:uppercase;background:transparent}
+.jf-tag{font-family:var(--mono);font-size:8px;letter-spacing:2px;padding:5px 12px;border:1px solid rgba(0,107,63,.25);border-radius:20px;color:rgba(255,255,255,.70);cursor:pointer;transition:all .2s;text-transform:uppercase;background:transparent}
 .jf-tag:hover,.jf-tag.active{border-color:var(--gm);color:var(--gm);background:rgba(0,107,63,.1)}
 .journal-card[data-hidden=true]{display:none!important}
 
 #gdpr-banner{position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(4,10,6,.97);border-top:1px solid rgba(0,107,63,.25);backdrop-filter:blur(8px);padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;transform:translateY(100%);transition:transform .4s ease;font-family:var(--mono);font-size:9px}
 #gdpr-banner.show{transform:translateY(0)}
-.gdpr-text{color:rgba(255,255,255,.4);letter-spacing:.5px;flex:1}
+.gdpr-text{color:rgba(255,255,255,.70);letter-spacing:.5px;flex:1}
 .gdpr-btn{padding:5px 14px;border:1px solid rgba(0,107,63,.4);border-radius:3px;color:var(--gm);cursor:pointer;letter-spacing:2px;background:transparent;font-family:var(--mono);font-size:8px;white-space:nowrap;transition:background .2s}
 .gdpr-btn:hover{background:rgba(0,107,63,.15)}
 
@@ -1235,27 +1235,27 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .sp-hd{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--gm);text-transform:uppercase;margin-bottom:12px}
 .gov-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .gov-cell{background:rgba(0,107,63,.08);border:1px solid rgba(0,107,63,.18);border-radius:3px;padding:9px 8px;text-align:center}
-.gov-cl{font-family:var(--mono);font-size:6px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:3px}
+.gov-cl{font-family:var(--mono);font-size:6px;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:3px}
 .gov-cv{font-family:var(--mono);font-size:8px;color:var(--gm);font-weight:700}
 .ref-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid rgba(0,107,63,.1)}
 .ref-row:last-of-type{border-bottom:none;padding-bottom:0}
 .ref-det{flex:1}
 .ref-n{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.6)}
-.ref-o{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.3);margin-top:1px}
+.ref-o{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.65);margin-top:1px}
 .ref-badge{font-family:var(--mono);font-size:7px;color:var(--gm);background:rgba(0,107,63,.1);border:1px solid rgba(0,107,63,.25);border-radius:3px;padding:2px 6px}
-.ref-foot{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.25);margin-top:8px;font-style:italic}
+.ref-foot{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.62);margin-top:8px;font-style:italic}
 .act-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
 .act-row:last-child{margin-bottom:0}
 .act-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 .act-g{background:var(--gm);animation:otw-blink 1.5s ease-in-out infinite}
 .act-b{background:#60A5FA}
 .act-a{background:#F59E0B}
-.act-lbl{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.5);flex:1}
+.act-lbl{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.78);flex:1}
 .act-val{font-family:var(--mono);font-size:9px;font-weight:700;color:rgba(255,255,255,.85)}
 .li-hd{display:flex;align-items:center;gap:12px;margin-bottom:12px}
 .li-ico{width:36px;height:36px;background:#0A66C2;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:18px;color:#fff;font-family:sans-serif;flex-shrink:0}
 .li-nm{font-family:var(--mono);font-size:10px;color:#fff;letter-spacing:1px}
-.li-rl{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.4);margin-top:2px}
+.li-rl{font-family:var(--mono);font-size:7px;color:rgba(255,255,255,.70);margin-top:2px}
 .li-lnk{display:flex;align-items:center;justify-content:center;gap:6px;padding:7px;background:rgba(10,102,194,.2);border:1px solid rgba(10,102,194,.4);border-radius:3px;font-family:var(--mono);font-size:8px;letter-spacing:2px;color:#93C5FD;text-decoration:none}
 .li-lnk:hover{background:rgba(10,102,194,.35);color:#fff}
 .rfaq{margin:40px 0 28px;padding:28px;background:rgba(0,107,63,.03);border:1px solid rgba(0,107,63,.15);border-radius:4px}
@@ -1269,12 +1269,12 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .rfaq-item.open .rfaq-ico{transform:rotate(45deg)}
 .rfaq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
 .rfaq-item.open .rfaq-a{max-height:200px}
-.rfaq-ai{padding:0 0 14px;font-size:12px;color:rgba(255,255,255,.5);line-height:1.8}
+.rfaq-ai{padding:0 0 14px;font-size:12px;color:rgba(255,255,255,.78);line-height:1.8}
 .ctools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .ctool{flex:1;min-width:200px;background:rgba(0,107,63,.05);border:1px solid rgba(0,107,63,.18);border-radius:4px;padding:16px}
 .ctool-ico{font-size:20px;margin-bottom:6px}
 .ctool-nm{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.75);margin-bottom:4px}
-.ctool-desc{font-size:11px;color:rgba(255,255,255,.35);line-height:1.6;margin-bottom:10px}
+.ctool-desc{font-size:11px;color:rgba(255,255,255,.68);line-height:1.6;margin-bottom:10px}
 .ctool-btn{display:inline-block;font-family:var(--mono);font-size:7px;letter-spacing:2px;padding:5px 12px;background:rgba(0,107,63,.2);border:1px solid rgba(0,107,63,.35);border-radius:3px;color:var(--gm);cursor:pointer}
 .sig-prev{margin-top:12px;padding:12px;background:#fff;border-radius:3px;display:none}
 .sig-prev.vis{display:block}
@@ -1334,7 +1334,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 }
 #page-about .tl-date   { color: var(--gm); opacity: 1; }
 #page-about .tl-event  { color: rgba(255,255,255,.9); }
-#page-about .tl-detail { color: rgba(255,255,255,.48); }
+#page-about .tl-detail { color: rgba(255,255,255,.72); }
 
 /* Radar section */
 #page-about .radar-section {
@@ -1347,7 +1347,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 /* CPD italic note */
 #page-about .cpd-note {
-  color: rgba(255,255,255,.45);
+  color: rgba(255,255,255,.72);
   font-size: 13px;
   font-style: italic;
   line-height: 1.75;
@@ -1370,16 +1370,16 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 /* Govenance, References, Actively Practising, LinkedIn panels
    — already designed for dark; just ensure text contrast */
-#page-about .gov-cl  { color: rgba(255,255,255,.45); }
+#page-about .gov-cl  { color: rgba(255,255,255,.75); }
 #page-about .gov-cv  { color: var(--gm); font-weight: 700; }
-#page-about .ref-n   { color: rgba(255,255,255,.75); }
-#page-about .ref-o   { color: rgba(255,255,255,.38); }
-#page-about .ref-foot{ color: rgba(255,255,255,.3); }
-#page-about .act-lbl { color: rgba(255,255,255,.55); }
+#page-about .ref-n   { color: rgba(255,255,255,.88); }
+#page-about .ref-o   { color: rgba(255,255,255,.68); }
+#page-about .ref-foot{ color: rgba(255,255,255,.68); }
+#page-about .act-lbl { color: rgba(255,255,255,.72); }
 #page-about .act-val { color: rgba(255,255,255,.9); font-weight: 700; }
 #page-about .sp-hd   { color: var(--gm); letter-spacing: 3px; }
 #page-about .li-nm   { color: rgba(255,255,255,.9); }
-#page-about .li-rl   { color: rgba(255,255,255,.4); }
+#page-about .li-rl   { color: rgba(255,255,255,.70); }
 
 /* ── STAT STRIP ── */
 .about-stat-strip{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid rgba(0,107,63,.2);border-top:1px solid rgba(0,107,63,.15)}
@@ -1387,7 +1387,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .about-stat-cell:last-child{border-right:none}
 .about-stat-num{font-family:var(--display);font-size:40px;color:var(--gm);line-height:1;letter-spacing:2px}
 .about-stat-sup{font-family:var(--mono);font-size:16px;color:var(--g);letter-spacing:1px}
-.about-stat-lbl{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:4px}
+.about-stat-lbl{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-top:4px}
 .about-stat-src{font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.16);margin-top:2px;font-style:italic}
 @media(max-width:600px){.about-stat-strip{grid-template-columns:1fr 1fr}.about-stat-cell{border-right:1px solid rgba(0,107,63,.12)}.about-stat-cell:nth-child(2n){border-right:none}.about-stat-cell:nth-child(n+3){border-top:1px solid rgba(0,107,63,.12)}}
 
@@ -1397,7 +1397,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 /* ── TIMELINE FOOTER ── */
 .tl-footer{margin-top:20px;padding-top:18px;border-top:1px dashed rgba(0,107,63,.25);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.tl-footer-count{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35)}
+.tl-footer-count{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.68)}
 .tl-footer-count strong{color:var(--gm)}
 .tl-footer-link{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gm);text-decoration:none;border-bottom:1px solid rgba(0,166,81,.4);padding-bottom:1px;cursor:pointer;transition:color .2s,border-color .2s}
 .tl-footer-link:hover{color:#7FFFD4;border-color:#7FFFD4}
@@ -1410,16 +1410,16 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .cpd-tracker-wrap{background:rgba(255,255,255,.03);border:1px solid rgba(0,107,63,.2);border-radius:2px;padding:28px 32px;display:grid;grid-template-columns:140px 1fr;gap:32px;align-items:center;margin-bottom:20px}
 .cpd-arc-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
 .cpd-arc-num{font-family:var(--display);font-size:34px;color:var(--gm);line-height:1}
-.cpd-arc-lbl{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cpd-arc-lbl{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .cpd-arc-outer{position:relative;width:120px;height:120px}
 .cpd-arc-outer svg{width:100%;height:100%}
 .cpd-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 24px}
-.cpd-d-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:3px}
+.cpd-d-lbl{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:3px}
 .cpd-d-val{font-family:var(--display);font-size:22px;color:rgba(255,255,255,.9);letter-spacing:1px}
-.cpd-d-sub{font-size:11px;color:rgba(255,255,255,.3);font-style:italic;margin-top:2px}
+.cpd-d-sub{font-size:11px;color:rgba(255,255,255,.65);font-style:italic;margin-top:2px}
 .cpd-bar-row{margin-top:6px}
 .cpd-bar-label-row{display:flex;justify-content:space-between;margin-bottom:5px}
-.cpd-bar-label-row span{font-family:var(--mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.cpd-bar-label-row span{font-family:var(--mono);font-size:8px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .cpd-bar-track{height:5px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
 .cpd-bar-fill{height:100%;border-radius:3px}
 @media(max-width:600px){.cpd-tracker-wrap{grid-template-columns:1fr}.cpd-arc-outer{margin:0 auto}}
@@ -1436,8 +1436,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .comm-from{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#FFD54F;margin-bottom:3px}
 .comm-from--prior{color:#ff9999}
 .comm-name{font-family:var(--display);font-size:17px;color:rgba(255,255,255,.9);letter-spacing:.5px}
-.comm-role-text{font-size:12px;color:rgba(255,255,255,.4);font-style:italic}
-.comm-date-badge{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);white-space:nowrap;padding-top:4px}
+.comm-role-text{font-size:12px;color:rgba(255,255,255,.70);font-style:italic}
+.comm-date-badge{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.65);white-space:nowrap;padding-top:4px}
 .comm-body{font-size:14px;font-style:italic;color:rgba(255,255,255,.65);line-height:1.85;border-top:1px solid rgba(184,134,11,.15);padding-top:14px}
 .comm-card--prior .comm-body{border-top-color:rgba(180,60,60,.2)}
 .comm-award-tag{font-family:var(--mono);font-size:7px;letter-spacing:3px;text-transform:uppercase;color:rgba(184,134,11,.45);margin-top:10px}
@@ -1453,15 +1453,15 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 
 /* ── COVERAGE NUDGE ── */
 .coverage-nudge{margin-top:12px;padding:12px 18px;background:rgba(0,107,63,.1);border:1px solid rgba(0,166,81,.2);border-radius:2px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.coverage-nudge-text{font-size:13px;color:rgba(255,255,255,.5);font-style:italic}
+.coverage-nudge-text{font-size:13px;color:rgba(255,255,255,.78);font-style:italic}
 .coverage-nudge-link{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gm);text-decoration:none;border-bottom:1px solid rgba(0,166,81,.35);padding-bottom:1px;cursor:pointer;transition:color .2s}
 .coverage-nudge-link:hover{color:#7FFFD4}
 
 /* ── SKILL LEGEND ── */
 .skill-legend-wrap{margin-top:10px;padding:14px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(0,107,63,.15);border-radius:2px}
-.skill-legend-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px}
+.skill-legend-title{font-family:var(--mono);font-size:8px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:10px}
 .skill-legend-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.skill-legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.5)}
+.skill-legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.78)}
 .sl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 @media(max-width:600px){.skill-legend-grid{grid-template-columns:1fr 1fr}}
 
@@ -1531,8 +1531,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .cev-card--purple::before{background:linear-gradient(90deg,#6B3F9F,#A06FD0)}
 .cev-icon{font-size:28px;margin-bottom:12px}
 .cev-label{font-family:var(--display);font-size:17px;letter-spacing:1px;color:white;margin-bottom:10px;line-height:1.2}
-.cev-body{font-size:13px;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:14px}
-.cev-meta{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.cev-body{font-size:13px;color:rgba(255,255,255,.80);line-height:1.8;margin-bottom:14px}
+.cev-meta{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.62)}
 @media(max-width:800px){.cev-grid{grid-template-columns:1fr}.clinical-evidence-strip{padding:40px 20px}}
 
 /* ═══════════════════════════════════════════════════════════
@@ -1647,7 +1647,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,.04) 3px,rgba(0,0,0,.04) 4px);
   pointer-events:none;z-index:1;
 }
-.jpr-deck{font-size:13px;color:rgba(255,255,255,.45);line-height:1.55;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.jpr-deck{font-size:13px;color:rgba(255,255,255,.72);line-height:1.55;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 /* ── COMPARISON COLS (missing from rebuild) ── */
 .comparison-col{flex:1;display:flex;flex-direction:column;gap:4px;padding:0 8px}
@@ -1656,7 +1656,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .comp-col-you{flex:1.2}
 .comp-head{font-family:var(--mono);font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--g);padding:10px 14px;background:rgba(0,107,63,.1);border-top:2px solid var(--g);text-align:center;margin-bottom:4px}
 .comp-head-you{color:#00ff88;background:rgba(0,107,63,.2);border-top-color:#00A651}
-.comp-card{padding:8px 14px;background:rgba(0,0,0,.2);font-size:12px;color:rgba(255,255,255,.55);text-align:center;border:1px solid rgba(255,255,255,.06)}
+.comp-card{padding:8px 14px;background:rgba(0,0,0,.2);font-size:12px;color:rgba(255,255,255,.80);text-align:center;border:1px solid rgba(255,255,255,.06)}
 .comp-card-you{background:rgba(0,107,63,.15);color:rgba(200,255,220,.8);border-color:rgba(0,107,63,.3)}
 .comparison-wrap{display:flex;gap:3px;align-items:flex-start}
 .content-wrap p{color:var(--ink) !important;font-size:15px !important;line-height:1.85 !important;margin-bottom:20px !important;}
@@ -1668,14 +1668,14 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .access-box-header{background:rgba(0,107,63,.12);border-bottom:1px solid rgba(0,107,63,.2);padding:28px 32px 20px}
 .access-box-icon{font-size:28px;margin-bottom:10px}
 .access-box-title{font-family:var(--display);font-size:22px;letter-spacing:2px;color:#fff}
-.access-box-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:4px;font-family:var(--mono);letter-spacing:1px}
+.access-box-sub{font-size:12px;color:rgba(255,255,255,.70);margin-top:4px;font-family:var(--mono);letter-spacing:1px}
 .access-tabs{display:flex;border-bottom:1px solid rgba(0,107,63,.2)}
-.access-tab{flex:1;padding:12px;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.35);cursor:pointer;border:none;background:transparent;transition:all .2s}
+.access-tab{flex:1;padding:12px;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.68);cursor:pointer;border:none;background:transparent;transition:all .2s}
 .access-tab.active{color:var(--gm);border-bottom:2px solid var(--gm);background:rgba(0,107,63,.06)}
 .access-panel{padding:28px 32px;display:none}
 .access-panel.active{display:block}
 .access-field{margin-bottom:16px}
-.access-field label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.45);margin-bottom:6px;text-transform:uppercase}
+.access-field label{display:block;font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.72);margin-bottom:6px;text-transform:uppercase}
 .access-field input,.access-field textarea,.access-field select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(0,107,63,.25);color:#fff;padding:10px 12px;font-size:13px;font-family:var(--serif);outline:none;box-sizing:border-box}
 .access-field input:focus,.access-field textarea:focus{border-color:rgba(0,107,63,.6)}
 .access-field textarea{resize:vertical;min-height:80px}
@@ -1684,7 +1684,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .access-msg{font-size:12px;margin-top:12px;padding:10px;border-radius:2px;display:none}
 .access-msg.ok{background:rgba(0,107,63,.2);color:var(--gm);border:1px solid rgba(0,107,63,.3)}
 .access-msg.err{background:rgba(200,30,30,.15);color:#f88;border:1px solid rgba(200,30,30,.3)}
-.access-close{position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,.3);font-size:20px;cursor:pointer;line-height:1}
+.access-close{position:absolute;top:12px;right:14px;background:none;border:none;color:rgba(255,255,255,.65);font-size:20px;cursor:pointer;line-height:1}
 .access-close:hover{color:#fff}
 /* Gated nav items */
 .nav-gated{position:relative}
@@ -1693,8 +1693,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .gated-placeholder{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 24px;text-align:center;background:var(--ink)}
 .gated-placeholder-icon{font-size:56px;margin-bottom:24px;opacity:.5}
 .gated-placeholder-title{font-family:var(--display);font-size:32px;letter-spacing:2px;color:#fff;margin-bottom:12px}
-.gated-placeholder-body{font-size:14px;color:rgba(255,255,255,.4);max-width:480px;line-height:1.8;margin-bottom:32px}
-.gated-logout{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.25);cursor:pointer;border:none;background:none;text-decoration:underline;margin-top:16px}
+.gated-placeholder-body{font-size:14px;color:rgba(255,255,255,.70);max-width:480px;line-height:1.8;margin-bottom:32px}
+.gated-logout{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.62);cursor:pointer;border:none;background:none;text-decoration:underline;margin-top:16px}
 
 /* ── AMBULANCE EMERGENCY LIGHTS (CSS-driven) ── */
 @keyframes ambBlueOn{
@@ -1734,14 +1734,14 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   background:rgba(255,0,30,0.35);
   animation:ambGlowRed 0.5s ease-in-out infinite
 }
-.journey-strip{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(0,0,0,.25);border-top:1px solid rgba(0,107,63,.1);border-bottom:1px solid rgba(0,107,63,.1)}.jstep{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;transition:background .2s;position:relative;border-right:1px solid rgba(0,107,63,.08)}.jstep:last-child{border-right:none}.jstep:hover{background:rgba(0,107,63,.08)}.jstep::after{content:"›";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:rgba(0,107,63,.3);font-size:16px;z-index:1;pointer-events:none}.jstep:last-child::after{display:none}.jstep-icon{font-size:16px;margin-bottom:4px;line-height:1}.jstep-label{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;line-height:1.4}.jstep:hover .jstep-label{color:var(--gm)}.jstep-num{font-family:var(--mono);font-size:6px;letter-spacing:1px;color:rgba(0,107,63,.3);margin-bottom:2px}.cev-link{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}.cev-link-btn{background:none;border:none;font-family:var(--mono);font-size:8px;letter-spacing:2px;cursor:pointer;padding:0;text-transform:uppercase}.cev-card--blue .cev-link-btn{color:rgba(100,150,255,.6)}.cev-card--blue .cev-link-btn:hover{color:rgba(150,190,255,.9)}.cev-card--green .cev-link-btn{color:rgba(0,166,81,.6)}.cev-card--green .cev-link-btn:hover{color:var(--gm)}.cev-card--amber .cev-link-btn{color:rgba(184,134,11,.6)}.cev-card--amber .cev-link-btn:hover{color:#FFD700}.scroll-guide{text-align:right;padding:2px 40px 16px;font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(0,107,63,.2);user-select:none;transition:color .3s}.scroll-guide:hover{color:rgba(0,107,63,.5)}
+.journey-strip{display:grid;grid-template-columns:repeat(4,1fr);background:rgba(0,0,0,.25);border-top:1px solid rgba(0,107,63,.1);border-bottom:1px solid rgba(0,107,63,.1)}.jstep{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:14px 8px;cursor:pointer;transition:background .2s;position:relative;border-right:1px solid rgba(0,107,63,.08)}.jstep:last-child{border-right:none}.jstep:hover{background:rgba(0,107,63,.08)}.jstep::after{content:"›";position:absolute;right:-10px;top:50%;transform:translateY(-50%);color:rgba(0,107,63,.3);font-size:16px;z-index:1;pointer-events:none}.jstep:last-child::after{display:none}.jstep-icon{font-size:16px;margin-bottom:4px;line-height:1}.jstep-label{font-family:var(--mono);font-size:7px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.65);text-align:center;line-height:1.4}.jstep:hover .jstep-label{color:var(--gm)}.jstep-num{font-family:var(--mono);font-size:6px;letter-spacing:1px;color:rgba(0,107,63,.3);margin-bottom:2px}.cev-link{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.07)}.cev-link-btn{background:none;border:none;font-family:var(--mono);font-size:8px;letter-spacing:2px;cursor:pointer;padding:0;text-transform:uppercase}.cev-card--blue .cev-link-btn{color:rgba(100,150,255,.6)}.cev-card--blue .cev-link-btn:hover{color:rgba(150,190,255,.9)}.cev-card--green .cev-link-btn{color:rgba(0,166,81,.6)}.cev-card--green .cev-link-btn:hover{color:var(--gm)}.cev-card--amber .cev-link-btn{color:rgba(184,134,11,.6)}.cev-card--amber .cev-link-btn:hover{color:#FFD700}.scroll-guide{text-align:right;padding:2px 40px 16px;font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(0,107,63,.2);user-select:none;transition:color .3s}.scroll-guide:hover{color:rgba(0,107,63,.5)}
 /* ══ ON DEPLOYMENT IMPROVEMENTS ══════════════════════════════════════════════ */
 .coverage-strip{background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.2);border-left:3px solid var(--gm);padding:14px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .avail-live-dot{width:8px;height:8px;border-radius:50%;background:var(--gm);box-shadow:0 0 8px var(--gm);flex-shrink:0;animation:pulse 2s infinite}
 .avail-live-label{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);text-transform:uppercase}
 .avail-divider-v{width:1px;height:28px;background:rgba(0,107,63,.2);flex-shrink:0}
-.coverage-chip{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.08);padding:4px 10px;text-transform:uppercase;background:rgba(255,255,255,.02)}
-.coverage-note-txt{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.2);margin-left:auto;font-style:italic;letter-spacing:1px}
+.coverage-chip{font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.70);border:1px solid rgba(255,255,255,.08);padding:4px 10px;text-transform:uppercase;background:rgba(255,255,255,.02)}
+.coverage-note-txt{font-family:var(--mono);font-size:9px;color:rgba(255,255,255,.65);margin-left:auto;font-style:italic;letter-spacing:1px}
 .serv-stats-strip{background:linear-gradient(90deg,#020a05,#030f07);border-top:3px solid var(--gm);border-bottom:1px solid rgba(0,107,63,.2);padding:20px 0}
 .serv-stats-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
 .serv-stat-block{padding:16px 24px;text-align:center;position:relative}
@@ -1749,7 +1749,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .serv-stat-val{font-family:var(--display);font-size:30px;color:white;letter-spacing:2px;line-height:1}
 .serv-stat-val span{color:var(--gm)}
 .serv-stat-lbl{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,166,81,.6);text-transform:uppercase;margin-top:5px}
-.serv-stat-sub{font-size:10px;color:rgba(255,255,255,.2);margin-top:3px}
+.serv-stat-sub{font-size:10px;color:rgba(255,255,255,.65);margin-top:3px}
 .serv-stats-foot{font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.12);text-align:center;border-top:1px solid rgba(0,107,63,.1);padding-top:10px;margin-top:14px;max-width:1100px;margin-left:auto;margin-right:auto;padding-left:24px;padding-right:24px;text-transform:uppercase}
 .eac-prompt-box{background:linear-gradient(135deg,var(--gl),rgba(0,107,63,.02));border:1px solid rgba(0,107,63,.18);padding:28px 32px;margin-bottom:32px;border-radius:var(--r)}
 .eac-prompt-eye{font-family:var(--mono);font-size:8px;letter-spacing:3px;color:var(--g);text-transform:uppercase;margin-bottom:10px}
@@ -1759,7 +1759,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .eac-trigger-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
 .eac-guide-note{font-size:12px;color:var(--ink4);font-style:italic;margin-top:12px;border-top:1px solid var(--stone2);padding-top:12px;line-height:1.6}
 .scope-tab-btns{display:flex;gap:2px;margin-bottom:20px}
-.scope-tab-btn{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;cursor:pointer;border:1px solid rgba(0,107,63,.2);color:rgba(255,255,255,.35);background:transparent;transition:all .2s}
+.scope-tab-btn{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;cursor:pointer;border:1px solid rgba(0,107,63,.2);color:rgba(255,255,255,.68);background:transparent;transition:all .2s}
 .scope-tab-btn:hover{color:rgba(255,255,255,.6)}
 .scope-tab-btn.active{background:var(--gm);color:white;border-color:var(--gm)}
 .scope-plain-v{font-size:14px;color:rgba(255,255,255,.6);line-height:1.8;font-style:italic}
@@ -1813,20 +1813,20 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .serv-cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 120%,rgba(0,107,63,.15) 0%,transparent 65%);pointer-events:none}
 .serv-cta-eyebrow{font-family:var(--mono);font-size:9px;letter-spacing:4px;color:var(--gm);text-transform:uppercase;margin-bottom:14px;position:relative}
 .serv-cta-h2{font-family:var(--display);font-size:clamp(32px,4vw,52px);color:white;letter-spacing:2px;margin-bottom:10px;position:relative;line-height:1.05}
-.serv-cta-sub{font-size:15px;color:rgba(255,255,255,.4);font-style:italic;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;line-height:1.7}
+.serv-cta-sub{font-size:15px;color:rgba(255,255,255,.70);font-style:italic;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;position:relative;line-height:1.7}
 .serv-cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative}
 .serv-cta-trust{margin-top:24px;font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.18);letter-spacing:2px;text-transform:uppercase;position:relative}
 #sticky-event-strip{position:fixed;bottom:0;left:0;right:0;background:rgba(3,8,5,.97);border-top:1px solid rgba(0,107,63,.3);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:10px 28px;display:flex;align-items:center;justify-content:space-between;z-index:998;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);pointer-events:none}
 #sticky-event-strip.visible{transform:translateY(0);pointer-events:all}
 .sticky-strip-left{display:flex;align-items:center;gap:12px}
 .sticky-strip-dot{width:7px;height:7px;border-radius:50%;background:var(--gm);box-shadow:0 0 7px var(--gm);animation:pulse 2s infinite;flex-shrink:0}
-.sticky-strip-txt{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase}
-.sticky-strip-sub{font-size:10px;color:rgba(255,255,255,.25);margin-top:1px}
+.sticky-strip-txt{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.78);text-transform:uppercase}
+.sticky-strip-sub{font-size:10px;color:rgba(255,255,255,.62);margin-top:1px}
 .sticky-strip-actions{display:flex;align-items:center;gap:8px}
 .sticky-strip-btn{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);border:1px solid rgba(0,166,81,.4);padding:7px 16px;cursor:pointer;text-transform:uppercase;background:transparent;transition:all .2s}
 .sticky-strip-btn:hover{background:rgba(0,107,63,.15);border-color:var(--gm)}
-.sticky-strip-close{background:none;border:none;color:rgba(255,255,255,.2);cursor:pointer;font-size:18px;padding:2px 0 2px 8px;line-height:1;transition:color .2s}
-.sticky-strip-close:hover{color:rgba(255,255,255,.5)}
+.sticky-strip-close{background:none;border:none;color:rgba(255,255,255,.65);cursor:pointer;font-size:18px;padding:2px 0 2px 8px;line-height:1;transition:color .2s}
+.sticky-strip-close:hover{color:rgba(255,255,255,.78)}
 @media(max-width:640px){.sticky-strip-sub,.coverage-note-txt{display:none}.serv-stats-inner{grid-template-columns:repeat(2,1fr)}.process-steps-grid{grid-template-columns:1fr}.process-steps-grid::before{display:none}.process-inner{padding:0 20px}.dep-card-nudge{flex-direction:column;align-items:flex-start}}
 
 /* ── INTENT CARDS (gate modal) ───────────────────────────── */
@@ -1836,7 +1836,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .ic-card:hover,.ic-card.ic-sel{border-color:var(--gm,#00A651);background:rgba(0,166,81,.09)}
 .ic-em{font-size:19px;line-height:1}
 .ic-lb{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1.5px;
-  text-transform:uppercase;color:rgba(255,255,255,.5)}
+  text-transform:uppercase;color:rgba(255,255,255,.78)}
 .ic-card.ic-sel .ic-lb{color:var(--gm,#00A651)}
 
 /* ── TRAINER PAGE — COURSE MENU ─────────────────────────── */
@@ -1847,6 +1847,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 @keyframes tr-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 .tr-avail-txt{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;color:#fff}
 .tr-avail-sub{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:1px;
+  color:rgba(160,230,180,.85);margin-top:2px}
   color:rgba(0,166,81,.55);margin-top:2px}
 .tr-trust{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
 .tr-tb{display:inline-flex;align-items:center;gap:5px;background:rgba(0,107,63,.1);
@@ -1858,7 +1859,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .tr-helper{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.17);border-radius:4px;
   padding:15px 20px;margin-bottom:26px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
 .tr-hl{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;
-  color:rgba(255,255,255,.45);white-space:nowrap}
+  color:rgba(255,255,255,.72);white-space:nowrap}
 .tr-hsel{background:var(--ink,#030805);border:1px solid rgba(0,166,81,.17);border-radius:4px;
   color:#fff;padding:8px 11px;font-size:13px;flex:1;min-width:150px;cursor:pointer;outline:none}
 .tr-hsel option{background:var(--ink,#030805)}
@@ -1866,7 +1867,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   letter-spacing:1px}
 .tr-ctabs{display:flex;gap:5px;margin-bottom:20px;flex-wrap:wrap}
 .tr-ctab{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.13);border-radius:4px;
-  color:rgba(255,255,255,.45);font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  color:rgba(255,255,255,.72);font-family:var(--mono,'Courier New',monospace);font-size:10px;
   letter-spacing:2px;text-transform:uppercase;padding:8px 16px;cursor:pointer;transition:all .18s;
   display:flex;align-items:center;gap:7px}
 .tr-ctab:hover{color:#fff;border-color:rgba(0,166,81,.35)}
@@ -1881,23 +1882,23 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .tr-cch{display:grid;grid-template-columns:1fr 28px;align-items:start;gap:12px;
   padding:16px 18px;cursor:pointer}
 .tr-cn{font-size:15px;font-weight:600;margin-bottom:4px}
-.tr-cb{font-size:12px;color:rgba(255,255,255,.5);line-height:1.5}
+.tr-cb{font-size:12px;color:rgba(255,255,255,.75);line-height:1.5}
 .tr-cm{display:flex;gap:8px;margin-top:9px;flex-wrap:wrap}
 .tr-mc{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1.5px;
   text-transform:uppercase;padding:3px 8px;border-radius:12px;
-  border:1px solid rgba(0,166,81,.17);color:rgba(255,255,255,.5)}
-.tr-mc.tr-p{color:var(--gm,#00A651);border-color:rgba(0,166,81,.32);background:rgba(0,107,63,.09)}
-.tr-ctog{font-size:19px;color:rgba(0,166,81,.4);transition:transform .22s;text-align:right;
+  border:1px solid rgba(0,166,81,.22);color:rgba(255,255,255,.72)}
+.tr-mc.tr-p{color:var(--gm,#00A651);border-color:rgba(0,166,81,.35);background:rgba(0,107,63,.12)}
+.tr-ctog{font-size:19px;color:rgba(0,200,100,.88);transition:transform .22s;text-align:right;
   margin-top:2px;line-height:1}
 .tr-cc.tr-exp .tr-ctog{transform:rotate(45deg)}
-.tr-cbody{display:none;padding:0 18px 18px;border-top:1px solid rgba(0,166,81,.08)}
+.tr-cbody{display:none;padding:0 18px 18px;border-top:1px solid rgba(0,166,81,.1)}
 .tr-cc.tr-exp .tr-cbody{display:block}
-.tr-cdt{font-size:13px;color:rgba(255,255,255,.5);line-height:1.82;margin:14px 0}
+.tr-cdt{font-size:13px;color:rgba(255,255,255,.78);line-height:1.82;margin:14px 0}
 .tr-slbl{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:3px;
-  text-transform:uppercase;color:rgba(0,166,81,.42);margin-bottom:9px;padding-bottom:7px;
-  border-bottom:1px solid rgba(0,166,81,.07)}
+  text-transform:uppercase;color:rgba(120,210,150,.9);margin-bottom:9px;padding-bottom:7px;
+  border-bottom:1px solid rgba(0,166,81,.12)}
 .tr-obj{list-style:none;margin-bottom:17px}
-.tr-obj li{font-size:12px;color:rgba(255,255,255,.45);padding:3px 0 3px 15px;position:relative}
+.tr-obj li{font-size:12px;color:rgba(255,255,255,.72);padding:3px 0 3px 15px;position:relative}
 .tr-obj li::before{content:'\2014';position:absolute;left:0;color:var(--gm,#00A651)}
 .tr-eqr{display:flex;gap:8px;flex-wrap:wrap}
 .tr-ewa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;
@@ -1913,15 +1914,15 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 .tr-eem:hover{background:rgba(0,166,81,.09);border-color:var(--gm,#00A651)}
 .tr-at{width:100%;border-collapse:collapse;font-size:13px}
 .tr-at th{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:2px;
-  text-transform:uppercase;color:rgba(255,255,255,.4);padding:7px 10px;text-align:left;
+  text-transform:uppercase;color:rgba(255,255,255,.70);padding:7px 10px;text-align:left;
   border-bottom:1px solid rgba(0,166,81,.11)}
 .tr-at td{padding:11px 10px;border-bottom:1px solid rgba(0,166,81,.05);vertical-align:top}
 .tr-at tr:hover td{background:rgba(0,107,63,.04)}
 .tr-an{font-weight:600;font-size:13px;margin-bottom:3px}
-.tr-ad{font-size:11px;color:rgba(255,255,255,.45)}
+.tr-ad{font-size:11px;color:rgba(255,255,255,.72)}
 .tr-ap{color:var(--gm,#00A651);font-family:var(--mono,'Courier New',monospace);font-size:11px;white-space:nowrap}
 .tr-adu{font-family:var(--mono,'Courier New',monospace);font-size:10px;
-  color:rgba(255,255,255,.35);white-space:nowrap}
+  color:rgba(255,255,255,.68);white-space:nowrap}
 .tr-aeq{background:var(--g2,#0f1f12);border:1px solid rgba(0,166,81,.17);border-radius:3px;
   color:var(--gm,#00A651);font-family:var(--mono,'Courier New',monospace);font-size:9px;
   letter-spacing:1px;padding:5px 10px;cursor:pointer;text-decoration:none;
@@ -1930,6 +1931,190 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 @media(max-width:600px){
   .tr-cs{padding:22px 14px 60px}
   .tr-at th:nth-child(3),.tr-at td:nth-child(3){display:none}
+}
+/* ── EVENT MEDICAL PAGE ───────────────────────────────────── */
+/* Navy/blue palette — NorthPoint Event Medical */
+#page-medic{--em-n1:#0d1e3a;--em-n2:#152b52;--em-nb:#1565C0;--em-bl:#2196F3;
+  --em-bc:#42A5F5;--em-bgl:rgba(33,150,243,.1)}
+.em-trust{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.em-tb{display:inline-flex;align-items:center;gap:5px;background:rgba(21,101,192,.12);
+  border:1px solid rgba(33,150,243,.22);border-radius:20px;padding:4px 11px;
+  font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:1.5px;
+  text-transform:uppercase;color:#42A5F5}
+.em-tb::before{content:'\2713';font-size:9px}
+.em-pg{background:rgba(33,150,243,.07);border:1px solid rgba(33,150,243,.2);
+  border-radius:4px;padding:14px 18px;margin-top:20px;max-width:640px}
+.em-pg-lbl{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:#42A5F5;margin-bottom:6px}
+.em-pg-txt{font-size:12px;color:rgba(255,255,255,.72);line-height:1.72}
+.em-avail{display:inline-flex;align-items:center;gap:11px;background:rgba(21,101,192,.09);
+  border:1px solid rgba(33,150,243,.22);border-radius:4px;padding:10px 18px;margin-top:20px}
+.em-av-dot{width:8px;height:8px;border-radius:50%;background:#2196F3;
+  box-shadow:0 0 7px #2196F3;flex-shrink:0;animation:tr-pulse 2s ease-in-out infinite}
+.em-av-txt{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;color:#fff}
+.em-av-sub{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:1px;
+  color:rgba(160,200,240,.8);margin-top:2px}
+.em-cov{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;align-items:center}
+.em-cov-lbl{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;
+  color:rgba(66,165,245,.5);white-space:nowrap}
+.em-cov-tag{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 9px;border-radius:3px;
+  border:1px solid rgba(33,150,243,.17);color:rgba(255,255,255,.72)}
+.em-cov-tag.em-pri{color:#42A5F5;border-color:rgba(33,150,243,.35);background:rgba(21,101,192,.1)}
+.em-body{max-width:960px;margin:0 auto;padding:36px 24px 80px}
+.em-helper{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.17);
+  border-radius:4px;padding:15px 20px;margin-bottom:26px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.em-hl{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:2px;
+  color:rgba(255,255,255,.72);white-space:nowrap}
+.em-hsel{background:var(--ink,#030805);border:1px solid rgba(33,150,243,.17);border-radius:4px;
+  color:#fff;padding:8px 11px;font-size:13px;flex:1;min-width:150px;cursor:pointer;outline:none}
+.em-hsel option{background:var(--ink,#030805)}
+.em-hres{font-size:13px;color:#42A5F5;font-family:var(--mono,'Courier New',monospace);letter-spacing:1px}
+.em-tabs{display:flex;gap:5px;margin-bottom:22px;flex-wrap:wrap}
+.em-tab{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.13);border-radius:4px;
+  color:rgba(255,255,255,.72);font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;padding:8px 16px;cursor:pointer;transition:all .18s;
+  display:flex;align-items:center;gap:7px}
+.em-tab:hover{color:#fff;border-color:rgba(33,150,243,.38)}
+.em-tab.em-act{background:#1565C0;color:#fff;border-color:#1565C0;font-weight:700}
+.em-tc{background:rgba(0,0,0,.25);border-radius:10px;padding:1px 6px;font-size:9px}
+.em-slbl{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:3px;
+  text-transform:uppercase;color:rgba(130,190,240,.85);margin-bottom:12px;
+  padding-bottom:8px;border-bottom:1px solid rgba(33,150,243,.1)}
+/* Staff rate cards */
+.em-rate-grid{display:flex;flex-direction:column;gap:8px}
+.em-rc{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.1);border-radius:4px;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:12px;
+  padding:18px 20px;transition:border-color .18s}
+.em-rc:hover{border-color:rgba(33,150,243,.3)}
+.em-rc-role{font-size:15px;font-weight:600;margin-bottom:4px}
+.em-rc-qual{font-family:var(--mono,'Courier New',monospace);font-size:10px;color:#42A5F5;margin-bottom:5px}
+.em-rc-desc{font-size:12px;color:rgba(255,255,255,.72);line-height:1.5}
+.em-rc-tags{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.em-rc-tag{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1px;
+  text-transform:uppercase;padding:2px 8px;border-radius:12px;
+  border:1px solid rgba(33,150,243,.17);color:rgba(255,255,255,.78)}
+.em-rc-right{text-align:right;flex-shrink:0}
+.em-rate{font-family:var(--mono,'Courier New',monospace);font-size:18px;font-weight:700;
+  color:#42A5F5;white-space:nowrap}
+.em-unit{font-family:var(--mono,'Courier New',monospace);font-size:9px;letter-spacing:1px;
+  color:rgba(66,165,245,.6);margin-bottom:10px}
+.em-eq-row{display:flex;flex-direction:column;gap:5px}
+/* Overnight card */
+.em-overnight{background:linear-gradient(135deg,var(--em-n1,#0d1e3a),var(--em-n2,#152b52));
+  border:1px solid rgba(33,150,243,.25);border-radius:4px;padding:20px;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:16px;margin-top:8px}
+/* Equipment */
+.em-eq-sec{margin-bottom:26px}
+.em-eq-title{font-family:var(--mono,'Courier New',monospace);font-size:10px;letter-spacing:3px;
+  text-transform:uppercase;color:#42A5F5;margin-bottom:10px;
+  display:flex;align-items:center;gap:10px}
+.em-eq-title::after{content:'';flex:1;height:1px;background:rgba(33,150,243,.12)}
+.em-eq-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:7px}
+.em-eq-item{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.1);
+  border-radius:4px;padding:12px 14px;display:flex;align-items:center;
+  justify-content:space-between;gap:10px;transition:border-color .18s}
+.em-eq-item:hover{border-color:rgba(33,150,243,.3)}
+.em-eq-name{font-size:12px;font-weight:500;margin-bottom:3px}
+.em-eq-price{font-family:var(--mono,'Courier New',monospace);font-size:12px;
+  color:#42A5F5;white-space:nowrap;flex-shrink:0}
+.em-eq-enq{font-family:var(--mono,'Courier New',monospace);font-size:9px;
+  color:rgba(66,165,245,.55);cursor:pointer;text-decoration:none;
+  display:block;margin-top:2px;transition:color .15s}
+.em-eq-enq:hover{color:#42A5F5}
+/* Packages */
+.em-pkg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:14px;margin-bottom:26px}
+.em-pkg{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.15);
+  border-radius:4px;overflow:hidden;transition:border-color .18s}
+.em-pkg:hover{border-color:rgba(33,150,243,.35)}
+.em-pkg.em-feat{border-color:rgba(33,150,243,.4);box-shadow:0 0 20px rgba(33,150,243,.07)}
+.em-pkg-head{background:var(--em-n2,#152b52);padding:16px 18px;
+  border-bottom:1px solid rgba(33,150,243,.1)}
+.em-pkg-tier{font-family:var(--mono,'Courier New',monospace);font-size:8px;
+  letter-spacing:3px;text-transform:uppercase;color:#42A5F5;margin-bottom:4px}
+.em-pkg-name{font-size:16px;font-weight:700;margin-bottom:2px}
+.em-pkg-sub{font-size:11px;color:rgba(255,255,255,.80)}
+.em-pkg-body{padding:16px 18px}
+.em-pkg-row{display:flex;justify-content:space-between;align-items:baseline;
+  padding:5px 0;border-bottom:1px solid rgba(33,150,243,.05);gap:8px}
+.em-pkg-row:last-of-type{border-bottom:none}
+.em-pkg-item{font-size:12px;color:rgba(255,255,255,.65)}
+.em-pkg-val{font-family:var(--mono,'Courier New',monospace);font-size:11px;
+  color:rgba(255,255,255,.75);white-space:nowrap;flex-shrink:0}
+.em-pkg-note{font-family:var(--mono,'Courier New',monospace);font-size:8px;
+  letter-spacing:1px;color:rgba(66,165,245,.5);padding:8px 18px 4px;font-style:italic}
+.em-pkg-total{background:rgba(21,101,192,.12);border-top:1px solid rgba(33,150,243,.15);
+  padding:12px 18px;display:flex;justify-content:space-between;align-items:center}
+.em-pkg-total-lbl{font-family:var(--mono,'Courier New',monospace);font-size:9px;
+  letter-spacing:2px;color:rgba(255,255,255,.72)}
+.em-pkg-total-val{font-family:var(--mono,'Courier New',monospace);font-size:18px;
+  font-weight:700;color:#42A5F5}
+.em-pkg-cta{padding:10px 18px 14px;display:flex;gap:8px;flex-wrap:wrap}
+/* Builder */
+.em-builder{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.2);
+  border-radius:4px;padding:22px}
+.em-builder-title{font-family:var(--mono,'Courier New',monospace);font-size:10px;
+  letter-spacing:2px;text-transform:uppercase;color:#42A5F5;margin-bottom:16px}
+.em-builder-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.em-bf{display:flex;flex-direction:column;gap:5px}
+.em-bf label{font-family:var(--mono,'Courier New',monospace);font-size:9px;
+  letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.72)}
+.em-bf select{background:var(--ink,#030805);border:1px solid rgba(33,150,243,.2);
+  border-radius:4px;color:#fff;padding:9px 11px;font-size:13px;
+  outline:none;transition:border-color .18s;width:100%;cursor:pointer}
+.em-bf select:focus{border-color:#2196F3}
+.em-bf select option{background:var(--ink,#030805)}
+.em-builder-result{background:rgba(21,101,192,.1);border:1px solid rgba(33,150,243,.2);
+  border-radius:4px;padding:14px 16px;margin-top:12px;display:none}
+.em-br-rec{font-size:13px;color:#42A5F5;margin-bottom:8px;font-weight:600}
+.em-br-sub{font-size:12px;color:rgba(255,255,255,.72);line-height:1.6;margin-bottom:14px}
+/* Welfare */
+.em-wlf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+  gap:9px;margin-bottom:28px}
+.em-wlf-card{background:var(--em-n1,#0d1e3a);border:1px solid rgba(33,150,243,.1);
+  border-radius:4px;padding:15px;transition:border-color .18s}
+.em-wlf-card:hover{border-color:rgba(33,150,243,.28)}
+.em-wlf-name{font-size:13px;font-weight:600;margin-bottom:3px}
+.em-wlf-desc{font-size:11px;color:rgba(255,255,255,.65);line-height:1.5;margin-bottom:10px}
+.em-wlf-price{font-family:var(--mono,'Courier New',monospace);font-size:12px;color:#42A5F5}
+/* Ops table */
+.em-ops{width:100%;border-collapse:collapse;font-size:13px}
+.em-ops th{font-family:var(--mono,'Courier New',monospace);font-size:8px;letter-spacing:2px;
+  text-transform:uppercase;color:rgba(255,255,255,.70);padding:7px 10px;text-align:left;
+  border-bottom:1px solid rgba(33,150,243,.11)}
+.em-ops td{padding:10px;border-bottom:1px solid rgba(33,150,243,.05);
+  color:rgba(255,255,255,.72);font-size:12px}
+.em-ops tr:hover td{background:rgba(21,101,192,.04)}
+.em-ops-price{font-family:var(--mono,'Courier New',monospace);font-size:11px;
+  color:#42A5F5;white-space:nowrap}
+/* Report callout */
+.em-report{background:linear-gradient(135deg,rgba(21,101,192,.15),rgba(66,165,245,.04));
+  border:1px solid rgba(33,150,243,.25);border-radius:4px;padding:22px 24px;
+  margin-top:30px;display:grid;grid-template-columns:1fr auto;
+  align-items:center;gap:20px}
+.em-report-lbl{font-family:var(--mono,'Courier New',monospace);font-size:8px;
+  letter-spacing:3px;text-transform:uppercase;color:#42A5F5;margin-bottom:6px}
+.em-report-title{font-size:16px;font-weight:700;margin-bottom:6px}
+.em-report-body{font-size:13px;color:rgba(255,255,255,.72);line-height:1.65}
+/* Shared enquiry buttons for medic page */
+.em-ewa{display:inline-flex;align-items:center;gap:5px;background:#25D366;color:#fff;
+  border:none;border-radius:3px;padding:7px 13px;font-family:var(--mono,'Courier New',monospace);
+  font-size:9px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;font-weight:700;transition:background .18s;white-space:nowrap}
+.em-ewa:hover{background:#1da851}
+.em-eem{display:inline-flex;align-items:center;gap:5px;background:transparent;
+  color:#42A5F5;border:1px solid rgba(33,150,243,.32);border-radius:3px;
+  padding:7px 13px;font-family:var(--mono,'Courier New',monospace);font-size:9px;
+  letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;
+  text-decoration:none;transition:all .18s;white-space:nowrap}
+.em-eem:hover{background:rgba(33,150,243,.1);border-color:#2196F3}
+@media(max-width:600px){
+  .em-body{padding:22px 14px 60px}
+  .em-builder-row{grid-template-columns:1fr}
+  .em-pkg-grid{grid-template-columns:1fr}
+  .em-ops th:nth-child(3),.em-ops td:nth-child(3){display:none}
 }
 </style>
 <script type="application/ld+json">
@@ -2049,6 +2234,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <a onclick="showPage('about');return false" id="nav-about" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('about')">About Peter</a>
     <a onclick="showPage('services');return false" id="nav-services" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('services')">On Deployment</a>
     <a onclick="showPage('quals');return false" id="nav-quals" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('quals')">Qualifications</a>
+    <a onclick="showPage('elearning');return false" id="nav-elearning" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('elearning')">eLearning</a>
     <a onclick="showPage('journal');return false" id="nav-journal" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('journal')">Journal</a>
     <a onclick="gotoContact();return false" id="nav-contact" class="nav-cta-link" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('contact')">Contact</a>
     <a onclick="showGated('trainer');return false" id="nav-trainer" class="nav-center-link nav-gated" role="button" tabindex="0" style="cursor:pointer">Hire: Trainer<span class="nav-gated-badge">&#128274;</span></a>
@@ -2108,10 +2294,10 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div class="hero-btns">
         <a class="btn btn-primary" onclick="showPage('about');return false" href="#">My Story</a>
         <a class="btn btn-ghost" onclick="showPage('journal');return false" href="#" style="border-color:rgba(0,166,81,.5);color:var(--gm)">See Me In Action &rarr;</a>
-        <a class="btn btn-ghost" onclick="showPage('contact');return false" href="#" style="border-color:rgba(255,255,255,.25)">Book a Conversation &rarr;</a>
+        <a class="btn btn-ghost" onclick="showPage('contact');return false" href="#" style="border-color:rgba(255,255,255,.62)">Book a Conversation &rarr;</a>
       </div>
       <div style="margin-top:10px">
-        <a href="Peter_Craine_CV_v15.docx" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.25);text-decoration:none">&#128196; Download CV</a>
+        <a href="Peter_Craine_CV_v15.docx" target="_blank" rel="noopener noreferrer" style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.62);text-decoration:none">&#128196; Download CV</a>
       </div>
     </div>
     <div class="hero-photo-panel">
@@ -2353,7 +2539,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
            onmouseover="this.style.background='rgba(0,107,63,.08)'" onmouseout="this.style.background='#0d1a10'">
         <div style="font-size:40px;margin-bottom:16px">&#127979;</div>
         <div style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px">Train Your Team</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:20px">FAW &middot; EFAW &middot; BLS &middot; AED. CTLLS Level 4 &middot; 208+ learners. Businesses, schools and community groups across North West England.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.70);line-height:1.75;margin-bottom:20px">FAW &middot; EFAW &middot; BLS &middot; AED. CTLLS Level 4 &middot; 208+ learners. Businesses, schools and community groups across North West England.</div>
         <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm)">Request access to trainer rates &rarr;</div>
         <div style="font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.18);margin-top:8px">&#128274; Approved access required</div>
       </div>
@@ -2363,7 +2549,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
            onmouseover="this.style.background='rgba(0,107,63,.08)'" onmouseout="this.style.background='#0d1a10'">
         <div style="font-size:40px;margin-bottom:16px">&#128657;</div>
         <div style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:8px">Event Medical Cover</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:20px">FREC 3 EAC &middot; 19 medications &middot; Full airway and trauma capability. Road races, football, corporate, multi-agency. North West England base.</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.70);line-height:1.75;margin-bottom:20px">FREC 3 EAC &middot; 19 medications &middot; Full airway and trauma capability. Road races, football, corporate, multi-agency. North West England base.</div>
         <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm)">Request access to medic rates &rarr;</div>
         <div style="font-family:var(--mono);font-size:7px;letter-spacing:1px;color:rgba(255,255,255,.18);margin-top:8px">&#128274; Approved access required</div>
       </div>
@@ -2450,7 +2636,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <div class="about-sec-title">Clinical Skill Profile &mdash; Aerial View</div>
     <div style="position:relative;margin-bottom:32px;background:#05100a;border:1px solid rgba(0,107,63,.2);padding:30px;border-radius:2px">
       <canvas id="about-hems-skills" width="600" height="420" style="display:block;width:100%;max-width:600px;margin:0 auto" aria-label="HEMS scope view of clinical skills"></canvas>
-      <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.4)">// CLINICAL CAPABILITY SCOPE &mdash; EAC LEVEL 3 OF 10 &mdash; FREC 4 IN PROGRESS</div>
+      <div style="text-align:center;margin-top:12px;font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.75)">// CLINICAL CAPABILITY SCOPE &mdash; EAC LEVEL 3 OF 10 &mdash; FREC 4 IN PROGRESS</div>
     </div>
     <div class="skill-legend-wrap">
       <div class="skill-legend-title">Reading this chart</div>
@@ -2489,8 +2675,8 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div style="background:rgba(255,255,255,.04);padding:14px 16px"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gm);margin-bottom:6px">Network Community Lead</div><div style="font-size:13px;color:rgba(255,255,255,.68);line-height:1.75">Community first aid programmes &middot; Fundraising &middot; Engagement with schools, businesses &amp; Local Authorities</div></div>
         <div style="background:rgba(255,255,255,.04);padding:14px 16px"><div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--gm);margin-bottom:6px">Youth Services &amp; President</div><div style="font-size:13px;color:rgba(255,255,255,.68);line-height:1.75">Badger &amp; Cadet programme oversight &middot; Student Volunteering &middot; Youth Leader development &middot; Ceremonial &amp; ambassadorial functions</div></div>
       </div>
-      <p style="font-size:13px;color:rgba(255,255,255,.45);font-style:italic">Combined theoretical monthly commitment across all roles covered: 200+ hours. Line managed by Deputy County Commissioner.</p>
-      <p style="font-size:13px;color:rgba(255,255,255,.5);margin-top:8px"><strong style="color:var(--gm)">Professional Development:</strong> SJA North West management conference &mdash; new volunteer journey framework, recruitment strategy and retention &amp; engagement &mdash; St John Ambulance HQ, Leeds, 19&ndash;20 April 2026.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.72);font-style:italic">Combined theoretical monthly commitment across all roles covered: 200+ hours. Line managed by Deputy County Commissioner.</p>
+      <p style="font-size:13px;color:rgba(255,255,255,.78);margin-top:8px"><strong style="color:var(--gm)">Professional Development:</strong> SJA North West management conference &mdash; new volunteer journey framework, recruitment strategy and retention &amp; engagement &mdash; St John Ambulance HQ, Leeds, 19&ndash;20 April 2026.</p>
     </div>
 
     <div class="about-sec-title">Commendations &amp; Recognition</div>
@@ -2599,7 +2785,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div class="cpd-bar-label-row">
             <span>Key activities</span>
           </div>
-          <div style="font-size:12px;color:rgba(255,255,255,.4);font-style:italic;line-height:1.7">FREC 4 progression modules &middot; SJA NW Management Conference Leeds &middot; Multi-agency exercise participation &middot; Clinical deployment reflection journaling</div>
+          <div style="font-size:12px;color:rgba(255,255,255,.70);font-style:italic;line-height:1.7">FREC 4 progression modules &middot; SJA NW Management Conference Leeds &middot; Multi-agency exercise participation &middot; Clinical deployment reflection journaling</div>
         </div>
       </div>
     </div>
@@ -2995,7 +3181,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
     <p class="serv-cta-sub">FREC 3 EAC available across North West England and UK-wide for paid bookings. Running events, sports fixtures, major race days, corporate and community events.</p>
     <div class="serv-cta-btns">
       <a class="btn btn-primary" onclick="showPage('contact');return false" href="#">Get in Touch &rarr;</a>
-      <a class="btn btn-ghost" onclick="showGated('medic');return false" href="#" style="border-color:rgba(255,255,255,.25)">Hire Me as Event Medic &rarr;</a>
+      <a class="btn btn-ghost" onclick="showGated('medic');return false" href="#" style="border-color:rgba(255,255,255,.62)">Hire Me as Event Medic &rarr;</a>
     </div>
     <div class="serv-cta-trust">FREC 3 &nbsp;&middot;&nbsp; 19 MEDICATIONS &nbsp;&middot;&nbsp; ENHANCED DBS &nbsp;&middot;&nbsp; SJA CLINICAL GOVERNANCE &nbsp;&middot;&nbsp; POST-EVENT REPORT INCLUDED</div>
   </div>
@@ -3033,24 +3219,24 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div style="position:absolute;top:0;right:0;bottom:0;width:4px;background:linear-gradient(180deg,#FFD700,#4488ff)"></div>
         <div style="font-family:var(--mono);font-size:8px;letter-spacing:4px;color:#4488ff;margin-bottom:8px">IN PROGRESS &mdash; TARGET: 2027</div>
         <div style="font-family:var(--display);font-size:22px;color:#fff;letter-spacing:2px;margin-bottom:6px">FREC 4 / Advanced Ambulance Practitioner</div>
-        <div style="font-size:13px;color:rgba(255,255,255,.5);margin-bottom:16px">Significantly expands clinical scope, medication range and patient assessment capability</div>
+        <div style="font-size:13px;color:rgba(255,255,255,.78);margin-bottom:16px">Significantly expands clinical scope, medication range and patient assessment capability</div>
         <div style="height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden">
           <div style="height:100%;width:35%;background:linear-gradient(90deg,#4488ff,#00A651);border-radius:3px"></div>
         </div>
         <div style="display:flex;gap:0;margin-top:12px">
           <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(0,200,100,.8);font-family:var(--mono)">ENROLLED &#10003;</div>
           <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(0,200,100,.8);font-family:var(--mono)">ANATOMY &#10003;</div>
-          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(100,180,255,.8);font-family:var(--mono)">PATHOPHYSIOLOGY &#9654;</div>
-          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.25);font-family:var(--mono)">PHARMACOLOGY</div>
-          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.25);font-family:var(--mono)">CLINICAL SKILLS</div>
-          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.25);font-family:var(--mono)">SIGN OFF</div>
+          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(100,180,255,.95);font-family:var(--mono)">PATHOPHYSIOLOGY &#9654;</div>
+          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.62);font-family:var(--mono)">PHARMACOLOGY</div>
+          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.62);font-family:var(--mono)">CLINICAL SKILLS</div>
+          <div style="flex:1;text-align:center;font-size:8px;letter-spacing:1px;color:rgba(255,255,255,.62);font-family:var(--mono)">SIGN OFF</div>
         </div>
       </div>
       <!-- CPD Stat Card -->
       <div style="width:160px;flex-shrink:0;background:rgba(0,107,63,.1);border:1px solid rgba(0,166,81,.2);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:20px 16px;text-align:center;gap:4px">
-        <div style="font-family:var(--display);font-size:42px;color:var(--gm);letter-spacing:2px;line-height:1">100<span style="font-size:24px;color:rgba(0,200,80,.5)">+</span></div>
-        <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.4);text-transform:uppercase;margin-top:4px">CPD Hours</div>
-        <div style="font-size:10px;color:rgba(0,200,100,.5);font-family:var(--mono)">This year &amp; growing</div>
+        <div style="font-family:var(--display);font-size:42px;color:var(--gm);letter-spacing:2px;line-height:1">100<span style="font-size:24px;color:rgba(0,200,80,.85)">+</span></div>
+        <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.70);text-transform:uppercase;margin-top:4px">CPD Hours</div>
+        <div style="font-size:10px;color:rgba(0,200,100,.85);font-family:var(--mono)">This year &amp; growing</div>
       </div>
       </div><!-- /frec4 flex row -->
 
@@ -3065,10 +3251,10 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div style="background:linear-gradient(160deg,#0d1a10,#050f08);border:1px solid rgba(0,107,63,.4);padding:0;position:relative;overflow:hidden">
           <div style="height:4px;background:linear-gradient(90deg,#006B3F,#00A651)"></div>
           <div style="padding:28px 26px">
-            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.55);margin-bottom:12px">CLINICAL QUALIFICATION</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(0,200,80,.85);margin-bottom:12px">CLINICAL QUALIFICATION</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">FREC 3</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">First Responder Emergency Care<br>IHCD / St John Ambulance</div>
-            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2022 &middot; MAINTAINED UNDER SJA GOVERNANCE</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.80);margin-bottom:8px;line-height:1.5">First Responder Emergency Care<br>IHCD / St John Ambulance</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.62);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2022 &middot; MAINTAINED UNDER SJA GOVERNANCE</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#00A651;box-shadow:0 0 8px #00A651;animation:pulse 2s infinite"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#00A651;letter-spacing:2px">CURRENT</span>
@@ -3080,10 +3266,10 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div style="background:linear-gradient(160deg,#0a0f1a,#050812);border:1px solid rgba(26,58,92,.5);padding:0;position:relative;overflow:hidden">
           <div style="height:4px;background:linear-gradient(90deg,#1A3A5C,#4488ff)"></div>
           <div style="padding:28px 26px">
-            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(100,150,255,.55);margin-bottom:12px">TEACHING QUALIFICATION</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(100,150,255,.85);margin-bottom:12px">TEACHING QUALIFICATION</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">CTLLS L4</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">Certificate in Teaching &mdash; Level 4<br>City &amp; Guilds</div>
-            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2023 &middot; CITY &amp; GUILDS ACCREDITED</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.80);margin-bottom:8px;line-height:1.5">Certificate in Teaching &mdash; Level 4<br>City &amp; Guilds</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.62);letter-spacing:1px;margin-bottom:16px">ACHIEVED 2023 &middot; CITY &amp; GUILDS ACCREDITED</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#4488ff"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#4488ff;letter-spacing:2px">ACHIEVED</span>
@@ -3095,10 +3281,10 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         <div style="background:linear-gradient(160deg,#110e00,#0a0800);border:1px solid rgba(184,134,11,.4);padding:0;position:relative;overflow:hidden">
           <div style="height:4px;background:linear-gradient(90deg,#B8860B,#FFD700)"></div>
           <div style="padding:28px 26px">
-            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(255,215,0,.55);margin-bottom:12px">DRIVING AUTHORITY</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:3px;color:rgba(255,215,0,.85);margin-bottom:12px">DRIVING AUTHORITY</div>
             <div style="font-family:var(--display);font-size:36px;color:#fff;letter-spacing:3px;line-height:1;margin-bottom:6px">CERAD L3</div>
-            <div style="font-size:13px;color:rgba(255,255,255,.55);margin-bottom:8px;line-height:1.5">Blue Light Driving Authority<br>Category C &middot; PCV / D1</div>
-            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.25);letter-spacing:1px;margin-bottom:16px">CURRENT &middot; DVSA CATEGORY C &middot; PCV D1 &middot; MIDAS</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.80);margin-bottom:8px;line-height:1.5">Blue Light Driving Authority<br>Category C &middot; PCV / D1</div>
+            <div style="font-family:var(--mono);font-size:8px;color:rgba(255,255,255,.62);letter-spacing:1px;margin-bottom:16px">CURRENT &middot; DVSA CATEGORY C &middot; PCV D1 &middot; MIDAS</div>
             <div style="display:flex;align-items:center;gap:8px">
               <div style="width:8px;height:8px;border-radius:50%;background:#FFD700;box-shadow:0 0 8px rgba(255,215,0,.6)"></div>
               <span style="font-family:var(--mono);font-size:9px;color:#FFD700;letter-spacing:2px">CURRENT</span>
@@ -3109,49 +3295,49 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       </div><!-- /featured 3 -->
 
       <!-- COMPACT LIST: remaining quals -->
-      <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:rgba(255,255,255,.25);margin:28px 0 12px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:rgba(255,255,255,.15);display:inline-block"></span>FULL CREDENTIALS</div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:rgba(255,255,255,.62);margin:28px 0 12px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:rgba(255,255,255,.15);display:inline-block"></span>FULL CREDENTIALS</div>
       <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:40px">
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.12);border-left:3px solid #006B3F;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">IREC &mdash; Immediate Responder Emergency Care</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">IHCD / St John Ambulance &middot; <em>Foundation-level pre-hospital emergency care</em></div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">IREC &mdash; Immediate Responder Emergency Care</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">IHCD / St John Ambulance &middot; <em>Foundation-level pre-hospital emergency care</em></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">FROS Level 3 &mdash; First Responder on Scene</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">FutureQuals &middot; <em>Scene management and initial clinical response</em></div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">FROS Level 3 &mdash; First Responder on Scene</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">FutureQuals &middot; <em>Scene management and initial clinical response</em></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(26,58,92,.08);border:1px solid rgba(26,58,92,.2);border-left:3px solid #1A3A5C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">AAVRA Assessor Award</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">Accredited Assessor &amp; Verifier &mdash; FAW &middot; EFAW &middot; BLS &middot; AED &middot; <em>Authority to train and assess first aid to national standard</em></div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">AAVRA Assessor Award</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">Accredited Assessor &amp; Verifier &mdash; FAW &middot; EFAW &middot; BLS &middot; AED &middot; <em>Authority to train and assess first aid to national standard</em></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#4488ff"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">PCV / D1 &amp; Category C Licence</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">DVSA &mdash; Full driving authority including ambulance and minibus classes</div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">PCV / D1 &amp; Category C Licence</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">DVSA &mdash; Full driving authority including ambulance and minibus classes</div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#FFD700"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.04);border:1px solid rgba(0,107,63,.1);border-left:3px solid #004D2C;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">MIDAS &mdash; Minibus Driver Awareness Scheme</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">DVSA / Passenger Transport &mdash; Enhanced minibus driving assessment &middot; Complements PCV / D1 authority</div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">MIDAS &mdash; Minibus Driver Awareness Scheme</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">DVSA / Passenger Transport &mdash; Enhanced minibus driving assessment &middot; Complements PCV / D1 authority</div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#FFD700"></div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr auto auto;align-items:center;padding:14px 20px;background:rgba(0,107,63,.06);border:1px solid rgba(0,107,63,.12);border-left:3px solid #006B3F;gap:16px">
-          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">Enhanced DBS Certificate</div><div style="font-size:11px;color:rgba(255,255,255,.35);margin-top:2px">Disclosure &amp; Barring Service &mdash; In date &middot; Available on request for event organisers and training clients</div></div>
-          <div style="font-size:10px;color:rgba(255,255,255,.3);white-space:nowrap;font-family:var(--mono)">Current</div>
+          <div><div style="font-family:var(--display);font-size:15px;color:#fff;letter-spacing:1px">Enhanced DBS Certificate</div><div style="font-size:11px;color:rgba(255,255,255,.68);margin-top:2px">Disclosure &amp; Barring Service &mdash; In date &middot; Available on request for event organisers and training clients</div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.65);white-space:nowrap;font-family:var(--mono)">Current</div>
           <div style="width:8px;height:8px;border-radius:50%;background:#00A651"></div>
         </div>
 
       </div><!-- /compact list -->
 
       <!-- Commendations & Recognition -->
-      <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:rgba(255,255,255,.25);margin:0 0 16px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:rgba(255,255,255,.15);display:inline-block"></span>COMMENDATIONS &amp; RECOGNITION</div>
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:4px;color:rgba(255,255,255,.62);margin:0 0 16px;display:flex;align-items:center;gap:12px"><span style="width:20px;height:1px;background:rgba(255,255,255,.15);display:inline-block"></span>COMMENDATIONS &amp; RECOGNITION</div>
       <div style="display:flex;flex-direction:column;gap:4px;margin-bottom:40px">
 
         <!-- Commendation 1: Janet Catto, May 2025 -->
@@ -3160,15 +3346,15 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
             <div style="display:flex;align-items:center;gap:12px">
               <div style="font-size:22px;flex-shrink:0">&#127885;</div>
               <div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.6);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.88);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
                 <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Janet Catto</div>
-                <div style="font-size:11px;color:rgba(255,255,255,.4)">Deputy Chief Commissioner, St John Ambulance</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.70)">Deputy Chief Commissioner, St John Ambulance</div>
               </div>
             </div>
             <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);padding:5px 12px;white-space:nowrap;color:#FFD700;flex-shrink:0">May 2025</div>
           </div>
-          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"Your unwavering commitment has not gone unnoticed &mdash; it is my pleasure to acknowledge the significant impact you have made in establishing the Darwen team, which has become a beacon of hope for East Lancashire."</div>
-          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.4)">Commissioner Commendation &middot; May 2025 &middot; Community Leadership &amp; Operational Excellence</div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.80);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"Your unwavering commitment has not gone unnoticed &mdash; it is my pleasure to acknowledge the significant impact you have made in establishing the Darwen team, which has become a beacon of hope for East Lancashire."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.75)">Commissioner Commendation &middot; May 2025 &middot; Community Leadership &amp; Operational Excellence</div>
         </div>
 
         <!-- Commendation 2: Adam Brogden, June 2025 -->
@@ -3177,15 +3363,15 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
             <div style="display:flex;align-items:center;gap:12px">
               <div style="font-size:22px;flex-shrink:0">&#127885;</div>
               <div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.6);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(255,215,0,.88);text-transform:uppercase;margin-bottom:3px">Commissioner Commendation</div>
                 <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Adam Brogden</div>
-                <div style="font-size:11px;color:rgba(255,255,255,.4)">Commissioner for the North West, St John Ambulance</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.70)">Commissioner for the North West, St John Ambulance</div>
               </div>
             </div>
             <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(255,215,0,.1);border:1px solid rgba(255,215,0,.3);padding:5px 12px;white-space:nowrap;color:#FFD700;flex-shrink:0">June 2025</div>
           </div>
-          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"The work you have done in Darwen is incredible. I look forward to working with you in the future."</div>
-          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.4)">Commissioner Commendation &middot; June 2025 &middot; Community Service &amp; Impact</div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.80);line-height:1.75;border-left:2px solid rgba(255,215,0,.2);padding-left:14px;margin-bottom:10px">"The work you have done in Darwen is incredible. I look forward to working with you in the future."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,215,0,.75)">Commissioner Commendation &middot; June 2025 &middot; Community Service &amp; Impact</div>
         </div>
 
         <!-- Award 3: Prior's Award, January 2026 -->
@@ -3194,15 +3380,15 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
             <div style="display:flex;align-items:center;gap:12px">
               <div style="font-size:22px;flex-shrink:0">&#9875;</div>
               <div>
-                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(192,192,192,.6);text-transform:uppercase;margin-bottom:3px">Award from the Prior</div>
+                <div style="font-family:var(--mono);font-size:7px;letter-spacing:3px;color:rgba(192,192,192,.85);text-transform:uppercase;margin-bottom:3px">Award from the Prior</div>
                 <div style="font-family:var(--display);font-size:18px;color:#fff;letter-spacing:1px">Rear Admiral Simon Williams</div>
-                <div style="font-size:11px;color:rgba(255,255,255,.4)">Prior, St John Ambulance</div>
+                <div style="font-size:11px;color:rgba(255,255,255,.70)">Prior, St John Ambulance</div>
               </div>
             </div>
             <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;background:rgba(192,192,192,.08);border:1px solid rgba(192,192,192,.25);padding:5px 12px;white-space:nowrap;color:#C0C0C0;flex-shrink:0">January 2026</div>
           </div>
-          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.55);line-height:1.75;border-left:2px solid rgba(192,192,192,.2);padding-left:14px;margin-bottom:10px">"Showing adaptability, learning and creativity in responding to community and organisational needs."</div>
-          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(192,192,192,.4)">Responsiveness &amp; Resilience Award &middot; January 2026 &middot; National Recognition</div>
+          <div style="font-style:italic;font-size:13px;color:rgba(255,255,255,.80);line-height:1.75;border-left:2px solid rgba(192,192,192,.2);padding-left:14px;margin-bottom:10px">"Showing adaptability, learning and creativity in responding to community and organisational needs."</div>
+          <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(192,192,192,.75)">Responsiveness &amp; Resilience Award &middot; January 2026 &middot; National Recognition</div>
         </div>
 
       </div><!-- /awards -->
@@ -3216,7 +3402,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
           <div style="font-size:20px;flex-shrink:0;margin-top:2px">&#128138;</div>
           <div style="font-size:13px;color:rgba(255,255,255,.6);line-height:1.75"><strong style="color:rgba(255,255,255,.85)">Most event medics carry oxygen and aspirin.</strong> Peter's EAC scope includes <strong style="color:rgba(255,255,255,.85)">adrenaline</strong> for anaphylaxis, <strong style="color:rgba(255,255,255,.85)">naloxone</strong> for opioid emergencies, <strong style="color:rgba(255,255,255,.85)">salbutamol</strong> for acute asthma, <strong style="color:rgba(255,255,255,.85)">Penthrox</strong> (methoxyflurane) for pain management, and <strong style="color:rgba(255,255,255,.85)">Entonox</strong> &mdash; all administered under St John Ambulance clinical governance. Click any medication below to view route and indication.</div>
         </div>
-        <p style="font-size:13px;color:rgba(255,255,255,.25);margin-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:1px">CLICK ANY MEDICATION TO SEE ROUTE &amp; INDICATION</p>
+        <p style="font-size:13px;color:rgba(255,255,255,.62);margin-bottom:24px;font-family:var(--mono);font-size:9px;letter-spacing:1px">CLICK ANY MEDICATION TO SEE ROUTE &amp; INDICATION</p>
         <div id="meds-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:2px"></div>
       </div>
 
@@ -3264,14 +3450,14 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:40px">
         <a onclick="showPage('deployments');return false" href="#" style="padding:20px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(0,107,63,.1)';this.style.borderColor='rgba(0,166,81,.2)'" onmouseout="this.style.background='rgba(255,255,255,.03)';this.style.borderColor='rgba(255,255,255,.07)'">
           <div>
-            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:4px">See the credentials in action</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:4px">See the credentials in action</div>
             <div style="font-family:var(--display);font-size:18px;letter-spacing:1px;color:#fff">On Deployment &rarr;</div>
           </div>
           <div style="font-size:20px;color:var(--gm);flex-shrink:0">&#9889;</div>
         </a>
         <a onclick="showPage('training');return false" href="#" style="padding:20px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;cursor:pointer;transition:background .2s" onmouseover="this.style.background='rgba(0,107,63,.1)';this.style.borderColor='rgba(0,166,81,.2)'" onmouseout="this.style.background='rgba(255,255,255,.03)';this.style.borderColor='rgba(255,255,255,.07)'">
           <div>
-            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:4px">CTLLS L4 qualified trainer</div>
+            <div style="font-family:var(--mono);font-size:8px;letter-spacing:2px;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:4px">CTLLS L4 qualified trainer</div>
             <div style="font-family:var(--display);font-size:18px;letter-spacing:1px;color:#fff">First Aid Training &rarr;</div>
           </div>
           <div style="font-size:20px;color:var(--gm);flex-shrink:0">&#128203;</div>
@@ -3282,7 +3468,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
       <div style="background:linear-gradient(135deg,rgba(0,107,63,.15),rgba(0,40,20,.1));border:1px solid rgba(0,166,81,.2);padding:36px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
         <div>
           <div style="font-family:var(--display);font-size:28px;letter-spacing:2px;color:#fff;margin-bottom:6px">Looking for event medical cover?</div>
-          <div style="font-size:13px;color:rgba(255,255,255,.5);line-height:1.6">FREC 3 EAC &middot; 19-medication scope &middot; North West England &middot; SJA clinical governance</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.78);line-height:1.6">FREC 3 EAC &middot; 19-medication scope &middot; North West England &middot; SJA clinical governance</div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap">
           <button onclick="showPage('contact')" class="btn btn-solid" style="font-size:10px;letter-spacing:2px;padding:12px 24px">Get in Touch</button>
@@ -3296,6 +3482,69 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
 <!-- ════════════════════════════════════════════════════════
      PAGE: JOURNAL
 ════════════════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════════════════
+     PAGE: ELEARNING
+════════════════════════════════════════════════════════ -->
+<div id="page-elearning" style="display:none">
+  <div class="page-hero sr-item-left" style="min-height:280px">
+    <div class="page-hero-inner">
+      <div class="page-eyebrow">NorthPoint First Aid &middot; Online Learning</div>
+      <h1 class="page-h1">eLearning<br><span style="color:var(--gm)">Courses &amp; CPD</span></h1>
+      <div class="page-sub">Flexible, accredited online training — delivered through the NorthPoint First Aid platform. Browse the full catalogue below.</div>
+    </div>
+  </div>
+
+  <!-- ── PRICING BANNER ── -->
+  <div style="background:linear-gradient(90deg,#004D2C,#006B3F,#004D2C);border-top:1px solid rgba(0,166,81,.4);border-bottom:1px solid rgba(0,166,81,.4)">
+    <div style="max-width:1060px;margin:0 auto;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <div style="width:9px;height:9px;border-radius:50%;background:#00A651;box-shadow:0 0 8px rgba(0,166,81,.7);flex-shrink:0"></div>
+        <div>
+          <div style="font-family:var(--display);font-size:22px;letter-spacing:2px;color:#fff">Courses from £20 &ndash; £70 per learner / month</div>
+          <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,.85);margin-top:3px">Group discounts available for 12+ learners &mdash; contact Peter directly to discuss</div>
+        </div>
+      </div>
+      <a onclick="showPage('contact');return false" href="#"
+         style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:10px 20px;background:rgba(0,166,81,.25);border:1px solid rgba(0,166,81,.6);color:#fff;text-decoration:none;border-radius:2px;white-space:nowrap;transition:background .2s"
+         onmouseover="this.style.background='rgba(0,166,81,.45)'" onmouseout="this.style.background='rgba(0,166,81,.25)'">
+        Enquire About Group Rates &rarr;
+      </a>
+    </div>
+  </div>
+
+  <!-- ── CATALOGUE IFRAME ── -->
+  <div style="background:#050D07;min-height:calc(100vh - 160px);display:flex;flex-direction:column">
+    <div id="el-loading" style="text-align:center;padding:40px 20px;font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,.65);text-transform:uppercase">
+      Loading course catalogue&hellip;
+    </div>
+    <iframe
+      id="el-frame"
+      src="https://northpointfirstaid.jumplms.com/learnercatalogue"
+      title="NorthPoint First Aid — Learner Course Catalogue"
+      allow="fullscreen"
+      style="width:100%;flex:1;min-height:calc(100vh - 160px);border:none;display:none"
+      onload="document.getElementById('el-loading').style.display='none';this.style.display='block'"
+      onerror="document.getElementById('el-loading').innerHTML='&#9888;&nbsp; The course catalogue could not be embedded. <a href=\'https://northpointfirstaid.jumplms.com/learnercatalogue\' target=\'_blank\' rel=\'noopener\' style=\'color:var(--gm)\'>Open in a new tab &rarr;</a>'"
+    ></iframe>
+    <!-- Fallback: shown if iframe blocked by X-Frame-Options -->
+    <noscript>
+      <div style="padding:40px;text-align:center;color:rgba(255,255,255,.78);font-family:var(--mono);font-size:11px;letter-spacing:2px">
+        JavaScript is required to view the course catalogue.
+        <a href="https://northpointfirstaid.jumplms.com/learnercatalogue" target="_blank" rel="noopener" style="color:var(--gm)">Open directly &rarr;</a>
+      </div>
+    </noscript>
+  </div>
+
+  <!-- ── FALLBACK LINK STRIP (always visible below iframe) ── -->
+  <div style="background:var(--ink);border-top:1px solid rgba(0,107,63,.2);padding:24px 40px;text-align:center">
+    <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,.65)">Can't see the catalogue? &nbsp;</span>
+    <a href="https://northpointfirstaid.jumplms.com/learnercatalogue" target="_blank" rel="noopener"
+       style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);text-decoration:none;border-bottom:1px solid rgba(0,166,81,.4)">
+      Open NorthPoint First Aid directly &rarr;
+    </a>
+  </div>
+</div><!-- /page-elearning -->
+
 <div id="page-journal" style="display:none">
 
   <!-- Index view -->
@@ -3370,7 +3619,7 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
         </div>
         <div class="jsw">
           <div class="jsw-title">Need Cover?</div>
-          <p style="font-size:12px;color:rgba(255,255,255,.45);line-height:1.75;margin-bottom:12px">Race, fixture, public event or community function. FREC 3 EAC &middot; 19 medications &middot; Full clinical scope &middot; North West England.</p>
+          <p style="font-size:12px;color:rgba(255,255,255,.72);line-height:1.75;margin-bottom:12px">Race, fixture, public event or community function. FREC 3 EAC &middot; 19 medications &middot; Full clinical scope &middot; North West England.</p>
           <p style="font-family:var(--mono);font-size:8px;letter-spacing:1px;color:rgba(0,166,81,.5);line-height:1.6;margin-bottom:14px">32+ deployments &middot; Available now</p>
           <button onclick="showPage('contact')" class="btn btn-solid" style="width:100%;font-size:10px">Enquire About Cover</button>
         </div>
@@ -4063,6 +4312,13 @@ function _doShowPage(id) {
   if (id==='about') { initAboutPage(); }
   if (id==='quals') { setTimeout(renderCertDash, 100); setTimeout(renderMedsGrid, 150); }
   if (id==='journal') { renderFeatured(); renderJournalList(); setTimeout(initJournalECG,200); }
+  if (id==='elearning') {
+    var ef = document.getElementById('el-frame');
+    if (ef && !ef.getAttribute('data-loaded')) {
+      ef.setAttribute('data-loaded','1');
+      ef.src = ef.src; /* trigger load if not already loaded */
+    }
+  }
 }
 
 /* ── MENU ─────────────────────────────────────────────────────────────────── */
@@ -4753,7 +5009,7 @@ function buildArticleHTML(idx, p) {
     '<aside style="padding:52px 0 52px 32px;border-left:1px solid rgba(0,107,63,.12)">' +
       '<div class="jsw" style="margin-bottom:18px;border-top-color:'+bg+'">' +
         '<div class="jsw-title">' + cta.label + '</div>' +
-        '<p style="font-size:11px;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:12px">' + cta.sub + '</p>' +
+        '<p style="font-size:11px;color:rgba(255,255,255,.70);line-height:1.75;margin-bottom:12px">' + cta.sub + '</p>' +
         '<button onclick="showPage(\''+cta.page+'\')" class="btn btn-solid" style="width:100%;font-size:10px">' + cta.btn + '</button>' +
       '</div>' +
       '<div class="jsw">' +
@@ -4762,7 +5018,7 @@ function buildArticleHTML(idx, p) {
       '</div>' +
       '<div class="jsw">' +
         '<div class="jsw-title">About Peter</div>' +
-        '<p style="font-size:12px;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:12px">EAC &middot; FREC 3 &middot; Network Lead &middot; East Lancashire. Available for event medical cover and first aid training across North West England.</p>' +
+        '<p style="font-size:12px;color:rgba(255,255,255,.68);line-height:1.7;margin-bottom:12px">EAC &middot; FREC 3 &middot; Network Lead &middot; East Lancashire. Available for event medical cover and first aid training across North West England.</p>' +
         '<button onclick="showPage(\'about\')" class="btn btn-outline" style="width:100%;font-size:10px;margin-bottom:6px">Full Profile</button>' +
         '<button onclick="showPage(\'contact\')" class="btn btn-outline" style="width:100%;font-size:10px">Get in Touch</button>' +
       '</div>' +
@@ -4980,7 +5236,7 @@ function renderCertDash() {
     return '<div style="background:'+colours[cert.status]+';border:1px solid '+cert.colour+'44;padding:16px 12px;text-align:center;position:relative">' +
       '<div style="font-size:24px;margin-bottom:6px">'+cert.icon+'</div>' +
       '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;letter-spacing:1px;color:#fff;margin-bottom:2px">'+cert.label+'</div>' +
-      '<div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:6px">'+cert.sub+'</div>' +
+      '<div style="font-size:10px;color:rgba(255,255,255,.70);margin-bottom:6px">'+cert.sub+'</div>' +
       '<div style="font-size:8px;letter-spacing:2px;color:'+textC[cert.status]+';font-family:JetBrains Mono,monospace">'+cert.status+'</div>' +
       '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:'+cert.colour+'"></div>' +
       '</div>';
@@ -5871,7 +6127,7 @@ function toggleChecklist(){
         <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--gm);display:flex;align-items:center;gap:5px">&#10003; One-tap enquiry per course</span>
       </div>
       <!-- Intent cards -->
-      <p style="font-size:12px;color:rgba(255,255,255,.45);margin-bottom:12px;line-height:1.6">What best describes you? <em>(tap one — no typing needed)</em></p>
+      <p style="font-size:12px;color:rgba(255,255,255,.72);margin-bottom:12px;line-height:1.6">What best describes you? <em>(tap one — no typing needed)</em></p>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px" id="intent-grid">
         <div class="ic-card" onclick="selIntent(this,'Corporate / Workplace')"><span class="ic-em">&#127962;</span><span class="ic-lb">Corporate / Workplace</span></div>
         <div class="ic-card" onclick="selIntent(this,'School / Nursery')"><span class="ic-em">&#127979;</span><span class="ic-lb">School / Nursery</span></div>
@@ -5910,7 +6166,7 @@ function toggleChecklist(){
 
     <!-- ACCESS CODE PANEL -->
     <div class="access-panel" id="panel-code">
-      <p style="font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:20px">
+      <p style="font-size:13px;color:rgba(255,255,255,.72);line-height:1.7;margin-bottom:20px">
         If you have received an access code from Peter, enter it below. Codes are case-insensitive.
       </p>
       <div class="access-field">
@@ -5983,26 +6239,180 @@ function toggleChecklist(){
 
 <!-- GATED PAGE: HIRE ME AS EVENT MEDIC -->
 <div id="page-medic" style="display:none">
-  <div class="page-hero sr-item-left" style="min-height:220px;background:var(--ink)">
-    <div class="page-hero-inner">
-      <div class="page-eyebrow">Approved Access &mdash; Event Medical</div>
-      <h1 class="page-h1">Hire Me as an Event Medic</h1>
-      <div class="page-sub">EAC &middot; FREC 3 &middot; 19 Medications &middot; North West England &middot; Available Now</div>
+  <div class="page-hero sr-item-left" style="min-height:auto;padding-bottom:36px;background:linear-gradient(155deg,#0d1e3a 0%,var(--ink) 60%)">
+    <div class="page-hero-inner" style="position:relative">
+      <!-- NorthPoint Event Medical logo placeholder — replace src with hosted image path -->
+      <div style="position:absolute;top:0;right:0;display:flex;align-items:center;gap:10px;opacity:.6">
+        <img src="assets/np-event-medical.png" alt="NorthPoint Event Medical" width="52" height="58"
+          style="clip-path:polygon(50% 0%,100% 20%,100% 72%,50% 100%,0% 72%,0% 20%)"
+          onerror="this.style.display='none'">
+        <span style="font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.70);line-height:1.5">NorthPoint<br>Event Medical</span>
+      </div>
+      <div class="page-eyebrow" style="color:#42A5F5">Approved Access &mdash; Event Medical Portfolio</div>
+      <h1 class="page-h1">Hire Me as Your <span style="color:#2196F3">Event Medic</span></h1>
+      <div class="page-sub" style="max-width:560px">EAC-level clinical cover from a practising FREC 3. Proper documentation, proper governance, proper handover &mdash; not just someone with a bag.</div>
+      <div class="em-trust">
+        <span class="em-tb">FREC 3 / EAC</span>
+        <span class="em-tb">19 Medications</span>
+        <span class="em-tb">12-Lead ECG</span>
+        <span class="em-tb">SJA Clinical Governance</span>
+        <span class="em-tb">Purple Guide Compliant</span>
+        <span class="em-tb">Enhanced DBS</span>
+        <span class="em-tb">Fully Insured</span>
+        <span class="em-tb">Post-Event Report Included</span>
+      </div>
+      <div class="em-pg">
+        <div class="em-pg-lbl">Purple Guide &mdash; Why EAC Level Matters</div>
+        <div class="em-pg-txt">Events over 500 attendees, physical activity events, or elevated-risk environments are recommended to have EAC-level clinical cover as a minimum. An EAC can administer 19 medications independently, acquire and interpret 12-lead ECGs, and act as lead clinician at a treatment centre &mdash; significantly beyond a standard first aider.</div>
+      </div>
+      <div class="em-avail">
+        <div class="em-av-dot"></div>
+        <div>
+          <div class="em-av-txt">TAKING BOOKINGS &mdash; Q3 / Q4 2026</div>
+          <div class="em-av-sub">North West England &middot; Typically 1&ndash;2 week lead time &middot; Enquire early for large events</div>
+        </div>
+      </div>
+      <div class="em-cov">
+        <span class="em-cov-lbl">COVERAGE:</span>
+        <span class="em-cov-tag em-pri">Lancashire</span>
+        <span class="em-cov-tag em-pri">Greater Manchester</span>
+        <span class="em-cov-tag em-pri">Merseyside</span>
+        <span class="em-cov-tag em-pri">Cheshire</span>
+        <span class="em-cov-tag">West Yorkshire</span>
+        <span class="em-cov-tag">Cumbria</span>
+        <span class="em-cov-tag">Lake District</span>
+        <span class="em-cov-tag" style="font-style:italic">National &mdash; right event</span>
+      </div>
     </div>
   </div>
-  <div class="gated-placeholder">
-    <div class="gated-placeholder-icon">&#128657;</div>
-    <div class="gated-placeholder-title">Content Coming Soon</div>
-    <div class="gated-placeholder-body">
-      This section is being prepared. Availability calendar, rates, coverage area and booking process will appear here shortly.
-      In the meantime, use the <button onclick="showPage('contact')" style="background:none;border:none;color:var(--gm);cursor:pointer;font-size:inherit;text-decoration:underline;padding:0">contact page</button> to get in touch directly.
+
+  <div class="em-body">
+    <!-- Event type helper -->
+    <div class="em-helper">
+      <span class="em-hl">WHAT TYPE OF EVENT?</span>
+      <select class="em-hsel" onchange="emHelper(this.value)">
+        <option value="">Select your event type &rarr;</option>
+        <option value="fete">Village Fete / Community Event</option>
+        <option value="sports">Sports Event (running, cycling, football)</option>
+        <option value="festival">Music Festival / Large Outdoor</option>
+        <option value="corporate">Corporate / Private Function</option>
+        <option value="school">School / Education Event</option>
+        <option value="extreme">Extreme / High-Risk Sport</option>
+        <option value="overnight">Multi-Day / Overnight Event</option>
+      </select>
+      <span class="em-hres" id="em-hres"></span>
     </div>
+
+    <!-- Tabs -->
+    <div class="em-tabs">
+      <button class="em-tab em-act" onclick="emTab('svc',this)">Staff &amp; Rates <span class="em-tc">5</span></button>
+      <button class="em-tab" onclick="emTab('eq',this)">Equipment Hire <span class="em-tc">35</span></button>
+      <button class="em-tab" onclick="emTab('pkg',this)">Packages <span class="em-tc">3+</span></button>
+      <button class="em-tab" onclick="emTab('wlf',this)">Welfare &amp; Ops</button>
+    </div>
+
+    <div id="em-tab-svc">
+      <div class="em-slbl">Clinical staff rates &mdash; per hour unless stated &mdash; additional crew sub-contracted on request</div>
+      <div class="em-rate-grid" id="em-rate-grid"></div>
+      <div style="margin-top:26px">
+        <div class="em-slbl">Overnight Cover</div>
+        <div class="em-overnight">
+          <div>
+            <div class="em-rc-role">Overnight Standby Medic</div>
+            <div class="em-rc-qual">On-site overnight deployment</div>
+            <div class="em-rc-desc">Continuous overnight medical presence for festivals and multi-day events. Includes rest provision, full clinical kit, and immediate response capability throughout the night.</div>
+            <div class="em-rc-tags">
+              <span class="em-rc-tag">Festivals</span>
+              <span class="em-rc-tag">Multi-Day</span>
+              <span class="em-rc-tag">Camping Events</span>
+            </div>
+          </div>
+          <div style="text-align:right;flex-shrink:0">
+            <div class="em-rate">&pound;300</div>
+            <div class="em-unit">per night</div>
+            <div class="em-eq-row">
+              <a class="em-ewa" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20interested%20in%20Overnight%20Standby%20Medic%20cover%20and%20would%20like%20to%20discuss%20my%20event%20dates%20and%20requirements." target="_blank">&#128172; WhatsApp</a>
+              <a class="em-eem" href="mailto:peter.craine@me.com?subject=Overnight%20Standby%20Medic%20Enquiry&body=Hi%20Peter%2C%0A%0AI%27m%20interested%20in%20overnight%20standby%20medical%20cover.%0A%0AEvent%20date(s)%3A%0ALocation%3A%0AExpected%20attendance%3A%0AEvent%20type%3A">&#9993; Email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="em-tab-eq" style="display:none">
+      <div id="em-eq-body"></div>
+    </div>
+
+    <div id="em-tab-pkg" style="display:none">
+      <div class="em-slbl">Guide prices &mdash; shopping list rates applied &mdash; staff costs vary by event duration</div>
+      <div class="em-pkg-grid" id="em-pkg-grid"></div>
+      <div class="em-builder">
+        <div class="em-builder-title">Build a Custom Quote</div>
+        <div class="em-builder-row">
+          <div class="em-bf">
+            <label>Event Type</label>
+            <select id="em-b-type" onchange="emBuild()">
+              <option value="">Select type</option>
+              <option value="fete">Community / Village Fete</option>
+              <option value="sports">Sports Event</option>
+              <option value="festival">Festival / Large Outdoor</option>
+              <option value="corporate">Corporate / Private</option>
+              <option value="extreme">Extreme / High-Risk</option>
+              <option value="overnight">Multi-Day / Overnight</option>
+            </select>
+          </div>
+          <div class="em-bf">
+            <label>Expected Attendance</label>
+            <select id="em-b-att" onchange="emBuild()">
+              <option value="">Select size</option>
+              <option value="u100">Under 100</option>
+              <option value="100-500">100&ndash;500</option>
+              <option value="500-1500">500&ndash;1,500</option>
+              <option value="1500p">Over 1,500</option>
+            </select>
+          </div>
+        </div>
+        <div id="em-builder-result" class="em-builder-result">
+          <div class="em-br-rec" id="em-br-rec"></div>
+          <div class="em-br-sub" id="em-br-sub"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <a class="em-ewa" id="em-br-wa" href="#" target="_blank">&#128172; Discuss on WhatsApp</a>
+            <a class="em-eem" id="em-br-em" href="#">&#9993; Email Enquiry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="em-tab-wlf" style="display:none">
+      <div class="em-slbl">Welfare &amp; public health &mdash; per-event charges</div>
+      <div class="em-wlf-grid" id="em-wlf-grid"></div>
+      <div style="margin-top:26px">
+        <div class="em-slbl">Operational &amp; admin costs</div>
+        <table class="em-ops">
+          <thead><tr><th>Item</th><th>Charge</th><th>Notes</th></tr></thead>
+          <tbody id="em-ops-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="em-report">
+      <div>
+        <div class="em-report-lbl">Included With Every Deployment</div>
+        <div class="em-report-title">Written Post-Event Medical Report</div>
+        <div class="em-report-body">Delivered within 48 hours of event close. Covers all patient contacts, treatments administered, medications given, NWAS handovers, and recommendations for future events. Suitable for insurance purposes and event licensing.</div>
+      </div>
+      <div style="flex-shrink:0;font-size:38px;opacity:.35">&#128203;</div>
+    </div>
+  </div>
+
+  <div style="text-align:center;padding:40px 24px 60px;border-top:1px solid rgba(21,101,192,.1)">
     <button class="gated-logout" onclick="revokeAccess('medic')">&#128275; Sign out of this page</button>
   </div>
 </div>
 
 
 <!-- Sticky Event Strip -->
+
 <div id="sticky-event-strip" role="complementary" aria-label="Event cover availability">
   <div class="sticky-strip-left">
     <div class="sticky-strip-dot"></div>
@@ -6212,6 +6622,303 @@ function trHelper(v){
   // Also init if localStorage already has access (page loads directly into trainer)
   if(localStorage.getItem('access_trainer')==='granted'){
     document.addEventListener('DOMContentLoaded', function(){ setTimeout(trInit, 100); });
+  }
+})();
+</script>
+<script>
+/* ── EVENT MEDICAL PAGE: DATA & RENDERER ───────────────────── */
+var EM_WA='447756831072', EM_MAIL='peter.craine@me.com';
+function emWA(t){return 'https://wa.me/'+EM_WA+'?text='+encodeURIComponent('Hi Peter, I\'m interested in '+t+' for my event. Could we discuss availability and requirements? (Via petercrainemedic.co.uk)');}
+function emEM(t){return 'mailto:'+EM_MAIL+'?subject='+encodeURIComponent('Event Medical Enquiry: '+t)+'&body='+encodeURIComponent('Hi Peter,\n\nI\'m interested in '+t+'.\n\nEvent date:\nLocation:\nExpected attendance:\nEvent type:\n\nThanks');}
+
+var EM_STAFF=[
+  {role:'Basic First Aider',qual:'EFAW / FAW / FREC 3',rate:'\xa335',unit:'per hour',
+   desc:'Essential clinical cover for low-risk community events. FREC 3-qualified with full patient documentation and incident reporting.',
+   tags:['Community Events','Fetes','Low-Risk','Indoor']},
+  {role:'Experienced Event First Aider',qual:'Higher-Level Qualified',rate:'\xa345',unit:'per hour',
+   desc:'Festival and sports event qualified. Experienced in crowd medicine, dynamic environments, and mass casualty awareness.',
+   tags:['Festivals','Sports Events','Concerts','Public Events']},
+  {role:'Advanced First Aider',qual:'FREC 4 / IHCD Equivalent',rate:'\xa360',unit:'per hour',
+   desc:'Higher acuity clinical capability. Complex trauma, extended assessment, and intermediate interventions. Suitable as clinical lead for medium events.',
+   tags:['Sports Events','Corporate','Higher Risk','Clinical Lead']},
+  {role:'Event Medical Commander',qual:'FREC 3 EAC + Command Experience',rate:'\xa3120',unit:'per hour',
+   desc:'Full command of a medical deployment. Clinical governance, NWAS liaison, mass casualty response, team coordination, and post-event documentation. Peter\'s primary deployment role.',
+   tags:['Large Events','Festivals','Multi-Team','EAC Level']}
+];
+
+var EM_EQ=[
+  {cat:'First Aid Kits',items:[
+    {n:'Basic First Aid Kit',p:'\xa320'},{n:'Workplace FAW Kit',p:'\xa340'},
+    {n:'Outdoor Trauma Kit',p:'\xa380'},{n:'Advanced Response Bag',p:'\xa3150'},
+    {n:'Major Incident Grab Bag',p:'\xa3300'},{n:'Burns Kit',p:'\xa350'},
+    {n:'Eye Wash Kit',p:'\xa320'},{n:'Sports Pitch Kit',p:'\xa340'},
+    {n:'Paediatric First Aid Kit',p:'\xa330'},{n:'Tourniquet Kit',p:'\xa325'},
+    {n:'Haemostatic Dressing Pack',p:'\xa340'},{n:'Biohazard Spill Kit',p:'\xa315'},
+    {n:'Instant Ice Packs (box)',p:'\xa330'}
+  ]},
+  {cat:'Airway & Clinical',items:[
+    {n:'Airway Adjunct Set',p:'\xa315'},{n:'Bag Valve Mask',p:'\xa315'},
+    {n:'Suction Unit',p:'\xa315'},{n:'Cervical Collar Set',p:'\xa330'},
+    {n:'Scoop Stretcher',p:'\xa3100'},{n:'Wheelchair',p:'\xa330'}
+  ]},
+  {cat:'Monitoring & Defibrillation',items:[
+    {n:'AED with Pads & Ready Kit',p:'\xa3150'},{n:'Spare AED Pads',p:'\xa340'},
+    {n:'ECG Monitor / Defib',p:'\xa3500'}
+  ]},
+  {cat:'Medications',items:[
+    {n:'Basic GSL Medication Pack',p:'\xa340'},{n:'Advanced OTC Medication Bag',p:'\xa3120'},
+    {n:'Anaphylaxis Kit',p:'\xa380'},{n:'Hypoglycaemia Kit',p:'\xa330'},
+    {n:'Burns Gel Pack',p:'\xa320'},{n:'Rehydration Supplies',p:'\xa340'}
+  ]},
+  {cat:'Infrastructure & Comms',items:[
+    {n:'Small Gazebo (3\xd73m)',p:'\xa3120'},{n:'Treatment Couch',p:'\xa380'},
+    {n:'Folding Chairs / Table Set',p:'\xa340'},{n:'Ground Matting',p:'\xa3100'},
+    {n:'Handheld Radio',p:'\xa315'},{n:'Event Radio Control Setup',p:'\xa3500'},
+    {n:'Golf Buggy Medical Unit',p:'\xa3300'}
+  ]}
+];
+
+var EM_PKGS=[
+  {tier:'Package A',name:'Village Fete',sub:'Low-risk community events',feat:false,
+   note:'Staff costs based on 6-hour deployment at shopping list rates',
+   rows:[
+    {i:'2 \xd7 Basic First Aider @ \xa335/hr \xd7 6\u202fhrs',v:'\xa3420'},
+    {i:'Basic First Aid Kit',v:'\xa320'},
+    {i:'AED with Pads & Ready Kit',v:'\xa3150'},
+    {i:'Small Gazebo (3\xd73m)',v:'\xa3120'},
+    {i:'Handheld Radio \xd7 2',v:'\xa330'},
+    {i:'Consumables',v:'\xa320'}
+   ],total:'\xa3760'},
+  {tier:'Package B',name:'Sports Event',sub:'Medium-risk sporting events',feat:true,
+   note:'Staff based on 8-hour day. EMT role billed at Advanced FA rate',
+   rows:[
+    {i:'2 \xd7 Advanced FA @ \xa360/hr \xd7 8\u202fhrs',v:'\xa3960'},
+    {i:'1 \xd7 Advanced FA (EMT role) \xd7 8\u202fhrs',v:'\xa3480'},
+    {i:'Advanced Response Bag',v:'\xa3150'},
+    {i:'Oxygen Setup',v:'\xa380'},
+    {i:'AED \xd7 2',v:'\xa3300'},
+    {i:'Medical Tent',v:'\xa3350'},
+    {i:'Handheld Radio \xd7 6',v:'\xa390'},
+    {i:'Response Vehicle',v:'\xa3200'}
+   ],total:'\xa32,610'},
+  {tier:'Package C',name:'Large Festival',sub:'Major events &mdash; 1,000+ attendance',feat:false,
+   note:'Staff based on 12-hour day. Festival director billed at Commander rate',
+   rows:[
+    {i:'6 \xd7 Basic FA @ \xa335/hr \xd7 12\u202fhrs',v:'\xa32,520'},
+    {i:'2 \xd7 Advanced FA @ \xa360/hr \xd7 12\u202fhrs',v:'\xa31,440'},
+    {i:'1 \xd7 Commander @ \xa3120/hr \xd7 12\u202fhrs',v:'\xa31,440'},
+    {i:'Ambulance (third-party)',v:'\xa31,200'},
+    {i:'Treatment Tent',v:'\xa3800'},
+    {i:'AED \xd7 4',v:'\xa3600'},
+    {i:'Handheld Radio \xd7 12',v:'\xa3180'},
+    {i:'Welfare Area',v:'\xa3300'},
+    {i:'Lighting / Power',v:'\xa3250'},
+    {i:'Consumables',v:'\xa3200'}
+   ],total:'\xa38,930+'}
+];
+
+var EM_WELFARE=[
+  {n:'Welfare Tent',p:'\xa3300',desc:'Full welfare tent setup and basic staffing for the event duration.'},
+  {n:'Mental Health Welfare Staff',p:'\xa343/hr',desc:'Qualified MH-aware welfare support staff for attendee wellbeing.'},
+  {n:'Drinking Water Point',p:'\xa385',desc:'Potable water station setup and supply for event duration.'},
+  {n:'Cooling Station',p:'\xa3150',desc:'Fans, cool towels, and shade structure. Heat management for outdoor events.'},
+  {n:'Blankets & Warm Packs',p:'\xa345',desc:'Foil blankets and warmth packs for cold-weather events.'},
+  {n:'Sunscreen Station',p:'\xa338',desc:'Sunscreen dispensers and station setup for outdoor summer events.'},
+  {n:'Earplug Distribution',p:'\xa318',desc:'Foam earplugs for music events. Protects attendee hearing.'}
+];
+
+var EM_OPS=[
+  {i:'Event Medical Plan',p:'\xa3275',note:'Pre-event document covering medical provision, staffing, and escalation.'},
+  {i:'Medical Needs Assessment',p:'\xa3425',note:'Full Purple Guide-aligned assessment of your event\'s medical requirements.'},
+  {i:'Risk Assessment Review',p:'\xa3150',note:'Clinical review of client-supplied risk assessment.'},
+  {i:'Clinical Governance Fee',p:'\xa3175',note:'Applicable to multi-clinician deployments requiring clinical oversight.'},
+  {i:'Insurance Uplift',p:'\xa3110',note:'Additional cover for high-risk or large-scale deployments.'},
+  {i:'Controlled Drug Governance',p:'\xa3300',note:'Governance and documentation where controlled medications are deployed.'},
+  {i:'Travel Charge',p:'\xa30.75/mile',note:'Beyond 10-mile radius. Calculated door to door.'},
+  {i:'Accommodation (crew)',p:'\xa3140/night',note:'For multi-day deployments requiring overnight stays.'},
+  {i:'Fuel Surcharge',p:'\xa355',note:'Applicable to deployments with significant equipment load.'},
+  {i:'Consumables Charge',p:'\xa3110',note:'Covers disposables used during the deployment.'}
+];
+
+var EM_HMAP={
+  fete:'\u2192 Package A \u2014 2 Basic First Aiders + AED + Gazebo',
+  sports:'\u2192 Package B \u2014 Advanced cover with trauma kit and oxygen',
+  festival:'\u2192 Package C \u2014 Full team + welfare + Medical Commander',
+  corporate:'\u2192 Package A or B depending on risk level and attendance',
+  school:'\u2192 Basic First Aider + Paediatric Kit \u2014 discuss with Peter',
+  extreme:'\u2192 Package B/C + Outdoor Trauma Kit + Advanced Response Bag',
+  overnight:'\u2192 Overnight Standby (\xa3300/night) + suitable equipment kit'
+};
+
+var EM_BMAP={
+  'fete-u100':{rec:'Package A \u2014 Village Fete',sub:'2 Basic First Aiders, AED, basic kit, gazebo. Guide from \xa3760 for 6\u202fhrs.',wa:'Village+Fete+Package',em:'Village Fete Package'},
+  'fete-100-500':{rec:'Package A (Enhanced)',sub:'2\u20133 Basic First Aiders, AED, radio kit. Consider adding a Medical Plan (\xa3275).',wa:'Community+Event+Medical+Cover',em:'Community Event Medical Cover'},
+  'sports-u100':{rec:'Basic First Aider + Kit',sub:'Single Basic FA with sports pitch kit. From \xa335/hr. Enquire for your event duration.',wa:'Sports+First+Aid+Cover',em:'Sports First Aid Cover'},
+  'sports-100-500':{rec:'Package B \u2014 Sports Event',sub:'2 Advanced FAs + 1 EMT role, trauma kit, oxygen, AED \xd72. Guide from \xa32,610 for 8\u202fhrs.',wa:'Sports+Event+Package',em:'Sports Event Package'},
+  'sports-500-1500':{rec:'Package B+ with Medical Commander',sub:'Upgrade to Event Medical Commander (\xa3120/hr) as clinical lead. Custom quote required.',wa:'Sports+Event+Medical+Commander',em:'Sports Event Medical Commander'},
+  'festival-500-1500':{rec:'Package C (adapted) + Medical Plan',sub:'Full team deployment. Medical Plan (\xa3275) and Medical Needs Assessment (\xa3425) recommended. Custom quote.',wa:'Festival+Medical+Cover',em:'Festival Medical Cover'},
+  'festival-1500p':{rec:'Full Purple Guide Compliance Package',sub:'Multi-team deployment, ambulance, welfare, governance. Custom quote required. Contact Peter directly.',wa:'Large+Festival+Medical+Plan',em:'Large Festival Medical Plan'},
+  'corporate-u100':{rec:'Single Basic or Advanced FA',sub:'Tailored to risk level of your event. From \xa335\u2013\xa360/hr. Enquire with event details.',wa:'Corporate+Event+Medical',em:'Corporate Event Medical Cover'},
+  'overnight-u100':{rec:'Overnight Standby Medic',sub:'\xa3300/night. Full clinical kit, immediate response capability. Discuss duration and requirements.',wa:'Overnight+Standby+Medic',em:'Overnight Standby Medic'},
+  'overnight-100-500':{rec:'Overnight Standby + Day Team',sub:'Overnight Medic plus daytime Advanced First Aiders. Custom quote based on event profile.',wa:'Multi-Day+Event+Medical',em:'Multi-Day Event Medical Cover'}
+};
+
+/* ─── RENDER FUNCTIONS ───────────────────── */
+function emRenderStaff(){
+  var el=document.getElementById('em-rate-grid');
+  if(!el) return;
+  EM_STAFF.forEach(function(s){
+    var d=document.createElement('div');
+    d.className='em-rc';
+    d.innerHTML=
+      '<div>'
+        +'<div class="em-rc-role">'+s.role+'</div>'
+        +'<div class="em-rc-qual">'+s.qual+'</div>'
+        +'<div class="em-rc-desc">'+s.desc+'</div>'
+        +'<div class="em-rc-tags">'+s.tags.map(function(t){return '<span class="em-rc-tag">'+t+'</span>';}).join('')+'</div>'
+      +'</div>'
+      +'<div style="text-align:right;flex-shrink:0">'
+        +'<div class="em-rate">'+s.rate+'</div>'
+        +'<div class="em-unit">'+s.unit+'</div>'
+        +'<div class="em-eq-row">'
+          +'<a class="em-ewa" href="'+emWA(s.role)+'" target="_blank">\ud83d\udcac WhatsApp</a>'
+          +'<a class="em-eem" href="'+emEM(s.role)+'">\u2709 Email</a>'
+        +'</div>'
+      +'</div>';
+    el.appendChild(d);
+  });
+}
+
+function emRenderEq(){
+  var el=document.getElementById('em-eq-body');
+  if(!el) return;
+  EM_EQ.forEach(function(cat){
+    var sec=document.createElement('div');
+    sec.className='em-eq-sec';
+    sec.innerHTML='<div class="em-eq-title">'+cat.cat+'</div>';
+    var grid=document.createElement('div');
+    grid.className='em-eq-grid';
+    cat.items.forEach(function(item){
+      var it=document.createElement('div');
+      it.className='em-eq-item';
+      it.innerHTML=
+        '<div>'
+          +'<div class="em-eq-name">'+item.n+'</div>'
+          +'<a class="em-eq-enq" href="'+emWA(item.n)+'" target="_blank">Enquire \u2192</a>'
+        +'</div>'
+        +'<div class="em-eq-price">'+item.p+'</div>';
+      grid.appendChild(it);
+    });
+    sec.appendChild(grid);
+    el.appendChild(sec);
+  });
+}
+
+function emRenderPkgs(){
+  var el=document.getElementById('em-pkg-grid');
+  if(!el) return;
+  EM_PKGS.forEach(function(p){
+    var c=document.createElement('div');
+    c.className='em-pkg'+(p.feat?' em-feat':'');
+    var rows=p.rows.map(function(r){
+      return '<div class="em-pkg-row"><span class="em-pkg-item">'+r.i+'</span><span class="em-pkg-val">'+r.v+'</span></div>';
+    }).join('');
+    c.innerHTML=
+      '<div class="em-pkg-head">'
+        +'<div class="em-pkg-tier">'+p.tier+'</div>'
+        +'<div class="em-pkg-name">'+p.name+'</div>'
+        +'<div class="em-pkg-sub">'+p.sub+'</div>'
+      +'</div>'
+      +'<div class="em-pkg-body">'+rows+'</div>'
+      +'<div class="em-pkg-note">'+p.note+'</div>'
+      +'<div class="em-pkg-total">'
+        +'<span class="em-pkg-total-lbl">GUIDE TOTAL</span>'
+        +'<span class="em-pkg-total-val">'+p.total+'</span>'
+      +'</div>'
+      +'<div class="em-pkg-cta">'
+        +'<a class="em-ewa" href="'+emWA(p.name+' Package')+'" target="_blank">\ud83d\udcac Book This Package</a>'
+        +'<a class="em-eem" href="'+emEM(p.name+' Package')+'">\u2709 Email</a>'
+      +'</div>';
+    el.appendChild(c);
+  });
+}
+
+function emRenderWelfare(){
+  var wg=document.getElementById('em-wlf-grid');
+  var ob=document.getElementById('em-ops-body');
+  if(wg){
+    EM_WELFARE.forEach(function(w){
+      var d=document.createElement('div');
+      d.className='em-wlf-card';
+      d.innerHTML=
+        '<div class="em-wlf-name">'+w.n+'</div>'
+        +'<div class="em-wlf-desc">'+w.desc+'</div>'
+        +'<div style="display:flex;justify-content:space-between;align-items:center">'
+          +'<span class="em-wlf-price">'+w.p+'</span>'
+          +'<a class="em-eem" href="'+emWA(w.n)+'" target="_blank" style="font-size:9px;padding:4px 9px">Enquire</a>'
+        +'</div>';
+      wg.appendChild(d);
+    });
+  }
+  if(ob){
+    EM_OPS.forEach(function(o){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td>'+o.i+'</td><td><span class="em-ops-price">'+o.p+'</span></td><td>'+o.note+'</td>';
+      ob.appendChild(tr);
+    });
+  }
+}
+
+function emTab(name,btn){
+  document.querySelectorAll('.em-tab').forEach(function(b){b.classList.remove('em-act');});
+  if(btn) btn.classList.add('em-act');
+  ['svc','eq','pkg','wlf'].forEach(function(t){
+    var el=document.getElementById('em-tab-'+t);
+    if(el) el.style.display=t===name?'block':'none';
+  });
+}
+
+function emHelper(v){
+  var r=document.getElementById('em-hres');
+  if(r) r.textContent=v?(EM_HMAP[v]||''):'';
+}
+
+function emBuild(){
+  var t=(document.getElementById('em-b-type')||{}).value;
+  var a=(document.getElementById('em-b-att')||{}).value;
+  if(!t||!a) return;
+  var key=t+'-'+a;
+  var m=EM_BMAP[key];
+  var el=document.getElementById('em-builder-result');
+  if(!el) return;
+  if(!m){
+    document.getElementById('em-br-rec').textContent='Custom quote required';
+    document.getElementById('em-br-sub').textContent='Your event combination is outside the standard packages. Peter will put together a tailored quote \u2014 typically within 24 hours.';
+    document.getElementById('em-br-wa').href='https://wa.me/'+EM_WA+'?text='+encodeURIComponent('Hi Peter, I need a custom event medical quote. Event type: '+t+', Attendance: '+a+'. Can we discuss?');
+    document.getElementById('em-br-em').href=emEM('Custom Event Medical Package');
+  } else {
+    document.getElementById('em-br-rec').textContent=m.rec;
+    document.getElementById('em-br-sub').textContent=m.sub;
+    document.getElementById('em-br-wa').href='https://wa.me/'+EM_WA+'?text=Hi+Peter,+I%27m+interested+in+'+m.wa+'.+Can+we+discuss+my+event%3F+(Via+petercrainemedic.co.uk)';
+    document.getElementById('em-br-em').href=emEM(m.em);
+  }
+  el.style.display='block';
+}
+
+/* Init — triggered when page-medic becomes visible */
+(function(){
+  var _emInit=false;
+  function emInit(){
+    if(_emInit) return; _emInit=true;
+    emRenderStaff(); emRenderEq(); emRenderPkgs(); emRenderWelfare();
+  }
+  var _origDoShow=window._doShowPage;
+  window._doShowPage=function(page){
+    if(typeof _origDoShow==='function') _origDoShow(page);
+    if(page==='medic') emInit();
+  };
+  if(localStorage.getItem('access_medic')==='granted'){
+    document.addEventListener('DOMContentLoaded',function(){ setTimeout(emInit,100); });
   }
 })();
 </script>
