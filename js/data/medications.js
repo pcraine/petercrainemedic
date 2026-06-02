@@ -1,0 +1,21 @@
+const MEDS = [
+  { name:'Adrenaline 1:1000 IM', note:'Anaphylaxis / cardiac arrest', class:'P' },
+  { name:'Naloxone IM', note:'Opioid reversal', class:'P' },
+  { name:'Salbutamol NEB', note:'Bronchospasm / asthma', class:'P' },
+  { name:'Ipratropium Bromide NEB', note:'Severe asthma', class:'P' },
+  { name:'Entonox INH', note:'Pain relief (50:50 O\u2082/N\u2082O)', class:'P' },
+  { name:'Penthrox INH', note:'Methoxyflurane / trauma pain', class:'P' },
+  { name:'Hydrocortisone IM', note:'Anaphylaxis / Addisonian', class:'P' },
+  { name:'Glucagon IM', note:'Hypoglycaemia (IV access unavailable)', class:'P' },
+  { name:'GTN Spray SL', note:'Chest pain / ACS', class:'P' },
+  { name:'Aspirin PO', note:'Suspected MI / ACS', class:'G' },
+  { name:'Paracetamol PO', note:'Mild-moderate pain / fever', class:'G' },
+  { name:'Ibuprofen PO', note:'Pain / inflammation', class:'G' },
+  { name:'Glucose Gel 40% PO', note:'Hypoglycaemia (conscious)', class:'G' },
+  { name:'Loratadine PO', note:'Mild allergic reaction', class:'G' },
+  { name:'ORS PO', note:'Dehydration / fluid replacement', class:'G' },
+  { name:'Oxygen INH', note:'Hypoxia / respiratory compromise', class:'G' },
+  { name:'Adrenaline Auto-Injector', note:'Patient\'s own / prescribed', class:'O' },
+  { name:'GTN Spray (own)', note:'Patient\'s own / prescribed', class:'O' },
+  { name:'Salbutamol Inhaler', note:'Patient\'s own / prescribed', class:'O' }
+];

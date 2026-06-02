@@ -1,0 +1,95 @@
+Starting up http-server, serving ./
+
+http-server version: 14.1.1
+
+http-server settings:
+CORS: disabled
+Cache: 3600 seconds
+Connection Timeout: 120 seconds
+Directory Listings: visible
+AutoIndex: visible
+Serve GZIP Files: false
+Serve Brotli Files: false
+Default File Extension: none
+
+Available on:
+  http://127.0.0.1:8080
+  http://192.168.0.2:8080
+Hit CTRL-C to stop the server
+
+[2026-06-01T18:42:23.834Z]  "GET /index.html" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+(node:294893) [DEP0066] DeprecationWarning: OutgoingMessage.prototype._headers is deprecated
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2026-06-01T18:42:23.858Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.859Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.859Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.869Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.870Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.871Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.872Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.872Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:42:23.880Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-01T18:48:51.608Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.623Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.651Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.653Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-01T18:48:51.657Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.657Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.658Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.658Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.659Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:48:51.659Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.158Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.174Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.176Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.179Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.188Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.189Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.189Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.190Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.190Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:50:35.193Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-01T18:57:18.208Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.223Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.224Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.224Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.236Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.237Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.237Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.237Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.238Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-01T18:57:18.241Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-02T07:35:09.033Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.097Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.113Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.115Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.117Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.117Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.119Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.120Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.130Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:35:09.140Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-02T07:37:17.944Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:17.996Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:17.999Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.001Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.003Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.005Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.007Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.014Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.016Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:18.021Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-02T07:37:21.965Z]  "GET /img/journal/frec4-progression.jpg" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:37:21.966Z]  "GET /img/journal/frec4-progression.jpg" Error (404): "Not found"
+[2026-06-02T07:40:10.684Z]  "GET /" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.702Z]  "GET /css/style.css" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.703Z]  "GET /js/data/common.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.704Z]  "GET /js/data/journal.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.716Z]  "GET /js/data/training.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.716Z]  "GET /js/data/medic.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.717Z]  "GET /js/data/medications.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.718Z]  "GET /js/main.js" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.718Z]  "GET /assets/np-event-medical.png" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:10.720Z]  "GET /assets/np-event-medical.png" Error (404): "Not found"
+[2026-06-02T07:40:14.125Z]  "GET /img/journal/leeds-conference.jpg" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/145.0.7632.6 Safari/537.36"
+[2026-06-02T07:40:14.127Z]  "GET /img/journal/leeds-conference.jpg" Error (404): "Not found"
