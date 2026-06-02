@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working Mockup: Executive Upgrade Suite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --exec-emerald-dark: #030805;
+            --exec-emerald-glow: #00ff8c;
+            --exec-gold: #c5a059;
+            --exec-gold-light: #e6d2a8;
+            --exec-glass: rgba(255, 255, 255, 0.03);
+            --exec-glass-border: rgba(255, 255, 255, 0.08);
+            --display: 'Bebas Neue', sans-serif;
+            --serif: 'Lora', serif;
+            --mono: 'JetBrains Mono', monospace;
+        }
+
+        body {
+            background-color: var(--exec-emerald-dark);
+            color: #fafafa;
+            font-family: var(--serif);
+            margin: 0;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 50% -20%, #004d3d 0%, transparent 60%);
+        }
+
+        .mockup-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .upgrade-label {
+            display: inline-block;
+            background: var(--exec-gold);
+            color: #000;
+            font-family: var(--mono);
+            font-size: 9px;
+            padding: 4px 10px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* 1 & 2. Hero & Typography */
+        .hero-title {
+            font-family: var(--display);
+            font-size: clamp(60px, 10vw, 140px);
+            line-height: 0.85;
+            letter-spacing: 0.05em;
+            margin: 0;
+            background: linear-gradient(180deg, #fff 0%, #777 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .hero-sub {
+            font-family: var(--mono);
+            color: var(--exec-gold);
+            font-size: 14px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .hero-sub::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: linear-gradient(90deg, var(--exec-gold), transparent);
+        }
+
+        /* 3 & 4. Glassmorphic Cards & Micro-interactions */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .glass-card {
+            background: var(--exec-glass);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--exec-glass-border);
+            padding: 48px;
+            position: relative;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+        }
+
+        .glass-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 255, 140, 0.3);
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+
+        /* 5. Precision Buttons */
+        .exec-btn {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 20px 48px;
+            border: 1px solid var(--exec-gold);
+            color: var(--exec-gold);
+            font-family: var(--mono);
+            font-size: 11px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: 0.4s;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .exec-btn:hover {
+            background: var(--exec-gold);
+            color: #000;
+            box-shadow: 0 0 40px rgba(197, 160, 89, 0.4);
+        }
+
+        /* 6. Medical Monitor Accents */
+        .monitor-glow {
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(0, 255, 140, 0.05);
+        }
+
+        .pulse-line {
+            width: 20%;
+            height: 100%;
+            background: var(--exec-emerald-glow);
+            box-shadow: 0 0 15px var(--exec-emerald-glow);
+            animation: pulse-move 4s infinite linear;
+        }
+
+        @keyframes pulse-move {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(500%); }
+        }
+
+        /* 9. High Fidelity Badging */
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 16px;
+            background: rgba(0, 255, 140, 0.05);
+            border: 1px solid rgba(0, 255, 140, 0.2);
+            font-family: var(--mono);
+            font-size: 10px;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+
+        .dot-indicator {
+            width: 8px;
+            height: 8px;
+            background: var(--exec-emerald-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--exec-emerald-glow);
+            animation: breathe 2s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.8); }
+        }
+
+        /* 11. Immersive Journal Mode Preview */
+        .reading-preview {
+            margin-top: 120px;
+            padding: 100px;
+            background: #050806;
+            border: 1px solid var(--exec-glass-border);
+            text-align: center;
+        }
+
+        .pull-quote {
+            font-size: 32px;
+            font-style: italic;
+            color: var(--exec-gold-light);
+            max-width: 800px;
+            margin: 40px auto;
+            line-height: 1.5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="mockup-container">
+        <span class="upgrade-label">Working Mockup: Executive Upgrade Suite</span>
+
+        <div class="hero-section">
+            <div class="hero-sub">Clinical Leadership & Response</div>
+            <h1 class="hero-title">Premier<br>Medical Cover</h1>
+
+            <p style="max-width: 650px; font-size: 20px; line-height: 1.8; opacity: 0.7; margin-top: 40px;">
+                Specialist pre-hospital care and professional training for corporate fixtures,
+                high-stakes sporting events, and private clinical engagements.
+            </p>
+
+            <div class="exec-btn">Secure Engagement</div>
+        </div>
+
+        <div class="card-grid">
+            <!-- Card 1 -->
+            <div class="glass-card">
+                <div class="live-badge">
+                    <div class="dot-indicator"></div>
+                    VERIFIED PRACTITIONER
+                </div>
+                <h3 style="font-family: var(--display); font-size: 32px; letter-spacing: 2px; margin: 10px 0;">ADVANCED<br>RESPONSE</h3>
+                <div style="height: 1px; width: 60px; background: var(--exec-gold); margin: 24px 0;"></div>
+                <p style="font-size: 15px; opacity: 0.6; line-height: 1.7;">
+                    FREC 3 and EAC level cover with a full primary care scope, delivering precision clinical interventions in high-pressure environments.
+                </p>
+                <div class="monitor-glow"><div class="pulse-line"></div></div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card">
+                <div class="live-badge">
+                    <div class="dot-indicator"></div>
+                    L4 CERTIFIED
+                </div>
+                <h3 style="font-family: var(--display); font-size: 32px; letter-spacing: 2px; margin: 10px 0;">PROFESSIONAL<br>TRAINING</h3>
+                <div style="height: 1px; width: 60px; background: var(--exec-gold); margin: 24px 0;"></div>
+                <p style="font-size: 15px; opacity: 0.6; line-height: 1.7;">
+                    L4 CTLLS certified educator delivering bespoke first aid and emergency response courses for schools, corporate, and event teams.
+                </p>
+                <div class="monitor-glow"><div class="pulse-line" style="animation-delay: 1.5s"></div></div>
+            </div>
+        </div>
+
+        <div class="reading-preview">
+            <div class="upgrade-label">Journal Reading Mode (Immersive)</div>
+            <div class="pull-quote">
+                "Clinical leadership isn't just about the intervention; it's about the presence, the preparation, and the professional standard we bring to every event."
+            </div>
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 2px;">— PETER CRAINE, EAC & TRAINER</div>
+        </div>
+
+    </div>
+
+</body>
+</html>
