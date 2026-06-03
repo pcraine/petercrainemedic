@@ -1,4 +1,4 @@
-const MEDS = [
+window.MEDS = [
   { name:'Adrenaline 1:1000 IM', note:'Anaphylaxis / cardiac arrest', class:'P' },
   { name:'Naloxone IM', note:'Opioid reversal', class:'P' },
   { name:'Salbutamol NEB', note:'Bronchospasm / asthma', class:'P' },

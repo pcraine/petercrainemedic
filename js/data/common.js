@@ -1,4 +1,11 @@
-const DEPLOYMENTS = [
+window.GATED_CODES = {
+  trainer: ['TRAINER2026'],
+  medic:   ['MEDIC2026']
+};
+
+window.RHYTHM_NAMES = ['NSR 60bpm','AFib','V-Tach','PVC','A-Flutter','VFib'];
+
+window.DEPLOYMENTS = [
   '2026-04-19','2026-04-16','2026-04-15','2026-04-11','2026-04-10',
   '2026-04-05','2026-04-04','2026-03-31','2026-03-28','2026-03-25',
   '2026-03-22','2026-03-15','2026-03-08','2026-03-07','2026-02-28',
@@ -8,8 +15,7 @@ const DEPLOYMENTS = [
   '2025-09-01','2025-08-01','2026-09-01','2027-01-01','2027-06-01'
 ];
 
-/* ── TICKER MESSAGES ──────────────────────────────────────────────────────── */
-const TICKER_MESSAGES = [
+window.TICKER_MESSAGES = [
   'FREC 3 Certified \u00b7 19 Medications in Scope \u00b7 EAC Pre-Hospital Clinician',
   'Heysham NPP Exercise \u00b7 Nuclear site multi-agency \u00b7 JESIP \u00b7 Army EOD \u00b7 April 2026',
   'Grand National \u00b7 25 patients \u00b7 Zone Lead Clinician \u00b7 Aintree \u00b7 April 2026',
@@ -24,7 +30,10 @@ const TICKER_MESSAGES = [
   'AFC Fylde v AFC Marine \u00b7 Dual role \u00b7 No team doctor \u00b7 Full EAC scope \u00b7 March 2026'
 ];
 
-function countDeployments() {
-  const today = new Date(); today.setHours(0,0,0,0);
-  return DEPLOYMENTS.filter(function(d){ return new Date(d) <= today; }).length;
-}
+
+// Helpers
+window.jP = function(text) { return '<p class="jpa-p">' + text + '</p>'; };
+window.jH = function(text) { return '<div class="jpa-h2">' + text + '</div>'; };
+window.jLine = function()  { return '<div class="jpa-divider"></div>'; };
+window.jAnon = function()  { return '<p class="jpa-anon">All patient details have been anonymised in accordance with SJA clinical governance requirements and patient confidentiality obligations. No identifying information has been retained or published.</p>'; };
+window.jPull = function(quote, attr) { return '<div class="jpa-pull"><p>\u201c' + quote + '\u201d</p><cite>\u2014 ' + attr + '</cite></div>'; };

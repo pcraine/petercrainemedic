@@ -1,10 +1,4 @@
-function jP(text) { return '<p class="jpa-p">' + text + '</p>'; }
-function jH(text) { return '<div class="jpa-h2">' + text + '</div>'; }
-function jLine()  { return '<div class="jpa-divider"></div>'; }
-function jAnon()  { return '<p class="jpa-anon">All patient details have been anonymised in accordance with SJA clinical governance requirements and patient confidentiality obligations. No identifying information has been retained or published.</p>'; }
-function jPull(quote, attr) { return '<div class="jpa-pull"><p>\u201c' + quote + '\u201d</p><cite>\u2014 ' + attr + '</cite></div>'; }
-
-const JOURNAL_POSTS = [
+window.JOURNAL_POSTS = [
 
   {
     day: '19', month: 'Apr', year: '2026',

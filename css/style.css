@@ -454,6 +454,12 @@ body.dark-mode .news-card{background:var(--stone)}
   /* Diastole — quiescent until next beat */
   100% {transform:scale(1);    filter:drop-shadow(0 0 3px rgba(0,166,81,.3))}
 }
+  8%       {transform:scale(1.04);filter:drop-shadow(0 0 5px rgba(0,166,81,.5))}
+  11%      {transform:scale(1.23);filter:drop-shadow(0 0 16px rgba(0,166,81,.95)) drop-shadow(0 0 32px rgba(0,107,63,.55))}
+  20%      {transform:scale(1.0); filter:drop-shadow(0 0 4px rgba(0,166,81,.35))}
+  31%      {transform:scale(1.03);filter:drop-shadow(0 0 5px rgba(0,166,81,.45))}
+  35%      {transform:scale(1.11);filter:drop-shadow(0 0 9px rgba(0,166,81,.7))}
+  44%,100% {transform:scale(1);   filter:drop-shadow(0 0 3px rgba(0,166,81,.35))}
 .nav-cross{animation:hb-pulse 0.833s ease-out infinite;transform-origin:center center}
 #nav-amb-canvas{position:absolute;left:0;right:0;top:0;bottom:0;width:100%;height:56px;pointer-events:none;opacity:.55;z-index:0}
 #nav-ecg-canvas{position:absolute;left:0;right:0;bottom:0;width:100%;height:18px;pointer-events:none;opacity:.55;z-index:1}
@@ -1769,37 +1775,4 @@ h2.section-h2,h1.page-h1,h1.hero-name{}.section-h2{font-family:var(--display);fo
   .em-builder-row{grid-template-columns:1fr}
   .em-pkg-grid{grid-template-columns:1fr}
   .em-ops th:nth-child(3),.em-ops td:nth-child(3){display:none}
-}
-
-/* Refactored buttons to match original link styles */
-.nav-link {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  color: inherit;
-  font: inherit;
-  display: inline;
-}
-.nav-center .nav-link {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, .78);
-  padding: 6px 13px;
-  border-radius: var(--r);
-  transition: all .2s;
-  border: 1px solid transparent;
-}
-.nav-center .nav-link:hover, .nav-center .nav-link.active {
-  color: white;
-  background: rgba(0, 107, 63, .25);
-  border-color: rgba(0, 107, 63, .3);
-}
-.nav-center .nav-cta-link {
-  background: var(--g) !important;
-  color: white !important;
-  border-color: var(--g) !important;
 }

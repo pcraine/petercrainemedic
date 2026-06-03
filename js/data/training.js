@@ -1,4 +1,8 @@
-const TR_CORE=[
+window.TR_WA = '447756831072', TR_EM='peter.craine@me.com';
+
+window.TR_EM = 'peter.craine@me.com';
+
+window.TR_CORE = [
   {n:'Emergency First Aid at Work (EFAW)',p:'\xa3575/day',d:'1 day (6\u20137 hrs)',m:12,t:'Classroom + Practical',
    b:'HSE-compliant entry-level workplace qualification. Ideal for low-risk workplaces. Certificate valid 3 years.',
    dt:'Covers primary survey, CPR and AED, choking, shock, severe bleeding control, burns, fractures, and common medical emergencies. Meets HSE requirements for offices, retail, and low-risk industry.',
@@ -41,7 +45,7 @@ const TR_CORE=[
    o:['MARCH framework \u2014 massive haemorrhage first','Tourniquet application: CAT, SOFT-T, improvised','Wound packing and haemostatic agents','Pressure dressings under stress','Penetrating vs blunt trauma \u2014 priorities','Primary trauma survey in a dynamic environment','Handover to emergency services']}
 ];
 
-const TR_SPEC=[
+window.TR_SPEC = [
   {n:'Outdoor First Aid',p:'\xa3775/day',d:'2 days (16 hrs)',m:10,t:'Practical \u2014 Outdoors',
    b:'Wilderness and remote environment first aid. Outdoor leaders, expedition staff, and activity centres.',
    dt:'Patient assessment in austere settings, hypothermia and cold injury, heat illness, altitude sickness awareness, water-related emergencies, improvised casualty care, stretcher construction, and evacuation planning. Significant outdoor practical component regardless of weather.',
@@ -76,7 +80,7 @@ const TR_SPEC=[
    o:['Manual handling law and risk assessment','Log-roll: 3 and 4-person, with and without equipment','Recovery position variations for clinical scenarios','Drag, carry, and firefighter lift techniques','Stretcher: scoop, folding, and carry','Stair descent with a patient','Basic vehicle extraction']}
 ];
 
-const TR_ADD=[
+window.TR_ADD = [
   {n:'AED Awareness',d:'1\u20132 hrs',m:16,p:'\xa3275/session',desc:'Recognition of cardiac arrest, AED familiarisation, and when to deploy. No CPR assessment component.'},
   {n:'Bleed Control Workshop',d:'2 hrs',m:12,p:'\xa3350/session',desc:'Hands-on tourniquet and wound-packing skills for non-clinical staff. MARCH principles introduced practically.'},
   {n:'Naloxone Awareness',d:'1\u20132 hrs',m:12,p:'\xa3275/session',desc:'Opioid overdose recognition and intranasal/auto-injector naloxone. Community and harm-reduction settings.'},

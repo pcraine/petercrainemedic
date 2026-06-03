@@ -1,4 +1,8 @@
-const EM_STAFF=[
+window.EM_WA = '447756831072', EM_MAIL='peter.craine@me.com';
+
+window.EM_MAIL = 'peter.craine@me.com';
+
+window.EM_STAFF = [
   {role:'Basic First Aider',qual:'EFAW / FAW / FREC 3',rate:'\xa335',unit:'per hour',
    desc:'Essential clinical cover for low-risk community events. FREC 3-qualified with full patient documentation and incident reporting.',
    tags:['Community Events','Fetes','Low-Risk','Indoor']},
@@ -13,7 +17,7 @@ const EM_STAFF=[
    tags:['Large Events','Festivals','Multi-Team','EAC Level']}
 ];
 
-const EM_EQ=[
+window.EM_EQ = [
   {cat:'First Aid Kits',items:[
     {n:'Basic First Aid Kit',p:'\xa320'},{n:'Workplace FAW Kit',p:'\xa340'},
     {n:'Outdoor Trauma Kit',p:'\xa380'},{n:'Advanced Response Bag',p:'\xa3150'},
@@ -45,7 +49,7 @@ const EM_EQ=[
   ]}
 ];
 
-const EM_PKGS=[
+window.EM_PKGS = [
   {tier:'Package A',name:'Village Fete',sub:'Low-risk community events',feat:false,
    note:'Staff costs based on 6-hour deployment at shopping list rates',
    rows:[
@@ -84,7 +88,7 @@ const EM_PKGS=[
    ],total:'\xa38,930+'}
 ];
 
-const EM_WELFARE=[
+window.EM_WELFARE = [
   {n:'Welfare Tent',p:'\xa3300',desc:'Full welfare tent setup and basic staffing for the event duration.'},
   {n:'Mental Health Welfare Staff',p:'\xa343/hr',desc:'Qualified MH-aware welfare support staff for attendee wellbeing.'},
   {n:'Drinking Water Point',p:'\xa385',desc:'Potable water station setup and supply for event duration.'},
@@ -94,7 +98,7 @@ const EM_WELFARE=[
   {n:'Earplug Distribution',p:'\xa318',desc:'Foam earplugs for music events. Protects attendee hearing.'}
 ];
 
-const EM_OPS=[
+window.EM_OPS = [
   {i:'Event Medical Plan',p:'\xa3275',note:'Pre-event document covering medical provision, staffing, and escalation.'},
   {i:'Medical Needs Assessment',p:'\xa3425',note:'Full Purple Guide-aligned assessment of your event\'s medical requirements.'},
   {i:'Risk Assessment Review',p:'\xa3150',note:'Clinical review of client-supplied risk assessment.'},
@@ -106,3 +110,26 @@ const EM_OPS=[
   {i:'Fuel Surcharge',p:'\xa355',note:'Applicable to deployments with significant equipment load.'},
   {i:'Consumables Charge',p:'\xa3110',note:'Covers disposables used during the deployment.'}
 ];
+
+window.EM_HMAP = {
+  fete:'\u2192 Package A \u2014 2 Basic First Aiders + AED + Gazebo',
+  sports:'\u2192 Package B \u2014 Advanced cover with trauma kit and oxygen',
+  festival:'\u2192 Package C \u2014 Full team + welfare + Medical Commander',
+  corporate:'\u2192 Package A or B depending on risk level and attendance',
+  school:'\u2192 Basic First Aider + Paediatric Kit \u2014 discuss with Peter',
+  extreme:'\u2192 Package B/C + Outdoor Trauma Kit + Advanced Response Bag',
+  overnight:'\u2192 Overnight Standby (\xa3300/night) + suitable equipment kit'
+};
+
+window.EM_BMAP = {
+  'fete-u100':{rec:'Package A \u2014 Village Fete',sub:'2 Basic First Aiders, AED, basic kit, gazebo. Guide from \xa3760 for 6\u202fhrs.',wa:'Village+Fete+Package',em:'Village Fete Package'},
+  'fete-100-500':{rec:'Package A (Enhanced)',sub:'2\u20133 Basic First Aiders, AED, radio kit. Consider adding a Medical Plan (\xa3275).',wa:'Community+Event+Medical+Cover',em:'Community Event Medical Cover'},
+  'sports-u100':{rec:'Basic First Aider + Kit',sub:'Single Basic FA with sports pitch kit. From \xa335/hr. Enquire for your event duration.',wa:'Sports+First+Aid+Cover',em:'Sports First Aid Cover'},
+  'sports-100-500':{rec:'Package B \u2014 Sports Event',sub:'2 Advanced FAs + 1 EMT role, trauma kit, oxygen, AED \xd72. Guide from \xa32,610 for 8\u202fhrs.',wa:'Sports+Event+Package',em:'Sports Event Package'},
+  'sports-500-1500':{rec:'Package B+ with Medical Commander',sub:'Upgrade to Event Medical Commander (\xa3120/hr) as clinical lead. Custom quote required.',wa:'Sports+Event+Medical+Commander',em:'Sports Event Medical Commander'},
+  'festival-500-1500':{rec:'Package C (adapted) + Medical Plan',sub:'Full team deployment. Medical Plan (\xa3275) and Medical Needs Assessment (\xa3425) recommended. Custom quote.',wa:'Festival+Medical+Cover',em:'Festival Medical Cover'},
+  'festival-1500p':{rec:'Full Purple Guide Compliance Package',sub:'Multi-team deployment, ambulance, welfare, governance. Custom quote required. Contact Peter directly.',wa:'Large+Festival+Medical+Plan',em:'Large Festival Medical Plan'},
+  'corporate-u100':{rec:'Single Basic or Advanced FA',sub:'Tailored to risk level of your event. From \xa335\u2013\xa360/hr. Enquire with event details.',wa:'Corporate+Event+Medical',em:'Corporate Event Medical Cover'},
+  'overnight-u100':{rec:'Overnight Standby Medic',sub:'\xa3300/night. Full clinical kit, immediate response capability. Discuss duration and requirements.',wa:'Overnight+Standby+Medic',em:'Overnight Standby Medic'},
+  'overnight-100-500':{rec:'Overnight Standby + Day Team',sub:'Overnight Medic plus daytime Advanced First Aiders. Custom quote based on event profile.',wa:'Multi-Day+Event+Medical',em:'Multi-Day Event Medical Cover'}
+};
