@@ -5380,33 +5380,27 @@ window.toggleHeartbeat = function(){if(HB.running)HB.stop();else HB.start();}
 // 1) 999_mode_activated.mp3 plays once
 // 2) wail.mp3 loops continuously after
 let SIREN={
-  running:false, activateAudio:null, wailAudio:null,
+  running:false, audio:null,
   start:function(){
     this.running=true;
-    if(!this.activateAudio){
-      this.activateAudio=new Audio('999_mode_activated.mp3');
-      this.activateAudio.volume=0.85;
+    if(!this.audio){
+      this.audio=new Audio('siren.mp3');
+      this.audio.loop=true;
+      this.audio.volume=0.7;
     }
-    if(!this.wailAudio){
-      this.wailAudio=new Audio('wail.mp3');
-      this.wailAudio.loop=true;
-      this.wailAudio.volume=0.55;
-    }
-    let self=this;
-    this.wailAudio.pause(); this.wailAudio.currentTime=0;
-    this.activateAudio.pause(); this.activateAudio.currentTime=0;
-    this.activateAudio.play().catch(function(){});
-    this.activateAudio.onended=function(){
-      if(self.running) self.wailAudio.play().catch(function(){});
-    };
+    this.audio.currentTime=0;
+    this.audio.play().catch(function(err){ console.warn("Siren play failed:", err); });
+
     let el=document.getElementById('siren-icon');
     if(el) el.textContent='\ud83d\udd34';
     document.body.classList.add('siren-active');
   },
   stop:function(){
     this.running=false;
-    if(this.activateAudio){this.activateAudio.pause();this.activateAudio.currentTime=0;}
-    if(this.wailAudio){this.wailAudio.pause();this.wailAudio.currentTime=0;}
+    if(this.audio){
+      this.audio.pause();
+      this.audio.currentTime=0;
+    }
     let el=document.getElementById('siren-icon');
     if(el) el.textContent='\ud83d\udea8';
     document.body.classList.remove('siren-active');
