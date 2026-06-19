@@ -344,12 +344,30 @@
   --gd:#050D07;--g:#006B3F;--g2:#004D2C;--gm:#00A651;--gl:#E8F5EE;
   --ink:#0a0f0c;--ink2:#1e2e27;--ink3:#3d5249;--ink4:#6b8c7e;
   --stone:#F2F0EB;--stone2:#E5E2DC;--white:#FAFAF8;
-  --gold:#B8860B;--gld:#FDF6E3;--red:#C0392B;
-  --display:'Bebas Neue',sans-serif;--serif:'Lora',Georgia,serif;--mono:'JetBrains Mono',monospace;
+  --gold:#B4913C;--gld:#FDF6E3;--red:#C0392B;
+  --display:'Bebas Neue',sans-serif;--serif:'Cormorant Garamond','Lora',Georgia,serif;--mono:'JetBrains Mono',monospace;
   --r:2px;--shadow:0 4px 32px rgba(0,0,0,.10);--shadow-lg:0 8px 48px rgba(0,0,0,.18);
+  /* F72: Fluid typographic scale */
+  --text-xs:   clamp(0.64rem, 0.6rem + 0.2vw, 0.75rem);
+  --text-sm:   clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-base: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+  --text-md:   clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  --text-lg:   clamp(1.25rem, 1rem + 1vw, 1.75rem);
+  --text-xl:   clamp(1.75rem, 1.25rem + 2vw, 2.5rem);
+  --text-2xl:  clamp(2.5rem, 1.75rem + 3.5vw, 4rem);
+  --text-3xl:  clamp(3.5rem, 2.5rem + 5vw, 6rem);
+  /* Fluid spacing */
+  --space-sm: clamp(12px, 1.5vw, 20px);
+  --space-md: clamp(20px, 3vw, 40px);
+  --space-lg: clamp(40px, 6vw, 80px);
 }
 html{scroll-behavior:smooth;font-size:16px}
 body{font-family:var(--serif);background:var(--white);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* F72: Apply fluid scale */
+p, .content-wrap p { font-size: var(--text-base); line-height: 1.85; }
+.page-sub { font-size: var(--text-md); }
+.section-sub { font-size: var(--text-base); }
+.nav-center a { font-size: var(--text-xs); }
 
 /* SKIP TO CONTENT */
 .skip-link{position:absolute;top:-100px;left:16px;background:var(--g);color:white;padding:10px 18px;z-index:9999;font-family:var(--mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-radius:0 0 var(--r) var(--r);transition:top .2s}
@@ -3860,6 +3878,17 @@ body.lang-bar-on #page-wipe { top: 28px; }
   ]
 }
 </script>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'en',
+    includedLanguages: 'ar,zh-CN,fr,de,it,pl,pt,ro,ru,es,ur,cy',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async defer></script>
 </head>
 <body>
 <div id="siren-flash" aria-hidden="true"></div>
@@ -3905,14 +3934,32 @@ body.lang-bar-on #page-wipe { top: 28px; }
     <a onclick="gotoContact();return false" id="nav-contact" class="nav-cta-link" role="button" tabindex="0" onkeypress="if(event.key==='Enter')showPage('contact')">Contact</a>
     <a onclick="showGated('trainer');return false" id="nav-trainer" class="nav-center-link nav-gated" role="button" tabindex="0" style="cursor:pointer">Hire: Trainer<span class="nav-gated-badge">&#128274;</span></a>
     <a onclick="showGated('medic');return false" id="nav-medic" class="nav-center-link nav-gated" role="button" tabindex="0" style="cursor:pointer">Hire: Medic<span class="nav-gated-badge">&#128274;</span></a>
+    <a onclick="showPage('simulator');return false" class="nav-center-link" role="button" tabindex="0" style="cursor:pointer;color:rgba(0,200,80,0.7);border:1px solid rgba(0,200,80,0.2)">⚡ Simulator</a>
   </div>
   <div class="nav-right">
-      <button id="siren-btn" class="nav-sound-btn" aria-label="Enable siren" title="Toggle ambulance siren" onclick="toggleSiren()" style="opacity:.6">
-        <span id="siren-icon" aria-hidden="true">🚨</span>
+      <button id="sound-panel-btn" class="nav-sound-btn" aria-label="Sound panel" title="Ambient sound modes" onclick="toggleSoundPanel()" style="position:relative">
+        🔊
       </button>
-      <button id="hb-sound-btn" class="nav-sound-btn" aria-label="Disable heartbeat sound" title="Toggle heartbeat sound" onclick="toggleHeartbeat()">
-        <span id="hb-sound-icon" aria-hidden="true">🔊</span>
-      </button>
+      <!-- F44: Language toggle -->
+      <div style="position:relative">
+        <button class="nav-sound-btn" title="Translate page" onclick="document.getElementById('gt-wrap').style.display=document.getElementById('gt-wrap').style.display==='none'?'block':'none'" aria-label="Translate">🌐</button>
+        <div id="gt-wrap" style="display:none;position:absolute;top:44px;right:0;background:#0a1a0f;border:1px solid rgba(180,145,60,0.3);border-radius:6px;padding:10px;z-index:9999;min-width:180px">
+          <div id="google_translate_element"></div>
+        </div>
+      </div>
+      <!-- Sound mode panel -->
+      <div id="sound-mode-panel" style="
+        display:none;position:absolute;top:52px;right:12px;
+        background:#0a1a0f;border:1px solid rgba(180,145,60,0.3);border-radius:8px;
+        padding:12px;flex-direction:column;gap:6px;min-width:180px;z-index:9999;
+        box-shadow:0 8px 32px rgba(0,0,0,0.5)
+      ">
+        <div style="font-size:7px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(180,145,60,0.6);margin-bottom:4px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,0.08)">Ambient Sound</div>
+        <button class="sp-mode-btn" data-mode="silent" onclick="activateSound('silent')" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 12px;border-radius:4px;cursor:pointer;font-size:11px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;font-family:inherit">🔇 <span>Silent</span></button>
+        <button class="sp-mode-btn" data-mode="ecg" onclick="activateSound('ecg')" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 12px;border-radius:4px;cursor:pointer;font-size:11px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;font-family:inherit">💓 <span>ECG Monitor</span></button>
+        <button class="sp-mode-btn" data-mode="radio" onclick="activateSound('radio')" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 12px;border-radius:4px;cursor:pointer;font-size:11px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;font-family:inherit">📻 <span>Radio Static</span></button>
+        <button class="sp-mode-btn" data-mode="siren" onclick="activateSound('siren')" style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.7);padding:8px 12px;border-radius:4px;cursor:pointer;font-size:11px;text-align:left;display:flex;align-items:center;gap:8px;transition:all 0.15s;font-family:inherit">🚨 <span>999 Siren</span></button>
+      </div>
     <button class="acc-btn" id="accPanelBtn" onclick="toggleAccPanel()" title="Accessibility options" aria-label="Accessibility options">♿</button>
     <div class="nav-avail"><div class="nav-avail-dot"></div>Available</div>
     <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -3978,6 +4025,7 @@ body.lang-bar-on #page-wipe { top: 28px; }
         <div class="hero-stat">
           <div class="hero-stat-num" id="ctr-last-duty" style="font-size:clamp(24px,3vw,40px)">&#x2014;</div>
           <div class="hero-stat-label">Last Duty</div>
+          <div id="ctr-last-duty-name" style="font-size:8px;letter-spacing:0.1em;color:rgba(255,255,255,0.3);margin-top:2px;font-family:var(--mono);max-width:140px;text-align:center;line-height:1.3"></div>
         </div>
       </div>
       <h1 class="hero-name">PETER<br><span class="surname">CRAINE</span></h1>
@@ -4037,34 +4085,67 @@ body.lang-bar-on #page-wipe { top: 28px; }
     </div>
   </div>
 
-  <div class="trust-strip">
-    <div class="trust-inner">
-      <div class="trust-item trust-item--dash">
-        <div class="trust-dash-icon">&#128137;</div>
-        <div class="trust-dash-val">FREC 3</div>
-        <div class="trust-dash-lbl">Pre-Hospital Emergency Care</div>
-        <div class="trust-dash-status"><span class="trust-live-dot"></span>CURRENT</div>
+  <div class="trust-strip" style="overflow:hidden;position:relative">
+    <div class="trust-inner" style="flex-direction:column;gap:0;padding:0">
+
+      <!-- Scrolling credential ticker -->
+      <div style="border-bottom:1px solid rgba(0,107,63,0.15);padding:10px 0;overflow:hidden;position:relative">
+        <div id="trust-ticker" style="display:flex;gap:40px;white-space:nowrap;animation:trustScroll 28s linear infinite">
+          <span class="ticker-item">&#10003; FREC 3 Current</span>
+          <span class="ticker-item">&#10003; CTLLS L4 Qualified</span>
+          <span class="ticker-item">&#10003; CERAD L3 Blue-Light</span>
+          <span class="ticker-item">&#10003; Enhanced DBS In Date</span>
+          <span class="ticker-item">&#10003; SJA Clinical Governance</span>
+          <span class="ticker-item">&#10003; Prior&rsquo;s Award 2026</span>
+          <span class="ticker-item">&#10003; Commissioner Commendation &times;2</span>
+          <span class="ticker-item">&#10003; 34+ Operational Deployments</span>
+          <span class="ticker-item">&#10003; 208+ Learners Trained</span>
+          <span class="ticker-item">&#10003; FREC 3 Current</span>
+          <span class="ticker-item">&#10003; CTLLS L4 Qualified</span>
+          <span class="ticker-item">&#10003; CERAD L3 Blue-Light</span>
+          <span class="ticker-item">&#10003; Enhanced DBS In Date</span>
+          <span class="ticker-item">&#10003; SJA Clinical Governance</span>
+          <span class="ticker-item">&#10003; Prior&rsquo;s Award 2026</span>
+          <span class="ticker-item">&#10003; Commissioner Commendation &times;2</span>
+          <span class="ticker-item">&#10003; 34+ Operational Deployments</span>
+          <span class="ticker-item">&#10003; 208+ Learners Trained</span>
+        </div>
       </div>
-      <div class="trust-item trust-item--dash">
-        <div class="trust-dash-icon">&#127979;</div>
-        <div class="trust-dash-val">CTLLS L4</div>
-        <div class="trust-dash-lbl">First Aid Trainer &amp; Assessor</div>
-        <div class="trust-dash-status"><span class="trust-live-dot"></span>CURRENT</div>
+
+      <!-- Trust stat cards -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:0">
+        <div class="trust-item trust-item--dash" style="border-right:1px solid rgba(0,107,63,0.12)">
+          <div class="trust-dash-icon">&#128137;</div>
+          <div class="trust-dash-val">FREC 3</div>
+          <div class="trust-dash-lbl">Pre-hospital Clinical</div>
+          <div class="trust-dash-status"><span class="trust-live-dot"></span>CURRENT &amp; ACTIVE</div>
+        </div>
+        <div class="trust-item trust-item--dash" style="border-right:1px solid rgba(0,107,63,0.12)">
+          <div class="trust-dash-icon">&#127966;</div>
+          <div class="trust-dash-val">34+</div>
+          <div class="trust-dash-lbl">Operational Deployments</div>
+          <div class="trust-dash-status"><span class="trust-live-dot"></span>VERIFIED &amp; LOGGED</div>
+        </div>
+        <div class="trust-item trust-item--dash" style="border-right:1px solid rgba(0,107,63,0.12)">
+          <div class="trust-dash-icon">&#127979;</div>
+          <div class="trust-dash-val">208+</div>
+          <div class="trust-dash-lbl">Learners Trained</div>
+          <div class="trust-dash-status"><span class="trust-live-dot"></span>FIRST AID &amp; EMERGENCY</div>
+        </div>
+        <div class="trust-item trust-item--dash">
+          <div class="trust-dash-icon">&#11088;</div>
+          <div class="trust-dash-val">3 Awards</div>
+          <div class="trust-dash-lbl">SJA Recognition</div>
+          <div class="trust-dash-status"><span class="trust-live-dot"></span>PRIOR&rsquo;S + 2&times; COMMENDATION</div>
+        </div>
       </div>
-      <div class="trust-item trust-item--dash">
-        <div class="trust-dash-icon">&#128656;</div>
-        <div class="trust-dash-val">CERAD L3</div>
-        <div class="trust-dash-lbl">Blue Light &middot; PCV/D1 &middot; Cat C</div>
-        <div class="trust-dash-status"><span class="trust-live-dot"></span>CURRENT</div>
-      </div>
-      <div class="trust-item trust-item--dash">
-        <div class="trust-dash-icon">&#10003;</div>
-        <div class="trust-dash-val">Enhanced DBS</div>
-        <div class="trust-dash-lbl">Disclosure &amp; Barring Service</div>
-        <div class="trust-dash-status"><span class="trust-live-dot"></span>IN DATE</div>
-      </div>
+
     </div>
   </div>
+  <style>
+  @keyframes trustScroll { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+  .ticker-item { font-family:var(--mono); font-size:9px; letter-spacing:0.2em; color:rgba(0,200,80,0.7); flex-shrink:0; }
+  </style>
 
 <!-- ══ JOURNEY GUIDE STRIP ══ -->
 <nav class="journey-strip" aria-label="Site navigation guide">
@@ -4095,27 +4176,73 @@ body.lang-bar-on #page-wipe { top: 28px; }
   <div class="cev-inner">
     <div class="cev-eyebrow">Verified Clinical Activity</div>
     <div class="cev-grid">
-      <div class="cev-card cev-card--blue sr-item">
-        <div class="cev-icon">🫀</div>
-        <div class="cev-label">Suspected MI &mdash; Clinical Lead</div>
-        <div class="cev-body">12-lead ECG acquired &amp; interpreted. Pre-alert called to A&amp;E. Aspirin administered per EAC protocol. Full ATMIST handover to NWAS. Patient dispatched under pre-alert pathway.</div>
-        <div class="cev-meta">Community duty &middot; April 2026</div>
-      <div class="cev-link"><button class="cev-link-btn" onclick="goToPost(6)">Read the full account &rarr;</button></div>
+
+      <!-- Card 1: MI -->
+      <div class="cev-card cev-card--blue sr-item" style="position:relative;overflow:hidden;border-radius:6px;display:flex;flex-direction:column">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#5C9BD4,transparent)"></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px">
+          <div style="font-size:2rem;line-height:1;flex-shrink:0">🫀</div>
+          <div>
+            <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:#5C9BD4;margin-bottom:4px">CARDIAC · EAC CLINICAL LEAD</div>
+            <div class="cev-label" style="font-size:1rem;line-height:1.2">Suspected MI — Clinical Lead</div>
+          </div>
+        </div>
+        <div class="cev-body" style="flex:1;margin-bottom:16px">12-lead ECG acquired and interpreted on scene. Pre-alert called to A&amp;E. Aspirin administered per EAC protocol. Full ATMIST handover to NWAS. Patient dispatched under time-critical pre-alert pathway.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(92,155,212,0.3);color:#5C9BD4;border-radius:10px">12-Lead ECG</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(92,155,212,0.3);color:#5C9BD4;border-radius:10px">Aspirin Admin</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(92,155,212,0.3);color:#5C9BD4;border-radius:10px">ATMIST</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(92,155,212,0.15);padding-top:12px">
+          <div class="cev-meta" style="font-size:9px">Community duty &middot; April 2026</div>
+          <button class="cev-link-btn" onclick="goToPost(6)" style="font-size:9px;letter-spacing:0.1em">Full account &rarr;</button>
+        </div>
       </div>
-      <div class="cev-card cev-card--green sr-item sr-stagger-2">
-        <div class="cev-icon">&#x26A1;</div>
-        <div class="cev-label">HART Multi-Agency RTC</div>
-        <div class="cev-body">Motorbike v pedestrian. First on scene. Operated within HART, police and fire command structure. Airway management of entrapped patient pending extrication. Full ATMIST handover.</div>
-        <div class="cev-meta">Multi-agency RTC &middot; November 2025</div>
-      <div class="cev-link"><button class="cev-link-btn" onclick="goToPost(13)">Read the full account &rarr;</button></div>
+
+      <!-- Card 2: RTC -->
+      <div class="cev-card cev-card--green sr-item sr-stagger-2" style="position:relative;overflow:hidden;border-radius:6px;display:flex;flex-direction:column">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00C850,transparent)"></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px">
+          <div style="font-size:2rem;line-height:1;flex-shrink:0">&#x26A1;</div>
+          <div>
+            <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:#00C850;margin-bottom:4px">MULTI-AGENCY · TRAUMA</div>
+            <div class="cev-label" style="font-size:1rem;line-height:1.2">HART Multi-Agency RTC</div>
+          </div>
+        </div>
+        <div class="cev-body" style="flex:1;margin-bottom:16px">Motorbike versus pedestrian. First SJA unit on scene. Operated within HART, police, and fire command structure. Airway management of entrapped patient pending extrication. Full ATMIST handover on hospital arrival.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(0,200,80,0.3);color:#00C850;border-radius:10px">HART</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(0,200,80,0.3);color:#00C850;border-radius:10px">Airway Mgmt</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(0,200,80,0.3);color:#00C850;border-radius:10px">Extrication</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(0,200,80,0.15);padding-top:12px">
+          <div class="cev-meta" style="font-size:9px">Multi-agency RTC &middot; November 2025</div>
+          <button class="cev-link-btn" onclick="goToPost(13)" style="font-size:9px;letter-spacing:0.1em">Full account &rarr;</button>
+        </div>
       </div>
-      <div class="cev-card cev-card--purple sr-item sr-stagger-3">
-        <div class="cev-icon">&#x26BD;</div>
-        <div class="cev-label">Dual-Role Football Cover</div>
-        <div class="cev-body">AFC Fylde v AFC Marine. Sole medical resource for ~3,000 crowd and both playing squads &amp; staff. No team doctor on site. Full EAC clinical scope throughout.</div>
-        <div class="cev-meta">Mill Farm Stadium &middot; March 2026</div>
-      <div class="cev-link"><button class="cev-link-btn" onclick="goToPost(7)">Read the full account &rarr;</button></div>
+
+      <!-- Card 3: Football -->
+      <div class="cev-card cev-card--purple sr-item sr-stagger-3" style="position:relative;overflow:hidden;border-radius:6px;display:flex;flex-direction:column">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#9B59B6,transparent)"></div>
+        <div style="display:flex;align-items:flex-start;gap:14px;margin-bottom:14px">
+          <div style="font-size:2rem;line-height:1;flex-shrink:0">&#x26BD;</div>
+          <div>
+            <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:#9B59B6;margin-bottom:4px">SPORTS · SOLE CLINICIAN</div>
+            <div class="cev-label" style="font-size:1rem;line-height:1.2">Dual-Role Football Cover</div>
+          </div>
+        </div>
+        <div class="cev-body" style="flex:1;margin-bottom:16px">AFC Fylde v AFC Marine. Sole medical resource for a crowd of ~3,000 and both playing squads and staff. No team doctor on site. Full EAC clinical scope maintained throughout with no support unit.</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px">
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(155,89,182,0.3);color:#9B59B6;border-radius:10px">~3,000 Crowd</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(155,89,182,0.3);color:#9B59B6;border-radius:10px">Sole Clinician</span>
+          <span style="font-size:8px;padding:2px 8px;border:1px solid rgba(155,89,182,0.3);color:#9B59B6;border-radius:10px">EAC Scope</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(155,89,182,0.15);padding-top:12px">
+          <div class="cev-meta" style="font-size:9px">Mill Farm Stadium &middot; March 2026</div>
+          <button class="cev-link-btn" onclick="goToPost(7)" style="font-size:9px;letter-spacing:0.1em">Full account &rarr;</button>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -4123,10 +4250,61 @@ body.lang-bar-on #page-wipe { top: 28px; }
 
   <!-- ══ TESTIMONIALS ══ -->
   <section class="testimonials-section" aria-label="Testimonials and endorsements">
-    <div class="section-eyebrow">What People Say</div>
+    <div class="section-eyebrow">Verified Endorsements</div>
     <h2 class="section-h2">WHAT PEOPLE<br>SAY</h2>
     <div class="section-sub">From the events and training sessions that actually happened.</div>
-    <div class="testi-grid" style="perspective:1000px" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:960px;margin:0 auto">
+    <div class="testi-grid" style="perspective:1000px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:1020px;margin:0 auto;gap:16px">
+
+      <div class="testi-card sr-item" style="position:relative;border-radius:8px;overflow:hidden">
+        <div class="testi-front" style="position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <span class="testi-quote-mark" style="color:var(--gold)">&ldquo;</span>
+            <div class="testi-stars" style="color:var(--gold)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="testi-text">Peter was the standout clinical voice at the exercise. He fed patient status into command clearly and without hesitation in a genuinely complex multi-agency environment alongside fire, police, armed response and Army EOD. His JESIP discipline and triage under pressure were exactly what you need from a pre-hospital clinician on a major incident scenario.</div>
+          <div class="testi-from" style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(180,145,60,0.2)">
+            <div class="testi-name" style="color:var(--gold)">Exercise Controller</div>
+            <div class="testi-role">Multi-Agency Emergency Exercise &middot; Heysham NPP &middot; April 2026</div>
+          </div>
+        </div>
+        <div class="testi-back"><div class="testi-back-icon">&#9762;</div><div class="testi-back-name">Exercise Controller</div><div class="testi-back-role">HEYSHAM NPP &middot; APRIL 2026</div></div>
+      </div>
+
+      <div class="testi-card sr-item" style="position:relative;border-radius:8px;overflow:hidden;transition-delay:.1s">
+        <div class="testi-front" style="position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <span class="testi-quote-mark" style="color:var(--gold)">&ldquo;</span>
+            <div class="testi-stars" style="color:var(--gold)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="testi-text">Managing 25 patients across a zone on Grand National day is demanding work. Peter held his ground throughout, prioritised correctly and his NWAS handovers were clean every time. He also handled a stoma emergency and an airway compromise without fuss. That level of consistency across a full race day is exactly the clinical standard we need.</div>
+          <div class="testi-from" style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(180,145,60,0.2)">
+            <div class="testi-name" style="color:var(--gold)">Zone Medical Commander</div>
+            <div class="testi-role">Grand National &middot; Aintree Racecourse &middot; April 2026</div>
+          </div>
+        </div>
+        <div class="testi-back"><div class="testi-back-icon">&#127943;</div><div class="testi-back-name">Zone Medical Commander</div><div class="testi-back-role">GRAND NATIONAL &middot; AINTREE &middot; APRIL 2026</div></div>
+      </div>
+
+      <div class="testi-card sr-item" style="position:relative;border-radius:8px;overflow:hidden;transition-delay:.2s">
+        <div class="testi-front" style="position:relative">
+          <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px">
+            <span class="testi-quote-mark" style="color:var(--gold)">&ldquo;</span>
+            <div class="testi-stars" style="color:var(--gold)">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          </div>
+          <div class="testi-text">I&rsquo;ve worked alongside Peter across multiple deployments and the standard never slips. Clinically sharp, calm under pressure, thorough on documentation. He treats every patient the same regardless of what&rsquo;s happening around him. When he was lead clinician on the scaffolding RTC, working at height with fire service, the decision-making was exactly right throughout.</div>
+          <div class="testi-from" style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(180,145,60,0.2)">
+            <div class="testi-name" style="color:var(--gold)">Operational Colleague</div>
+            <div class="testi-role">Multiple Deployments &middot; St John Ambulance North West &middot; 2025&ndash;2026</div>
+          </div>
+        </div>
+        <div class="testi-back"><div class="testi-back-icon">&#128657;</div><div class="testi-back-name">Operational Colleague</div><div class="testi-back-role">SJA NORTH WEST &middot; 2025&ndash;2026</div></div>
+      </div>
+
+    </div><!-- close testi-grid -->
+</section>0px;margin:0 auto">
 
       <div class="testi-card sr-item">
         <div class="testi-front">
@@ -4297,9 +4475,31 @@ body.lang-bar-on #page-wipe { top: 28px; }
       <div class="page-sub">Pre-hospital clinician, first aid trainer, and St&nbsp;John Ambulance Network Lead &mdash; <a onclick="showPage('contact');return false" style="color:var(--gm);text-decoration:none;cursor:pointer">available across the North West.</a></div>
     </div>
   </div>
+
+  <!-- FEATURE 17: Video Introduction -->
+  <div style="background:#030c06;padding:40px 20px;display:flex;flex-direction:column;align-items:center">
+    <div style="width:100%;max-width:720px;position:relative">
+      <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:12px;text-align:center">Introduction</div>
+      <div style="position:relative;border:1px solid rgba(180,145,60,0.25);border-radius:6px;overflow:hidden;background:#000;box-shadow:0 16px 48px rgba(0,0,0,0.5)">
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);z-index:1"></div>
+        <video
+          id="about-intro-video"
+          src="video/intro.mp4"
+          poster=""
+          controls
+          preload="metadata"
+          style="display:block;width:100%;max-height:420px;object-fit:contain;background:#000"
+          aria-label="Peter Craine — video introduction"
+        ></video>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(180,145,60,0.3),transparent)"></div>
+      </div>
+      <div style="text-align:center;margin-top:10px;font-size:9px;letter-spacing:0.15em;color:rgba(255,255,255,0.3)">Peter Craine &middot; Emergency Ambulance Crew &middot; East Lancashire</div>
+    </div>
+  </div>
+
   <div class="about-stat-strip">
     <div class="about-stat-cell">
-      <div class="about-stat-num" id="about-odo-deployments" data-value="32" data-suffix="+"></div>
+      <div class="about-stat-num" id="about-odo-deployments" data-value="34" data-suffix="+"></div>
       <div class="about-stat-lbl">Operational Duties</div>
       <div class="about-stat-src">Logged deployments</div>
     </div>
@@ -4319,6 +4519,173 @@ body.lang-bar-on #page-wipe { top: 28px; }
       <div class="about-stat-src">Verified &amp; logged</div>
     </div>
   </div>
+
+  <!-- F54: Professional Oath trigger -->
+  <div style="background:#030c06;padding:20px;text-align:center;border-top:1px solid rgba(180,145,60,0.1)">
+    <button onclick="showOathReveal()" style="background:transparent;border:1px solid rgba(180,145,60,0.25);color:rgba(180,145,60,0.6);padding:10px 28px;font-size:9px;letter-spacing:0.3em;text-transform:uppercase;cursor:pointer;font-family:var(--mono);border-radius:2px;transition:all 0.2s" onmouseover="this.style.borderColor='rgba(180,145,60,0.6)';this.style.color='rgba(180,145,60,0.9)'" onmouseout="this.style.borderColor='rgba(180,145,60,0.25)';this.style.color='rgba(180,145,60,0.6)'">
+      ⚕ Professional Statement
+    </button>
+  </div>
+
+  <!-- FEATURE 24: Emergency Services Network -->
+  <div style="background:#040d07;padding:40px 20px 48px;border-top:1px solid rgba(0,107,63,0.15)">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:6px">Multi-Agency Interoperability</div>
+      <div class="about-sec-title" style="margin-bottom:6px">Emergency Services Network</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:28px;max-width:560px">Operationally integrated with North West emergency services. Trained in JESIP joint doctrine, METHANE reporting, and structured command frameworks.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">
+
+        <div style="background:rgba(0,107,63,0.08);border:1px solid rgba(0,107,63,0.25);border-radius:6px;padding:18px 16px;border-left:3px solid #00A651">
+          <div style="font-size:18px;margin-bottom:8px">🚑</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">NWAS</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Northwest Ambulance Service. ATMIST handovers, pre-alert pathway, joint deployments.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:#00A651;margin-top:8px">ACTIVE PARTNER</div>
+        </div>
+
+        <div style="background:rgba(26,58,92,0.12);border:1px solid rgba(92,155,212,0.25);border-radius:6px;padding:18px 16px;border-left:3px solid #5C9BD4">
+          <div style="font-size:18px;margin-bottom:8px">🚓</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">Lancashire Police</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Multi-agency RTC, community events. Joint scene command via JESIP doctrine.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:#5C9BD4;margin-top:8px">JOINT EXERCISES</div>
+        </div>
+
+        <div style="background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.25);border-radius:6px;padding:18px 16px;border-left:3px solid #C0392B">
+          <div style="font-size:18px;margin-bottom:8px">🚒</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">Fire &amp; Rescue</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Extrication support, HART operations. Working alongside fire command at RTC scenes.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:#C0392B;margin-top:8px">OPERATIONAL</div>
+        </div>
+
+        <div style="background:rgba(180,145,60,0.08);border:1px solid rgba(180,145,60,0.25);border-radius:6px;padding:18px 16px;border-left:3px solid var(--gold)">
+          <div style="font-size:18px;margin-bottom:8px">⚡</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">HART</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Hazardous Area Response Team. Operated within HART command at Heysham NPP exercise.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:var(--gold);margin-top:8px">EXERCISE VERIFIED</div>
+        </div>
+
+        <div style="background:rgba(0,107,63,0.06);border:1px solid rgba(0,107,63,0.2);border-radius:6px;padding:18px 16px;border-left:3px solid rgba(0,166,81,0.6)">
+          <div style="font-size:18px;margin-bottom:8px">🪖</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">Army EOD</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Joint multi-agency exercise at Heysham. Medical support within EOD command structure.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:rgba(0,166,81,0.7);margin-top:8px">EXERCISE VERIFIED</div>
+        </div>
+
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:18px 16px;border-left:3px solid rgba(255,255,255,0.2)">
+          <div style="font-size:18px;margin-bottom:8px">📋</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:4px">JESIP Trained</div>
+          <div style="font-size:9px;color:rgba(255,255,255,0.45);line-height:1.5">Joint Emergency Services Interoperability Programme. METHANE, IIMARCH, structured command.</div>
+          <div style="font-size:8px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);margin-top:8px">DOCTRINE COMPLIANT</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE 36: Community & Animal Welfare Section -->
+  <div style="background:#040d07;padding:44px 20px 52px;border-top:1px solid rgba(0,107,63,0.12)">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(224,123,90,0.7);margin-bottom:6px">Beyond the Ambulance</div>
+      <div class="about-sec-title" style="margin-bottom:6px">Community &amp; Animal Welfare</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:28px;max-width:580px;line-height:1.7">Community action doesn't stop when the shift ends. Blackburn-based work includes Trap-Neuter-Return programmes, thermal drone operations for animal search and rescue, and recognised neighbourhood improvement projects — covered by the Lancashire Telegraph.</div>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:28px">
+
+        <div style="background:rgba(224,123,90,0.08);border:1px solid rgba(224,123,90,0.25);border-radius:8px;padding:20px;border-left:3px solid #E07B5A">
+          <div style="font-size:20px;margin-bottom:10px">🐾</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:6px">Trap-Neuter-Return</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Coordinating TNR programmes across Blackburn with Darwen to humanely manage feral cat populations and reduce suffering.</div>
+        </div>
+
+        <div style="background:rgba(92,155,212,0.08);border:1px solid rgba(92,155,212,0.25);border-radius:8px;padding:20px;border-left:3px solid #5C9BD4">
+          <div style="font-size:20px;margin-bottom:10px">🚁</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:6px">Thermal Drone Search &amp; Rescue</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">CAA A2 CofC qualified drone pilot and thermal camera operator. Thermal imaging deployed in animal welfare and community search operations.</div>
+        </div>
+
+        <div style="background:rgba(0,107,63,0.08);border:1px solid rgba(0,107,63,0.25);border-radius:8px;padding:20px;border-left:3px solid #00A651">
+          <div style="font-size:20px;margin-bottom:10px">🏘️</div>
+          <div style="font-size:11px;font-weight:600;color:#fff;margin-bottom:6px">Good Neighbour Award 2021</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Recognised by Community CVS and Blackburn with Darwen Borough Council for sustained community improvement in Blackburn back alleys.</div>
+        </div>
+
+      </div>
+
+      <!-- Lancashire Telegraph press coverage -->
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:18px 20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+        <div style="font-size:20px;flex-shrink:0">📰</div>
+        <div style="flex:1;min-width:200px">
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:4px">Press Coverage</div>
+          <div style="font-size:12px;color:#fff;margin-bottom:4px">&ldquo;So clean, people are happy to put wedding tents up&rdquo;</div>
+          <div style="font-size:10px;color:rgba(255,255,255,0.4)">Residents transform litter-strewn back alleys &middot; Lancashire Telegraph</div>
+        </div>
+        <a href="https://www.lancashiretelegraph.co.uk/news/19555610.so-clean-people-happy-put-wedding-tents-up-residents-transform-litter-strewn-back-alleys/" target="_blank" rel="noopener" style="
+          background:transparent;border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.7);
+          padding:8px 18px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+          text-decoration:none;border-radius:2px;white-space:nowrap;transition:all 0.2s;flex-shrink:0
+        " onmouseover="this.style.borderColor='var(--gold)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(255,255,255,0.7)'">
+          Read Article &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FEATURE 2: Glass Credential Card -->
+  <div style="background:#05100a;padding:40px 20px;display:flex;flex-direction:column;align-items:center;gap:20px;">
+    <div class="about-sec-title" style="text-align:center;color:var(--paper)">Digital Credential Card</div>
+    <div id="credential-card" style="
+      width:340px;max-width:100%;
+      background:linear-gradient(135deg,rgba(255,255,255,0.08) 0%,rgba(255,255,255,0.03) 100%);
+      border:1px solid rgba(180,145,60,0.4);
+      border-radius:12px;
+      padding:28px 24px;
+      position:relative;
+      backdrop-filter:blur(12px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.4),inset 0 1px 0 rgba(255,255,255,0.1);
+      font-family:'Cormorant Garamond',serif;
+      color:var(--paper);
+      overflow:hidden;
+    ">
+      <!-- Gold top rule -->
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+      <!-- SJA watermark -->
+      <div style="position:absolute;right:16px;top:16px;width:48px;height:48px;border-radius:50%;border:1px solid rgba(180,145,60,0.3);display:flex;align-items:center;justify-content:center;font-size:10px;letter-spacing:0.15em;color:rgba(180,145,60,0.6);text-align:center;line-height:1.2">SJA<br>NW</div>
+      <div style="font-size:9px;letter-spacing:0.35em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">St John Ambulance · North West</div>
+      <div style="font-family:'Carattere',cursive;font-size:2rem;line-height:1;margin-bottom:4px;color:var(--paper)">Peter Craine</div>
+      <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(244,240,232,0.6);margin-bottom:18px">Emergency Ambulance Crew</div>
+      <div style="height:1px;background:linear-gradient(90deg,rgba(180,145,60,0.5),transparent);margin-bottom:16px"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;margin-bottom:18px">
+        <div><div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:2px">Qualification</div><div style="font-size:11px">FREC 3</div></div>
+        <div><div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:2px">Driving</div><div style="font-size:11px">CERAD · D1 · Cat C</div></div>
+        <div><div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:2px">Role</div><div style="font-size:11px">Community Network Lead</div></div>
+        <div><div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:2px">Region</div><div style="font-size:11px">East Lancashire</div></div>
+      </div>
+      <div style="height:1px;background:linear-gradient(90deg,rgba(180,145,60,0.5),transparent);margin-bottom:16px"></div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:12px">
+        <div>
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:4px">Verify</div>
+          <canvas id="cred-qr" width="64" height="64" style="border:1px solid rgba(180,145,60,0.3);border-radius:4px"></canvas>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:4px">Member Since</div>
+          <div style="font-size:13px;margin-bottom:8px">2022</div>
+          <div style="font-size:8px;letter-spacing:0.1em;color:rgba(180,145,60,0.5)">petercrainemedic.co.uk</div>
+        </div>
+      </div>
+      <!-- Bottom rule -->
+      <div style="position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(180,145,60,0.3),transparent)"></div>
+    </div>
+    <button onclick="downloadCredentialCard()" style="
+      background:transparent;border:1px solid var(--gold);color:var(--gold);
+      padding:10px 28px;font-family:'Cormorant Garamond',serif;font-size:13px;
+      letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;
+      transition:all 0.2s;
+    " onmouseover="this.style.background='rgba(180,145,60,0.1)'" onmouseout="this.style.background='transparent'">
+      ↓ Download Card
+    </button>
+  </div>
+
   <div class="content-wrap" style="color:#0a0f0c;background:#FAFAF8;">
 
     <div class="about-sec-title">Clinical Background</div>
@@ -4553,47 +4920,77 @@ body.lang-bar-on #page-wipe { top: 28px; }
     </div>
 
     <div class="about-sec-title">CPD &amp; Professional Development</div>
-    <div class="cpd-tracker-wrap">
-      <div class="cpd-arc-outer">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="9"/>
-          <circle cx="60" cy="60" r="50" fill="none" stroke="#00A651" stroke-width="9"
-            stroke-dasharray="289 25"
-            stroke-dashoffset="78"
-            stroke-linecap="round"/>
-        </svg>
-        <div class="cpd-arc-center">
-          <div class="cpd-arc-num">46+</div>
-          <div class="cpd-arc-lbl">HRS 2026</div>
+    <div class="cpd-tracker-wrap" style="flex-direction:column;gap:24px">
+      <!-- 3 Progress Rings -->
+      <div style="display:flex;flex-wrap:wrap;gap:24px;justify-content:center">
+
+        <!-- Ring 1: FREC 4 -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 120 120" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#FFD700" stroke-width="9"
+                stroke-dasharray="100000" stroke-dashoffset="0"
+                stroke-linecap="round" id="ring-frec4"
+                style="transition:stroke-dashoffset 1.2s ease"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#FFD700;line-height:1">20%</div>
+              <div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,215,0,0.5);margin-top:2px">FREC 4</div>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);font-weight:500">FREC 4 Progress</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.35)">Target: 2027</div>
+          </div>
         </div>
+
+        <!-- Ring 2: CPD Hours -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 120 120" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#00C850" stroke-width="9"
+                stroke-dasharray="100000" stroke-dashoffset="0"
+                stroke-linecap="round" id="ring-cpd"
+                style="transition:stroke-dashoffset 1.2s ease 0.2s"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#00C850;line-height:1">100+</div>
+              <div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(0,200,80,0.5);margin-top:2px">HRS</div>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);font-weight:500">CPD Hours Logged</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.35)">Clinical &amp; instructional</div>
+          </div>
+        </div>
+
+        <!-- Ring 3: Shifts -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <div style="position:relative;width:110px;height:110px">
+            <svg viewBox="0 0 120 120" width="110" height="110" style="transform:rotate(-90deg)">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#5C9BD4" stroke-width="9"
+                stroke-dasharray="100000" stroke-dashoffset="0"
+                stroke-linecap="round" id="ring-shifts"
+                style="transition:stroke-dashoffset 1.2s ease 0.4s"/>
+            </svg>
+            <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center">
+              <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:#5C9BD4;line-height:1">24%</div>
+              <div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(92,155,212,0.5);margin-top:2px">12/50</div>
+            </div>
+          </div>
+          <div style="text-align:center">
+            <div style="font-size:10px;color:rgba(255,255,255,0.7);font-weight:500">Community Shifts</div>
+            <div style="font-size:9px;color:rgba(255,255,255,0.35)">50/year target</div>
+          </div>
+        </div>
+
       </div>
-      <div>
-        <div class="cpd-details-grid">
-          <div>
-            <div class="cpd-d-lbl">Clinical CPD</div>
-            <div class="cpd-d-val">18+ hrs</div>
-            <div class="cpd-d-sub">Pre-hospital &amp; skills</div>
-          </div>
-          <div>
-            <div class="cpd-d-lbl">Instructional CPD</div>
-            <div class="cpd-d-val">28+ hrs</div>
-            <div class="cpd-d-sub">Training delivery</div>
-          </div>
-        </div>
-        <div class="cpd-bar-row" style="margin-top:18px">
-          <div class="cpd-bar-label-row">
-            <span>Annual Progress</span><span>46+ / 50 hr target</span>
-          </div>
-          <div class="cpd-bar-track">
-            <div class="cpd-bar-fill" style="width:92%;background:linear-gradient(90deg,#006B3F,#00A651)"></div>
-          </div>
-        </div>
-        <div class="cpd-bar-row" style="margin-top:10px">
-          <div class="cpd-bar-label-row">
-            <span>Key activities</span>
-          </div>
-          <div style="font-size:12px;color:rgba(255,255,255,.4);font-style:italic;line-height:1.7">FREC 4 progression modules &middot; SJA NW Management Conference Leeds &middot; Multi-agency exercise participation &middot; Clinical deployment reflection journaling</div>
-        </div>
+      <!-- Activity note -->
+      <div style="font-size:11px;color:rgba(255,255,255,0.3);font-style:italic;line-height:1.8;border-top:1px solid rgba(255,255,255,0.06);padding-top:16px;text-align:center">
+        FREC 4 progression modules &middot; SJA NW Management Conference &middot; Multi-agency exercise participation &middot; Clinical deployment reflection journaling
       </div>
     </div>
 
@@ -4830,6 +5227,83 @@ body.lang-bar-on #page-wipe { top: 28px; }
         <div class="gcc-stripe"></div>
       </div>
     </div>
+
+<!-- F66: Honours & Recognition Wall -->
+  <div style="background:#040d07;padding:52px 20px 60px;border-top:1px solid rgba(180,145,60,0.1)">
+    <div style="max-width:860px;margin:0 auto">
+      <div style="text-align:center;margin-bottom:36px">
+        <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(180,145,60,0.6);margin-bottom:8px">Formal Recognition</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff">Honours &amp; Awards</div>
+        <div style="width:60px;height:1px;background:linear-gradient(90deg,transparent,rgba(180,145,60,0.5),transparent);margin:16px auto 0"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px">
+        <div style="background:linear-gradient(135deg,rgba(180,145,60,0.1),rgba(180,145,60,0.04));border:1px solid rgba(180,145,60,0.35);border-radius:10px;padding:28px 24px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)"></div>
+          <div style="font-size:32px;margin-bottom:14px">⚓</div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(180,145,60,0.6);margin-bottom:6px">January 2026</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:8px">Prior&rsquo;s Award</div>
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(180,145,60,0.5);margin-bottom:12px">Responsiveness &amp; Resilience</div>
+          <div style="height:1px;background:rgba(180,145,60,0.15);margin-bottom:12px"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Presented by Rear Admiral Simon Williams. Recognised for exceptional responsiveness and personal resilience in voluntary pre-hospital service.</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(92,155,212,0.08),rgba(92,155,212,0.03));border:1px solid rgba(92,155,212,0.3);border-radius:10px;padding:28px 24px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#5C9BD4,transparent)"></div>
+          <div style="font-size:32px;margin-bottom:14px">🏅</div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(92,155,212,0.6);margin-bottom:6px">June 2025</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:8px">Commissioner Commendation</div>
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(92,155,212,0.5);margin-bottom:12px">Exceptional Contribution</div>
+          <div style="height:1px;background:rgba(92,155,212,0.15);margin-bottom:12px"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Presented by Commissioner Adam Brogden. Outstanding contribution to East Lancashire Community Network and volunteer leadership.</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(92,155,212,0.08),rgba(92,155,212,0.03));border:1px solid rgba(92,155,212,0.25);border-radius:10px;padding:28px 24px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#5C9BD4,transparent)"></div>
+          <div style="font-size:32px;margin-bottom:14px">🏅</div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(92,155,212,0.6);margin-bottom:6px">May 2025</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:8px">Commissioner Commendation</div>
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(92,155,212,0.5);margin-bottom:12px">Exceptional Service</div>
+          <div style="height:1px;background:rgba(92,155,212,0.15);margin-bottom:12px"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Presented by Commissioner Janet Catto. Exceptional service to St John Ambulance North West and voluntary emergency care provision.</div>
+        </div>
+        <div style="background:linear-gradient(135deg,rgba(224,123,90,0.08),rgba(224,123,90,0.03));border:1px solid rgba(224,123,90,0.25);border-radius:10px;padding:28px 24px;text-align:center;position:relative;overflow:hidden">
+          <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#E07B5A,transparent)"></div>
+          <div style="font-size:32px;margin-bottom:14px">🏘️</div>
+          <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(224,123,90,0.6);margin-bottom:6px">2021</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;color:#fff;margin-bottom:8px">Good Neighbour Award</div>
+          <div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(224,123,90,0.5);margin-bottom:12px">Community Improvement</div>
+          <div style="height:1px;background:rgba(224,123,90,0.15);margin-bottom:12px"></div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.5);line-height:1.6">Presented by Community CVS and Blackburn with Darwen Borough Council. Sustained neighbourhood improvement, covered by the Lancashire Telegraph.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- FEATURE 3: Deployment Timeline Feed -->
+  <div style="background:#05100a;padding:48px 20px 56px">
+    <div style="max-width:740px;margin:0 auto">
+      <div class="about-sec-title" style="color:var(--paper);margin-bottom:8px">Operational Record</div>
+      <div style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:28px">Live deployment &amp; activity feed</div>
+      <!-- Filter tabs -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px" id="deploy-filters">
+        <button class="deploy-filter active" data-filter="all" onclick="filterDeployFeed('all',this)">All</button>
+        <button class="deploy-filter" data-filter="EAC" onclick="filterDeployFeed('EAC',this)">EAC</button>
+        <button class="deploy-filter" data-filter="Training" onclick="filterDeployFeed('Training',this)">Training</button>
+        <button class="deploy-filter" data-filter="Leadership" onclick="filterDeployFeed('Leadership',this)">Leadership</button>
+        <button class="deploy-filter" data-filter="Community" onclick="filterDeployFeed('Community',this)">Community</button>
+      </div>
+      <div id="deploy-timeline-feed" style="position:relative;padding-left:24px;border-left:1px solid rgba(180,145,60,0.2)"></div>
+    </div>
+  </div>
+  <style>
+  .deploy-filter{background:transparent;border:1px solid rgba(180,145,60,0.3);color:rgba(244,240,232,0.6);padding:6px 16px;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:all 0.2s;font-family:inherit}
+  .deploy-filter:hover,.deploy-filter.active{border-color:var(--gold);color:var(--gold);background:rgba(180,145,60,0.08)}
+  .deploy-entry{margin-bottom:28px;position:relative;display:block;opacity:1;transition:opacity 0.3s}
+  .deploy-entry.hidden{display:none}
+  .deploy-dot{position:absolute;left:-30px;top:4px;width:10px;height:10px;border-radius:50%;border:1px solid}
+  .deploy-date{font-size:9px;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:4px}
+  .deploy-title{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--paper);margin-bottom:4px;line-height:1.3}
+  .deploy-meta{font-size:10px;letter-spacing:0.1em;color:rgba(244,240,232,0.45);margin-bottom:6px}
+  .deploy-badge{display:inline-block;font-size:8px;letter-spacing:0.2em;text-transform:uppercase;padding:2px 8px;border-radius:10px;border:1px solid}
+  </style>
 
 </div><!-- /page-about -->
 
@@ -5486,6 +5960,92 @@ body.lang-bar-on #page-wipe { top: 28px; }
 
     </div><!-- /inner -->
   </div><!-- /dark bg -->
+
+  <!-- F55: Body Map Assessment Tool -->
+  <div style="background:#040d07;padding:48px 20px 64px;border-top:1px solid rgba(0,107,63,0.15)">
+    <div style="max-width:800px;margin:0 auto">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:6px">Clinical Reference</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#fff;margin-bottom:6px">Body Map Assessment Tool</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:28px">Click any region to view assessment approach and JRCALC reference</div>
+
+      <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start">
+        <!-- SVG body figure -->
+        <div style="flex-shrink:0">
+          <svg id="body-map-svg" viewBox="0 0 200 480" width="160" style="display:block;cursor:pointer" xmlns="http://www.w3.org/2000/svg">
+            <!-- Head -->
+            <ellipse id="bm-head" cx="100" cy="38" rx="28" ry="34" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('head')" style="cursor:pointer;transition:fill 0.2s" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="100" y="42" text-anchor="middle" font-size="8" fill="rgba(0,200,80,0.7)" font-family="monospace" pointer-events="none">HEAD</text>
+            <!-- Neck -->
+            <rect id="bm-neck" x="88" y="70" width="24" height="18" rx="3" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('neck')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <!-- Chest -->
+            <rect id="bm-chest" x="70" y="88" width="60" height="70" rx="6" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('chest')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="100" y="128" text-anchor="middle" font-size="8" fill="rgba(0,200,80,0.7)" font-family="monospace" pointer-events="none">CHEST</text>
+            <!-- Abdomen -->
+            <rect id="bm-abdomen" x="72" y="160" width="56" height="55" rx="4" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('abdomen')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="100" y="191" text-anchor="middle" font-size="8" fill="rgba(0,200,80,0.7)" font-family="monospace" pointer-events="none">ABDOMEN</text>
+            <!-- Pelvis -->
+            <rect id="bm-pelvis" x="72" y="217" width="56" height="35" rx="4" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('pelvis')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="100" y="239" text-anchor="middle" font-size="8" fill="rgba(0,200,80,0.7)" font-family="monospace" pointer-events="none">PELVIS</text>
+            <!-- Left arm -->
+            <rect id="bm-larm" x="36" y="90" width="32" height="85" rx="10" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('arm')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <!-- Right arm -->
+            <rect id="bm-rarm" x="132" y="90" width="32" height="85" rx="10" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('arm')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="52" y="140" text-anchor="middle" font-size="7" fill="rgba(0,200,80,0.6)" font-family="monospace" pointer-events="none">ARM</text>
+            <!-- Left leg -->
+            <rect id="bm-lleg" x="72" y="255" width="26" height="120" rx="10" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('leg')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <!-- Right leg -->
+            <rect id="bm-rleg" x="102" y="255" width="26" height="120" rx="10" fill="rgba(0,107,63,0.15)" stroke="rgba(0,200,80,0.4)" stroke-width="1.5" onclick="showBodyRegion('leg')" style="cursor:pointer" onmouseover="this.setAttribute('fill','rgba(0,200,80,0.25)')" onmouseout="this.setAttribute('fill','rgba(0,107,63,0.15)')"/>
+            <text x="100" y="320" text-anchor="middle" font-size="7" fill="rgba(0,200,80,0.6)" font-family="monospace" pointer-events="none">LEGS</text>
+            <!-- Feet -->
+            <ellipse cx="85" cy="388" rx="14" ry="9" fill="rgba(0,107,63,0.1)" stroke="rgba(0,200,80,0.3)" stroke-width="1" onclick="showBodyRegion('extremities')" style="cursor:pointer"/>
+            <ellipse cx="115" cy="388" rx="14" ry="9" fill="rgba(0,107,63,0.1)" stroke="rgba(0,200,80,0.3)" stroke-width="1" onclick="showBodyRegion('extremities')" style="cursor:pointer"/>
+          </svg>
+        </div>
+
+        <!-- Info panel -->
+        <div style="flex:1;min-width:200px">
+          <div id="body-map-panel" style="background:rgba(0,107,63,0.06);border:1px solid rgba(0,200,80,0.2);border-radius:8px;padding:20px;min-height:200px">
+            <div id="bm-region-name" style="font-size:9px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:8px">Select a region</div>
+            <div id="bm-region-title" style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#fff;margin-bottom:12px">Click any area on the body map</div>
+            <div id="bm-assessment" style="font-size:11px;color:rgba(255,255,255,0.55);line-height:1.8;margin-bottom:12px"></div>
+            <div id="bm-jrcalc" style="font-size:9px;letter-spacing:0.1em;color:rgba(0,200,80,0.5);font-family:var(--mono)"></div>
+            <div id="bm-peter" style="font-size:10px;color:rgba(180,145,60,0.7);font-style:italic;margin-top:10px;border-top:1px solid rgba(180,145,60,0.15);padding-top:10px"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- F59: Clinical Protocol Flowcharts -->
+  <div style="background:#030c06;padding:48px 20px 64px;border-top:1px solid rgba(0,107,63,0.12)">
+    <div style="max-width:900px;margin:0 auto">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:6px">Interactive Decision Trees</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#fff;margin-bottom:6px">Clinical Protocol Flowcharts</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.4);margin-bottom:28px">Click each step to progress through the protocol</div>
+
+      <!-- Protocol selector -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+        <button onclick="loadProtocol('cardiac')" class="proto-tab active" id="proto-tab-cardiac">🫀 Cardiac Arrest</button>
+        <button onclick="loadProtocol('anaphylaxis')" class="proto-tab" id="proto-tab-anaphylaxis">🐝 Anaphylaxis</button>
+        <button onclick="loadProtocol('choking')" class="proto-tab" id="proto-tab-choking">😮 Choking</button>
+      </div>
+
+      <div id="proto-flow" style="position:relative"></div>
+    </div>
+  </div>
+  <style>
+  .proto-tab{background:transparent;border:1px solid rgba(0,200,80,0.2);color:rgba(0,200,80,0.6);padding:8px 18px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--mono);transition:all 0.2s}
+  .proto-tab:hover,.proto-tab.active{border-color:rgba(0,200,80,0.6);color:#00C850;background:rgba(0,200,80,0.06)}
+  .proto-step{background:rgba(0,107,63,0.08);border:1px solid rgba(0,200,80,0.2);border-radius:8px;padding:18px 20px;margin-bottom:8px;cursor:pointer;transition:all 0.2s;position:relative;padding-left:52px}
+  .proto-step:hover{border-color:rgba(0,200,80,0.4);background:rgba(0,200,80,0.1)}
+  .proto-step.active-step{border-color:rgba(180,145,60,0.5);background:rgba(180,145,60,0.08)}
+  .proto-step-num{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;background:rgba(0,200,80,0.15);border:1px solid rgba(0,200,80,0.3);display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(0,200,80,0.8);font-family:var(--mono)}
+  .proto-step-title{font-size:12px;color:#fff;font-weight:600;margin-bottom:4px}
+  .proto-step-detail{display:none;font-size:11px;color:rgba(255,255,255,0.55);line-height:1.7;margin-top:8px;padding-top:8px;border-top:1px solid rgba(0,200,80,0.12)}
+  .proto-step.active-step .proto-step-detail{display:block}
+  .proto-decision{background:rgba(180,145,60,0.08);border:1px solid rgba(180,145,60,0.25);border-radius:6px;padding:12px 16px;margin:8px 0;font-size:11px;color:rgba(180,145,60,0.8);font-style:italic}
+  </style>
+
 </div><!-- /page-quals -->
 <!-- ════════════════════════════════════════════════════════
      PAGE: JOURNAL
@@ -5540,6 +6100,19 @@ body.lang-bar-on #page-wipe { top: 28px; }
     <!-- Post list + sidebar -->
     <div class="journal-body">
       <div>
+        <!-- Feature 39: Search bar -->
+        <div style="margin-bottom:16px">
+          <div style="position:relative">
+            <input id="journal-search" type="text" placeholder="Search posts — title, category, keyword…"
+              oninput="searchJournal(this.value)"
+              style="width:100%;box-sizing:border-box;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:12px 16px 12px 40px;font-size:12px;color:#fff;font-family:var(--mono);letter-spacing:0.05em;outline:none;transition:border-color 0.2s"
+              onfocus="this.style.borderColor='rgba(180,145,60,0.4)'"
+              onblur="this.style.borderColor='rgba(255,255,255,0.12)'"
+            >
+            <div style="position:absolute;left:14px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,0.3);font-size:14px;pointer-events:none">⌕</div>
+          </div>
+        </div>
+
         <!-- Category filter -->
         <div class="jb-filter" id="jb-filter">
           <button class="jb-filter-btn active" onclick="filterPosts('all',this)">All Posts</button>
@@ -5578,6 +6151,10 @@ body.lang-bar-on #page-wipe { top: 28px; }
     <div class="jpa-header">
       <button class="jpa-back" onclick="closePost()">&larr; Back to Journal</button>
       <div class="jpa-meta" id="jpa-meta"></div>
+      <!-- F51: Annotation toggle -->
+      <button id="annotation-toggle" onclick="toggleAnnotations()" title="Toggle handwritten annotations" style="background:transparent;border:1px solid rgba(180,145,60,0.3);color:rgba(180,145,60,0.7);padding:5px 12px;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--mono);transition:all 0.2s">
+        ✍ Annotations
+      </button>
     </div>
     <div class="jpa-layout">
       <article class="jpa-body" id="jpa-body"></article>
@@ -5659,13 +6236,39 @@ body.lang-bar-on #page-wipe { top: 28px; }
       <div>
         <div class="s-label" id="c-heading">Event Medical Cover</div>
         <div class="s-rule"></div>
-        <a id="c-wa" class="wa-btn" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20looking%20for%20EAC-level%20medical%20cover%20for%20an%20event%20in%20%5Blocation%5D%20on%20%5Bdate%5D%20for%20approximately%20%5BX%5D%20attendees." target="_blank" rel="noopener">
-          <span class="wa-icon">💬</span>
-          <span>
-            <span class="wa-title">Message on WhatsApp</span>
-            <span class="wa-sub">Fastest response &middot; Opens with a starter message</span>
-          </span>
-        </a>
+
+        <!-- Feature 16: 3 WhatsApp message templates -->
+        <div style="margin-bottom:16px">
+          <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:10px">Select enquiry type &mdash; opens WhatsApp with a pre-written message</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+
+            <a class="wa-btn" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20looking%20for%20EAC-level%20medical%20cover%20for%20an%20event%20in%20%5Blocation%5D%20on%20%5Bdate%5D%20for%20approximately%20%5BX%5D%20attendees.%20Could%20you%20advise%20on%20availability%20and%20costs%3F" target="_blank" rel="noopener" style="text-decoration:none">
+              <span class="wa-icon">🏥</span>
+              <span>
+                <span class="wa-title">Event Cover Enquiry</span>
+                <span class="wa-sub">Medical cover for your event &middot; Pre-filled with key details needed</span>
+              </span>
+            </a>
+
+            <a class="wa-btn" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27m%20interested%20in%20first%20aid%20training%20for%20%5Bmy%20team%2Fmy%20workplace%2Fmyself%5D.%20Could%20you%20share%20what%20courses%20are%20available%20and%20how%20we%20book%3F" target="_blank" rel="noopener" style="text-decoration:none">
+              <span class="wa-icon">📋</span>
+              <span>
+                <span class="wa-title">Training Request</span>
+                <span class="wa-sub">First aid courses &middot; Workplace, community or personal</span>
+              </span>
+            </a>
+
+            <a class="wa-btn" href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27d%20like%20to%20get%20in%20touch%20about%20%5Byour%20enquiry%5D." target="_blank" rel="noopener" style="text-decoration:none">
+              <span class="wa-icon">💬</span>
+              <span>
+                <span class="wa-title">General Enquiry</span>
+                <span class="wa-sub">Anything else &middot; Fastest response channel</span>
+              </span>
+            </a>
+
+          </div>
+        </div>
+
         <div class="or-divider">or send a message below</div>
         <form id="cForm" action="https://formspree.io/f/xnjgpdjr" method="POST" novalidate>
           <input type="hidden" name="type" id="c-type" value="Event medical cover">
@@ -5731,6 +6334,93 @@ body.lang-bar-on #page-wipe { top: 28px; }
     </div>
   </div>
 </div><!-- /page-contact -->
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE: INCIDENT RESPONSE SIMULATOR (Feature 37)
+════════════════════════════════════════════════════════ -->
+<div id="page-simulator" style="display:none">
+  <div style="background:#030c06;min-height:100vh;padding:48px 20px 80px">
+    <div style="max-width:720px;margin:0 auto">
+      <div style="font-size:8px;letter-spacing:0.35em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:8px">Interactive Training Tool</div>
+      <h1 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,3rem);color:#fff;margin-bottom:8px;line-height:1">Incident Response<br><span style="color:var(--gm)">Simulator</span></h1>
+      <div style="font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:36px;line-height:1.7">Work through real pre-hospital scenarios. Apply cABCDE, make decisions under pressure, and see how experienced EAC would manage the incident.</div>
+
+      <!-- Scenario select -->
+      <div id="sim-select" style="display:block">
+        <div style="font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:16px">Select a scenario</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <button onclick="startScenario(0)" class="sim-scenario-btn">
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="font-size:1.8rem;flex-shrink:0">🚗</div>
+              <div style="text-align:left">
+                <div style="font-size:13px;color:#fff;font-weight:600;margin-bottom:2px">Road Traffic Collision</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.4)">Single vehicle RTC. Restrained adult male. Loss of consciousness reported.</div>
+              </div>
+              <div style="margin-left:auto;font-size:9px;letter-spacing:0.15em;color:rgba(0,200,80,0.6);flex-shrink:0">TRAUMA</div>
+            </div>
+          </button>
+          <button onclick="startScenario(1)" class="sim-scenario-btn">
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="font-size:1.8rem;flex-shrink:0">🫀</div>
+              <div style="text-align:left">
+                <div style="font-size:13px;color:#fff;font-weight:600;margin-bottom:2px">Chest Pain — Event Crowd</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.4)">60yr male, severe central chest pain, diaphoresis. Crowd of 5,000.</div>
+              </div>
+              <div style="margin-left:auto;font-size:9px;letter-spacing:0.15em;color:rgba(92,155,212,0.7);flex-shrink:0">CARDIAC</div>
+            </div>
+          </button>
+          <button onclick="startScenario(2)" class="sim-scenario-btn">
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="font-size:1.8rem;flex-shrink:0">🐝</div>
+              <div style="text-align:left">
+                <div style="font-size:13px;color:#fff;font-weight:600;margin-bottom:2px">Anaphylaxis — Sports Fixture</div>
+                <div style="font-size:11px;color:rgba(255,255,255,0.4)">19yr female. Bee sting. Urticaria, stridor, SpO2 dropping.</div>
+              </div>
+              <div style="margin-left:auto;font-size:9px;letter-spacing:0.15em;color:rgba(192,57,43,0.7);flex-shrink:0">ALLERGIC</div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Active scenario -->
+      <div id="sim-active" style="display:none">
+        <div id="sim-scene" style="background:rgba(255,255,255,0.03);border:1px solid rgba(0,200,80,0.2);border-radius:8px;padding:20px;margin-bottom:20px">
+          <div style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(0,200,80,0.6);margin-bottom:8px" id="sim-phase-label">SCENE APPROACH</div>
+          <div id="sim-scene-text" style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.8"></div>
+        </div>
+        <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:12px">What do you do?</div>
+        <div id="sim-options" style="display:flex;flex-direction:column;gap:8px"></div>
+        <div id="sim-feedback" style="display:none;margin-top:20px;padding:16px 20px;border-radius:6px;font-size:12px;line-height:1.7"></div>
+        <div id="sim-next-wrap" style="display:none;margin-top:16px">
+          <button onclick="simNext()" style="background:transparent;border:1px solid var(--gold);color:var(--gold);padding:10px 28px;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;cursor:pointer;border-radius:2px">Continue &rarr;</button>
+        </div>
+        <div id="sim-end" style="display:none;margin-top:24px;text-align:center">
+          <div style="font-size:1.5rem;margin-bottom:12px">✅</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:20px" id="sim-end-text"></div>
+          <button onclick="resetSim()" style="background:transparent;border:1px solid rgba(0,200,80,0.4);color:rgba(0,200,80,0.8);padding:10px 24px;font-size:10px;letter-spacing:0.2em;cursor:pointer;border-radius:2px">Try Another Scenario</button>
+        </div>
+      </div>
+
+      <!-- F71: Ops Radio Comms Panel -->
+      <div style="margin-top:40px;border-top:1px solid rgba(0,200,80,0.1);padding-top:32px">
+        <div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:rgba(0,200,80,0.5);margin-bottom:6px">Quick Reference</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;margin-bottom:16px">Comms &amp; Reporting Mnemonics</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px" id="comms-panel"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+.sim-scenario-btn{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:18px 20px;cursor:pointer;width:100%;transition:all 0.2s;text-align:left}
+.sim-scenario-btn:hover{border-color:rgba(0,200,80,0.3);background:rgba(0,200,80,0.05)}
+.sim-opt{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:12px 16px;cursor:pointer;font-size:12px;color:rgba(255,255,255,0.75);text-align:left;width:100%;transition:all 0.15s;font-family:inherit}
+.sim-opt:hover{border-color:rgba(0,200,80,0.3);color:#fff}
+.sim-opt.correct{border-color:#00C850;background:rgba(0,200,80,0.1);color:#00C850}
+.sim-opt.incorrect{border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.08);color:rgba(255,120,120,0.7)}
+</style>
+
 
 <!-- 404 -->
 <div id="page-404" style="display:none">
@@ -6218,6 +6908,7 @@ var JOURNAL_POSTS = [
 
 /* ── DEPLOYMENTS (for last-duty calculation) ──────────────────────────────── */
 var DEPLOYMENTS = [
+  '2026-06-13','2026-06-12','2026-05-31','2026-05-30',
   '2026-04-19','2026-04-16','2026-04-15','2026-04-11','2026-04-10',
   '2026-04-05','2026-04-04','2026-03-31','2026-03-28','2026-03-25',
   '2026-03-22','2026-03-15','2026-03-08','2026-03-07','2026-02-28',
@@ -6363,49 +7054,140 @@ function initHomeAnimations() {
   // Typewriter
   initTypewriter();
   updateAvailBadge();
+  // Parallax
+  initHeroParallax();
+  // Cipher decrypt (F53)
+  setTimeout(runCipherDecrypt, 300);
+}
+
+function initHeroParallax() {
+  var page = document.getElementById('page-home');
+  if (!page) return;
+  var content = page.querySelector('.hero-content');
+  var grid = page.querySelector('.hero-grid');
+  var glow = page.querySelector('.hero-glow');
+  if (!content) return;
+
+  // CSS for smooth transition when mouse leaves
+  content.style.transition = 'transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)';
+  if (grid) grid.style.transition = 'transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)';
+
+  var _ticking = false;
+  var _mx = 0, _my = 0;
+
+  page.addEventListener('mousemove', function(e) {
+    var rect = page.getBoundingClientRect();
+    _mx = (e.clientX - rect.left) / rect.width  - 0.5; // -0.5 to 0.5
+    _my = (e.clientY - rect.top)  / rect.height - 0.5;
+    if (!_ticking) {
+      requestAnimationFrame(function() {
+        // Content: subtle forward layer (moves opposite to mouse = depth illusion)
+        var cx =  _mx * -12;
+        var cy =  _my * -8;
+        content.style.transform = 'translate3d(' + cx + 'px,' + cy + 'px,0)';
+        // Grid: slower background layer
+        if (grid) grid.style.transform = 'translate3d(' + (_mx*6) + 'px,' + (_my*4) + 'px,0)';
+        // Glow follows mouse
+        if (glow) {
+          glow.style.transition = 'left 0.4s ease, top 0.4s ease';
+          glow.style.left = (50 + _mx * 30) + '%';
+          glow.style.top  = (40 + _my * 20) + '%';
+        }
+        _ticking = false;
+      });
+      _ticking = true;
+    }
+  });
+
+  page.addEventListener('mouseleave', function() {
+    content.style.transform = 'translate3d(0,0,0)';
+    if (grid) grid.style.transform = 'translate3d(0,0,0)';
+  });
 }
 
 function updateLastDutyStat() {
   var el = document.getElementById('ctr-last-duty');
   if (!el) return;
   var today = new Date(); today.setHours(0,0,0,0);
-  var past = DEPLOYMENTS.map(function(d){ return new Date(d); })
-    .filter(function(d){ return d <= today; })
-    .sort(function(a,b){ return b-a; });
-  if (!past.length) { el.textContent = '\u2014'; return; }
-  var last = past[0]; last.setHours(0,0,0,0);
+  // Use DEPLOYMENT_LOG for richer data, fall back to DEPLOYMENTS dates
+  var log = typeof DEPLOYMENT_LOG !== 'undefined' ? DEPLOYMENT_LOG : [];
+  var past = log.filter(function(d){
+    var dt = new Date(d.date); dt.setHours(0,0,0,0);
+    return dt <= today;
+  }).sort(function(a,b){ return new Date(b.date) - new Date(a.date); });
+  if (!past.length) {
+    // fallback to date array
+    var pastDates = DEPLOYMENTS.map(function(d){ return new Date(d); })
+      .filter(function(d){ return d <= today; }).sort(function(a,b){ return b-a; });
+    if (!pastDates.length) { el.textContent = '\u2014'; return; }
+    var diff = Math.floor((today - pastDates[0]) / 86400000);
+    el.textContent = diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff + 'd ago';
+    return;
+  }
+  var last = new Date(past[0].date); last.setHours(0,0,0,0);
   var diff = Math.floor((today - last) / 86400000);
-  el.textContent = diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff + 'd ago';
+  var when = diff === 0 ? 'Today' : diff === 1 ? 'Yesterday' : diff + 'd ago';
+  el.textContent = when;
+  // Also update a subtitle if element exists
+  var subEl = document.getElementById('ctr-last-duty-name');
+  if (subEl) subEl.textContent = past[0].title;
 }
 
 function updateAvailBadge() {
   var statusEl = document.getElementById('avail-status');
   var nextEl   = document.getElementById('avail-next');
   var dotEl    = document.getElementById('avail-dot');
-  if(!statusEl||!nextEl) return;
-  var today=new Date(); today.setHours(0,0,0,0);
-  var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  var deps = typeof DEPLOYMENTS!=='undefined' ? DEPLOYMENTS : [];
-  var onNow = deps.some(function(d){var dd=new Date(d);dd.setHours(0,0,0,0);return dd.getTime()===today.getTime();});
-  if(onNow){
-    statusEl.textContent='ON DEPLOYMENT TODAY';
-    statusEl.style.color='rgba(255,200,0,.9)';
-    if(dotEl){dotEl.style.background='#FFD700';dotEl.style.boxShadow='0 0 6px #FFD700';}
-    nextEl.textContent='Active duty — contact via emergency channels';
+  if (!statusEl || !nextEl) return;
+
+  var today = new Date(); today.setHours(0,0,0,0);
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var log = typeof DEPLOYMENT_LOG !== 'undefined' ? DEPLOYMENT_LOG : [];
+  var deps = typeof DEPLOYMENTS !== 'undefined' ? DEPLOYMENTS : [];
+
+  // Check on duty today
+  var todayEntry = log.find(function(d){
+    var dd = new Date(d.date); dd.setHours(0,0,0,0);
+    return dd.getTime() === today.getTime();
+  });
+  var onNowDate = deps.some(function(d){
+    var dd = new Date(d); dd.setHours(0,0,0,0);
+    return dd.getTime() === today.getTime();
+  });
+
+  if (todayEntry || onNowDate) {
+    statusEl.textContent = 'ON DEPLOYMENT TODAY';
+    statusEl.style.color = 'rgba(255,200,0,0.9)';
+    if (dotEl) { dotEl.style.background='#FFD700'; dotEl.style.boxShadow='0 0 8px #FFD700'; }
+    nextEl.textContent = todayEntry ? todayEntry.title : 'Active duty — contact via emergency channels';
     return;
   }
-  var future=deps.map(function(d){var dd=new Date(d);dd.setHours(0,0,0,0);return dd;})
-    .filter(function(d){return d>today;}).sort(function(a,b){return a-b;});
-  statusEl.textContent='AVAILABLE FOR DEPLOYMENT';
-  statusEl.style.color='rgba(255,255,255,.85)';
-  if(dotEl){dotEl.style.background='#00A651';dotEl.style.boxShadow='0 0 6px #00A651';}
-  if(future.length>0){
-    var next=future[0];
-    var diff=Math.floor((next-today)/86400000);
-    var lbl=diff===1?'Tomorrow':diff<=7?'In '+diff+' days':next.getDate()+' '+months[next.getMonth()];
-    nextEl.textContent='Next booking: '+lbl+' · North West England';
+
+  // Find next future entry from LOG for name
+  var futureLog = log.filter(function(d){
+    var dd = new Date(d.date); dd.setHours(0,0,0,0);
+    return dd > today;
+  }).sort(function(a,b){ return new Date(a.date) - new Date(b.date); });
+
+  // Find next future date from DEPLOYMENTS array
+  var futureDates = deps.map(function(d){ var dd=new Date(d); dd.setHours(0,0,0,0); return dd; })
+    .filter(function(d){ return d > today; }).sort(function(a,b){ return a-b; });
+
+  statusEl.textContent = 'AVAILABLE FOR DEPLOYMENT';
+  statusEl.style.color = 'rgba(255,255,255,0.85)';
+  if (dotEl) { dotEl.style.background='#00A651'; dotEl.style.boxShadow='0 0 8px rgba(0,166,81,0.6)'; }
+
+  if (futureLog.length > 0) {
+    var next = new Date(futureLog[0].date); next.setHours(0,0,0,0);
+    var diff = Math.round((next - today) / 86400000);
+    var lbl = diff === 1 ? 'Tomorrow' : diff <= 7 ? 'In ' + diff + ' days' : next.getDate() + ' ' + months[next.getMonth()];
+    nextEl.textContent = 'Next: ' + futureLog[0].title + ' \u00b7 ' + lbl;
+  } else if (futureDates.length > 0) {
+    var next2 = futureDates[0];
+    var diff2 = Math.round((next2 - today) / 86400000);
+    var lbl2 = diff2 === 1 ? 'Tomorrow' : diff2 <= 7 ? 'In ' + diff2 + ' days' : next2.getDate() + ' ' + months[next2.getMonth()];
+    nextEl.textContent = 'Next booking: ' + lbl2 + ' \u00b7 North West England';
   } else {
-    nextEl.textContent='No confirmed bookings · Available now · North West England';
+    nextEl.textContent = 'No confirmed bookings \u00b7 Available now \u00b7 North West England';
   }
 }
 
@@ -6428,14 +7210,35 @@ function updateOTWBanner() {
 function renderHomeNews() {
   var grid = document.getElementById('home-news-grid');
   if (!grid || !JOURNAL_POSTS.length) return;
-  var posts = JOURNAL_POSTS.slice(0,3);
-  grid.innerHTML = posts.map(function(p){
-    return '<div class="news-card" onclick="showPage(\'journal\')" style="cursor:pointer">' +
-      '<div class="news-date">' + fmtDate(p) + '</div>' +
-      '<div class="news-cat">' + p.category + '</div>' +
-      '<h3 class="news-title">' + p.title + '</h3>' +
-      '<p class="news-excerpt">' + p.deck + '</p>' +
-      '<div class="news-more">Read more \u2192</div>' +
+  var posts = JOURNAL_POSTS.slice(0, 3);
+  var catColours = {
+    'Clinical': { bg:'rgba(0,200,80,0.1)', border:'rgba(0,200,80,0.3)', text:'#00C850' },
+    'Training': { bg:'rgba(180,145,60,0.1)', border:'rgba(180,145,60,0.3)', text:'#B4913C' },
+    'Community': { bg:'rgba(224,123,90,0.1)', border:'rgba(224,123,90,0.3)', text:'#E07B5A' },
+    'Leadership': { bg:'rgba(92,155,212,0.1)', border:'rgba(92,155,212,0.3)', text:'#5C9BD4' }
+  };
+  grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px';
+  grid.innerHTML = posts.map(function(p, i) {
+    var cc = catColours[p.category] || { bg:'rgba(255,255,255,0.05)', border:'rgba(255,255,255,0.15)', text:'rgba(255,255,255,0.6)' };
+    var words = (p.excerpt || '').split(' ').length;
+    var readTime = Math.max(1, Math.ceil(words / 200));
+    return '<div onclick="openJournalPost(' + p.id + ')" style="' +
+      'background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:8px;' +
+      'padding:22px 20px;cursor:pointer;position:relative;overflow:hidden;' +
+      'transition:transform 0.2s,border-color 0.2s,box-shadow 0.2s;' +
+      'transition-delay:' + (i*0.05) + 's' +
+      '" onmouseover="this.style.transform=\'translateY(-4px)\';this.style.borderColor=\'rgba(180,145,60,0.35)\';this.style.boxShadow=\'0 12px 32px rgba(0,0,0,0.3)\'" ' +
+      'onmouseout="this.style.transform=\'\';this.style.borderColor=\'rgba(255,255,255,0.08)\';this.style.boxShadow=\'\'">' +
+      '<div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,' + cc.text + ',transparent)"></div>' +
+      '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">' +
+        '<span style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;padding:3px 10px;border-radius:10px;' +
+          'background:' + cc.bg + ';border:1px solid ' + cc.border + ';color:' + cc.text + '">' + p.category + '</span>' +
+        '<span style="font-size:8px;color:rgba(255,255,255,0.3);font-family:var(--mono)">' + readTime + ' min read</span>' +
+      '</div>' +
+      '<div style="font-size:9px;letter-spacing:0.15em;color:rgba(255,255,255,0.35);margin-bottom:8px;font-family:var(--mono)">' + fmtDate(p) + '</div>' +
+      '<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:1.15rem;color:#fff;line-height:1.3;margin-bottom:10px">' + p.title + '</h3>' +
+      '<p style="font-size:12px;color:rgba(255,255,255,0.45);line-height:1.7;margin:0">' + (p.excerpt || '').substring(0,120) + '&hellip;</p>' +
+      '<div style="margin-top:14px;font-size:9px;letter-spacing:0.15em;color:rgba(180,145,60,0.7)">Read &rarr;</div>' +
       '</div>';
   }).join('');
 }
@@ -6454,6 +7257,13 @@ function tagHtml(cat) {
 }
 
 var _currentFilter = 'all';
+var _currentSearch = '';
+
+function searchJournal(query) {
+  _currentSearch = query.toLowerCase().trim();
+  renderJournalList();
+}
+
 function filterPosts(cat, btn) {
   _currentFilter = cat;
   document.querySelectorAll('.jb-filter-btn').forEach(function(b){ b.classList.remove('active'); });
@@ -6808,29 +7618,48 @@ function initLatestPostCanvas(fp) {
 function renderJournalList() {
   var list = document.getElementById('jb-list');
   if (!list) return;
-  var posts = JOURNAL_POSTS.filter(function(p){
-    return _currentFilter === 'all' || p.category === _currentFilter;
-  });
-  list.innerHTML = posts.map(function(p,i){
-    var realIdx = JOURNAL_POSTS.indexOf(p);
-    return '<div class="jpost-row" onclick="openPost(' + realIdx + ')">' +
-      '<div class="jpr-date"><span class="jpr-day">' + p.day + '</span><span class="jpr-month">' + p.month + '</span></div>' +
-      '<div class="jpr-body">' +
-        '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
-        '<div class="jpr-title">' + p.title + '</div>' +
-        '<div class="jpr-excerpt">' + p.deck + '</div>' +
-        '<div class="jpr-reading-meta">' +
-          '<span class="jpr-readtime">' + calcReadTime(p) + '</span>' +
-          getAudienceBadge(p.category) +
+  // Show inline skeleton while rendering
+  list.innerHTML = '<div style="padding:20px 0">' +
+    '<div class="skel skel-card" style="margin-bottom:8px"></div>' +
+    '<div class="skel skel-card" style="margin-bottom:8px"></div>' +
+    '<div class="skel skel-card"></div>' +
+    '</div>';
+  // Defer actual render one frame so skeleton paints
+  setTimeout(function() {
+    var posts = JOURNAL_POSTS.filter(function(p){
+      var catMatch = _currentFilter === 'all' || p.category === _currentFilter;
+      var q = typeof _currentSearch !== 'undefined' ? _currentSearch : '';
+      var searchMatch = !q || (p.title && p.title.toLowerCase().includes(q)) ||
+        (p.category && p.category.toLowerCase().includes(q)) ||
+        (p.deck && p.deck.toLowerCase().includes(q)) ||
+        (p.location && p.location.toLowerCase().includes(q));
+      return catMatch && searchMatch;
+    });
+    if (!posts.length) {
+      list.innerHTML = '<div style="padding:32px;text-align:center;color:rgba(255,255,255,0.3);font-family:var(--mono);font-size:11px;letter-spacing:0.1em">No posts match your search</div>';
+      return;
+    }
+    list.innerHTML = posts.map(function(p,i){
+      var realIdx = JOURNAL_POSTS.indexOf(p);
+      return '<div class="jpost-row" onclick="openPost(' + realIdx + ')">' +
+        '<div class="jpr-date"><span class="jpr-day">' + p.day + '</span><span class="jpr-month">' + p.month + '</span></div>' +
+        '<div class="jpr-body">' +
+          '<div class="jpr-tags">' + tagHtml(p.category) + '</div>' +
+          '<div class="jpr-title">' + p.title + '</div>' +
+          '<div class="jpr-excerpt">' + p.deck + '</div>' +
+          '<div class="jpr-reading-meta">' +
+            '<span class="jpr-readtime">' + calcReadTime(p) + '</span>' +
+            getAudienceBadge(p.category) +
+          '</div>' +
+          '<div class="jpr-meta">' + p.location + '</div>' +
+          '<div class="jpr-hint">Read entry &nbsp;&rarr;</div>' +
         '</div>' +
-        '<div class="jpr-meta">' + p.location + '</div>' +
-        '<div class="jpr-hint">Read entry &nbsp;&rarr;</div>' +
-      '</div>' +
-      '</div>';
-  }).join('');
-  renderJournalSidebar();
-  updateFilterCounts();
-  updateJournalStats();
+        '</div>';
+    }).join('');
+    renderJournalSidebar();
+    updateFilterCounts();
+    updateJournalStats();
+  }, 80);
 }
 
 function updateFilterCounts() {
@@ -7044,178 +7873,576 @@ function initJournalECG() {
 }
 
 /* ── ABOUT PAGE ───────────────────────────────────────────────────────────── */
+/* ── DEPLOYMENT LOG (Feature 3) ─────────────────────── */
+var DEPLOYMENT_LOG = [
+  {date:'2026-06-13',title:'Bramham International Horse Trials — Day 2',type:'EAC',location:'Bramham Park, West Yorkshire',detail:'Off-road Land Rover ambulance. 7 patient contacts: 2 falls from horse, 1 rotator cuff injury, 1 headache, 1 toothache, 1 dog bite, 1 lost child (reunited).'},
+  {date:'2026-06-12',title:'Bramham International Horse Trials — Day 1',type:'EAC',location:'Bramham Park, West Yorkshire',detail:'Road ambulance standby. One of the UK\'s premier three-day eventing competitions. No casualties.'},
+  {date:'2026-05-31',title:'SJA Management Weekend — Day 2',type:'Leadership',location:'St John Ambulance North West',detail:'Represented East Lancashire Network. Stood in for Deputy County Commissioner. Full programme of strategic sessions, knowledge exchange, and networking with senior county leadership.'},
+  {date:'2026-05-30',title:'SJA Management Weekend — Day 1',type:'Leadership',location:'St John Ambulance North West',detail:'Management and leadership development weekend. Covered governance, volunteer welfare, and operational planning at county level.'},
+  {date:'2026-04-19',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-16',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-15',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-11',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-10',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-05',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-04-04',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-31',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-28',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-25',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-22',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-15',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-08',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-03-07',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-02-28',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-02-14',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-02-07',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-01-31',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-01-24',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2026-01-10',title:'Prior\'s Award Ceremony',type:'Community',location:'St John Ambulance North West',detail:'Responsiveness & Resilience Award presented by Rear Admiral Simon Williams. Recognised for exceptional commitment to community emergency response.'},
+  {date:'2025-12-14',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-12-07',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-11-30',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-11-23',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-11-15',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-11-09',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-10-26',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-10-12',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-09-28',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-09-14',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'},
+  {date:'2025-09-01',title:'SJA Operational Duty',type:'EAC',location:'East Lancashire',detail:'Emergency ambulance crew deployment.'}
+];
+
+var DEPLOY_TYPE_COLOURS = {
+  EAC:       {dot:'#4CAF50',border:'rgba(76,175,80,0.4)',text:'#4CAF50',bg:'rgba(76,175,80,0.08)'},
+  Training:  {dot:'#B4913C',border:'rgba(180,145,60,0.4)',text:'#B4913C',bg:'rgba(180,145,60,0.08)'},
+  Leadership:{dot:'#5C9BD4',border:'rgba(92,155,212,0.4)',text:'#5C9BD4',bg:'rgba(92,155,212,0.08)'},
+  Community: {dot:'#E07B5A',border:'rgba(224,123,90,0.4)',text:'#E07B5A',bg:'rgba(224,123,90,0.08)'}
+};
+
+function renderDeployFeed(filter) {
+  var feed = document.getElementById('deploy-timeline-feed');
+  if (!feed) return;
+  // Skeleton while rendering
+  feed.innerHTML = '<div class="skel" style="height:60px;border-radius:4px;margin-bottom:16px"></div>' +
+    '<div class="skel" style="height:60px;border-radius:4px;margin-bottom:16px"></div>' +
+    '<div class="skel" style="height:60px;border-radius:4px"></div>';
+  setTimeout(function() {
+    var entries = filter === 'all' ? DEPLOYMENT_LOG : DEPLOYMENT_LOG.filter(function(d){ return d.type === filter; });
+    feed.innerHTML = entries.map(function(d){
+      var c = DEPLOY_TYPE_COLOURS[d.type] || DEPLOY_TYPE_COLOURS['EAC'];
+      var dt = new Date(d.date);
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      var dateStr = dt.getDate() + ' ' + months[dt.getMonth()] + ' ' + dt.getFullYear();
+      return '<div class="deploy-entry" data-type="'+d.type+'">' +
+        '<div class="deploy-dot" style="background:'+c.dot+';border-color:'+c.border+'"></div>' +
+        '<div class="deploy-date" style="color:'+c.text+'">'+dateStr+'</div>' +
+        '<div class="deploy-title">'+d.title+'</div>' +
+        '<div class="deploy-meta">'+d.location+'</div>' +
+        (d.detail ? '<div style="font-size:11px;color:rgba(244,240,232,0.5);line-height:1.6;margin-top:4px">'+d.detail+'</div>' : '') +
+        '<div style="margin-top:8px"><span class="deploy-badge" style="color:'+c.text+';border-color:'+c.border+';background:'+c.bg+'">'+d.type+'</span></div>' +
+        '</div>';
+    }).join('');
+  }, 80);
+}
+
+function filterDeployFeed(type, btn) {
+  document.querySelectorAll('.deploy-filter').forEach(function(b){ b.classList.remove('active'); });
+  if (btn) btn.classList.add('active');
+  renderDeployFeed(type);
+}
+
+function animateCPDRings() {
+  var circumference = 2 * Math.PI * 50; // ~314.16
+  function setRing(id, pct) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var offset = circumference * (1 - pct / 100);
+    el.style.strokeDasharray = circumference + ' ' + circumference;
+    el.style.strokeDashoffset = circumference; // start empty
+    setTimeout(function() { el.style.strokeDashoffset = offset; }, 50);
+  }
+  setRing('ring-frec4',  20);
+  setRing('ring-cpd',    100);
+  setRing('ring-shifts', 24);
+}
+
 function initAboutPage() {
   setTimeout(function(){
     initCoverageMap();
     initHEMSSkillsScope();
+    drawCredentialQR();
+    renderDeployFeed('all');
+    animateCPDRings();
+    animateAboutStats();
   }, 100);
+}
+
+function animateAboutStats() {
+  var els = document.querySelectorAll('.about-stat-num[data-value]');
+  els.forEach(function(el) {
+    var target = parseInt(el.getAttribute('data-value'), 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    if (isNaN(target)) return;
+    var start = 0, duration = 1200, startTime = null;
+    function step(ts) {
+      if (!startTime) startTime = ts;
+      var progress = Math.min((ts - startTime) / duration, 1);
+      var eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(eased * target) + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+function drawCredentialQR() {
+  var c = document.getElementById('cred-qr');
+  if (!c) return;
+  var ctx = c.getContext('2d');
+  var url = 'https://petercrainemedic.co.uk';
+  // Simple QR-like pattern using canvas (visual only, decorative)
+  ctx.fillStyle = '#05100a';
+  ctx.fillRect(0,0,64,64);
+  ctx.fillStyle = 'rgba(180,145,60,0.9)';
+  // Draw a simple matrix pattern that looks like QR
+  var cells = 8, cs = 64/cells;
+  // Position detection patterns (corners)
+  [[0,0],[5,0],[0,5]].forEach(function(p){
+    ctx.fillRect(p[0]*cs,p[1]*cs,cs*3,cs*3);
+    ctx.fillStyle='#05100a';
+    ctx.fillRect(p[0]*cs+cs*0.5,p[1]*cs+cs*0.5,cs*2,cs*2);
+    ctx.fillStyle='rgba(180,145,60,0.9)';
+    ctx.fillRect(p[0]*cs+cs,p[1]*cs+cs,cs,cs);
+  });
+  // Data cells (pseudo-random pattern from URL chars)
+  for(var i=0;i<url.length;i++){
+    var row=3+(i%5), col=3+(Math.floor(i/5)%5);
+    if(url.charCodeAt(i)%2===0){ ctx.fillRect(col*cs,row*cs,cs*0.85,cs*0.85); }
+  }
+}
+
+function downloadCredentialCard() {
+  var card = document.getElementById('credential-card');
+  if (!card) return;
+  // Use html2canvas if available, otherwise open print dialog
+  if (window.html2canvas) {
+    html2canvas(card, {backgroundColor:'#05100a',scale:2}).then(function(canvas){
+      var a = document.createElement('a');
+      a.download = 'peter-craine-credential-card.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    });
+  } else {
+    // Fallback: load html2canvas then retry
+    var s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    s.onload = function(){ downloadCredentialCard(); };
+    document.head.appendChild(s);
+  }
+  showToast('Credential card downloaded', 'success');
 }
 
 function initHEMSSkillsScope() {
   var c = document.getElementById('about-hems-skills');
   if (!c) return;
   var ctx = c.getContext('2d');
-  var W = c.width || 600, H = c.height || 420;
-  c.width = W; c.height = H;
-  var skills2 = [
-    { name:'AIRWAY MGMT', level:0.95, x:0.5,  y:0.15, detail:'OPA / NPA / iGel / BVM / Suction' },
-    { name:'TRAUMA',      level:0.90, x:0.82, y:0.35, detail:'KED / Tourniquet / Haemorrhage' },
-    { name:'MEDICATIONS',  level:0.93, x:0.78, y:0.72, detail:'19 drugs incl. Adrenaline IM' },
-    { name:'ASSESSMENT',  level:0.88, x:0.5,  y:0.88, detail:'cABCDE / ECG / NEWS2 / GCS' },
-    { name:'DRIVING',     level:0.85, x:0.22, y:0.72, detail:'CERAD L3 / PCV D1 / Cat C' },
-    { name:'TRAINING',    level:0.92, x:0.18, y:0.35, detail:'CTLLS L4 / 208+ Learners' }
+  var DPR = window.devicePixelRatio || 1;
+  var displayW = 600, displayH = 420;
+  c.width = displayW * DPR; c.height = displayH * DPR;
+  c.style.width = displayW + 'px'; c.style.height = displayH + 'px';
+  ctx.scale(DPR, DPR);
+  var W = displayW, H = displayH;
+
+  var skills = [
+    { name:'AIRWAY',      score:0.95, detail:'OPA · NPA · iGel · BVM · Suction' },
+    { name:'TRAUMA',      score:0.90, detail:'KED · Tourniquet · Haemorrhage Ctrl' },
+    { name:'MEDICATIONS', score:0.93, detail:'19 drugs incl. Adrenaline IM' },
+    { name:'ASSESSMENT',  score:0.88, detail:'cABCDE · ECG · NEWS2 · GCS' },
+    { name:'DRIVING',     score:0.85, detail:'CERAD L3 · PCV D1 · Cat C' },
+    { name:'TRAINING',    score:0.92, detail:'CTLLS L4 · 208+ Learners' }
   ];
-  var t3 = 0;
-  function drawHEMS() {
-    ctx.clearRect(0,0,W,H); t3 += 0.008;
-    // Dark background
+
+  var N = skills.length;
+  var cx = W/2, cy = H/2;
+  var R = Math.min(W, H) * 0.36;
+  var labelR = R + 28;
+  var levels = 5;
+  var angleOffset = -Math.PI/2;
+  var hovered = -1;
+  var animProg = 0;
+  var raf;
+
+  function getAngle(i){ return angleOffset + (i/N)*Math.PI*2; }
+  function getPoint(i, r){ return { x: cx + Math.cos(getAngle(i))*r, y: cy + Math.sin(getAngle(i))*r }; }
+
+  function draw(prog) {
+    ctx.clearRect(0,0,W,H);
     ctx.fillStyle='#030c06'; ctx.fillRect(0,0,W,H);
-    // HEMS scope rings
-    var cx=W/2, cy=H/2;
-    [0.45,0.38,0.3,0.2,0.1].forEach(function(f){
-      ctx.beginPath(); ctx.arc(cx,cy,Math.min(W,H)*f,0,Math.PI*2);
-      ctx.strokeStyle='rgba(0,200,80,'+(0.04+f*0.08)+')'; ctx.lineWidth=1; ctx.stroke();
-    });
-    // Crosshairs
-    ctx.strokeStyle='rgba(0,200,80,0.1)'; ctx.lineWidth=1;
-    ctx.beginPath(); ctx.moveTo(cx,0); ctx.lineTo(cx,H); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(0,cy); ctx.lineTo(W,cy); ctx.stroke();
-    // Sweep
-    ctx.save(); ctx.translate(cx,cy); ctx.rotate(t3);
-    var beam=ctx.createLinearGradient(0,0,Math.min(W,H)*0.48,0);
-    beam.addColorStop(0,'rgba(0,255,100,0.18)');
-    beam.addColorStop(0.5,'rgba(0,200,80,0.06)');
-    beam.addColorStop(1,'transparent');
-    ctx.fillStyle=beam;
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,Math.min(W,H)*0.48,-0.25,0.25); ctx.fill();
-    ctx.restore();
-    // Skill nodes
-    skills2.forEach(function(s){
-      var nx=s.x*W, ny=s.y*H;
-      var pulse=(Math.sin(t3*3+s.x*6)*0.3+0.7)*s.level;
-      ctx.beginPath(); ctx.arc(nx,ny,8*pulse,0,Math.PI*2);
-      ctx.fillStyle='rgba(0,220,80,'+pulse*0.8+')'; ctx.fill();
-      ctx.beginPath(); ctx.arc(nx,ny,14*pulse,0,Math.PI*2);
-      ctx.strokeStyle='rgba(0,200,80,'+(pulse*0.4)+')'; ctx.lineWidth=1; ctx.stroke();
-      // Bar
-      var bw=80, bh=4, bx=nx-bw/2, by=ny+18;
-      ctx.fillStyle='rgba(0,80,30,0.5)'; ctx.fillRect(bx,by,bw,bh);
-      ctx.fillStyle='rgba(0,200,80,0.8)'; ctx.fillRect(bx,by,bw*s.level,bh);
-      // Label
-      ctx.fillStyle='rgba(0,255,100,0.9)';
-      ctx.font='bold 9px JetBrains Mono,monospace';
-      ctx.textAlign='center'; ctx.textBaseline='top';
-      ctx.fillText(s.name, nx, by+8);
-      ctx.fillStyle='rgba(0,200,80,0.45)';
-      ctx.font='8px DM Sans,sans-serif';
-      ctx.fillText(s.detail, nx, by+20);
-    });
-    // Centre target
-    ctx.beginPath(); ctx.arc(cx,cy,12,0,Math.PI*2);
-    ctx.strokeStyle='rgba(0,255,100,0.6)'; ctx.lineWidth=1.5; ctx.stroke();
-    ctx.beginPath(); ctx.arc(cx,cy,4,0,Math.PI*2);
-    ctx.fillStyle='rgba(0,255,100,0.8)'; ctx.fill();
-    requestAnimationFrame(drawHEMS);
+
+    // Grid rings
+    for(var l=1;l<=levels;l++){
+      var lr = (l/levels)*R;
+      ctx.beginPath();
+      for(var i=0;i<=N;i++){
+        var a=getAngle(i%N), x=cx+Math.cos(a)*lr, y=cy+Math.sin(a)*lr;
+        i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle='rgba(0,200,80,'+(0.05+l*0.03)+')'; ctx.lineWidth=1; ctx.stroke();
+      // Level label
+      if(l<levels){
+        ctx.fillStyle='rgba(0,200,80,0.25)'; ctx.font='8px monospace';
+        ctx.fillText((l*20)+'%', cx+4, cy-lr+10);
+      }
+    }
+
+    // Spokes
+    for(var i=0;i<N;i++){
+      var p=getPoint(i,R);
+      ctx.beginPath(); ctx.moveTo(cx,cy); ctx.lineTo(p.x,p.y);
+      ctx.strokeStyle='rgba(0,200,80,0.12)'; ctx.lineWidth=1; ctx.stroke();
+    }
+
+    // Data polygon (animated)
+    var p2 = Math.min(prog,1);
+    ctx.beginPath();
+    for(var i=0;i<N;i++){
+      var r=skills[i].score*R*p2;
+      var pt=getPoint(i,r);
+      i===0?ctx.moveTo(pt.x,pt.y):ctx.lineTo(pt.x,pt.y);
+    }
+    ctx.closePath();
+    var grad=ctx.createRadialGradient(cx,cy,0,cx,cy,R);
+    grad.addColorStop(0,'rgba(0,200,80,0.25)');
+    grad.addColorStop(1,'rgba(0,200,80,0.05)');
+    ctx.fillStyle=grad; ctx.fill();
+    ctx.strokeStyle='rgba(0,200,80,0.7)'; ctx.lineWidth=2; ctx.stroke();
+
+    // Nodes
+    for(var i=0;i<N;i++){
+      var r=skills[i].score*R*p2;
+      var pt=getPoint(i,r);
+      var isHov=(i===hovered);
+      ctx.beginPath(); ctx.arc(pt.x,pt.y,isHov?7:4,0,Math.PI*2);
+      ctx.fillStyle=isHov?'#00c850':'rgba(0,200,80,0.8)'; ctx.fill();
+      if(isHov){
+        ctx.strokeStyle='rgba(180,145,60,0.8)'; ctx.lineWidth=1.5; ctx.stroke();
+      }
+    }
+
+    // Labels
+    ctx.textAlign='center'; ctx.textBaseline='middle';
+    for(var i=0;i<N;i++){
+      var lp=getPoint(i,labelR);
+      var isHov=(i===hovered);
+      ctx.font=(isHov?'bold ':'')+'9px monospace';
+      ctx.fillStyle=isHov?'rgba(180,145,60,1)':'rgba(0,200,80,0.8)';
+      ctx.letterSpacing='2px';
+      ctx.fillText(skills[i].name, lp.x, lp.y);
+      // Score below label
+      ctx.font='8px monospace';
+      ctx.fillStyle=isHov?'rgba(180,145,60,0.7)':'rgba(0,200,80,0.4)';
+      ctx.fillText(Math.round(skills[i].score*100)+'%', lp.x, lp.y+12);
+    }
+
+    // Hover detail tooltip
+    if(hovered>=0){
+      var sk=skills[hovered];
+      var tp=getPoint(hovered, R*sk.score*p2);
+      var txt=sk.detail;
+      ctx.font='10px monospace';
+      var tw=ctx.measureText(txt).width;
+      var tx=Math.min(Math.max(tp.x-tw/2-8,4),W-tw-20);
+      var ty=tp.y<cy?tp.y+16:tp.y-36;
+      ctx.fillStyle='rgba(3,12,6,0.92)';
+      ctx.strokeStyle='rgba(180,145,60,0.5)';
+      ctx.lineWidth=1;
+      roundRect(ctx,tx,ty,tw+16,24,3);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle='rgba(180,145,60,0.9)';
+      ctx.fillText(txt,tx+8+tw/2,ty+12);
+    }
+
+    // Centre label
+    ctx.textAlign='center'; ctx.font='7px monospace';
+    ctx.fillStyle='rgba(0,200,80,0.4)';
+    ctx.fillText('EAC LEVEL 3/10', cx, cy-8);
+    ctx.fillText('FREC 4 TARGET 2027', cx, cy+6);
   }
-  drawHEMS();
+
+  function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+
+  function getHovered(mx,my){
+    for(var i=0;i<N;i++){
+      var r=skills[i].score*R;
+      var pt=getPoint(i,r);
+      var dx=mx-pt.x,dy=my-pt.y;
+      if(Math.sqrt(dx*dx+dy*dy)<14) return i;
+    }
+    return -1;
+  }
+
+  c.addEventListener('mousemove',function(e){
+    var rect=c.getBoundingClientRect();
+    var mx=(e.clientX-rect.left)*(W/rect.width);
+    var my=(e.clientY-rect.top)*(H/rect.height);
+    var h=getHovered(mx,my);
+    if(h!==hovered){hovered=h; c.style.cursor=h>=0?'pointer':'default'; draw(1);}
+  });
+  c.addEventListener('mouseleave',function(){hovered=-1; draw(1);});
+
+  // Animate in
+  var startT=null;
+  function animate(ts){
+    if(!startT) startT=ts;
+    animProg=(ts-startT)/800;
+    draw(animProg);
+    if(animProg<1) raf=requestAnimationFrame(animate);
+    else draw(1);
+  }
+  raf=requestAnimationFrame(animate);
 }
 
 /* ── COVERAGE MAP ─────────────────────────────────────────────────────────── */
 function initCoverageMap() {
   var c = document.getElementById('coverage-canvas');
   if (!c) return;
-  c.width = c.offsetWidth || 600; c.height = 320;
+  var DPR = window.devicePixelRatio || 1;
+  var displayW = c.offsetWidth || 600, displayH = 340;
+  c.width = displayW * DPR; c.height = displayH * DPR;
+  c.style.height = displayH + 'px';
   var ctx = c.getContext('2d');
-  var W=c.width, H=c.height;
-  // HEMS-style aerial scope for coverage map
+  ctx.scale(DPR, DPR);
+  var W = displayW, H = displayH;
+
   var locations = [
-    { name:'Blackburn (Base)', x:0.45, y:0.42, primary:true },
-    { name:'Heysham NPP', x:0.28, y:0.22, primary:true },
-    { name:'Aintree Racecourse', x:0.32, y:0.72, primary:true },
-    { name:'DW Stadium, Wigan', x:0.52, y:0.68, primary:true },
-    { name:'Mill Farm, Fylde', x:0.22, y:0.45, primary:true },
-    { name:'Darwen', x:0.48, y:0.38, primary:true },
-    { name:'Blackpool', x:0.18, y:0.32, primary:false },
-    { name:'Manchester', x:0.65, y:0.60, primary:false },
-    { name:'Preston', x:0.36, y:0.35, primary:false },
-    { name:'Leeds', x:0.82, y:0.38, primary:false }
+    { name:'Blackburn (Base)', x:0.48, y:0.40, type:'base', detail:'Home base & primary response area' },
+    { name:'Bramham Park', x:0.80, y:0.30, type:'event', detail:'International Horse Trials – Jun 2026' },
+    { name:'Mill Farm, Fylde', x:0.20, y:0.38, type:'event', detail:'AFC Fylde – sole clinician' },
+    { name:'Aintree Racecourse', x:0.30, y:0.68, type:'event', detail:'Grand National fixture cover' },
+    { name:'DW Stadium, Wigan', x:0.52, y:0.65, type:'event', detail:'Mass gathering event cover' },
+    { name:'Heysham', x:0.22, y:0.18, type:'coverage', detail:'Northern coverage extent' },
+    { name:'Manchester', x:0.62, y:0.60, type:'coverage', detail:'Eastern coverage boundary' },
+    { name:'Leeds', x:0.84, y:0.35, type:'coverage', detail:'Trans-Pennine response' },
+    { name:'Preston', x:0.34, y:0.32, type:'coverage', detail:'Central Lancashire hub' },
+    { name:'Darwen', x:0.50, y:0.45, type:'coverage', detail:'East Lancashire patch' }
   ];
-  var t4=0;
-  function drawMap(){
-    ctx.clearRect(0,0,W,H); t4+=0.006;
-    // HEMS scope background
-    ctx.fillStyle='#030c06'; ctx.fillRect(0,0,W,H);
-    // Grid
-    ctx.strokeStyle='rgba(0,107,63,0.06)'; ctx.lineWidth=1;
-    for(var x=0;x<W;x+=30){ ctx.beginPath(); ctx.moveTo(x,0); ctx.lineTo(x,H); ctx.stroke(); }
-    for(var y=0;y<H;y+=30){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke(); }
-    // Scope rings from base
-    var bx=0.45*W, by=0.42*H;
-    [0.55,0.45,0.33,0.2].forEach(function(r){
-      ctx.beginPath(); ctx.arc(bx,by,r*Math.min(W,H),0,Math.PI*2);
-      ctx.strokeStyle='rgba(0,150,80,0.08)'; ctx.lineWidth=1; ctx.stroke();
+
+  var colours = {
+    base:     { dot:'#FFD700', ring:'rgba(255,215,0,0.25)', label:'#FFD700' },
+    event:    { dot:'#00C850', ring:'rgba(0,200,80,0.18)',  label:'#00C850' },
+    coverage: { dot:'rgba(92,155,212,0.7)', ring:'rgba(92,155,212,0.08)', label:'rgba(92,155,212,0.7)' }
+  };
+
+  var hovered = -1;
+  var animT = 0;
+  var tooltip = { x:0, y:0, text:'', detail:'' };
+
+  function px(loc) { return { x: loc.x * W, y: loc.y * H }; }
+
+  function draw() {
+    animT += 0.018;
+    ctx.clearRect(0,0,W,H);
+
+    // Background
+    ctx.fillStyle = '#030c06';
+    ctx.fillRect(0,0,W,H);
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(0,107,63,0.06)';
+    ctx.lineWidth = 1;
+    for (var gx = 0; gx < W; gx += 40) { ctx.beginPath(); ctx.moveTo(gx,0); ctx.lineTo(gx,H); ctx.stroke(); }
+    for (var gy = 0; gy < H; gy += 40) { ctx.beginPath(); ctx.moveTo(0,gy); ctx.lineTo(W,gy); ctx.stroke(); }
+
+    // Coverage radius from base
+    var base = px(locations[0]);
+    var maxR = Math.min(W,H) * 0.48;
+    var grad = ctx.createRadialGradient(base.x, base.y, 0, base.x, base.y, maxR);
+    grad.addColorStop(0, 'rgba(0,200,80,0.07)');
+    grad.addColorStop(0.6, 'rgba(0,200,80,0.03)');
+    grad.addColorStop(1, 'transparent');
+    ctx.beginPath(); ctx.arc(base.x, base.y, maxR, 0, Math.PI*2);
+    ctx.fillStyle = grad; ctx.fill();
+
+    // Connection lines base -> events
+    locations.forEach(function(loc, i) {
+      if (i === 0 || loc.type !== 'event') return;
+      var p = px(loc);
+      ctx.beginPath(); ctx.moveTo(base.x, base.y); ctx.lineTo(p.x, p.y);
+      ctx.strokeStyle = 'rgba(0,200,80,0.12)'; ctx.lineWidth = 1;
+      ctx.setLineDash([4,6]); ctx.stroke(); ctx.setLineDash([]);
     });
-    // Sweep
-    ctx.save(); ctx.translate(bx,by); ctx.rotate(t4);
-    var beam2=ctx.createLinearGradient(0,0,W*0.6,0);
-    beam2.addColorStop(0,'rgba(0,200,80,0.12)');
-    beam2.addColorStop(0.5,'rgba(0,150,60,0.04)');
-    beam2.addColorStop(1,'transparent');
-    ctx.fillStyle=beam2;
-    ctx.beginPath(); ctx.moveTo(0,0); ctx.arc(0,0,W*0.6,-0.2,0.2); ctx.fill();
-    ctx.restore();
-    // Location pins
-    locations.forEach(function(loc){
-      var lx=loc.x*W, ly=loc.y*H;
-      var pulse=(Math.sin(t4*2+loc.x*5)*0.2+0.8);
-      // Connection line to base
-      if(!loc.primary||loc.name!=='Blackburn (Base)'){
-        ctx.beginPath(); ctx.moveTo(bx,by); ctx.lineTo(lx,ly);
-        ctx.strokeStyle='rgba(0,150,60,'+(loc.primary?0.15:0.06)+')'; ctx.lineWidth=1; ctx.stroke();
+
+    // Pulse rings on base
+    var pulseR = 14 + 10 * Math.abs(Math.sin(animT));
+    ctx.beginPath(); ctx.arc(base.x, base.y, pulseR, 0, Math.PI*2);
+    ctx.strokeStyle = 'rgba(255,215,0,' + (0.3 - 0.2*Math.abs(Math.sin(animT))) + ')';
+    ctx.lineWidth = 1.5; ctx.stroke();
+
+    // Nodes
+    locations.forEach(function(loc, i) {
+      var p = px(loc);
+      var c2 = colours[loc.type];
+      var isHov = (i === hovered);
+      var r = loc.type === 'base' ? 8 : (loc.type === 'event' ? 6 : 4);
+      if (isHov) r += 3;
+
+      // Ring glow
+      if (loc.type !== 'coverage') {
+        ctx.beginPath(); ctx.arc(p.x, p.y, r + 8, 0, Math.PI*2);
+        ctx.fillStyle = c2.ring; ctx.fill();
       }
-      // Pin dot
-      var dotSize = loc.primary ? 7 : 4;
-      ctx.beginPath(); ctx.arc(lx,ly,dotSize*pulse,0,Math.PI*2);
-      ctx.fillStyle=loc.primary?'rgba(0,220,80,0.85)':'rgba(0,150,60,0.4)'; ctx.fill();
-      if(loc.primary){
-        ctx.beginPath(); ctx.arc(lx,ly,14*pulse,0,Math.PI*2);
-        ctx.strokeStyle='rgba(0,200,80,0.3)'; ctx.lineWidth=1; ctx.stroke();
-      }
+      // Dot
+      ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI*2);
+      ctx.fillStyle = isHov ? '#fff' : c2.dot; ctx.fill();
+
       // Label
-      ctx.fillStyle=loc.primary?'rgba(0,255,100,0.9)':'rgba(0,180,70,0.5)';
-      ctx.font=(loc.primary?'bold ':'')+'9px JetBrains Mono,monospace';
-      ctx.textAlign='left'; ctx.textBaseline='middle';
-      ctx.fillText(loc.name, lx+12, ly);
+      ctx.font = (loc.type==='base' ? 'bold 10px' : '9px') + ' monospace';
+      ctx.fillStyle = isHov ? '#fff' : c2.label;
+      ctx.textAlign = 'center';
+      var labelY = p.y - r - 6;
+      if (labelY < 12) labelY = p.y + r + 14;
+      ctx.fillText(loc.name, p.x, labelY);
     });
-    requestAnimationFrame(drawMap);
+
+    // Tooltip
+    if (hovered >= 0) {
+      var loc = locations[hovered];
+      var p = px(loc);
+      var txt = loc.detail;
+      ctx.font = '10px monospace';
+      var tw = ctx.measureText(txt).width;
+      var tx = Math.min(Math.max(p.x - tw/2 - 10, 4), W - tw - 24);
+      var ty = p.y + 16;
+      if (ty + 36 > H) ty = p.y - 52;
+      ctx.fillStyle = 'rgba(3,12,6,0.95)';
+      ctx.strokeStyle = colours[loc.type].dot;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.roundRect(tx, ty, tw + 20, 30, 3);
+      ctx.fill(); ctx.stroke();
+      ctx.fillStyle = '#fff'; ctx.textAlign = 'left';
+      ctx.fillText(txt, tx + 10, ty + 18);
+    }
+
+    // Legend
+    var ld = [{col:'#FFD700',lbl:'Base'},{col:'#00C850',lbl:'Event venues'},{col:'rgba(92,155,212,0.8)',lbl:'Coverage area'}];
+    ld.forEach(function(l,i){
+      ctx.fillStyle = l.col;
+      ctx.beginPath(); ctx.arc(12, H-16-(i*18), 4, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      ctx.font = '8px monospace'; ctx.textAlign = 'left';
+      ctx.fillText(l.lbl, 22, H-12-(i*18));
+    });
+
+    requestAnimationFrame(draw);
   }
-  drawMap();
+
+  c.addEventListener('mousemove', function(e) {
+    var rect = c.getBoundingClientRect();
+    var mx = (e.clientX - rect.left) * (W / rect.width);
+    var my = (e.clientY - rect.top) * (H / rect.height);
+    var found = -1;
+    locations.forEach(function(loc, i) {
+      var p = px(loc);
+      var dx = mx - p.x, dy = my - p.y;
+      if (Math.sqrt(dx*dx+dy*dy) < 16) found = i;
+    });
+    if (found !== hovered) { hovered = found; c.style.cursor = found>=0?'pointer':'default'; }
+  });
+  c.addEventListener('mouseleave', function() { hovered = -1; });
+
+  draw();
 }
 
 /* ── QUALS PAGE ───────────────────────────────────────────────────────────── */
 function renderCertDash() {
   var grid = document.getElementById('cert-dash-grid');
   if (!grid) return;
-  var certs = [
-    { label:'FREC 3', sub:'Emergency Care', status:'CURRENT', colour:'#00A651', icon:'\u2665' },
-    { label:'FREC 4', sub:'In Progress', status:'PROGRESS', colour:'#FFD700', icon:'\u2b50' },
-    { label:'CTLLS L4', sub:'Teaching', status:'ACHIEVED', colour:'#1A3A5C', icon:'\ud83c\udf93' },
-    { label:'CERAD L3', sub:'Blue Light', status:'CURRENT', colour:'#B8860B', icon:'\ud83d\ude93' },
-    { label:'PCV / D1', sub:'Large Vehicle', status:'CURRENT', colour:'#B8860B', icon:'\ud83d\ude8c' },
-    { label:'Enhanced DBS', sub:'Disclosure', status:'CURRENT', colour:'#006B3F', icon:'\u2713' },
-    { label:'AAVRA', sub:'Assessor', status:'CURRENT', colour:'#1A3A5C', icon:'\ud83d\udcdd' },
-    { label:'Comm. Commend.', sub:'2025 + 2026', status:'AWARDED', colour:'#FFD700', icon:'\u2605' }
+
+  var cards = [
+    {
+      label:'FREC 3',
+      full:'First Responder Emergency Care Level 3',
+      body:'Pre-hospital clinical qualification. Authorises patient assessment, a 19-drug medication formulary including Adrenaline IM, 12-lead ECG interpretation, and full EAC scope of practice.',
+      issuer:'St John Ambulance / Qualsafe Awards',
+      status:'CURRENT',
+      since:'2022',
+      accent:'#00C850',
+      accentDim:'rgba(0,200,80,0.12)',
+      accentBorder:'rgba(0,200,80,0.3)',
+      tags:['Clinical','EAC','Pre-hospital']
+    },
+    {
+      label:'CTLLS L4',
+      full:'Certificate in Teaching in the Lifelong Learning Sector — Level 4',
+      body:'Post-16 teaching authority. Enables delivery of accredited first aid and emergency care training to adults. Accompanied by AET+ (Award in Education and Training).',
+      issuer:'Education & Training Foundation',
+      status:'CURRENT',
+      since:'2023',
+      accent:'#5C9BD4',
+      accentDim:'rgba(92,155,212,0.12)',
+      accentBorder:'rgba(92,155,212,0.3)',
+      tags:['Teaching','L4','AET+']
+    },
+    {
+      label:'CERAD L3',
+      full:'Certificate in Emergency Response Ambulance Driving — Level 3',
+      body:'Blue-light response driving qualification. Covers high-speed emergency driving, risk assessment, and route management. Complemented by PCV/D1 and Category C HGV licences.',
+      issuer:'SJA / DVSA',
+      status:'CURRENT',
+      since:'2023',
+      accent:'#B4913C',
+      accentDim:'rgba(180,145,60,0.12)',
+      accentBorder:'rgba(180,145,60,0.3)',
+      tags:['Driving','Blue-light','PCV D1 Cat C']
+    },
+    {
+      label:'FREC 4',
+      full:'First Responder Emergency Care Level 4',
+      body:'Advanced pre-hospital care qualification currently in progress. Expands scope to include advanced airway management, IV cannulation, and extended medication authority. Target completion 2027.',
+      issuer:'St John Ambulance / Qualsafe Awards',
+      status:'IN PROGRESS',
+      since:'Target 2027',
+      accent:'#FFD700',
+      accentDim:'rgba(255,215,0,0.08)',
+      accentBorder:'rgba(255,215,0,0.25)',
+      tags:['Clinical','Advanced','Target 2027'],
+      progress: 20
+    }
   ];
-  var colours = { CURRENT:'rgba(0,107,63,0.15)', PROGRESS:'rgba(184,134,11,0.15)', ACHIEVED:'rgba(26,58,92,0.15)', AWARDED:'rgba(184,134,11,0.2)' };
-  var textC = { CURRENT:'#00A651', PROGRESS:'#FFD700', ACHIEVED:'#a0c0e0', AWARDED:'#FFD700' };
-  grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:2px;margin-bottom:24px';
-  grid.innerHTML = certs.map(function(cert){
-    return '<div style="background:'+colours[cert.status]+';border:1px solid '+cert.colour+'44;padding:16px 12px;text-align:center;position:relative">' +
-      '<div style="font-size:24px;margin-bottom:6px">'+cert.icon+'</div>' +
-      '<div style="font-family:\'Bebas Neue\',sans-serif;font-size:16px;letter-spacing:1px;color:#fff;margin-bottom:2px">'+cert.label+'</div>' +
-      '<div style="font-size:10px;color:rgba(255,255,255,.4);margin-bottom:6px">'+cert.sub+'</div>' +
-      '<div style="font-size:8px;letter-spacing:2px;color:'+textC[cert.status]+';font-family:JetBrains Mono,monospace">'+cert.status+'</div>' +
-      '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:'+cert.colour+'"></div>' +
+
+  grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:32px';
+  grid.innerHTML = cards.map(function(c){
+    var progressBar = c.progress !== undefined
+      ? '<div style="margin-top:14px">' +
+          '<div style="display:flex;justify-content:space-between;font-size:8px;letter-spacing:0.15em;color:rgba(255,215,0,0.6);margin-bottom:4px">' +
+            '<span>PROGRESS</span><span>'+c.progress+'%</span>' +
+          '</div>' +
+          '<div style="height:3px;background:rgba(255,255,255,0.06);border-radius:2px">' +
+            '<div style="height:100%;width:'+c.progress+'%;background:'+c.accent+';border-radius:2px;transition:width 1s ease"></div>' +
+          '</div>' +
+        '</div>'
+      : '';
+    var tags = c.tags.map(function(t){
+      return '<span style="font-size:8px;letter-spacing:0.15em;padding:2px 8px;border:1px solid '+c.accentBorder+';color:'+c.accent+';border-radius:10px">'+t+'</span>';
+    }).join('');
+    return '<div style="' +
+      'background:'+c.accentDim+';' +
+      'border:1px solid '+c.accentBorder+';' +
+      'border-radius:8px;padding:24px 20px;position:relative;overflow:hidden;' +
+      'transition:transform 0.2s,box-shadow 0.2s;cursor:default' +
+      '" onmouseover="this.style.transform=\'translateY(-3px)\';this.style.boxShadow=\'0 12px 32px rgba(0,0,0,0.3)\'" ' +
+      'onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\'">' +
+      '<div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,'+c.accent+',transparent)"></div>' +
+      '<div style="font-size:8px;letter-spacing:0.3em;text-transform:uppercase;color:'+c.accent+';margin-bottom:6px">'+c.status+'</div>' +
+      '<div style="font-family:\'Cormorant Garamond\',serif;font-size:1.5rem;color:#fff;margin-bottom:4px;line-height:1">'+c.label+'</div>' +
+      '<div style="font-size:9px;color:rgba(255,255,255,0.4);margin-bottom:14px;line-height:1.4">'+c.full+'</div>' +
+      '<div style="height:1px;background:'+c.accentBorder+';margin-bottom:14px"></div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:14px">'+c.body+'</div>' +
+      '<div style="font-size:8px;color:rgba(255,255,255,0.3);margin-bottom:12px">'+c.issuer+' &middot; Since '+c.since+'</div>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:6px">'+tags+'</div>' +
+      progressBar +
       '</div>';
   }).join('');
 }
@@ -7245,17 +8472,96 @@ var MEDS = [
 function renderMedsGrid() {
   var grid = document.getElementById('meds-grid');
   if (!grid) return;
-  var classColour = { P:'rgba(192,57,43,0.15)', G:'rgba(0,107,63,0.1)', O:'rgba(26,58,92,0.12)' };
-  var classBorder = { P:'rgba(192,57,43,0.4)', G:'rgba(0,107,63,0.3)', O:'rgba(26,58,92,0.3)' };
-  var classLabel = { P:'PGD / P-only', G:'GSL', O:'Patient Own' };
-  grid.innerHTML = MEDS.map(function(m,i){
-    return '<div style="background:'+classColour[m.class]+';border:1px solid '+classBorder[m.class]+';padding:12px;position:relative">' +
-      '<div style="font-size:13px;font-weight:700;color:#fff;margin-bottom:4px">'+m.name+'</div>' +
-      '<div style="font-size:11px;color:rgba(255,255,255,0.5);margin-bottom:6px">'+m.note+'</div>' +
-      '<div style="font-size:8px;letter-spacing:1px;color:'+classBorder[m.class].replace('0.','0.8')+';font-family:monospace">'+classLabel[m.class]+'</div>' +
-      '<div style="position:absolute;top:0;left:0;width:3px;height:100%;background:'+classBorder[m.class].replace('0.4','0.7')+'"></div>' +
+
+  var MEDS_FULL = [
+    { name:'Adrenaline 1:1000 IM', note:'Anaphylaxis / cardiac arrest', class:'P', route:'IM injection', dose:'0.5mg IM (adult)', contra:'No absolute in anaphylaxis' },
+    { name:'Naloxone IM', note:'Opioid reversal', class:'P', route:'IM injection', dose:'400mcg IM, repeat 2–3 min', contra:'Caution: precipitates withdrawal' },
+    { name:'Salbutamol NEB', note:'Bronchospasm / asthma', class:'P', route:'Nebulised', dose:'5mg via nebuliser', contra:'Tachycardia, known hypersensitivity' },
+    { name:'Ipratropium Bromide NEB', note:'Severe asthma / COPD', class:'P', route:'Nebulised', dose:'500mcg via nebuliser', contra:'Known allergy to atropine' },
+    { name:'Entonox INH', note:'Pain relief — 50:50 O₂/N₂O', class:'P', route:'Inhaled, self-administered', dose:'Patient-controlled', contra:'Pneumothorax, head injury, COAD' },
+    { name:'Penthrox INH', note:'Methoxyflurane — trauma pain', class:'P', route:'Inhaled via Green Whistle', dose:'3mL, max 6mL per episode', contra:'Renal disease, known sensitivity' },
+    { name:'Hydrocortisone IM', note:'Anaphylaxis / Addisonian crisis', class:'P', route:'IM injection', dose:'200mg IM', contra:'Systemic fungal infection' },
+    { name:'Glucagon IM', note:'Hypoglycaemia — no IV access', class:'P', route:'IM injection', dose:'1mg IM', contra:'Phaeochromocytoma, glucagonoma' },
+    { name:'GTN Spray SL', note:'Chest pain / ACS', class:'P', route:'Sublingual spray', dose:'400mcg SL, repeat ×2 at 5 min', contra:'SBP <90mmHg, PDE5 inhibitors' },
+    { name:'Aspirin PO', note:'Suspected MI / ACS', class:'G', route:'Oral (chewed)', dose:'300mg PO', contra:'Active GI bleed, true aspirin allergy' },
+    { name:'Paracetamol PO', note:'Mild–moderate pain / pyrexia', class:'G', route:'Oral', dose:'1g PO (adult)', contra:'Hepatic impairment, overdose risk' },
+    { name:'Ibuprofen PO', note:'Pain / inflammation', class:'G', route:'Oral', dose:'400mg PO with food', contra:'GI ulcer, renal impairment, pregnancy' },
+    { name:'Glucose Gel 40% PO', note:'Hypoglycaemia — conscious patient', class:'G', route:'Buccal / oral', dose:'10–15g, repeat at 15 min', contra:'Unconscious patient (aspiration risk)' },
+    { name:'Loratadine PO', note:'Mild allergic reaction', class:'G', route:'Oral', dose:'10mg PO', contra:'Severe hepatic impairment' },
+    { name:'ORS PO', note:'Dehydration / fluid replacement', class:'G', route:'Oral', dose:'As per packet per fluid loss', contra:'Vomiting, unable to maintain oral intake' },
+    { name:'Oxygen INH', note:'Hypoxia / respiratory compromise', class:'G', route:'Mask / nasal cannula', dose:'Titrate to SpO₂ 94–98%', contra:'Target 88–92% in COPD with hypercapnia' },
+    { name:'Adrenaline Auto-Injector', note:'Patient\'s own — anaphylaxis', class:'O', route:'IM — outer thigh', dose:'Per prescribed device (0.15/0.3mg)', contra:'Assist only; patient\'s own prescription' },
+    { name:'GTN Spray (own)', note:'Patient\'s own — cardiac chest pain', class:'O', route:'Sublingual spray', dose:'As prescribed', contra:'Assist with patient\'s own medication' },
+    { name:'Salbutamol Inhaler', note:'Patient\'s own — bronchospasm', class:'O', route:'Inhaled via pMDI', dose:'2–4 puffs via spacer if available', contra:'Assist with patient\'s own medication' }
+  ];
+
+  var classColour = { P:'rgba(192,57,43,0.10)', G:'rgba(0,107,63,0.08)', O:'rgba(26,58,92,0.10)' };
+  var classBorder = { P:'rgba(192,57,43,0.35)', G:'rgba(0,107,63,0.30)', O:'rgba(92,155,212,0.35)' };
+  var classAccent = { P:'#C0392B', G:'#00A651', O:'#5C9BD4' };
+  var classLabel  = { P:'PGD', G:'GSL', O:"Patient's Own" };
+  var _openIdx = -1;
+
+  function buildGrid() {
+    grid.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px';
+    grid.innerHTML = MEDS_FULL.map(function(m, i) {
+      var ac = classAccent[m.class];
+      var bc = classBorder[m.class];
+      var bg = classColour[m.class];
+      var lbl = classLabel[m.class];
+      return '<div data-idx="'+i+'" onclick="toggleMedCard('+i+')" style="' +
+        'background:'+bg+';border:1px solid '+bc+';border-radius:6px;padding:16px 14px;' +
+        'cursor:pointer;position:relative;overflow:hidden;transition:all 0.2s;' +
+        'border-left:3px solid '+ac+'" ' +
+        'onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 6px 20px rgba(0,0,0,0.25)\'" ' +
+        'onmouseout="this.style.transform=\'\';this.style.boxShadow=\'\'">' +
+        '<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px">' +
+          '<div style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:'+ac+';padding:2px 6px;border:1px solid '+bc+';border-radius:10px">'+lbl+'</div>' +
+          '<div style="font-size:10px;color:rgba(255,255,255,0.3)" id="med-chevron-'+i+'">&#9660;</div>' +
+        '</div>' +
+        '<div style="font-family:\'Cormorant Garamond\',serif;font-size:1rem;color:#fff;line-height:1.2;margin-bottom:4px">'+m.name+'</div>' +
+        '<div style="font-size:10px;color:rgba(255,255,255,0.5);line-height:1.4">'+m.note+'</div>' +
+        '<div id="med-exp-'+i+'" style="display:none;margin-top:12px;padding-top:12px;border-top:1px solid '+bc+'">' +
+          '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px 12px;margin-bottom:8px">' +
+            '<div><div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:'+ac+';margin-bottom:2px">ROUTE</div>' +
+              '<div style="font-size:10px;color:rgba(255,255,255,0.7)">'+m.route+'</div></div>' +
+            '<div><div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:'+ac+';margin-bottom:2px">DOSE</div>' +
+              '<div style="font-size:10px;color:rgba(255,255,255,0.7)">'+m.dose+'</div></div>' +
+          '</div>' +
+          '<div><div style="font-size:7px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(220,80,80,0.9);margin-bottom:2px">CONTRAINDICATIONS</div>' +
+            '<div style="font-size:10px;color:rgba(255,120,120,0.7);line-height:1.4">'+m.contra+'</div></div>' +
+        '</div>' +
       '</div>';
-  }).join('');
+    }).join('');
+  }
+
+  window.toggleMedCard = function(idx) {
+    var m = MEDS_FULL[idx];
+    if (!m) return;
+    var ac = classAccent[m.class] || '#00C850';
+    var bc = classBorder[m.class] || 'rgba(0,200,80,0.3)';
+    var lbl = classLabel[m.class] || '';
+    var overlay = document.getElementById('med-modal-overlay');
+    if (!overlay) return;
+    document.getElementById('med-modal-class').textContent = lbl;
+    document.getElementById('med-modal-class').style.cssText += ';color:'+ac+';border:1px solid '+bc+';background:rgba(0,0,0,0.2)';
+    document.getElementById('med-modal-name').textContent = m.name;
+    document.getElementById('med-modal-note').textContent = m.note;
+    document.getElementById('med-modal-route').textContent = m.route;
+    document.getElementById('med-modal-dose').textContent = m.dose;
+    document.getElementById('med-modal-contra').textContent = m.contra;
+    overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeMedModal = function(e) {
+    if (e && e.target !== document.getElementById('med-modal-overlay')) return;
+    document.getElementById('med-modal-overlay').style.display = 'none';
+    document.body.style.overflow = '';
+  };
+  // Close on Escape
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') window.closeMedModal && window.closeMedModal(); });
+
+  buildGrid();
 }
 
 /* ── SR OBSERVER ──────────────────────────────────────────────────────────── */
@@ -7360,9 +8666,66 @@ document.querySelectorAll('.sr-item,.sr-item-left,.sr-item-right').forEach(funct
   });
 })();
 
-/* ── PRINT CREDENTIALS ────────────────────────────────────────────────────── */
-function printCredentials(){
-  window.print();
+/* ── PRINT CREDENTIALS (Feature 31) ─────────────────────────────────────── */
+function printCredentials() {
+  var printWin = window.open('', '_blank', 'width=800,height=1100');
+  if (!printWin) { window.print(); return; }
+  var today = new Date();
+  var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var dateStr = today.getDate() + ' ' + months[today.getMonth()] + ' ' + today.getFullYear();
+  printWin.document.write('<!DOCTYPE html><html lang="en-GB"><head><meta charset="UTF-8"><title>Peter Craine — Credential Sheet</title>' +
+    '<style>' +
+    'body{font-family:Georgia,serif;color:#1a1a1a;background:#fff;margin:0;padding:0}' +
+    '.sheet{max-width:680px;margin:0 auto;padding:48px 52px}' +
+    '.header{border-bottom:3px solid #006B3F;padding-bottom:20px;margin-bottom:28px;display:flex;justify-content:space-between;align-items:flex-end}' +
+    '.name{font-size:28px;font-weight:700;letter-spacing:1px;color:#1a1a1a}' +
+    '.org{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#006B3F;margin-top:4px}' +
+    '.badge{text-align:right;font-size:10px;color:#666}' +
+    '.section{margin-bottom:24px}' +
+    '.sec-title{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#006B3F;border-bottom:1px solid #e0e0e0;padding-bottom:4px;margin-bottom:12px}' +
+    '.row{display:flex;padding:6px 0;border-bottom:1px solid #f0f0f0;font-size:12px}' +
+    '.row-label{width:180px;color:#666;flex-shrink:0}' +
+    '.row-value{color:#1a1a1a;font-weight:500}' +
+    '.status-current{color:#006B3F;font-weight:700}' +
+    '.status-progress{color:#B8860B;font-weight:700}' +
+    '.award-card{background:#f9f7f0;border-left:3px solid #B8860B;padding:10px 14px;margin-bottom:8px;font-size:11px}' +
+    '.footer{margin-top:36px;padding-top:16px;border-top:2px solid #006B3F;display:flex;justify-content:space-between;font-size:9px;color:#999;letter-spacing:1px}' +
+    '@media print{body{print-color-adjust:exact;-webkit-print-color-adjust:exact}}' +
+    '</style></head><body><div class="sheet">' +
+    '<div class="header">' +
+      '<div>' +
+        '<div class="name">Peter Craine</div>' +
+        '<div class="org">St John Ambulance &middot; North West England</div>' +
+        '<div style="font-size:11px;color:#666;margin-top:4px">Emergency Ambulance Crew &middot; Community Network Lead</div>' +
+      '</div>' +
+      '<div class="badge"><div style="font-size:11px;font-weight:700;color:#006B3F">CREDENTIAL SHEET</div><div>Generated: ' + dateStr + '</div><div>petercrainemedic.co.uk</div></div>' +
+    '</div>' +
+    '<div class="section"><div class="sec-title">Clinical Qualifications</div>' +
+      '<div class="row"><span class="row-label">FREC 3</span><span class="row-value">First Responder Emergency Care Level 3 <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">FREC 4</span><span class="row-value">First Responder Emergency Care Level 4 <span class="status-progress">IN PROGRESS — Target 2027</span></span></div>' +
+      '<div class="row"><span class="row-label">CTLLS L4</span><span class="row-value">Certificate in Teaching in the Lifelong Learning Sector <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">CERAD L3</span><span class="row-value">Emergency Response Ambulance Driving <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">PCV / D1</span><span class="row-value">Passenger Carrying Vehicle &middot; D1 Category <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">Category C</span><span class="row-value">HGV / Large Goods Vehicle <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">MIDAS</span><span class="row-value">Minibus Driver Awareness Scheme <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">AAVRA</span><span class="row-value">Assessor Award <span class="status-current">CURRENT</span></span></div>' +
+      '<div class="row"><span class="row-label">Enhanced DBS</span><span class="row-value">Disclosure &amp; Barring Service <span class="status-current">IN DATE</span></span></div>' +
+    '</div>' +
+    '<div class="section"><div class="sec-title">Operational Statistics</div>' +
+      '<div class="row"><span class="row-label">Deployments</span><span class="row-value">34+ verified operational duties</span></div>' +
+      '<div class="row"><span class="row-label">Learners Trained</span><span class="row-value">208+ first aid &amp; emergency care</span></div>' +
+      '<div class="row"><span class="row-label">CPD Hours</span><span class="row-value">100+ clinical &amp; instructional</span></div>' +
+      '<div class="row"><span class="row-label">Scope</span><span class="row-value">19 medications &middot; 12-lead ECG &middot; ATMIST &middot; Pre-alert</span></div>' +
+    '</div>' +
+    '<div class="section"><div class="sec-title">Recognition Awards</div>' +
+      '<div class="award-card"><strong>Prior\'s Award 2026</strong> — Responsiveness &amp; Resilience. Presented by Rear Admiral Simon Williams.</div>' +
+      '<div class="award-card"><strong>Commissioner\'s Commendation 2025</strong> — Outstanding contribution to East Lancashire Community Network.</div>' +
+      '<div class="award-card"><strong>Commissioner\'s Commendation 2024</strong> — Exceptional service and leadership within SJA North West.</div>' +
+    '</div>' +
+    '<div class="footer"><span>Peter Craine &middot; EAC &middot; SJA North West</span><span>petercrainemedic.co.uk</span><span>' + dateStr + '</span></div>' +
+    '</div></body></html>');
+  printWin.document.close();
+  setTimeout(function(){ printWin.print(); }, 500);
 }
 
 /* ── VCARD / SIGNATURE ────────────────────────────────────────────────────── */
@@ -7855,34 +9218,185 @@ function goToPost(idx){
 function toggleHeartbeat(){if(HB.running)HB.stop();else HB.start();}
 
 
-/* ── SIREN AUDIO ────────────────────────────────────────── */
-// 1) 999_mode_activated.mp3 plays once
-// 2) wail.mp3 loops continuously after
-var SIREN={
-  running:false, audio:null,
-  start:function(){
-    this.running=true;
-    if(!this.audio){
-      this.audio=new Audio('siren.mp3');
-      this.audio.volume=0.85;
-      this.audio.loop=false;
-    }
-    this.audio.pause();
-    this.audio.currentTime=0;
-    this.audio.play().catch(function(){});
-    var el=document.getElementById('siren-icon');
-    if(el) el.textContent='\ud83d\udd34';
-    document.body.classList.add('siren-active');
-  },
-  stop:function(){
-    this.running=false;
-    if(this.audio){this.audio.pause();this.audio.currentTime=0;}
-    var el=document.getElementById('siren-icon');
-    if(el) el.textContent='\ud83d\udea8';
-    document.body.classList.remove('siren-active');
+/* ── F51: Handwriting Annotation Layer ─────────────────── */
+.annotations-active .annotate-margin {
+  display: block !important;
+}
+.annotate-margin {
+  display: none;
+  position: absolute;
+  left: -180px;
+  width: 160px;
+  font-family: 'Carattere', cursive;
+  font-size: 13px;
+  color: rgba(180,145,60,0.75);
+  line-height: 1.5;
+  font-style: italic;
+  text-align: right;
+  pointer-events: none;
+}
+.annotate-underline {
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.4s;
+}
+.annotations-active .annotate-underline {
+  text-decoration: underline;
+  text-decoration-color: rgba(180,20,20,0.5);
+  text-decoration-style: wavy;
+  text-underline-offset: 3px;
+}
+.annotate-highlight {
+  background-color: transparent;
+  transition: background-color 0.4s;
+}
+.annotations-active .annotate-highlight {
+  background-color: rgba(180,145,60,0.12);
+  border-radius: 2px;
+}
+
+/* ── F50 sticky WA fade */
+#sticky-wa-label { transition: opacity 0.5s; }
+
+
+(function(){
+  var btn = document.getElementById('sticky-wa-cta');
+  if (!btn) return;
+  var shown = false;
+  window.addEventListener('scroll', function(){
+    if (window.scrollY > 400 && !shown) { btn.style.display = 'flex'; shown = true; }
+    else if (window.scrollY <= 400 && shown) { btn.style.display = 'none'; shown = false; }
+  }, {passive: true});
+  setTimeout(function(){
+    var lbl = document.getElementById('sticky-wa-label');
+    if (lbl) lbl.style.opacity = '0';
+  }, 4000);
+})();
+
+var _SOUND_ACTIVE = null; // current mode id
+var _SOUND_AC = null;     // AudioContext
+var _SOUND_NODES = [];    // active nodes to stop
+var _SOUND_AUDIO = null;  // HTML Audio for mp3s
+
+function _getAC() {
+  if (!_SOUND_AC) {
+    try { _SOUND_AC = new (window.AudioContext || window.webkitAudioContext)(); } catch(e){}
   }
+  return _SOUND_AC;
+}
+
+function _stopAll() {
+  _SOUND_NODES.forEach(function(n){ try{ n.stop(); }catch(e){} });
+  _SOUND_NODES = [];
+  if (_SOUND_AUDIO) { _SOUND_AUDIO.pause(); _SOUND_AUDIO.currentTime=0; }
+  document.body.classList.remove('siren-active');
+}
+
+function _playECG(ac) {
+  // Synthesised ECG beep pattern: beep every ~860ms
+  function beep(t) {
+    var osc = ac.createOscillator();
+    var g   = ac.createGain();
+    osc.connect(g); g.connect(ac.destination);
+    osc.frequency.value = 880;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.12, t+0.01);
+    g.gain.linearRampToValueAtTime(0, t+0.06);
+    osc.start(t); osc.stop(t+0.08);
+    _SOUND_NODES.push(osc);
+  }
+  var now = ac.currentTime;
+  for (var i=0; i<120; i++) beep(now + i*0.86);
+}
+
+function _playRadio(ac) {
+  // Brown noise for radio static
+  var bufSize = ac.sampleRate * 4;
+  var buf = ac.createBuffer(1, bufSize, ac.sampleRate);
+  var data = buf.getChannelData(0);
+  var lastOut = 0;
+  for (var i=0; i<bufSize; i++) {
+    var white = Math.random()*2-1;
+    data[i] = (lastOut + (0.02 * white)) / 1.02;
+    lastOut = data[i];
+    data[i] *= 3.5;
+  }
+  var src = ac.createBufferSource();
+  src.buffer = buf; src.loop = true;
+  var g = ac.createGain(); g.gain.value = 0.08;
+  // Bandpass for radio character
+  var bp = ac.createBiquadFilter();
+  bp.type = 'bandpass'; bp.frequency.value = 1800; bp.Q.value = 0.5;
+  src.connect(bp); bp.connect(g); g.connect(ac.destination);
+  src.start();
+  _SOUND_NODES.push(src);
+  // Occasional squelch breaks
+  function squelch() {
+    g.gain.setTargetAtTime(0.003, ac.currentTime, 0.05);
+    setTimeout(function(){
+      g.gain.setTargetAtTime(0.08, ac.currentTime, 0.08);
+      setTimeout(squelch, 3000 + Math.random()*4000);
+    }, 200 + Math.random()*600);
+  }
+  setTimeout(squelch, 2000);
+}
+
+var SOUND_MODES = [
+  { id:'silent',  icon:'🔇', label:'Silent',        active:'🔇' },
+  { id:'ecg',     icon:'💓', label:'ECG Monitor',   active:'💓' },
+  { id:'radio',   icon:'📻', label:'Radio Static',  active:'📻' },
+  { id:'siren',   icon:'🚨', label:'999 Siren',     active:'🔴' }
+];
+
+function activateSound(id) {
+  _stopAll();
+  if (_SOUND_ACTIVE === id || id === 'silent') {
+    _SOUND_ACTIVE = null;
+    _updateSoundUI(null);
+    return;
+  }
+  var ac = _getAC();
+  if (!ac) { console.warn('AudioContext not available'); return; }
+  if (ac.state === 'suspended') ac.resume();
+  _SOUND_ACTIVE = id;
+  _updateSoundUI(id);
+  if (id === 'ecg')   _playECG(ac);
+  if (id === 'radio') _playRadio(ac);
+  if (id === 'siren') {
+    _SOUND_AUDIO = new Audio('siren.mp3');
+    _SOUND_AUDIO.volume = 0.85;
+    _SOUND_AUDIO.loop = true;
+    _SOUND_AUDIO.play().catch(function(){});
+    document.body.classList.add('siren-active');
+  }
+}
+
+function _updateSoundUI(activeId) {
+  var btn = document.getElementById('sound-panel-btn');
+  if (btn) btn.textContent = activeId ? SOUND_MODES.find(function(m){return m.id===activeId;}).active : '🔊';
+  var panel = document.getElementById('sound-mode-panel');
+  if (!panel) return;
+  panel.querySelectorAll('.sp-mode-btn').forEach(function(b){
+    var isA = b.dataset.mode === activeId;
+    b.style.borderColor = isA ? 'var(--gold)' : 'rgba(255,255,255,0.12)';
+    b.style.background  = isA ? 'rgba(180,145,60,0.12)' : 'rgba(255,255,255,0.03)';
+    b.style.color       = isA ? 'var(--gold)' : 'rgba(255,255,255,0.7)';
+  });
+}
+
+function toggleSoundPanel() {
+  var panel = document.getElementById('sound-mode-panel');
+  if (!panel) return;
+  panel.style.display = panel.style.display === 'flex' ? 'none' : 'flex';
+}
+
+// Legacy toggleSiren compatibility
+var SIREN = {
+  running: false,
+  start: function(){ activateSound('siren'); this.running=true; },
+  stop:  function(){ activateSound('silent'); this.running=false; }
 };
-function toggleSiren(){if(SIREN.running)SIREN.stop();else SIREN.start();}
+function toggleSiren(){ if(SIREN.running) SIREN.stop(); else SIREN.start(); }
+function toggleHeartbeat() { activateSound('ecg'); }
 </script>
 
 
@@ -10050,6 +11564,560 @@ document.addEventListener('DOMContentLoaded', initLang);
     setTimeout(function(){ hideSkeleton(id); }, 350);
   };
 })();
+
+/* ── INCIDENT RESPONSE SIMULATOR (Feature 37) ─────────────────── */
+var SIM_SCENARIOS = [
+  {
+    title: 'Road Traffic Collision',
+    steps: [
+      {
+        phase: 'SCENE APPROACH',
+        text: 'You arrive on scene. Single vehicle RTC. Car has struck a wall at speed. One occupant, adult male, apparent LOC. Bystanders present. No fire. Scene appears safe.',
+        options: [
+          { text: 'Approach immediately and open the car door', correct: false, feedback: 'Incorrect. Scene safety must be confirmed before approach. Check for hazards: fuel, traffic, unstable vehicle.' },
+          { text: 'Confirm scene safety, don PPE, approach cautiously', correct: true, feedback: 'Correct. Dynamic risk assessment first. PPE on, confirm no fuel leak or traffic hazard, then approach.' },
+          { text: 'Call for back-up before doing anything', correct: false, feedback: 'Back-up should be requested but you should begin your approach safely — don\'t delay assessment.' }
+        ]
+      },
+      {
+        phase: 'PRIMARY SURVEY — cABCDE',
+        text: 'Patient is in driver\'s seat, seatbelt on. Unresponsive to voice. Visible laceration to forehead, minor bleeding. Airbag deployed. Steering wheel deformed.',
+        options: [
+          { text: 'Start with Catastrophic haemorrhage control', correct: false, feedback: 'Good instinct but forehead laceration is minor. cABCDE starts with C — but only if catastrophic haemorrhage present. Move to A.' },
+          { text: 'Open airway, apply C-spine precautions, assess breathing', correct: true, feedback: 'Correct. Jaw thrust for suspected C-spine injury, check airway patency, assess breathing rate and depth.' },
+          { text: 'Check pupils and GCS immediately', correct: false, feedback: 'D (Disability) comes after A, B, C. Follow the cABCDE sequence — airway first.' }
+        ]
+      },
+      {
+        phase: 'AIRWAY & BREATHING',
+        text: 'Airway patent with jaw thrust. Breathing: 8 breaths/min, shallow. SpO2 88%. No obvious chest injury. You have BVM and OPA available.',
+        options: [
+          { text: 'Apply OPA and assist ventilation with BVM + high-flow O2', correct: true, feedback: 'Correct. RR 8 and SpO2 88% indicates ventilatory failure. OPA appropriate (unconscious), BVM with O2 to assist. Target SpO2 94-98%.' },
+          { text: 'Apply non-rebreather mask at 15L/min', correct: false, feedback: 'NRM alone won\'t compensate for RR of 8. This patient needs assisted ventilation, not just supplemental O2.' },
+          { text: 'Nasopharyngeal airway and monitor', correct: false, feedback: 'NPA appropriate if clenched jaw — but with LOC and RR 8, you need to assist ventilation, not just maintain airway.' }
+        ]
+      },
+      {
+        phase: 'HANDOVER',
+        text: 'NWAS arrive. Patient now GCS 9 (E2V3M4). SpO2 96% with BVM assist. BP 92/58. You need to hand over.',
+        options: [
+          { text: 'Give a verbal summary as NWAS lead paramedic approaches', correct: false, feedback: 'Informal handover loses critical information. Use structured ATMIST for time-critical patients.' },
+          { text: 'Use ATMIST structured handover', correct: true, feedback: 'Correct. Age/Time/Mechanism/Injuries/Signs/Treatment. This is the standard pre-hospital handover tool. Clear, complete, time-efficient.' },
+          { text: 'Continue treatment and let NWAS take over without handover', correct: false, feedback: 'Never hand over without structured communication. Information gaps cost lives.' }
+        ]
+      }
+    ],
+    endText: 'Well done. You managed this RTC systematically: scene safety, cABCDE in sequence, airway intervention for ventilatory failure, structured ATMIST handover. These are the foundations of pre-hospital EAC practice.'
+  },
+  {
+    title: 'Chest Pain — Event Crowd',
+    steps: [
+      {
+        phase: 'INITIAL ASSESSMENT',
+        text: '60-year-old male. Brought to your treatment station by stewards. Severe central chest pain 9/10, radiating to left arm. Diaphoresis. Pale. Denies known cardiac history. Event: 5,000 crowd.',
+        options: [
+          { text: 'Administer GTN spray immediately', correct: false, feedback: 'GTN first without BP check risks severe hypotension. Assess and check BP before GTN. Also — not confirmed as cardiac yet.' },
+          { text: 'Sit patient upright, give O2, take history, 12-lead ECG', correct: true, feedback: 'Correct sequence. Position for comfort, O2 via NRM, rapid SAMPLE history, 12-lead ECG. This presentation is high suspicion for ACS.' },
+          { text: 'Send patient to hospital by taxi as you are busy', correct: false, feedback: 'Never. This presentation requires EAC management on scene and pre-alert. Time-critical pathway.' }
+        ]
+      },
+      {
+        phase: '12-LEAD ECG',
+        text: '12-lead shows ST elevation in leads II, III, aVF. Reciprocal depression in I and aVL. HR 92, BP 118/76, SpO2 96%.',
+        options: [
+          { text: 'Treat as STEMI. Administer 300mg Aspirin, call pre-alert to A&E', correct: true, feedback: 'Correct. Inferior STEMI (II, III, aVF elevation with reciprocal changes). 300mg Aspirin PO, STEMI pre-alert, ATMIST to receiving hospital. Every minute matters.' },
+          { text: 'Repeat the ECG to confirm', correct: false, feedback: 'Clear STEMI pattern with clinical presentation. Repeating delays treatment. Act on first ECG with this clinical picture.' },
+          { text: 'Give GTN and reassess in 10 minutes', correct: false, feedback: 'Caution with GTN in inferior MI — can cause hypotension. Primary action is Aspirin + pre-alert, not GTN.' }
+        ]
+      },
+      {
+        phase: 'PRE-ALERT',
+        text: 'You call A&E pre-alert. Registrar asks for handover. Patient is deteriorating: BP 98/60, patient is now GCS 13.',
+        options: [
+          { text: 'Give ATMIST: Age 60, Time 14:35, Inferior STEMI confirmed on 12-lead, Aspirin given, BP falling, GCS 13, ETA 8 mins', correct: true, feedback: 'Excellent. Complete ATMIST with clear clinical picture, intervention given, and ETA. This allows the cath lab or PPCI team to activate in time.' },
+          { text: 'Tell them "heart attack, on the way"', correct: false, feedback: 'Insufficient. A&E need complete clinical picture to activate appropriate pathways. ATMIST is mandatory for time-critical patients.' },
+          { text: 'Wait until NWAS arrive to give the pre-alert', correct: false, feedback: 'Do not delay. EAC can call pre-alert. Every minute of delay in STEMI worsens outcomes.' }
+        ]
+      }
+    ],
+    endText: 'Excellent management. You identified the STEMI on ECG, administered Aspirin within scope, and delivered a complete ATMIST pre-alert. This is the gold standard EAC response to suspected ACS at a mass gathering event.'
+  },
+  {
+    title: 'Anaphylaxis — Sports Fixture',
+    steps: [
+      {
+        phase: 'PRESENTATION',
+        text: '19-year-old female. Bee sting to right forearm 8 minutes ago. Widespread urticaria. Stridor audible. SpO2 93%. BP 86/52. Distressed, speaking in short sentences.',
+        options: [
+          { text: 'Give Adrenaline 1:1000 0.5mg IM to outer thigh immediately', correct: true, feedback: 'Correct. This is anaphylaxis — life-threatening allergic reaction confirmed by stridor, hypotension, urticaria, and SpO2 drop. Adrenaline IM is the first-line treatment. No absolute contraindications in anaphylaxis.' },
+          { text: 'Give IV antihistamine first to control the reaction', correct: false, feedback: 'Antihistamines are adjunctive, not first-line. They do not reverse anaphylaxis. Adrenaline IM is always first. Delay risks airway compromise and cardiovascular collapse.' },
+          { text: 'Give high-flow O2 and monitor, call for NWAS', correct: false, feedback: 'O2 and NWAS are both correct — but Adrenaline must come first. Do not delay first-line treatment while waiting for assistance.' }
+        ]
+      },
+      {
+        phase: 'AFTER ADRENALINE',
+        text: 'Adrenaline IM given at 14:22. After 5 minutes: stridor reducing, SpO2 96%, BP 102/64. Patient more settled. NWAS ETA 10 mins.',
+        options: [
+          { text: 'Document time of Adrenaline, continue monitoring, prepare for possible second dose', correct: true, feedback: 'Correct. Document time and dose. Monitor closely — anaphylaxis can be biphasic. Second Adrenaline dose may be needed after 5 minutes if no improvement or deterioration.' },
+          { text: 'Stop monitoring as patient has improved', correct: false, feedback: 'Never. Biphasic reactions occur in up to 20% of cases — can occur hours later. Continuous monitoring until hospital handover.' },
+          { text: 'Give a second dose of Adrenaline now', correct: false, feedback: 'Patient is improving. Second dose only if no improvement after 5 minutes or deterioration. Over-administration of Adrenaline has risks.' }
+        ]
+      }
+    ],
+    endText: 'Good work. Anaphylaxis is time-critical. You correctly identified it, gave Adrenaline IM as first-line within scope, documented, and maintained appropriate monitoring. This is textbook EAC management of severe allergic reaction.'
+  }
+];
+
+var _simScenario = null;
+var _simStep = 0;
+
+function startScenario(idx) {
+  _simScenario = SIM_SCENARIOS[idx];
+  _simStep = 0;
+  document.getElementById('sim-select').style.display = 'none';
+  document.getElementById('sim-active').style.display = 'block';
+  document.getElementById('sim-end').style.display = 'none';
+  renderSimStep();
+}
+
+function renderSimStep() {
+  var step = _simScenario.steps[_simStep];
+  document.getElementById('sim-phase-label').textContent = step.phase;
+  document.getElementById('sim-scene-text').textContent = step.text;
+  document.getElementById('sim-feedback').style.display = 'none';
+  document.getElementById('sim-next-wrap').style.display = 'none';
+  var opts = document.getElementById('sim-options');
+  opts.innerHTML = step.options.map(function(o, i) {
+    return '<button class="sim-opt" onclick="simChoose(' + i + ')">' + o.text + '</button>';
+  }).join('');
+}
+
+function simChoose(idx) {
+  var step = _simScenario.steps[_simStep];
+  var opt = step.options[idx];
+  // Disable all buttons
+  document.querySelectorAll('.sim-opt').forEach(function(b, i) {
+    b.disabled = true;
+    if (i === idx) b.classList.add(opt.correct ? 'correct' : 'incorrect');
+    else if (step.options[i].correct) b.classList.add('correct');
+  });
+  var fb = document.getElementById('sim-feedback');
+  fb.style.display = 'block';
+  fb.style.background = opt.correct ? 'rgba(0,200,80,0.08)' : 'rgba(192,57,43,0.08)';
+  fb.style.border = '1px solid ' + (opt.correct ? 'rgba(0,200,80,0.3)' : 'rgba(192,57,43,0.3)');
+  fb.style.color = opt.correct ? 'rgba(0,200,80,0.9)' : 'rgba(255,150,150,0.9)';
+  fb.innerHTML = (opt.correct ? '<strong>✓ Correct</strong><br>' : '<strong>✗ Incorrect</strong><br>') + opt.feedback;
+  var isLast = _simStep >= _simScenario.steps.length - 1;
+  if (isLast) {
+    setTimeout(function() {
+      document.getElementById('sim-options').style.display = 'none';
+      document.getElementById('sim-feedback').style.display = 'none';
+      document.getElementById('sim-end-text').textContent = _simScenario.endText;
+      document.getElementById('sim-end').style.display = 'block';
+    }, 1800);
+  } else {
+    document.getElementById('sim-next-wrap').style.display = 'block';
+  }
+}
+
+function simNext() {
+  _simStep++;
+  document.getElementById('sim-options').style.display = 'flex';
+  document.getElementById('sim-options').style.flexDirection = 'column';
+  renderSimStep();
+}
+
+function resetSim() {
+  _simScenario = null; _simStep = 0;
+  document.getElementById('sim-select').style.display = 'block';
+  document.getElementById('sim-active').style.display = 'none';
+}
+
+/* ── F51: Annotation toggle ── */
+var _annotationsOn = false;
+function toggleAnnotations() {
+  _annotationsOn = !_annotationsOn;
+  var body = document.getElementById('jpa-body');
+  var btn = document.getElementById('annotation-toggle');
+  if (body) body.classList.toggle('annotations-active', _annotationsOn);
+  if (btn) {
+    btn.style.borderColor = _annotationsOn ? 'rgba(180,145,60,0.7)' : 'rgba(180,145,60,0.3)';
+    btn.style.color = _annotationsOn ? 'rgba(180,145,60,1)' : 'rgba(180,145,60,0.7)';
+    btn.style.background = _annotationsOn ? 'rgba(180,145,60,0.08)' : 'transparent';
+  }
+}
+
+
+/* ── F53: Cipher Decrypt Hero ─────────────────────────── */
+var _cipherDone = false;
+function runCipherDecrypt() {
+  if (_cipherDone) return;
+  _cipherDone = true;
+  var pill = document.querySelector('.hero-pill');
+  if (!pill) return;
+  var target = pill.textContent.trim();
+  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@%&*';
+  var duration = 1500; // ms
+  var steps = 40;
+  var interval = duration / steps;
+  var step = 0;
+  pill.style.fontFamily = 'var(--mono)';
+  pill.style.letterSpacing = '0.05em';
+  var timer = setInterval(function() {
+    step++;
+    var progress = step / steps;
+    var revealed = Math.floor(progress * target.length);
+    var out = '';
+    for (var i = 0; i < target.length; i++) {
+      if (i < revealed || target[i] === ' ' || target[i] === '·' || target[i] === '\u00b7') {
+        out += target[i];
+      } else {
+        out += chars[Math.floor(Math.random() * chars.length)];
+      }
+    }
+    pill.childNodes[0] && (pill.childNodes[0].textContent = out);
+    if (step >= steps) {
+      clearInterval(timer);
+      pill.childNodes[0] && (pill.childNodes[0].textContent = target);
+      pill.style.fontFamily = '';
+      pill.style.letterSpacing = '';
+    }
+  }, interval);
+}
+
+
+/* ── F54: Professional Oath Reveal ─────────────────────── */
+var OATH_TEXT = 'I entered pre-hospital care because lives depend on the person who arrives first. ' +
+  'Every shift I carry a 19-drug formulary, ECG capability, and the weight of knowing that my actions ' +
+  'in the first minutes shape what happens next. I am not a paramedic. I am not a bystander. ' +
+  'I am the gap between those two — and I take that responsibility with complete seriousness. ' +
+  'I will continue to learn, to respond, and to serve — whatever that costs me personally.';
+
+function showOathReveal() {
+  var ov = document.getElementById('oath-overlay');
+  if (!ov) return;
+  ov.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  // Animate text in
+  setTimeout(function() {
+    var t = document.getElementById('oath-text');
+    var m = document.getElementById('oath-motto');
+    var s = document.getElementById('oath-sig');
+    if (t) { t.textContent = OATH_TEXT; t.style.opacity = '1'; }
+    if (m) m.style.opacity = '1';
+    if (s) s.style.opacity = '1';
+  }, 100);
+}
+
+function closeOath() {
+  var ov = document.getElementById('oath-overlay');
+  if (ov) ov.style.display = 'none';
+  document.body.style.overflow = '';
+  // Reset for next open
+  var t = document.getElementById('oath-text');
+  var m = document.getElementById('oath-motto');
+  var s = document.getElementById('oath-sig');
+  if (t) t.style.opacity = '0';
+  if (m) m.style.opacity = '0';
+  if (s) s.style.opacity = '0';
+}
+
+
+/* ── F55: Body Map Assessment Tool ── */
+var BODY_REGIONS = {
+  head: {
+    title: 'Head & Neurological',
+    assessment: 'GCS (Eye/Verbal/Motor). PEARL pupils. LOC duration. Retrograde amnesia. Scalp lacerations. C-spine precautions if trauma mechanism.',
+    jrcalc: 'JRCALC: Head Injury, Stroke (FAST), Epilepsy',
+    peter: 'Serial GCS monitoring — any deterioration triggers immediate pre-alert and C-spine precautions until excluded.'
+  },
+  neck: {
+    title: 'Cervical Spine & Airway',
+    assessment: 'Midline tenderness. Tracheal deviation. JVP. Carotid pulse. Airway patency — jaw thrust if C-spine suspected. NPA/OPA indication.',
+    jrcalc: 'JRCALC: Spinal Injury, Airway Management',
+    peter: 'Neck injuries: simultaneous airway and C-spine immobilisation. Tracheal shift triggers tension pneumothorax protocol immediately.'
+  },
+  chest: {
+    title: 'Chest & Respiratory',
+    assessment: 'Inspection (symmetry, accessory muscles). Percussion. Auscultation bilateral. RR, SpO2. Paradoxical movement. Open wounds — 3-sided seal. 12-lead ECG if cardiac.',
+    jrcalc: 'JRCALC: Chest Trauma, Pneumothorax, ACS, Cardiac Arrest',
+    peter: 'FREC 3 ECG capability. Chest pain with diaphoresis straight to 12-lead. Asymmetric air entry is chest trauma until proven otherwise.'
+  },
+  abdomen: {
+    title: 'Abdomen',
+    assessment: 'Guarding, rigidity, distension, bruising. Palpation 4 quadrants. Evisceration management. Internal haemorrhage signs. Pregnancy if female.',
+    jrcalc: 'JRCALC: Abdominal Trauma, Obstetric Emergencies',
+    peter: 'Haemodynamic instability with a soft abdomen masks significant internal bleeding. Time-critical for surgical intervention.'
+  },
+  pelvis: {
+    title: 'Pelvis',
+    assessment: 'Manual spring once only. Mechanism. Urethral injury signs. Pelvic binder for open book. Up to 2-3L blood loss from pelvic fracture.',
+    jrcalc: 'JRCALC: Pelvic Trauma, Major Haemorrhage',
+    peter: 'One gentle spring — if unstable: pelvic binder, IV access, immediate pre-alert. Do not repeat the spring assessment.'
+  },
+  arm: {
+    title: 'Upper Limb',
+    assessment: 'Distal CMS (Circulation, Movement, Sensation). Deformity. Tourniquet for catastrophic haemorrhage. Compartment syndrome signs.',
+    jrcalc: 'JRCALC: Limb Trauma, Tourniquet Use, Fracture Management',
+    peter: 'Tourniquets save lives. Apply, note time, hand over clearly. CMS checks before and after splinting.'
+  },
+  leg: {
+    title: 'Lower Limb',
+    assessment: 'Femoral fracture: up to 1.5L loss. Traction splint. Distal CMS. Open fractures: sterile cover only. Compartment syndrome: pain on passive stretch.',
+    jrcalc: 'JRCALC: Femoral Fracture, Traction Splint, Limb Trauma',
+    peter: 'Traction splinting reduces pain and blood loss. Open fractures: cover, immobilise, pre-alert. Do not reduce on scene.'
+  },
+  extremities: {
+    title: 'Hands & Feet',
+    assessment: 'Distal pulses. Cap refill <2s. Sensation. Crush injury rhabdomyolysis risk. Amputation preservation protocol. Burns: Lund-Browder assessment.',
+    jrcalc: 'JRCALC: Hand Injuries, Burns, Crush Injuries',
+    peter: 'Amputated digits: saline-soaked gauze in sealed bag in iced water. Document injury time. Pre-alert receiving unit.'
+  }
+};
+
+function showBodyRegion(region) {
+  var data = BODY_REGIONS[region];
+  if (!data) return;
+  var el1 = document.getElementById('bm-region-name');
+  var el2 = document.getElementById('bm-region-title');
+  var el3 = document.getElementById('bm-assessment');
+  var el4 = document.getElementById('bm-jrcalc');
+  var el5 = document.getElementById('bm-peter');
+  if (el1) el1.textContent = region.toUpperCase() + ' REGION';
+  if (el2) el2.textContent = data.title;
+  if (el3) el3.textContent = data.assessment;
+  if (el4) el4.textContent = data.jrcalc;
+  if (el5) el5.textContent = data.peter;
+}
+
+
+/* ── F59: Clinical Protocol Flowcharts ── */
+/* ── F59: Clinical Protocol Flowcharts ── */
+var PROTOCOLS = {
+  cardiac: {
+    title: 'Cardiac Arrest Protocol',
+    steps: [
+      { n:1, title:'Scene Safety & Responsiveness', detail:'Confirm scene is safe. Shout "Are you alright?" Tap shoulders. No response — call for help immediately.' },
+      { n:2, title:'Call 999 / Activate EMS', detail:'Shout for help. Dial 999. If AED available — send someone to retrieve it. Do not leave patient alone if possible.' },
+      { n:3, title:'Airway — Open & Check Breathing', detail:'Head tilt-chin lift (or jaw thrust if trauma). Look, listen, feel for normal breathing for no more than 10 seconds. Agonal breathing = treat as cardiac arrest.' },
+      { n:'D', title:'DECISION: Normal Breathing?', decision:true, detail:'YES — Recovery position, monitor, reassess. NO — Begin CPR immediately.' },
+      { n:4, title:'Start CPR — 30:2', detail:'30 chest compressions (hard, fast, centre of chest, 100-120/min, 5-6cm depth). 2 rescue breaths. Continue 30:2 cycle. Minimise interruptions to <5s.' },
+      { n:5, title:'AED — Apply as Soon as Available', detail:'Power on. Apply pads as shown. Follow voice prompts. Analyse rhythm. Shock if advised. Resume CPR immediately after shock. 2 minutes CPR, reassess.' },
+      { n:6, title:'Advanced Airway (if trained)', detail:'iGel supraglottic airway. Confirm placement by auscultation. Once in place: continuous compressions at 100-120/min, 1 breath every 6 seconds.' },
+      { n:7, title:'NWAS Handover (ATMIST)', detail:'Age, Time of arrest/resuscitation, Mechanism, Interventions (CPR duration, shocks), Signs (rhythm, ROSC), Treatment given. Clear 12-lead if ROSC achieved.' }
+    ]
+  },
+  anaphylaxis: {
+    title: 'Anaphylaxis Protocol',
+    steps: [
+      { n:1, title:'Recognise Anaphylaxis', detail:'Sudden onset. Skin: urticaria, flushing, angioedema. Airway: stridor, wheeze, hoarse voice. Circulation: hypotension, tachycardia. History of allergen exposure.' },
+      { n:2, title:'Remove Trigger (if possible)', detail:'Remove sting. Stop IV infusion if drug-related. Do not delay Adrenaline to find trigger.' },
+      { n:'D', title:'DECISION: Life-threatening features?', decision:true, detail:'Airway compromise, stridor, hypotension, loss of consciousness — YES. Proceed to Adrenaline immediately.' },
+      { n:3, title:'Adrenaline 1:1000 IM — 0.5mg', detail:'Outer mid-thigh. IM injection. Can give through clothing. No absolute contraindications in anaphylaxis. Note time of injection. Repeat after 5 mins if no improvement.' },
+      { n:4, title:'Position & Oxygen', detail:'Sit up if airway/breathing compromise. Lie flat + legs raised if hypotension. High-flow O2 via NRM at 15L/min. Monitor SpO2 continuously.' },
+      { n:5, title:'Call 999 / Pre-Alert Hospital', detail:'All anaphylaxis requires hospital assessment even if improving. Biphasic reactions occur in up to 20% of cases. Pre-alert as anaphylaxis.' },
+      { n:6, title:'Second Adrenaline if no improvement', detail:'If no improvement after 5 minutes — repeat Adrenaline 0.5mg IM. Maximum 2 doses at EAC level. IV access if available.' },
+      { n:7, title:'ATMIST Handover', detail:'Age, Time of reaction, trigger, Mechanism, Interventions (Adrenaline dose/time), Signs (SpO2, BP, HR), Treatment given. Note any improvement.' }
+    ]
+  },
+  choking: {
+    title: 'Choking Protocol (Adult)',
+    steps: [
+      { n:1, title:'Confirm Choking', detail:'Ask "Are you choking?" Cannot speak, cough, or breathe effectively. Clutching throat. Cyanosis. Distinguish from cardiac/stroke events.' },
+      { n:'D', title:'DECISION: Effective or Ineffective Cough?', decision:true, detail:'EFFECTIVE: Encourage coughing, observe, do not intervene. INEFFECTIVE: Proceed immediately.' },
+      { n:2, title:'5 Back Blows', detail:'Lean patient forward. Support chest. Give 5 sharp blows with heel of hand between shoulder blades. Check mouth after each — remove any visible obstruction.' },
+      { n:3, title:'5 Abdominal Thrusts', detail:'Stand behind patient. Arms around abdomen. Fist above navel. Pull sharply inward and upward. Alternate with back blows. Check for obstruction each time.' },
+      { n:'D', title:'DECISION: Still choking?', decision:true, detail:'YES — continue alternating 5 back blows / 5 abdominal thrusts. Call 999 if not already done.' },
+      { n:4, title:'Unconscious — Begin CPR', detail:'Lower carefully to floor. Call 999. Begin CPR 30:2. Before each rescue breath — look in mouth and remove any visible obstruction. Do NOT perform blind finger sweeps.' },
+      { n:5, title:'Reassess & Document', detail:'If obstruction clears — assess for injury (rib fractures from thrusts). Document all interventions. All patients receiving thrusts should be assessed by a clinician.' }
+    ]
+  }
+};
+
+var _activeProto = 'cardiac';
+var _activeStep = -1;
+
+function loadProtocol(name) {
+  _activeProto = name;
+  _activeStep = -1;
+  document.querySelectorAll('.proto-tab').forEach(function(b){ b.classList.remove('active'); });
+  var tab = document.getElementById('proto-tab-' + name);
+  if (tab) tab.classList.add('active');
+  renderProtocol();
+}
+
+function renderProtocol() {
+  var flow = document.getElementById('proto-flow');
+  if (!flow) return;
+  var proto = PROTOCOLS[_activeProto];
+  if (!proto) return;
+  flow.innerHTML = proto.steps.map(function(s, i) {
+    var cls = s.decision ? 'proto-decision' : 'proto-step';
+    if (s.decision) {
+      return '<div class="proto-decision">&#9650; ' + s.title + '<br><small style="opacity:0.8">' + s.detail + '</small></div>';
+    }
+    return '<div class="proto-step" onclick="toggleProtoStep(' + i + ')" id="pstep-' + i + '">' +
+      '<div class="proto-step-num">' + s.n + '</div>' +
+      '<div class="proto-step-title">' + s.title + '</div>' +
+      '<div class="proto-step-detail">' + s.detail + '</div>' +
+      '</div>';
+  }).join('');
+}
+
+function toggleProtoStep(i) {
+  var el = document.getElementById('pstep-' + i);
+  if (!el) return;
+  var isActive = el.classList.contains('active-step');
+  document.querySelectorAll('.proto-step').forEach(function(s){ s.classList.remove('active-step'); });
+  if (!isActive) el.classList.add('active-step');
+}
+
+// Init on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', function(){ renderProtocol(); });
+} else {
+  renderProtocol();
+}
+
+
+/* ── F71: Ops Radio Comms Panel ── */
+var COMMS_MNEMONICS = [
+  {
+    name: 'METHANE',
+    colour: '#C0392B',
+    border: 'rgba(192,57,43,0.3)',
+    bg: 'rgba(192,57,43,0.08)',
+    items: ['M — Major incident declared', 'E — Exact location', 'T — Type of incident', 'H — Hazards present/potential', 'A — Access & egress routes', 'N — Number of casualties (approx)', 'E — Emergency services present/required']
+  },
+  {
+    name: 'ATMIST',
+    colour: '#5C9BD4',
+    border: 'rgba(92,155,212,0.3)',
+    bg: 'rgba(92,155,212,0.08)',
+    items: ['A — Age & sex', 'T — Time of incident', 'M — Mechanism of injury', 'I — Injuries found / suspected', 'S — Signs & symptoms (vitals)', 'T — Treatment given so far']
+  },
+  {
+    name: 'IIMARCH',
+    colour: '#B4913C',
+    border: 'rgba(180,145,60,0.3)',
+    bg: 'rgba(180,145,60,0.08)',
+    items: ['I — Information (situation)', 'I — Intention (commander plan)', 'M — Method (how to achieve)', 'A — Administration (resources)', 'R — Risk assessment', 'C — Communications', 'H — Humanitarian needs']
+  },
+  {
+    name: 'SAMPLE',
+    colour: '#00A651',
+    border: 'rgba(0,166,81,0.3)',
+    bg: 'rgba(0,107,63,0.08)',
+    items: ['S — Signs & symptoms', 'A — Allergies', 'M — Medications', 'P — Past medical history', 'L — Last meal / oral intake', 'E — Events leading to incident']
+  },
+  {
+    name: 'cABCDE',
+    colour: '#9B59B6',
+    border: 'rgba(155,89,182,0.3)',
+    bg: 'rgba(155,89,182,0.06)',
+    items: ['c — Catastrophic haemorrhage', 'A — Airway', 'B — Breathing', 'C — Circulation', 'D — Disability (neuro)', 'E — Exposure & environment']
+  },
+  {
+    name: 'FAST',
+    colour: '#E07B5A',
+    border: 'rgba(224,123,90,0.3)',
+    bg: 'rgba(224,123,90,0.06)',
+    items: ['F — Face drooping', 'A — Arm weakness', 'S — Speech difficulty', 'T — Time to call 999']
+  }
+];
+
+function renderCommsPanel() {
+  var panel = document.getElementById('comms-panel');
+  if (!panel) return;
+  panel.innerHTML = COMMS_MNEMONICS.map(function(m) {
+    var items = m.items.map(function(i){
+      return '<div style="font-size:9px;color:rgba(255,255,255,0.55);padding:3px 0;border-bottom:1px solid rgba(255,255,255,0.04);line-height:1.4">' + i + '</div>';
+    }).join('');
+    return '<div style="background:' + m.bg + ';border:1px solid ' + m.border + ';border-radius:6px;overflow:hidden;border-left:3px solid ' + m.colour + '">' +
+      '<div style="padding:10px 12px;background:rgba(0,0,0,0.15)">' +
+        '<div style="font-family:var(--mono);font-size:10px;letter-spacing:0.25em;color:' + m.colour + ';font-weight:600">' + m.name + '</div>' +
+      '</div>' +
+      '<div style="padding:10px 12px">' + items + '</div>' +
+    '</div>';
+  }).join('');
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', renderCommsPanel);
+} else {
+  renderCommsPanel();
+}
+
 </script>
+<!-- F41: Reading Progress Bar -->
+<div id="article-progress" style="
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:10000;
+  background:linear-gradient(90deg,var(--gold),#00C850);
+  transition:width 0.1s linear;pointer-events:none;display:none
+"></div>
+</body>
+
+<!-- F54: Professional Oath Modal -->
+<div id="oath-overlay" style="display:none;position:fixed;inset:0;background:rgba(1,5,2,0.97);z-index:9500;align-items:center;justify-content:center;padding:40px 20px" onclick="if(event.target===this)closeOath()">
+  <div style="max-width:640px;width:100%;text-align:center;position:relative">
+    <div style="position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-size:9px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(180,145,60,0.5)">Professional Statement</div>
+
+    <!-- Gold top ornament -->
+    <div style="display:flex;align-items:center;gap:16px;justify-content:center;margin-bottom:28px">
+      <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(180,145,60,0.6));width:80px"></div>
+      <div style="font-size:20px">⚕</div>
+      <div style="height:1px;background:linear-gradient(90deg,rgba(180,145,60,0.6),transparent);width:80px"></div>
+    </div>
+
+    <div id="oath-text" style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.5rem);color:rgba(244,240,232,0.92);line-height:1.85;margin-bottom:32px;font-style:italic;opacity:0;transition:opacity 1s ease"></div>
+
+    <!-- SJA Motto -->
+    <div style="margin-bottom:24px;opacity:0;transition:opacity 1s ease 0.8s" id="oath-motto">
+      <div style="font-size:8px;letter-spacing:0.4em;text-transform:uppercase;color:rgba(180,145,60,0.5);margin-bottom:4px">SJA Motto</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(180,145,60,0.8);font-style:italic">Pro Fide, Pro Utilitate Hominum</div>
+      <div style="font-size:10px;color:rgba(255,255,255,0.3);margin-top:4px">For the Faith, For the Service of Humanity</div>
+    </div>
+
+    <div style="font-size:9px;letter-spacing:0.2em;color:rgba(255,255,255,0.25);opacity:0;transition:opacity 1s ease 1.2s" id="oath-sig">— Peter Craine, Emergency Ambulance Crew &middot; St John Ambulance North West</div>
+
+    <button onclick="closeOath()" style="margin-top:32px;background:transparent;border:1px solid rgba(180,145,60,0.2);color:rgba(180,145,60,0.5);padding:8px 24px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;cursor:pointer;border-radius:2px;font-family:var(--mono)">Close</button>
+  </div>
+</div>
+
+<!-- F50: Sticky WhatsApp CTA -->
+<div id="sticky-wa-cta" style="position:fixed;bottom:24px;right:20px;z-index:8500;display:none;flex-direction:column;align-items:flex-end;gap:8px">
+  <div id="sticky-wa-label" style="background:#0a1a0f;border:1px solid rgba(0,200,80,0.3);border-radius:20px;padding:6px 14px;font-size:10px;letter-spacing:0.1em;color:rgba(0,200,80,0.8);font-family:var(--mono);white-space:nowrap">Quick message</div>
+  <a href="https://wa.me/447756831072?text=Hi%20Peter%2C%20I%27d%20like%20to%20get%20in%20touch." target="_blank" rel="noopener" style="width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#25D366,#128C7E);display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 20px rgba(37,211,102,0.4);text-decoration:none;transition:transform 0.2s" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''" aria-label="Message Peter on WhatsApp">💬</a>
+</div>
+
+<div id="med-modal-overlay" style="display:none;position:fixed;inset:0;background:rgba(2,8,4,0.92);z-index:8000;align-items:center;justify-content:center;padding:20px" onclick="closeMedModal(event)">
+  <div id="med-modal-box" style="background:#0a1a0f;border:1px solid rgba(180,145,60,0.35);border-radius:10px;max-width:540px;width:100%;max-height:90vh;overflow-y:auto;position:relative">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);border-radius:10px 10px 0 0"></div>
+    <div style="padding:28px 28px 24px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px">
+        <div id="med-modal-class" style="font-size:8px;letter-spacing:0.25em;text-transform:uppercase;padding:3px 10px;border-radius:10px"></div>
+        <button onclick="closeMedModal()" style="background:transparent;border:none;color:rgba(255,255,255,0.4);font-size:18px;cursor:pointer;line-height:1;padding:0">&times;</button>
+      </div>
+      <div id="med-modal-name" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#fff;margin-bottom:4px;line-height:1.1"></div>
+      <div id="med-modal-note" style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:20px"></div>
+      <div style="height:1px;background:rgba(180,145,60,0.2);margin-bottom:20px"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px">
+        <div>
+          <div style="font-size:7px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:6px">ROUTE</div>
+          <div id="med-modal-route" style="font-size:13px;color:#fff"></div>
+        </div>
+        <div>
+          <div style="font-size:7px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(180,145,60,0.7);margin-bottom:6px">DOSE (ADULT)</div>
+          <div id="med-modal-dose" style="font-size:13px;color:#fff"></div>
+        </div>
+      </div>
+      <div style="background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.25);border-radius:6px;padding:14px;margin-bottom:20px">
+        <div style="font-size:7px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(220,80,80,0.8);margin-bottom:6px">CONTRAINDICATIONS</div>
+        <div id="med-modal-contra" style="font-size:12px;color:rgba(255,150,150,0.8);line-height:1.6"></div>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.25);text-align:center;font-style:italic">Administered under SJA clinical governance · FREC 3 EAC scope</div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
